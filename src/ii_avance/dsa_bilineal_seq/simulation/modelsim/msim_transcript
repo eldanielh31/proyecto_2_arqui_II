@@ -1,0 +1,97 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do top_dsa_seq_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+C:/Users/danbg/src/dsa_bilineal_seq {C:/Users/danbg/src/dsa_bilineal_seq/onchip_mem_img.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:41:35 on Nov 10,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/dsa_bilineal_seq" C:/Users/danbg/src/dsa_bilineal_seq/onchip_mem_img.sv 
+# -- Compiling module onchip_mem_img
+# 
+# Top level modules:
+# 	onchip_mem_img
+# End time: 14:41:35 on Nov 10,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/dsa_bilineal_seq {C:/Users/danbg/src/dsa_bilineal_seq/fixed_pkg.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:41:35 on Nov 10,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/dsa_bilineal_seq" C:/Users/danbg/src/dsa_bilineal_seq/fixed_pkg.sv 
+# -- Compiling package fixed_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 14:41:35 on Nov 10,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/dsa_bilineal_seq {C:/Users/danbg/src/dsa_bilineal_seq/top_dsa_seq.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:41:35 on Nov 10,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/dsa_bilineal_seq" C:/Users/danbg/src/dsa_bilineal_seq/top_dsa_seq.sv 
+# -- Compiling package top_dsa_seq_sv_unit
+# -- Importing package fixed_pkg
+# -- Compiling module top_dsa_seq
+# 
+# Top level modules:
+# 	top_dsa_seq
+# End time: 14:41:35 on Nov 10,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/dsa_bilineal_seq {C:/Users/danbg/src/dsa_bilineal_seq/bilinear_seq.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:41:35 on Nov 10,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/dsa_bilineal_seq" C:/Users/danbg/src/dsa_bilineal_seq/bilinear_seq.sv 
+# -- Compiling package bilinear_seq_sv_unit
+# -- Importing package fixed_pkg
+# -- Compiling module bilinear_seq
+# 
+# Top level modules:
+# 	bilinear_seq
+# End time: 14:41:35 on Nov 10,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+C:/Users/danbg/src/dsa_bilineal_seq {C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:41:36 on Nov 10,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/dsa_bilineal_seq" C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv 
+# -- Compiling package tb_bilinear_seq_sv_unit
+# -- Importing package fixed_pkg
+# -- Compiling module tb_bilinear_seq
+# 
+# Top level modules:
+# 	tb_bilinear_seq
+# End time: 14:41:36 on Nov 10,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_bilinear_seq
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_bilinear_seq 
+# Start time: 14:41:37 on Nov 10,2025
+# Loading sv_std.std
+# Loading work.fixed_pkg
+# Loading work.tb_bilinear_seq_sv_unit
+# Loading work.tb_bilinear_seq
+# Loading work.top_dsa_seq_sv_unit
+# Loading work.top_dsa_seq
+# Loading work.onchip_mem_img
+# Loading work.bilinear_seq_sv_unit
+# Loading work.bilinear_seq
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Warning: (vsim-7) Failed to open readmem file "img_in_64x64.hex" in read mode.
+# No such file or directory. (errno = ENOENT)    : C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv(40)
+#    Time: 100 ns  Iteration: 0  Instance: /tb_bilinear_seq
+# DONE
+# ** Note: $finish    : C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv(57)
+#    Time: 24098816230 ns  Iteration: 2  Instance: /tb_bilinear_seq
+# End time: 19:04:21 on Nov 10,2025, Elapsed time: 4:22:44
+# Errors: 0, Warnings: 1

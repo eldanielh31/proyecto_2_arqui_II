@@ -1,0 +1,212 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/danbg/src/dsa_bilineal_seq/simulation/modelsim
+vbilinear_seq
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 DXx4 work 9 fixed_pkg 0 22 =iM6?Oj^0n8Vi8QL[OGV52
+DXx4 work 20 bilinear_seq_sv_unit 0 22 hF<o`9OkM2?B1i@QW8lmm2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 Wo@JX<;iTc3R[@`L_AMf]1
+IehL6=Tl9`iZED;l7a0LS:2
+!s105 bilinear_seq_sv_unit
+S1
+R0
+Z4 w1762745148
+Z5 8C:/Users/danbg/src/dsa_bilineal_seq/bilinear_seq.sv
+Z6 FC:/Users/danbg/src/dsa_bilineal_seq/bilinear_seq.sv
+L0 4
+Z7 OV;L;10.5b;63
+Z8 !s108 1762807295.000000
+Z9 !s107 C:/Users/danbg/src/dsa_bilineal_seq/bilinear_seq.sv|
+Z10 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/dsa_bilineal_seq|C:/Users/danbg/src/dsa_bilineal_seq/bilinear_seq.sv|
+!i113 1
+Z11 o-sv -work work
+Z12 !s92 -sv -work work +incdir+C:/Users/danbg/src/dsa_bilineal_seq
+Z13 tCvgOpt 0
+Xbilinear_seq_sv_unit
+R1
+R2
+VhF<o`9OkM2?B1i@QW8lmm2
+r1
+!s85 0
+31
+!i10b 1
+!s100 Scai=jCJl`FR`@25FhcmO1
+IhF<o`9OkM2?B1i@QW8lmm2
+!i103 1
+S1
+R0
+R4
+R5
+R6
+L0 2
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+R13
+Xfixed_pkg
+R1
+Z14 !s110 1762807295
+!i10b 1
+!s100 5C7m]3UZ=JK6@g`b=InVR3
+I=iM6?Oj^0n8Vi8QL[OGV52
+V=iM6?Oj^0n8Vi8QL[OGV52
+S1
+R0
+w1762745029
+8C:/Users/danbg/src/dsa_bilineal_seq/fixed_pkg.sv
+FC:/Users/danbg/src/dsa_bilineal_seq/fixed_pkg.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/danbg/src/dsa_bilineal_seq/fixed_pkg.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/dsa_bilineal_seq|C:/Users/danbg/src/dsa_bilineal_seq/fixed_pkg.sv|
+!i113 1
+R11
+R12
+R13
+vonchip_mem_img
+R1
+R14
+!i10b 1
+!s100 EEebhe_FI5geI:i4EMX:C3
+IDOAo]PSYARR:E;_>VaZJo3
+R3
+!s105 onchip_mem_img_sv_unit
+S1
+R0
+w1762744629
+8C:/Users/danbg/src/dsa_bilineal_seq/onchip_mem_img.sv
+FC:/Users/danbg/src/dsa_bilineal_seq/onchip_mem_img.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/danbg/src/dsa_bilineal_seq/onchip_mem_img.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/dsa_bilineal_seq|C:/Users/danbg/src/dsa_bilineal_seq/onchip_mem_img.sv|
+!i113 1
+R11
+R12
+R13
+vtb_bilinear_seq
+R1
+R2
+DXx4 work 23 tb_bilinear_seq_sv_unit 0 22 @;a9`?f@MSzlTaiUDnoA31
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 :::@aOUHH[ziPzD?lCdDa2
+IFURJ@jocO<4MOX4FnSffA3
+!s105 tb_bilinear_seq_sv_unit
+S1
+R0
+Z15 w1762807276
+Z16 8C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv
+Z17 FC:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv
+L0 4
+R7
+Z18 !s108 1762807296.000000
+Z19 !s107 C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv|
+Z20 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/dsa_bilineal_seq|C:/Users/danbg/src/dsa_bilineal_seq/tb_bilinear_seq.sv|
+!i113 1
+R11
+R12
+R13
+Xtb_bilinear_seq_sv_unit
+R1
+R2
+V@;a9`?f@MSzlTaiUDnoA31
+r1
+!s85 0
+31
+!i10b 1
+!s100 IGXC5JT:bk<A]<o62ZRC63
+I@;a9`?f@MSzlTaiUDnoA31
+!i103 1
+S1
+R0
+R15
+R16
+R17
+L0 2
+R7
+R18
+R19
+R20
+!i113 1
+R11
+R12
+R13
+vtop_dsa_seq
+R1
+R2
+DXx4 work 19 top_dsa_seq_sv_unit 0 22 >bYm]_29^V]VfNRN8;n2f3
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 b]SlMH89X5E9?ceRa7gJ:1
+IC:fU?fE<SRgX0oG:mVDK@3
+!s105 top_dsa_seq_sv_unit
+S1
+R0
+Z21 w1762744639
+Z22 8C:/Users/danbg/src/dsa_bilineal_seq/top_dsa_seq.sv
+Z23 FC:/Users/danbg/src/dsa_bilineal_seq/top_dsa_seq.sv
+L0 4
+R7
+R8
+Z24 !s107 C:/Users/danbg/src/dsa_bilineal_seq/top_dsa_seq.sv|
+Z25 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/dsa_bilineal_seq|C:/Users/danbg/src/dsa_bilineal_seq/top_dsa_seq.sv|
+!i113 1
+R11
+R12
+R13
+Xtop_dsa_seq_sv_unit
+R1
+R2
+V>bYm]_29^V]VfNRN8;n2f3
+r1
+!s85 0
+31
+!i10b 1
+!s100 j;<h8_Kh;o?l45>>jP=Hd2
+I>bYm]_29^V]VfNRN8;n2f3
+!i103 1
+S1
+R0
+R21
+R22
+R23
+L0 2
+R7
+R8
+R24
+R25
+!i113 1
+R11
+R12
+R13

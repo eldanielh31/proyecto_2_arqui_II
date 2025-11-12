@@ -1,0 +1,129 @@
+# =========================
+# OS / Editores
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================
+# Quartus Prime (Intel FPGA)
+# =========================
+# Directorios de build
+db/
+incremental_db/
+output_files/
+qdb/
+greybox_tmp/
+hps_isw_handoff/
+simulation/*/work/
+simulation/*/modelsim/work/
+simulation/modelsim/work/
+
+# Archivos generados de compilación
+*.sof          # bitstreams
+*.pof
+*.jic
+*.rpd
+*.sld
+*.smsg
+*.rpt
+*.summary
+*.chg
+*.eqn
+*.pin
+*.qws
+*.sdc.sta.rpt
+*.sta.rpt
+*.dsp.rpt
+*.flow.rpt
+*.fit.rpt
+*.asm.rpt
+*.tan.rpt
+*.sta.fail.rpt
+*.map.rpt
+
+# QAR (archivos de archivo de proyectos)
+*.qar
+*.qarlog
+
+# IP/Platform Designer temporales
+*.cmp          # info de componente generada
+*.debuginfo
+*.bsf
+*.sip
+
+# Si generas IP localmente, mantén los .qip/.sopcinfo que declaras en el proyecto
+# ¡NO ignores los .qip ni .sopcinfo que formen parte del flujo!
+# (Descomenta si quieres ignorar todos, pero no es recomendado)
+# *.qip
+# *.sopcinfo
+
+# =========================
+# ModelSim / Questa
+# =========================
+# Librerías y cachés
+work/
+modelsim.ini
+transcript
+vsim.wlf
+wlf*
+*.mti
+*.asdb
+*.asetmp
+
+# Salidas de simulación comunes
+*.vcd
+*.do.history
+
+# =========================
+# LaTeX
+# =========================
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.run.xml
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.idx
+*.ilg
+*.ind
+
+# =========================
+# Datos / Artefactos generados
+# =========================
+# Hex de salida generado por TB o por HW
+img_out.hex
+# Si generas más hex binarios, ignóralos por defecto:
+*.hex
+
+# Conserva assets de entrada si están bajo estas carpetas
+# (quita estas excepciones si no las usas)
+!assets/**.hex
+!data/**.hex
+!images/**
+
+# Capturas / temporales
+*.tmp
+*.bak
+*~
+
+# =========================
+# Python (por si usas scripts auxiliares)
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/

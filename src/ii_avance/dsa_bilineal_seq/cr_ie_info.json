@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 10",
+		"os_version" : "10.0"
+	},
+	"error" : {
+		"executable" : "quartus_stp",
+		"comment" : "not_applicable",
+		"error_message" : "Access Violation at 0X00007FFC41D6F779",
+		"source_file" : "unknown",
+		"line" : "0",
+		"stack_trace" : "\t0x7ffc41d6f778: jtag_client + 0xf778 (?close_device@AJI_OPEN_JS@@UEAA?AW4AJI_ERROR@@XZ + 0x278)\n\t0x7ffc49d012b3: sld_hapi + 0x12b3 (??1HAPI_SMO_HUB@@QEAA@XZ + 0x73)\n\t0x7ffc49d01217: sld_hapi + 0x1217 (??1HAPI_SMO_DEVICE@@QEAA@XZ + 0xa7)\n\t0x7ffc49d01344: sld_hapi + 0x1344 (??1HAPI_SMO_MANAGER@@QEAA@XZ + 0x44)\n\t0x7ffc49d0545b: sld_hapi + 0x545b (_CRT_INIT + 0xeb)\n\t0x7ffc49d056dd: sld_hapi + 0x56dd (__DllMainCRTStartup + 0xe1)\n\t0x7ffc86a9f89d: ntdll + 0x15f89d (RtlEncodeRemotePointer + 0xcd)\n\t0x7ffc8694bcad: ntdll + 0xbcad (RtlRaiseException + 0x156d)\n\t0x7ffc869cd4ae: ntdll + 0x8d4ae (LdrShutdownProcess + 0x17e)\n\t0x7ffc869cc67d: ntdll + 0x8c67d (RtlExitUserProcess + 0x9d)\n\t0x7ffc860718aa: KERNEL32 + 0x418aa (FatalExit + 0xa)\n\t0x7ffc5bd629a6: MSVCR120 + 0x229a6 (_initterm_e + 0x21a)\n\t0x7ff676bb42e9: quartus_stp + 0x42e9 (__tmainCRTStartup + 0x125)\n\t0x7ffc8605e8d6: KERNEL32 + 0x2e8d6 (BaseThreadInitThunk + 0x16)\n\t0x7ffc869cc53b: ntdll + 0x8c53b (RtlUserThreadStart + 0x2b)\n",
+		"subsystem" : "unknown"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "18.1.0",
+		"build" : "625",
+		"edition" : "Lite Edition"
+	}
+}
