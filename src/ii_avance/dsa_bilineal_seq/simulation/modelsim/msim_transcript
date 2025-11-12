@@ -18,59 +18,65 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work vjtag +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:20:15 on Nov 12,2025
+# Start time: 17:34:39 on Nov 12,2025
 # vlog -reportprogress 300 -vlog01compat -work vjtag "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v 
 # -- Compiling module vjtag
 # 
 # Top level modules:
 # 	vjtag
-# End time: 16:20:15 on Nov 12,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv}
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:20:15 on Nov 12,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv 
-# -- Compiling module onchip_mem_img
-# 
-# Top level modules:
-# 	onchip_mem_img
-# End time: 16:20:15 on Nov 12,2025, Elapsed time: 0:00:00
+# End time: 17:34:39 on Nov 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:20:15 on Nov 12,2025
+# Start time: 17:34:39 on Nov 12,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/bilinear_seq.sv 
 # -- Compiling module bilinear_seq
 # 
 # Top level modules:
 # 	bilinear_seq
-# End time: 16:20:15 on Nov 12,2025, Elapsed time: 0:00:00
+# End time: 17:34:39 on Nov 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:34:39 on Nov 12,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv 
+# -- Compiling module onchip_mem_img
+# 
+# Top level modules:
+# 	onchip_mem_img
+# End time: 17:34:39 on Nov 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/top_dsa_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:20:15 on Nov 12,2025
+# Start time: 17:34:39 on Nov 12,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/top_dsa_seq.sv 
 # -- Compiling module top_dsa_seq
 # 
 # Top level modules:
 # 	top_dsa_seq
-# End time: 16:20:15 on Nov 12,2025, Elapsed time: 0:00:00
+# End time: 17:34:39 on Nov 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:20:15 on Nov 12,2025
+# Start time: 17:34:39 on Nov 12,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv 
 # -- Compiling module tb_bilinear_seq
+# ** Warning: C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(57): (vlog-2244) Variable 'IMG_FILE' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(103): (vlog-2244) Variable 'cycles' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(104): (vlog-2244) Variable 'MAX_CYCLES' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
 # 
 # Top level modules:
 # 	tb_bilinear_seq
-# End time: 16:20:15 on Nov 12,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# End time: 17:34:40 on Nov 12,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 3
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -L vjtag -voptargs="+acc"  tb_bilinear_seq
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -L vjtag -voptargs=""+acc"" tb_bilinear_seq 
-# Start time: 16:20:15 on Nov 12,2025
+# Start time: 17:34:40 on Nov 12,2025
 # Loading sv_std.std
 # Loading work.tb_bilinear_seq
 # Loading work.top_dsa_seq
@@ -83,11 +89,12 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# [TB] 'C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_in_64x64.hex' cargado. Checksum(0..511) = 50228
 # [TB] in_w=x in_h=x scale_q88=x
+# [TB] 'C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_in_64x64.hex' cargado. Checksum(0..511) = 50228
+# [TB][INFO] 1k ciclos...
 # [TB] done=1; out_w=51 out_h=51
 # [TB] Archivo C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_out.hex generado. (pixeles útiles: 51 x 51)
-# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(74)
-#    Time: 365490 ns  Iteration: 2  Instance: /tb_bilinear_seq
-# End time: 16:20:19 on Nov 12,2025, Elapsed time: 0:00:04
+# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(123)
+#    Time: 365550 ns  Iteration: 2  Instance: /tb_bilinear_seq
+# End time: 17:34:44 on Nov 12,2025, Elapsed time: 0:00:04
 # Errors: 0, Warnings: 0
