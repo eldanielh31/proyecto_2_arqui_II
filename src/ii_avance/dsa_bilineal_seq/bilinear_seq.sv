@@ -1,229 +1,315 @@
-// bilinear_seq.sv — versión corregida (evita init en declaración dentro de always_comb)
+// ============================================================================
+// bilinear_seq.sv  (Quartus 18.0/18.1 friendly, SV mínimo)
+// Núcleo secuencial con interpolación bilineal Q8.8 real.
+// - Lee las 4 muestras vecinas por píxel (I00, I10, I01, I11) en 4 ciclos.
+// - Clamp de bordes para xi, yi y fracciones fx/fy cuando xi/yi están en la
+//   última columna/fila.
+// - Stride de lectura usa i_in_w (ancho de ENTRADA).
+// - out_we escribe el píxel del ciclo actual (fase WRITE).
+// - Sin slices sobre concatenaciones temporales ni sintaxis SV avanzada.
+// ============================================================================
+
 `timescale 1ns/1ps
-import fixed_pkg::*;
 
 module bilinear_seq #(
-  parameter ADDR_W = 19
+  parameter AW = 12
 )(
-  input  logic        clk,
-  input  logic        rst_n,
-
-  // Config
-  input  logic [15:0] in_w,
-  input  logic [15:0] in_h,
-  input  uq88_t       scale_q88,
+  input  wire         clk,
+  input  wire         rst_n,
 
   // Control
-  input  logic        start,
-  output logic        busy,
-  output logic        done,
+  input  wire         start,
+  output reg          busy,
+  output reg          done,
 
-  // BRAM in (read)
-  output logic [ADDR_W-1:0] in_addr,
-  input  logic [7:0]        in_data,
+  // Dimensiones entrada y escala Q8.8
+  input  wire [15:0]  i_in_w,
+  input  wire [15:0]  i_in_h,
+  input  wire [15:0]  i_scale_q88,   // Q8.8, >0
 
-  // BRAM out (write)
-  output logic [ADDR_W-1:0] out_addr,
-  output logic [7:0]        out_data,
-  output logic              out_we
+  // Dimensiones salida reportadas
+  output reg  [15:0]  o_out_w,
+  output reg  [15:0]  o_out_h,
+
+  // Lectura fuente (single-port BRAM like)
+  output reg  [AW-1:0] in_raddr,
+  input  wire [7:0]    in_rdata,
+
+  // Escritura destino
+  output reg  [AW-1:0] out_waddr,
+  output reg  [7:0]    out_wdata,
+  output reg           out_we
 );
 
-  typedef enum logic [3:0] {
-    S_IDLE, S_FETCH00, S_FETCH10, S_FETCH01, S_FETCH11,
-    S_MAC, S_WRITE, S_NEXT, S_DONE
-  } state_t;
+  // ---------------- Constantes ----------------
+  // ONE_Q08 = 256 en Q0.8
+  localparam [8:0] ONE_Q08 = 9'd256;
 
-  state_t st, st_n;
+  // ---------------- Registros de estado ----------------
+  reg [15:0] out_w_reg, out_h_reg;
+  reg [15:0] ox_cur, oy_cur;
 
-  // Coordenadas de salida
-  logic [15:0] x_dst, y_dst;
+  // Coordenadas fuente acumuladas Q8.8 en 24 bits: [23:8] entero, [7:0] frac
+  reg [23:0] sx_fix, sy_fix;
 
-  // out_w/out_h correctos con Q8.8 (sin sobre-escala)
-  logic [15:0] out_w, out_h;
-  logic [31:0] tmpw, tmph;       // productos 16x16 para tamaño de salida
+  // inv_scale en Q8.8 (aprox 1/scale)
+  reg [15:0] inv_scale_q88;
 
-  // Coordenadas fuente Q8.8
-  uq88_t       x_src_q88, y_src_q88;
-  logic [15:0] ix, iy;
-  uq88_t       ax, ay;
-  uq88_t       one_ax, one_ay;
+  // Fracciones Q0.8 (bit-slices directos de registros, NO de expresiones)
+  wire [7:0] ax_q = sx_fix[7:0];
+  wire [7:0] ay_q = sy_fix[7:0];
 
-  // vecinos
-  logic [7:0] I00, I10, I01, I11;
+  // Enteros (floor)
+  wire [15:0] sx_int = sx_fix[23:8];
+  wire [15:0] sy_int = sy_fix[23:8];
 
-  // acumulador y productos
-  q88_t acc;
-  q88_t w00, w10, w01, w11;
-  q88_t P00, P10, P01, P11;
+  // Latch de coordenadas base y fracciones AJUSTADAS (clamp de bordes)
+  reg [15:0] xi_base, yi_base;
+  reg [7:0]  fx_q, fy_q;
 
-  // temporales para multiplicación de coordenadas (declaradas FUERA del always_comb)
-  logic [31:0] xs_mul, ys_mul;
+  // Muestras vecinas (latcheadas tras cada lectura)
+  reg [7:0] I00, I10, I01, I11;
 
-  // reciprocal fijo (ej.: 1/0.8 ≈ 1.25 => 320 Q8.8)
-  uq88_t reciprocal_q88;
-  initial reciprocal_q88 = 16'd320;
+  // Pesos Q0.16 (wx*wy) a partir de fx_q/fy_q
+  wire [8:0]  wx0_ext = ONE_Q08 - {1'b0, fx_q};
+  wire [8:0]  wx1_ext = {1'b0, fx_q};
+  wire [8:0]  wy0_ext = ONE_Q08 - {1'b0, fy_q};
+  wire [8:0]  wy1_ext = {1'b0, fy_q};
 
-  // Helpers
-  function automatic [ADDR_W-1:0] addr_of(
-    input logic [15:0] x, input logic [15:0] y, input logic [15:0] w
-  );
-    addr_of = y * w + x;
+  wire [17:0] w00_q016 = wx0_ext * wy0_ext; // Q0.8 * Q0.8 -> Q0.16 (usamos 18b para seguridad)
+  wire [17:0] w10_q016 = wx1_ext * wy0_ext;
+  wire [17:0] w01_q016 = wx0_ext * wy1_ext;
+  wire [17:0] w11_q016 = wx1_ext * wy1_ext;
+
+  // Productos (Q0.16 * u8 -> máx 24b; acumulamos en 32b por simplicidad)
+  wire [31:0] p00 = w00_q016 * I00;
+  wire [31:0] p10 = w10_q016 * I10;
+  wire [31:0] p01 = w01_q016 * I01;
+  wire [31:0] p11 = w11_q016 * I11;
+
+  wire [31:0] sum_q016    = p00 + p10 + p01 + p11;
+  wire [31:0] sum_rounded = sum_q016 + 32'h0000_8000; // +0.5 (Q0.16)
+  wire [7:0]  PIX_next    = sum_rounded[23:16];       // >>16
+
+  // ---------------- FSM ----------------
+  localparam S_IDLE       = 4'd0;
+  localparam S_INIT       = 4'd1;
+  localparam S_ROW_INIT   = 4'd2;
+  localparam S_PIXEL_START= 4'd3;
+  localparam S_READ00     = 4'd4;
+  localparam S_READ10     = 4'd5;
+  localparam S_READ01     = 4'd6;
+  localparam S_READ11     = 4'd7;
+  localparam S_WRITE      = 4'd8;
+  localparam S_ADVANCE    = 4'd9;
+  localparam S_DONE       = 4'd10;
+
+  reg [3:0] state, state_n;
+
+  // ---------------- Funciones ----------------
+  // Dirección lineal (y*width + x) -> AW LSBs
+  function [AW-1:0] linaddr;
+    input [15:0] x;
+    input [15:0] y;
+    input [15:0] width;
+    reg   [31:0] tmp;
+  begin
+    tmp     = (y * width) + x;
+    linaddr = tmp[AW-1:0];
+  end
   endfunction
 
-  // ======= out_w/out_h correctos =======
-  // Q8.8: out = floor( in * scale / 256 )
-  assign tmpw  = in_w * scale_q88;     // 16*16 → 32, con 8 bits fracc
-  assign tmph  = in_h * scale_q88;
-  assign out_w = tmpw[23:8];           // >>8
-  assign out_h = tmph[23:8];           // >>8
-
-  // Estado
-  assign busy = (st != S_IDLE) && (st != S_DONE);
-  assign done = (st == S_DONE);
-
-  always_ff @(posedge clk or negedge rst_n) begin
-    if (!rst_n) st <= S_IDLE;
-    else        st <= st_n;
-  end
-
-  always_ff @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-      x_dst <= 16'd0;
-      y_dst <= 16'd0;
-      out_we <= 1'b0;
-      I00 <= '0; I10 <= '0; I01 <= '0; I11 <= '0;
+  // Aproximación a 1/scale en Q8.8: floor((65536 + (scale>>8))/scale)
+  function [15:0] inv_q88;
+    input [15:0] scale_q88;
+    reg   [31:0] num;
+  begin
+    if (scale_q88 == 16'd0) begin
+      inv_q88 = 16'hFFFF;
     end else begin
-      out_we <= 1'b0;
+      num     = 32'd65536 + (scale_q88 >> 8);
+      inv_q88 = num / scale_q88;
+    end
+  end
+  endfunction
 
-      case (st)
+  // ---------------- Combinacional simple ----------------
+  wire [31:0] mul_w = i_in_w * i_scale_q88; // Q8.8
+  wire [31:0] mul_h = i_in_h * i_scale_q88; // Q8.8
+
+  // ---------------- Secuencial ----------------
+  always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      state         <= S_IDLE;
+      busy          <= 1'b0;
+      done          <= 1'b0;
+      out_we        <= 1'b0;
+
+      out_waddr     <= {AW{1'b0}};
+      out_wdata     <= 8'h00;
+      in_raddr      <= {AW{1'b0}};
+
+      ox_cur        <= 16'd0;
+      oy_cur        <= 16'd0;
+
+      out_w_reg     <= 16'd0;
+      out_h_reg     <= 16'd0;
+      inv_scale_q88 <= 16'd0;
+
+      sx_fix        <= 24'd0;
+      sy_fix        <= 24'd0;
+
+      o_out_w       <= 16'd0;
+      o_out_h       <= 16'd0;
+
+      xi_base       <= 16'd0;
+      yi_base       <= 16'd0;
+      fx_q          <= 8'd0;
+      fy_q          <= 8'd0;
+
+      I00 <= 8'd0; I10 <= 8'd0; I01 <= 8'd0; I11 <= 8'd0;
+    end else begin
+      state  <= state_n;
+      out_we <= 1'b0; // por defecto
+
+      case (state)
+        // --- Configuración tras start ---
         S_IDLE: begin
+          done <= 1'b0;
+          busy <= 1'b0;
           if (start) begin
-            x_dst <= 16'd0;
-            y_dst <= 16'd0;
+            out_w_reg     <= mul_w[23:8]; // floor((in*scale)>>8)
+            out_h_reg     <= mul_h[23:8];
+            o_out_w       <= mul_w[23:8];
+            o_out_h       <= mul_h[23:8];
+            inv_scale_q88 <= inv_q88(i_scale_q88);
           end
         end
 
-        // Captura de lecturas (dato llega ciclo siguiente)
-        S_FETCH10: I00 <= in_data;
-        S_FETCH01: I10 <= in_data;
-        S_FETCH11: I01 <= in_data;
-        S_MAC:     I11 <= in_data;
+        // --- Inicialización general ---
+        S_INIT: begin
+          busy   <= 1'b1;
+          ox_cur <= 16'd0;
+          oy_cur <= 16'd0;
+          sx_fix <= 24'd0;     // x = 0.0
+          sy_fix <= 24'd0;     // y = 0.0
+        end
 
+        // --- Nueva fila ---
+        S_ROW_INIT: begin
+          ox_cur <= 16'd0;
+          sx_fix <= 24'd0;     // reiniciar coordenada X (Q8.8)
+        end
+
+        // --- Pixel: preparar xi/yi y fracciones con CLAMP de borde ---
+        S_PIXEL_START: begin
+          // Base sin clamp
+          xi_base <= sx_int;
+          yi_base <= sy_int;
+          fx_q    <= ax_q;
+          fy_q    <= ay_q;
+
+          // Clamp de bordes para bilinear (última col/fila)
+          if (sx_int >= i_in_w - 16'd1) begin
+            xi_base <= i_in_w - 16'd2;  // garantiza xi+1 válido
+            fx_q    <= 8'hFF;           // fracción máxima
+          end
+          if (sy_int >= i_in_h - 16'd1) begin
+            yi_base <= i_in_h - 16'd2;
+            fy_q    <= 8'hFF;
+          end
+
+          // Programar primera lectura (I00)
+          in_raddr <= linaddr(xi_base, yi_base, i_in_w);
+        end
+
+        // --- Lecturas secuenciales de las 4 muestras vecinas ---
+        S_READ00: begin
+          I00     <= in_rdata;
+          in_raddr<= linaddr(xi_base + 16'd1, yi_base, i_in_w); // I10
+        end
+
+        S_READ10: begin
+          I10     <= in_rdata;
+          in_raddr<= linaddr(xi_base, yi_base + 16'd1, i_in_w); // I01
+        end
+
+        S_READ01: begin
+          I01     <= in_rdata;
+          in_raddr<= linaddr(xi_base + 16'd1, yi_base + 16'd1, i_in_w); // I11
+        end
+
+        S_READ11: begin
+          I11     <= in_rdata;
+          // nada más aquí; productos se evalúan combinacionalmente
+        end
+
+        // --- Escritura del píxel interpolado ---
         S_WRITE: begin
-          out_we <= 1'b1;
+          out_waddr <= linaddr(ox_cur, oy_cur, out_w_reg);
+          out_wdata <= PIX_next;
+          out_we    <= 1'b1;
         end
 
-        S_NEXT: begin
-          if (x_dst + 1 < out_w) begin
-            x_dst <= x_dst + 16'd1;
+        // --- Avance de coordenadas salida y fuente ---
+        S_ADVANCE: begin
+          // Avance en X si no cerramos fila; si cerramos, avanzar Y
+          if (ox_cur + 16'd1 < out_w_reg) begin
+            ox_cur <= ox_cur + 16'd1;
+            // sx_fix += inv_scale (Q8.8) -> expandir con ceros arriba
+            sx_fix <= sx_fix + {8'd0, inv_scale_q88};
           end else begin
-            x_dst <= 16'd0;
-            if (y_dst + 1 < out_h) y_dst <= y_dst + 16'd1;
+            if (oy_cur + 16'd1 < out_h_reg) begin
+              oy_cur <= oy_cur + 16'd1;
+              // nueva fila: x vuelve a 0; y += inv_scale
+              sx_fix <= 24'd0;
+              sy_fix <= sy_fix + {8'd0, inv_scale_q88};
+            end
           end
         end
 
-        default: ;
+        S_DONE: begin
+          busy <= 1'b0;
+          done <= 1'b1;
+        end
+
+        default: begin
+          // no-op
+        end
       endcase
     end
   end
 
-  // ======= Combinacional =======
-  always_comb begin
-    st_n     = st;
-    in_addr  = '0;
-    out_addr = addr_of(x_dst, y_dst, out_w);
-
-    // defaults (para evitar latches)
-    x_src_q88 = '0; y_src_q88 = '0;
-    ix = '0; iy = '0; ax = '0; ay = '0; one_ax = '0; one_ay = '0;
-    w00 = '0; w10 = '0; w01 = '0; w11 = '0;
-    P00 = '0; P10 = '0; P01 = '0; P11 = '0;
-    acc = '0;
-    xs_mul = '0; ys_mul = '0;
-
-    case (st)
-      S_IDLE: begin
-        if (start) st_n = S_FETCH00;
-      end
-
-      // Calcular coord fuente y primer fetch
-      S_FETCH00: begin
-        // x_src_q88 = floor( x_dst * reciprocal_q88 / 256 )
-        // y_src_q88 = floor( y_dst * reciprocal_q88 / 256 )
-        xs_mul    = x_dst * reciprocal_q88;   // 16*16 → 32
-        ys_mul    = y_dst * reciprocal_q88;
-        x_src_q88 = xs_mul[23:8];
-        y_src_q88 = ys_mul[23:8];
-
-        ix = x_src_q88[15:8];
-        iy = y_src_q88[15:8];
-        ax = {8'd0, x_src_q88[7:0]};
-        ay = {8'd0, y_src_q88[7:0]};
-
-        one_ax = one_minus(ax);
-        one_ay = one_minus(ay);
-
-        in_addr = addr_of(ix, iy, in_w);
-        st_n = S_FETCH10;
-      end
-
-      S_FETCH10: begin
-        in_addr = addr_of(ix+16'd1, iy, in_w);
-        st_n = S_FETCH01;
-      end
-
-      S_FETCH01: begin
-        in_addr = addr_of(ix, iy+16'd1, in_w);
-        st_n = S_FETCH11;
-      end
-
-      S_FETCH11: begin
-        in_addr = addr_of(ix+16'd1, iy+16'd1, in_w);
-        st_n = S_MAC;
-      end
-
-      S_MAC: begin
-        // pesos
-        w00 = mul_q88({1'b0,one_ax}, {1'b0,one_ay});
-        w10 = mul_q88({1'b0,ax},     {1'b0,one_ay});
-        w01 = mul_q88({1'b0,one_ax}, {1'b0,ay});
-        w11 = mul_q88({1'b0,ax},     {1'b0,ay});
-
-        // píxeles promovidos a Q8.8
-        P00 = {I00,8'd0};
-        P10 = {I10,8'd0};
-        P01 = {I01,8'd0};
-        P11 = {I11,8'd0};
-
-        // acumulación
-        acc = 16'sd0;
-        acc = acc + mul_q88(w00, P00);
-        acc = acc + mul_q88(w10, P10);
-        acc = acc + mul_q88(w01, P01);
-        acc = acc + mul_q88(w11, P11);
-
-        st_n = S_WRITE;
-      end
-
+  // ---------------- Próximo estado ----------------
+  always @(*) begin
+    state_n = state;
+    case (state)
+      S_IDLE:         state_n = (start) ? S_INIT : S_IDLE;
+      S_INIT:         state_n = S_ROW_INIT;
+      S_ROW_INIT:     state_n = S_PIXEL_START;
+      S_PIXEL_START:  state_n = S_READ00;
+      S_READ00:       state_n = S_READ10;
+      S_READ10:       state_n = S_READ01;
+      S_READ01:       state_n = S_READ11;
+      S_READ11:       state_n = S_WRITE;
       S_WRITE: begin
-        out_addr = addr_of(x_dst, y_dst, out_w);
-        st_n = S_NEXT;
-      end
-
-      S_NEXT: begin
-        if ((x_dst + 16'd1 == out_w) && (y_dst + 16'd1 == out_h))
-          st_n = S_DONE;
+        // decidir si terminamos, cambiamos de fila o seguimos en la misma fila
+        if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
+          state_n = S_DONE;
         else
-          st_n = S_FETCH00;
+          state_n = S_ADVANCE;
       end
-
-      S_DONE: begin
-        // permanecer en DONE
+      S_ADVANCE: begin
+        if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
+          state_n = S_DONE;
+        else if (ox_cur + 16'd1 >= out_w_reg)
+          state_n = S_ROW_INIT;     // nueva fila
+        else
+          state_n = S_PIXEL_START;  // siguiente píxel en la misma fila
       end
+      S_DONE:         state_n = S_IDLE;
+      default:        state_n = S_IDLE;
     endcase
   end
-
-  // salida u8
-  assign out_data = q88_to_u8(acc);
 
 endmodule

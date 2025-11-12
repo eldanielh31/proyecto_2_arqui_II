@@ -1,0 +1,32 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/danbg/src/dsa_bilineal_seq/simulation/modelsim
+vvjtag
+!s110 1762986015
+!i10b 1
+!s100 Gi1=1V]^Ia:CShHRYzC2<3
+IV]HTOSJSfggonP:T87IOL2
+VDg1SIo80bB@j0V0VzS_@n1
+dC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/simulation/modelsim
+w1762846109
+8C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v
+FC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v
+L0 6
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1762986015.000000
+!s107 C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v|
+!s90 -reportprogress|300|-vlog01compat|-work|vjtag|+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis|C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v|
+!i113 1
+o-vlog01compat -work vjtag
+!s92 -vlog01compat -work vjtag +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis
+tCvgOpt 0

@@ -1,114 +1,110 @@
-`timescale 1ns/1ps
-import fixed_pkg::*;
+// ============================================================================
+// top_dsa_seq.sv
+// Top simple: conecta memorias y el núcleo para síntesis/simulación.
+// La instancia vJTAG queda comentada para evitar warnings y puertos no usados.
+// ============================================================================
 
-module top_dsa_seq(
-  input  logic clk_50,    // CLOCK_50 (50 MHz)
-  input  logic rst_n,     // reset activo alto (invertir afuera si KEY es activo-bajo)
-  input  logic start_sw,  // switch opcional para iniciar desde la placa
-  output logic led_done   // LED "done"
+`timescale 1ps/1ps
+
+module top_dsa_seq
+#(
+  parameter AW = 12
+)(
+  input  logic clk_50,
+  input  logic rst_n
 );
-  localparam ADDR_W = 19;
 
-  // Señales núcleo
-  logic              busy, done;
-  logic [ADDR_W-1:0] in_addr;
-  logic [7:0]        in_data;
-  logic [ADDR_W-1:0] out_addr;
-  logic [7:0]        out_data;
-  logic              out_we;
+  localparam IN_W_INIT      = 16'd64;
+  localparam IN_H_INIT      = 16'd64;
+  localparam SCALE_Q88_INIT = 16'd205; // ~0.80
 
-  // ========= Virtual JTAG =========
-  // Asegúrese de incluir vjtag.qip en el proyecto (NO incluir vjtag_inst.v).
-  wire        v_tck, v_tdi, v_tdo;
-  wire [1:0]  v_ir_in, v_ir_out;
-  wire        v_cdr, v_sdr, v_udr, v_cir;
+  // Señales de control
+  logic start_pulse;
+  logic busy, done;
 
-  vjtag u_vjtag (
-    .tck (v_tck),
-    .tdi (v_tdi),
-    .tdo (v_tdo),
-    .ir_in  (v_ir_in),
-    .ir_out (v_ir_out),
-    .virtual_state_cdr (v_cdr),
-    .virtual_state_sdr (v_sdr),
-    .virtual_state_udr (v_udr),
-    .virtual_state_cir (v_cir)
-    // Si el IP genera más virtual_state_* puede dejarlos sin conectar
-  );
+  // Dimensiones IO
+  logic [15:0] in_w, in_h, scale_q88;
+  logic [15:0] out_w_s, out_h_s;
 
-  // Puente JTAG ↔ registros del core
-  wire        j_start;
-  wire [15:0] j_in_w, j_in_h, j_scale;
+  // Memorias on-chip
+  logic [AW-1:0] in_raddr;
+  logic [7:0]    in_rdata;
 
-  jtag_connect u_jc (
-    .tck        (v_tck),
-    .tdi        (v_tdi),
-    .tdo        (v_tdo),
-    .ir_in      (v_ir_in),
-    .ir_out     (v_ir_out),
-    .vs_cdr     (v_cdr),
-    .vs_sdr     (v_sdr),
-    .vs_udr     (v_udr),
+  logic [AW-1:0] out_waddr;
+  logic [7:0]    out_wdata;
+  logic          out_we;
 
-    .start_pulse    (j_start),
-    .cfg_in_w       (j_in_w),
-    .cfg_in_h       (j_in_h),
-    .cfg_scale_q88  (j_scale),
-    .status_done    (done),
+  // Parámetros estáticos (pueden sobreescribirse en TB)
+  assign in_w      = IN_W_INIT;
+  assign in_h      = IN_H_INIT;
+  assign scale_q88 = SCALE_Q88_INIT;
 
-    .clk_sys    (clk_50),
-    .rst_sys_n  (rst_n)
-  );
+  // Generación de pulso de start
+  logic [7:0] start_cnt;
+  always_ff @(posedge clk_50 or negedge rst_n) begin
+    if (!rst_n) begin
+      start_cnt <= 8'd0;
+    end else if (start_cnt != 8'd20) begin
+      start_cnt <= start_cnt + 8'd1;
+    end
+  end
+  assign start_pulse = (start_cnt == 8'd10);
 
-  // ========= Memorias on-chip =========
-  onchip_mem_img #(.ADDR_W(ADDR_W)) mem_in (
+  // Memoria de entrada (solo lectura)
+  onchip_mem_img #(.ADDR_W(AW)) mem_in (
     .clk   (clk_50),
-    .raddr (in_addr),
-    .rdata (in_data),
+    .raddr (in_raddr),
+    .rdata (in_rdata),
     .waddr ('0),
     .wdata ('0),
     .we    (1'b0)
   );
 
-  onchip_mem_img #(.ADDR_W(ADDR_W)) mem_out (
+  // Memoria de salida (solo escritura en este top)
+  onchip_mem_img #(.ADDR_W(AW)) mem_out (
     .clk   (clk_50),
     .raddr ('0),
     .rdata (),
-    .waddr (out_addr),
-    .wdata (out_data),
+    .waddr (out_waddr),
+    .wdata (out_wdata),
     .we    (out_we)
   );
 
-  // ========= Arranque por JTAG O por switch =========
-  logic start_sw_sync;
-  always_ff @(posedge clk_50 or negedge rst_n) begin
-    if (!rst_n) start_sw_sync <= 1'b0;
-    else        start_sw_sync <= start_sw;
-  end
-  wire start_core = j_start | start_sw_sync;
-
-  // ========= Núcleo secuencial =========
-  bilinear_seq #(.ADDR_W(ADDR_W)) core (
-    .clk       (clk_50),
-    .rst_n     (rst_n),
-    .in_w      (j_in_w),
-    .in_h      (j_in_h),
-    .scale_q88 (j_scale),
-    .start     (start_core),
-    .busy      (busy),
-    .done      (done),
-
-    .in_addr   (in_addr),
-    .in_data   (in_data),
-    .out_addr  (out_addr),
-    .out_data  (out_data),
-    .out_we    (out_we)
+  // Núcleo bilineal
+  bilinear_seq #(.AW(AW)) core (
+    .clk         (clk_50),
+    .rst_n       (rst_n),
+    .start       (start_pulse),
+    .busy        (busy),
+    .done        (done),
+    .i_in_w      (in_w),
+    .i_in_h      (in_h),
+    .i_scale_q88 (scale_q88),
+    .o_out_w     (out_w_s),
+    .o_out_h     (out_h_s),
+    .in_raddr    (in_raddr),
+    .in_rdata    (in_rdata),
+    .out_waddr   (out_waddr),
+    .out_wdata   (out_wdata),
+    .out_we      (out_we)
   );
 
-  // LED de estado
-  assign led_done = done;
-
-  // (Opcional, solo simulación) $readmemh para mem_in:
-  // initial $readmemh("img_in_64x64.hex", mem_in.mem);
+  // (Opcional) vJTAG — comentado para evitar puertos faltantes en sim/síntesis
+//  vjtag u_vjtag (
+//    .tck(), .tdi(), .tdo(),
+//    .virtual_state_cdr(), .virtual_state_sdr(),
+//    .virtual_state_e1dr(), .virtual_state_pdr(),
+//    .virtual_state_e2dr(), .virtual_state_udr(),
+//    .virtual_state_cir(),  .virtual_state_uir(),
+//    .ir_in(), .ir_out(),
+//    .jtag_state_tlr(), .jtag_state_rti(),
+//    .jtag_state_sdrs(), .jtag_state_cdr(),
+//    .jtag_state_sdr(), .jtag_state_e1dr(),
+//    .jtag_state_pdr(), .jtag_state_e2dr(),
+//    .jtag_state_udr(), .jtag_state_sirs(),
+//    .jtag_state_cir(), .jtag_state_sir(),
+//    .jtag_state_e1ir(), .jtag_state_pir(),
+//    .jtag_state_e2ir(), .tms()
+//  );
 
 endmodule
