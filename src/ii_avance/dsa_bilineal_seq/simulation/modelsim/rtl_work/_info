@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/simulation/modelsim
 vbilinear_seq
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1762990479
+Z2 !s110 1762992942
 !i10b 1
 !s100 XA9F;d:Tk9Y[nO5lDn5[E0
 IRTlMKV7W@lH]]]Tz069?e2
@@ -26,13 +26,38 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1762990479.000000
+Z5 !s108 1762992942.000000
 !s107 C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/bilinear_seq.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq|C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/bilinear_seq.sv|
 !i113 1
 Z6 o-sv -work work
 Z7 !s92 -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq
 Z8 tCvgOpt 0
+vjtag_connect
+R1
+R2
+!i10b 1
+!s100 iLfl3dkHEz2=9_3@h9Uh13
+I[X<kX3WZaI@1zf@FLbS1:1
+R3
+!s105 jtag_connect_sv_unit
+S1
+R0
+w1762920390
+8C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/jtag_connect.sv
+FC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/jtag_connect.sv
+L0 9
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/jtag_connect.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq|C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/jtag_connect.sv|
+!i113 1
+R6
+R7
+R8
 vonchip_mem_img
 R1
 R2
@@ -43,7 +68,7 @@ R3
 !s105 onchip_mem_img_sv_unit
 S1
 R0
-w1762986717
+w1762992123
 8C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv
 FC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv
 L0 4
@@ -71,7 +96,7 @@ R0
 w1762990422
 8C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv
 FC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv
-L0 10
+Z9 L0 10
 R4
 r1
 !s85 0
@@ -87,16 +112,16 @@ vtop_dsa_seq
 R1
 R2
 !i10b 1
-!s100 6:h0AEb:HE:N5nzfzoTjC2
-IOA9cgRcLEH_bD2zkkN3U[0
+!s100 ibY`PE^_A;bo77Mi=<^Mn2
+Ii0E=U;Q:lPeLO:KRg3o0B0
 R3
 !s105 top_dsa_seq_sv_unit
 S1
 R0
-w1762990168
+w1762992750
 8C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/top_dsa_seq.sv
 FC:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/top_dsa_seq.sv
-L0 11
+R9
 R4
 r1
 !s85 0

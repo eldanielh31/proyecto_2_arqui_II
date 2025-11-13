@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Users/danbg/src/dsa_bilineal_seq/simulation/modelsim
 vvjtag
-!s110 1762990479
+!s110 1762992942
 !i10b 1
 !s100 Gi1=1V]^Ia:CShHRYzC2<3
 IV]HTOSJSfggonP:T87IOL2
@@ -23,7 +23,7 @@ OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1762990479.000000
+!s108 1762992942.000000
 !s107 C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v|
 !s90 -reportprogress|300|-vlog01compat|-work|vjtag|+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis|C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v|
 !i113 1
