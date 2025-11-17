@@ -46,6 +46,7 @@ simulation/modelsim/work/
 *.tan.rpt
 *.sta.fail.rpt
 *.map.rpt
+*.png
 
 # QAR (archivos de archivo de proyectos)
 *.qar

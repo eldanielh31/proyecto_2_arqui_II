@@ -67,7 +67,6 @@ set_global_assignment -name QIP_FILE vjtag/synthesis/vjtag.qip
 set_global_assignment -name SYSTEMVERILOG_FILE jtag_connect.sv
 set_global_assignment -name SYSTEMVERILOG_FILE top_dsa_seq.sv
 set_global_assignment -name SYSTEMVERILOG_FILE onchip_mem_img.sv
-set_global_assignment -name SYSTEMVERILOG_FILE fixed_pkg.sv
 set_global_assignment -name SYSTEMVERILOG_FILE bilinear_seq.sv
 set_location_assignment PIN_W21 -to led_start_on
 set_location_assignment PIN_W20 -to led_reset_evt

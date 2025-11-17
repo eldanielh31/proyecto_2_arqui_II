@@ -8,11 +8,15 @@ from PIL import Image  # type: ignore
 # ---------------- Parámetros de entrada/salida ----------------
 W_IN, H_IN = 64, 64
 SCALE_Q88 = 205  # 0.80 en Q8.8
-HEX_IN = "img_in_64x64.hex"
-PNG_IN = "img_in_64x64.png"
+# HEX_IN = "img_in_64x64.hex"
+# PNG_IN = "img_in_64x64.png"
+HEX_IN = "mem_in_dump.hex"
+PNG_IN = "mem_in_dump.png"
 
-HEX_OUT = "img_out.hex"
-PNG_OUT = "img_out.png"
+# HEX_OUT = "img_out.hex"
+# PNG_OUT = "img_out.png"
+HEX_OUT = "mem_out.hex"
+PNG_OUT = "mem_out.png"
 
 def q88_to_float(q):
     return q / 256.0
