@@ -25,7 +25,7 @@ module top_dsa_seq
   logic        start_pulse_jtag;
   logic        busy, done;
 
-  logic [15:0] in_w_cfg, in_h_cfg, scale_q88_cfg; // JTAG
+  logic [15:0] in_w_cfg, in_h_cfg, scale_q88_cfg; // JTAG -> cfg
   logic [15:0] in_w, in_h, scale_q88;             // hacia core
 
   logic [15:0] out_w_s, out_h_s;

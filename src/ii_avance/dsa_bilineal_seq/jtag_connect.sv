@@ -59,25 +59,19 @@ module jtag_connect #(
   localparam byte ADDR_OUT_DATA    = 8'h31; // leer dato (8 bits válidos en [7:0])
 
   // ===== Dominio JTAG (tck): shift register DR =====
-  logic [DRW-1:0] dr_shift;         // MSB-first por TDI, LSB por TDO
-  logic [7:0]     latched_addr;     // addr para lecturas
+  logic [DRW-1:0] dr_shift;
+  logic [7:0]     latched_addr;
   logic [31:0]    dr_read_data;
 
   // Decodificación con ir_in
   wire is_write = (ir_in == 2'b01);
   wire is_read  = (ir_in == 2'b10);
 
-  // CAPTURE-DR: preparar datos de lectura
+  // CAPTURE-DR / SHIFT-DR
   always_ff @(posedge tck) begin
     if (vs_cdr) begin
-      if (is_read) begin
-        // [39:8] = data, [7:0] = addr
-        dr_shift <= {dr_read_data, latched_addr};
-      end else begin
-        dr_shift <= '0;
-      end
+      dr_shift <= is_read ? {dr_read_data, latched_addr} : '0;
     end else if (vs_sdr) begin
-      // SHIFT-DR: entra MSB por TDI; LSB sale por TDO
       dr_shift <= {tdi, dr_shift[DRW-1:1]};
     end
   end
@@ -91,18 +85,15 @@ module jtag_connect #(
   logic        wr_pulse_tck;
   logic [7:0]  wr_addr_hold_tck;
   logic [31:0] wr_data_hold_tck;
-  logic        rd_pulse_tck;
 
   always_ff @(posedge tck) begin
     wr_pulse_tck <= 1'b0;
-    rd_pulse_tck <= 1'b0;
     if (vs_udr) begin
       if (is_write) begin
         wr_pulse_tck     <= 1'b1;
         wr_addr_hold_tck <= dr_shift[7:0];
         wr_data_hold_tck <= dr_shift[39:8];
       end else if (is_read) begin
-        rd_pulse_tck <= 1'b1;
         latched_addr <= dr_shift[7:0];
       end
     end
@@ -149,16 +140,14 @@ module jtag_connect #(
   end
 
   // ===== Lado sistema: registros y cableo a BRAMs =====
-  logic [31:0] reg_in_addr;       // dirección mem_in (LSBs usados)
-  logic [31:0] reg_out_addr;      // dirección mem_out (LSBs usados)
-  logic [7:0]  reg_in_data_sys;   // dato capturado desde mem_in (clk_sys)
-  logic [7:0]  reg_out_data_sys;  // dato capturado desde mem_out (clk_sys)
+  logic [31:0] reg_in_addr;
+  logic [31:0] reg_out_addr;
+  logic [7:0]  reg_in_data_sys;
+  logic [7:0]  reg_out_data_sys;
 
-  // Direcciones a BRAMs
   assign in_mem_raddr  = reg_in_addr[AW-1:0];
   assign out_mem_raddr = reg_out_addr[AW-1:0];
 
-  // Banco de registros en clk_sys
   always_ff @(posedge clk_sys or negedge rst_sys_n) begin
     if (!rst_sys_n) begin
       reg_in_w        <= 32'd64;
@@ -182,17 +171,17 @@ module jtag_connect #(
           default: ;
         endcase
       end
-      // status: bit0 = done
+
       reg_status[0]     <= status_done;
       reg_status[31:1]  <= '0;
 
-      // Captura continua de datos desde BRAMs (1 ciclo tras cambiar addr)
+      // Captura continua de datos desde BRAMs
       reg_in_data_sys   <= in_mem_rdata;
       reg_out_data_sys  <= out_mem_rdata;
     end
   end
 
-  // ===== sys -> tck: sincronizar los datos de BRAM para lecturas READ_REG =====
+  // ===== sys -> tck: sincronizar datos de BRAM para lecturas READ_REG =====
   logic [7:0] in_data_meta,  in_data_sync;
   logic [7:0] out_data_meta, out_data_sync;
   always_ff @(posedge tck or negedge rst_sys_n) begin
@@ -235,10 +224,8 @@ module jtag_connect #(
       ADDR_SCALE_Q88:   dr_read_data = reg_scale;
       ADDR_STATUS:      dr_read_data = reg_status;
 
-      // Lectura de BRAM de ENTRADA (8 bits válidos en [7:0] de [39:8])
+      // Lecturas de BRAM (dato válido en [7:0])
       ADDR_IN_DATA:     dr_read_data = {24'h0, in_data_sync};
-
-      // Lectura de BRAM de SALIDA (8 bits válidos en [7:0] de [39:8])
       ADDR_OUT_DATA:    dr_read_data = {24'h0, out_data_sync};
 
       default:          dr_read_data = 32'hDEAD_BEEF;
