@@ -1,23 +1,21 @@
 // ============================================================================
-// top_dsa_seq.sv  — top con Virtual JTAG, LEDs de estado y BRAMs
+// top_dsa_seq.sv — Top con Virtual JTAG, LEDs y BRAMs (lectura/escritura)
 // ============================================================================
-
 `timescale 1ps/1ps
 `define MEM_INIT_FILE "img_in_64x64.hex"
 
-module top_dsa_seq
-#(
-  parameter int AW                = 12,
-  parameter int DEB_W             = 20,      // debounce (~10–20 ms @50MHz)
-  parameter int RST_STRETCH_W     = 22
+module top_dsa_seq #(
+  parameter int AW            = 12,
+  parameter int DEB_W         = 20,
+  parameter int RST_STRETCH_W = 22
 )(
   input  logic clk_50,
-  input  logic rst_n,          // reset asíncrono activo bajo
-  input  logic start_sw,       // switch físico (opcional)
+  input  logic rst_n,
+  input  logic start_sw,
 
-  output logic led_done,       // latched hasta nuevo start/reset
-  output logic led_reset_evt,  // pulso tras reset (visual)
-  output logic led_start_on    // nivel del start_sw filtrado
+  output logic led_done,
+  output logic led_reset_evt,
+  output logic led_start_on
 );
 
   // ---------------- Señales core ----------------
@@ -25,8 +23,8 @@ module top_dsa_seq
   logic        start_pulse_jtag;
   logic        busy, done;
 
-  logic [15:0] in_w_cfg, in_h_cfg, scale_q88_cfg; // JTAG -> cfg
-  logic [15:0] in_w, in_h, scale_q88;             // hacia core
+  logic [15:0] in_w_cfg, in_h_cfg, scale_q88_cfg;
+  logic [15:0] in_w, in_h, scale_q88;
 
   logic [15:0] out_w_s, out_h_s;
 
@@ -37,10 +35,19 @@ module top_dsa_seq
   logic [7:0]    out_wdata;
   logic          out_we;
 
+  // Señales JTAG para BRAM (lectura/escritura)
+  logic [AW-1:0] jtag_in_raddr;
+  logic  [7:0]   jtag_in_rdata;
+  logic [AW-1:0] jtag_out_raddr;
+  logic  [7:0]   jtag_out_rdata;
+
+  logic [AW-1:0] jtag_in_waddr;
+  logic  [7:0]   jtag_in_wdata;
+  logic          jtag_in_we;
+
   // =======================================================================
-  // 1) Virtual JTAG + wrapper jtag_connect (control + lectura BRAMs)
+  // 1) Virtual JTAG + wrapper jtag_connect
   // =======================================================================
-  // Señales del IP vJTAG
   wire tck, tdi, tdo;
   wire [1:0] ir_in, ir_out;
   wire vs_cdr, vs_sdr, vs_e1dr, vs_pdr, vs_e2dr, vs_udr, vs_cir, vs_uir;
@@ -61,12 +68,6 @@ module top_dsa_seq
     .tck                (tck)
   );
 
-  // Señales JTAG para lectura de BRAMs
-  logic [AW-1:0] jtag_in_raddr;
-  logic  [7:0]   jtag_in_rdata;
-  logic [AW-1:0] jtag_out_raddr;
-  logic  [7:0]   jtag_out_rdata;
-
   jtag_connect #(.DRW(40), .AW(AW)) u_jc (
     .tck         (tck),
     .tdi         (tdi),
@@ -86,6 +87,10 @@ module top_dsa_seq
     .in_mem_raddr    (jtag_in_raddr),
     .in_mem_rdata    (jtag_in_rdata),
 
+    .in_mem_waddr    (jtag_in_waddr),
+    .in_mem_wdata    (jtag_in_wdata),
+    .in_mem_we       (jtag_in_we),
+
     .out_mem_raddr   (jtag_out_raddr),
     .out_mem_rdata   (jtag_out_rdata),
 
@@ -98,10 +103,8 @@ module top_dsa_seq
   // =========================================================================
   logic sw_meta, sw_sync;
   always_ff @(posedge clk_50 or negedge rst_n) begin
-    if (!rst_n) begin
-      sw_meta <= 1'b0;
-      sw_sync <= 1'b0;
-    end else begin
+    if (!rst_n) {sw_meta, sw_sync} <= 2'b00;
+    else begin
       sw_meta <= start_sw;
       sw_sync <= sw_meta;
     end
@@ -109,21 +112,15 @@ module top_dsa_seq
 
   logic [DEB_W-1:0] deb_cnt;
   logic             sw_debounced, sw_debounced_q;
-
   always_ff @(posedge clk_50 or negedge rst_n) begin
     if (!rst_n) begin
       deb_cnt        <= '0;
       sw_debounced   <= 1'b0;
       sw_debounced_q <= 1'b0;
     end else begin
-      if (sw_sync != sw_debounced) begin
-        deb_cnt <= '0;
-      end else if (deb_cnt != {DEB_W{1'b1}}) begin
-        deb_cnt <= deb_cnt + 1'b1;
-      end
-      if (deb_cnt == {DEB_W{1'b1}}) begin
-        sw_debounced <= sw_sync;
-      end
+      if (sw_sync != sw_debounced) deb_cnt <= '0;
+      else if (deb_cnt != {DEB_W{1'b1}}) deb_cnt <= deb_cnt + 1'b1;
+      if (deb_cnt == {DEB_W{1'b1}}) sw_debounced <= sw_sync;
       sw_debounced_q <= sw_debounced;
     end
   end
@@ -132,49 +129,46 @@ module top_dsa_seq
   assign led_start_on   = sw_debounced;
 
   // =========================================================================
-  // 3) LED de evento de reset (latido corto)
+  // 3) LED de evento de reset
   // =========================================================================
   logic [RST_STRETCH_W-1:0] rst_cnt;
   always_ff @(posedge clk_50 or negedge rst_n) begin
-    if (!rst_n) begin
-      rst_cnt <= {RST_STRETCH_W{1'b1}};
-    end else begin
-      if (rst_cnt != '0) rst_cnt <= rst_cnt - 1'b1;
-    end
+    if (!rst_n) rst_cnt <= {RST_STRETCH_W{1'b1}};
+    else if (rst_cnt != '0) rst_cnt <= rst_cnt - 1'b1;
   end
   assign led_reset_evt = (rst_cnt != '0);
 
   // =========================================================================
-  // 4) Memorias on-chip
+  // 4) Memorias on-chip (inferidas)
   // =========================================================================
-  // ENTRADA para el núcleo (lectura por core)
-  onchip_mem_img #(
+  // ENTRADA para el núcleo (lectura por core) + escritura desde JTAG cuando !busy
+  onchip_mem_dp #(
     .ADDR_W (AW),
-    .INIT_EN(1'b1)
+    .INIT_EN(1'b1)              // simulación: carga MEM_INIT_FILE (si está definido)
   ) mem_in (
     .clk   (clk_50),
     .raddr (in_raddr_core),
     .rdata (in_rdata),
-    .waddr ('0),
-    .wdata ('0),
-    .we    (1'b0)
+    .waddr (jtag_in_waddr),
+    .wdata (jtag_in_wdata),
+    .we    (jtag_in_we & ~busy) // evitar escribir durante procesamiento
   );
 
-  // ENTRADA "espejo" solo-lectura para JTAG (misma inicialización)
-  onchip_mem_img #(
+  // ENTRADA "espejo" para JTAG (misma init) + espejo de escritura
+  onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b1)
   ) mem_in_view (
     .clk   (clk_50),
     .raddr (jtag_in_raddr),
     .rdata (jtag_in_rdata),
-    .waddr ('0),
-    .wdata ('0),
-    .we    (1'b0)
+    .waddr (jtag_in_waddr),
+    .wdata (jtag_in_wdata),
+    .we    (jtag_in_we & ~busy)
   );
 
   // SALIDA: escritura desde el core; lectura por JTAG
-  onchip_mem_img #(
+  onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b0)
   ) mem_out (
@@ -197,7 +191,7 @@ module top_dsa_seq
   wire start_any = start_pulse_jtag | start_pulse_sw;
 
   // =========================================================================
-  // 6) Núcleo bilineal
+  // 6) Núcleo bilineal (secuencial)
   // =========================================================================
   bilinear_seq #(.AW(AW)) core (
     .clk         (clk_50),
@@ -225,13 +219,10 @@ module top_dsa_seq
   // 7) LED done latcheado
   // =========================================================================
   always_ff @(posedge clk_50 or negedge rst_n) begin
-    if (!rst_n) begin
-      led_done <= 1'b0;
-    end else begin
-      if (start_any)
-        led_done <= 1'b0;
-      else if (done)
-        led_done <= 1'b1;
+    if (!rst_n) led_done <= 1'b0;
+    else begin
+      if (start_any) led_done <= 1'b0;
+      else if (done) led_done <= 1'b1;
     end
   end
 

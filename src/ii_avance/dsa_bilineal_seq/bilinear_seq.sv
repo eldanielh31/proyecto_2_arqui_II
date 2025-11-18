@@ -1,12 +1,12 @@
 // ============================================================================
-// bilinear_seq.sv  (Quartus 18.0/18.1 friendly, SV mínimo)
-// Núcleo secuencial con interpolación bilineal Q8.8 real.
+// bilinear_seq.sv  — Núcleo secuencial con interpolación bilineal Q8.8 real.
+// Extensión: stepping por píxel (i_step_en / i_step_pulse).
 // ============================================================================
 
 `timescale 1ns/1ps
 
 module bilinear_seq #(
-  parameter AW = 12
+  parameter AW = 19
 )(
   input  wire         clk,
   input  wire         rst_n,
@@ -15,6 +15,10 @@ module bilinear_seq #(
   input  wire         start,
   output reg          busy,
   output reg          done,
+
+  // Stepping
+  input  wire         i_step_en,      // si=1, pausa tras cada píxel
+  input  wire         i_step_pulse,   // avanzar un píxel cuando step_en=1
 
   // Dimensiones entrada y escala Q8.8
   input  wire [15:0]  i_in_w,
@@ -25,7 +29,7 @@ module bilinear_seq #(
   output reg  [15:0]  o_out_w,
   output reg  [15:0]  o_out_h,
 
-  // Lectura fuente (single-port BRAM like)
+  // Lectura fuente (single-read port)
   output reg  [AW-1:0] in_raddr,
   input  wire [7:0]    in_rdata,
 
@@ -73,17 +77,18 @@ module bilinear_seq #(
   wire [31:0] sum_rounded = sum_q016 + 32'h0000_8000;
   wire [7:0]  PIX_next    = sum_rounded[23:16];
 
-  localparam S_IDLE       = 4'd0;
-  localparam S_INIT       = 4'd1;
-  localparam S_ROW_INIT   = 4'd2;
-  localparam S_PIXEL_START= 4'd3;
-  localparam S_READ00     = 4'd4;
-  localparam S_READ10     = 4'd5;
-  localparam S_READ01     = 4'd6;
-  localparam S_READ11     = 4'd7;
-  localparam S_WRITE      = 4'd8;
-  localparam S_ADVANCE    = 4'd9;
-  localparam S_DONE       = 4'd10;
+  localparam S_IDLE        = 4'd0;
+  localparam S_INIT        = 4'd1;
+  localparam S_ROW_INIT    = 4'd2;
+  localparam S_PIXEL_START = 4'd3;
+  localparam S_READ00      = 4'd4;
+  localparam S_READ10      = 4'd5;
+  localparam S_READ01      = 4'd6;
+  localparam S_READ11      = 4'd7;
+  localparam S_WRITE       = 4'd8;
+  localparam S_STEP_WAIT   = 4'd9;   // NUEVO: pausa por stepping
+  localparam S_ADVANCE     = 4'd10;
+  localparam S_DONE        = 4'd11;
 
   reg [3:0] state, state_n;
 
@@ -102,9 +107,8 @@ module bilinear_seq #(
     input [15:0] scale_q88;
     reg   [31:0] num;
   begin
-    if (scale_q88 == 16'd0) begin
-      inv_q88 = 16'hFFFF;
-    end else begin
+    if (scale_q88 == 16'd0) inv_q88 = 16'hFFFF;
+    else begin
       num     = 32'd65536 + (scale_q88 >> 8);
       inv_q88 = num / scale_q88;
     end
@@ -217,6 +221,11 @@ module bilinear_seq #(
           out_we    <= 1'b1;
         end
 
+        S_STEP_WAIT: begin
+          // espera por step_pulse si step_en estaba activo
+          // no hace nada más aquí
+        end
+
         S_ADVANCE: begin
           if (ox_cur + 16'd1 < out_w_reg) begin
             ox_cur <= ox_cur + 16'd1;
@@ -238,6 +247,7 @@ module bilinear_seq #(
     end
   end
 
+  // Próximo estado (incluye stepping)
   always @(*) begin
     state_n = state;
     case (state)
@@ -250,10 +260,21 @@ module bilinear_seq #(
       S_READ01:       state_n = S_READ11;
       S_READ11:       state_n = S_WRITE;
       S_WRITE: begin
-        if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
-          state_n = S_DONE;
-        else
-          state_n = S_ADVANCE;
+        if (i_step_en) state_n = S_STEP_WAIT;
+        else begin
+          if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
+            state_n = S_DONE;
+          else
+            state_n = S_ADVANCE;
+        end
+      end
+      S_STEP_WAIT: begin
+        if (i_step_pulse) begin
+          if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
+            state_n = S_DONE;
+          else
+            state_n = S_ADVANCE;
+        end else state_n = S_STEP_WAIT;
       end
       S_ADVANCE: begin
         if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
