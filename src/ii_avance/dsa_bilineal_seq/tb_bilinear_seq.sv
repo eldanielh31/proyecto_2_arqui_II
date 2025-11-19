@@ -82,6 +82,10 @@ module tb_bilinear_seq;
     $display("[TB] done=1; out_w=%0d out_h=%0d", dut.core.o_out_w, dut.core.o_out_h);
     dump_mem_out("C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_out.hex",
                  dut.core.o_out_w, dut.core.o_out_h);
+
+    $display("[TB] perf: flops=%0d mem_rd=%0d mem_wr=%0d",
+             dut.core.o_flop_count, dut.core.o_mem_rd_count, dut.core.o_mem_wr_count);
+
 `ifdef TB_GOLDEN_FILE
     compare_hex("C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_out.hex",
                 `TB_GOLDEN_FILE);
@@ -97,42 +101,3 @@ module tb_bilinear_seq;
         $display("[TB][ERROR] no se pudo abrir %s", fname);
         disable dump_mem_out;
       end
-      for (y = 0; y < oh; y++) begin
-        for (x = 0; x < ow; x++) begin
-          addr = y * dut.core.o_out_w + x;
-          $fdisplay(fd, "%02x", dut.mem_out.mem[addr]);
-        end
-      end
-      $fclose(fd);
-      $display("[TB] Archivo %s generado. (pixeles útiles: %0d x %0d)", fname, ow, oh);
-    end
-  endtask
-
-`ifdef TB_GOLDEN_FILE
-  task compare_hex(string outf, string goldf);
-    integer f1, f2, ln, r1, r2;
-    reg [31:0] b1, b2;
-    begin
-      f1 = $fopen(outf, "r"); f2 = $fopen(goldf, "r");
-      if (f1==0 || f2==0) begin
-        $display("[TB][WARN] No se pudo abrir alguno de los archivos para comparar.");
-        if (f1) $fclose(f1); if (f2) $fclose(f2);
-        disable compare_hex;
-      end
-      ln = 0;
-      while (1) begin
-        r1 = $fscanf(f1, "%h\n", b1);
-        r2 = $fscanf(f2, "%h\n", b2);
-        if (r1<=0 || r2<=0) break;
-        ln++;
-        if (b1[7:0] !== b2[7:0]) begin
-          $fatal(1, "[TB][FAIL] Mismatch en línea %0d: got=%02h exp=%02h", ln, b1[7:0], b2[7:0]);
-        end
-      end
-      $fclose(f1); $fclose(f2);
-      $display("[TB][PASS] Coincidencia bit a bit contra golden.");
-    end
-  endtask
-`endif
-
-endmodule

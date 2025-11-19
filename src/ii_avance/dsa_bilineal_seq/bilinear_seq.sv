@@ -1,6 +1,6 @@
 // ============================================================================
 // bilinear_seq.sv  — Núcleo secuencial con interpolación bilineal Q8.8 real.
-// Extensión: stepping por píxel (i_step_en / i_step_pulse).
+// Extensión: stepping por píxel (i_step_en / i_step_pulse) y performance counters.
 // ============================================================================
 
 `timescale 1ns/1ps
@@ -36,10 +36,16 @@ module bilinear_seq #(
   // Escritura destino
   output reg  [AW-1:0] out_waddr,
   output reg  [7:0]    out_wdata,
-  output reg           out_we
+  output reg           out_we,
+
+  // Performance counters (por ejecución)
+  output reg  [31:0]  o_flop_count,
+  output reg  [31:0]  o_mem_rd_count,
+  output reg  [31:0]  o_mem_wr_count
 );
 
   localparam [8:0] ONE_Q08 = 9'd256;
+  localparam [31:0] FLOPS_PER_PIXEL = 32'd11;  // aproximación: 8 mul + 3 sumas
 
   reg [15:0] out_w_reg, out_h_reg;
   reg [15:0] ox_cur, oy_cur;
@@ -86,7 +92,7 @@ module bilinear_seq #(
   localparam S_READ01      = 4'd6;
   localparam S_READ11      = 4'd7;
   localparam S_WRITE       = 4'd8;
-  localparam S_STEP_WAIT   = 4'd9;   // NUEVO: pausa por stepping
+  localparam S_STEP_WAIT   = 4'd9;   // pausa por stepping
   localparam S_ADVANCE     = 4'd10;
   localparam S_DONE        = 4'd11;
 
@@ -148,6 +154,10 @@ module bilinear_seq #(
       fy_q          <= 8'd0;
 
       I00 <= 8'd0; I10 <= 8'd0; I01 <= 8'd0; I11 <= 8'd0;
+
+      o_flop_count   <= 32'd0;
+      o_mem_rd_count <= 32'd0;
+      o_mem_wr_count <= 32'd0;
     end else begin
       state  <= state_n;
       out_we <= 1'b0; // por defecto
@@ -162,6 +172,11 @@ module bilinear_seq #(
             o_out_w       <= mul_w[23:8];
             o_out_h       <= mul_h[23:8];
             inv_scale_q88 <= inv_q88(i_scale_q88);
+
+            // reinicio de contadores para nueva ejecución
+            o_flop_count   <= 32'd0;
+            o_mem_rd_count <= 32'd0;
+            o_mem_wr_count <= 32'd0;
           end
         end
 
@@ -197,33 +212,39 @@ module bilinear_seq #(
         end
 
         S_READ00: begin
-          I00     <= in_rdata;
-          in_raddr<= linaddr(xi_base + 16'd1, yi_base, i_in_w);
+          I00           <= in_rdata;
+          in_raddr      <= linaddr(xi_base + 16'd1, yi_base, i_in_w);
+          o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_READ10: begin
-          I10     <= in_rdata;
-          in_raddr<= linaddr(xi_base, yi_base + 16'd1, i_in_w);
+          I10           <= in_rdata;
+          in_raddr      <= linaddr(xi_base, yi_base + 16'd1, i_in_w);
+          o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_READ01: begin
-          I01     <= in_rdata;
-          in_raddr<= linaddr(xi_base + 16'd1, yi_base + 16'd1, i_in_w);
+          I01           <= in_rdata;
+          in_raddr      <= linaddr(xi_base + 16'd1, yi_base + 16'd1, i_in_w);
+          o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_READ11: begin
-          I11     <= in_rdata;
+          I11           <= in_rdata;
+          o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_WRITE: begin
-          out_waddr <= linaddr(ox_cur, oy_cur, out_w_reg);
-          out_wdata <= PIX_next;
-          out_we    <= 1'b1;
+          out_waddr      <= linaddr(ox_cur, oy_cur, out_w_reg);
+          out_wdata      <= PIX_next;
+          out_we         <= 1'b1;
+
+          o_mem_wr_count <= o_mem_wr_count + 32'd1;
+          o_flop_count   <= o_flop_count + FLOPS_PER_PIXEL;
         end
 
         S_STEP_WAIT: begin
           // espera por step_pulse si step_en estaba activo
-          // no hace nada más aquí
         end
 
         S_ADVANCE: begin

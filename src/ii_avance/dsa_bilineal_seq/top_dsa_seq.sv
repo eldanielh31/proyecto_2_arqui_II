@@ -45,6 +45,18 @@ module top_dsa_seq #(
   logic  [7:0]   jtag_in_wdata;
   logic          jtag_in_we;
 
+  // Stepping (actualmente deshabilitado, pero presente en el core)
+  logic          step_en;
+  logic          step_pulse;
+
+  assign step_en    = 1'b0;
+  assign step_pulse = 1'b0;
+
+  // Contadores de performance desde el core
+  logic [31:0] flop_count;
+  logic [31:0] mem_rd_count;
+  logic [31:0] mem_wr_count;
+
   // =======================================================================
   // 1) Virtual JTAG + wrapper jtag_connect
   // =======================================================================
@@ -83,6 +95,10 @@ module top_dsa_seq #(
     .cfg_in_h        (in_h_cfg),
     .cfg_scale_q88   (scale_q88_cfg),
     .status_done     (done),
+    .status_busy     (busy),
+    .perf_flops      (flop_count),
+    .perf_mem_rd     (mem_rd_count),
+    .perf_mem_wr     (mem_wr_count),
 
     .in_mem_raddr    (jtag_in_raddr),
     .in_mem_rdata    (jtag_in_rdata),
@@ -194,25 +210,33 @@ module top_dsa_seq #(
   // 6) Núcleo bilineal (secuencial)
   // =========================================================================
   bilinear_seq #(.AW(AW)) core (
-    .clk         (clk_50),
-    .rst_n       (rst_n),
-    .start       (start_any),
-    .busy        (busy),
-    .done        (done),
+    .clk            (clk_50),
+    .rst_n          (rst_n),
 
-    .i_in_w      (in_w),
-    .i_in_h      (in_h),
-    .i_scale_q88 (scale_q88),
+    .start          (start_any),
+    .busy           (busy),
+    .done           (done),
 
-    .o_out_w     (out_w_s),
-    .o_out_h     (out_h_s),
+    .i_step_en      (step_en),
+    .i_step_pulse   (step_pulse),
 
-    .in_raddr    (in_raddr_core),
-    .in_rdata    (in_rdata),
+    .i_in_w         (in_w),
+    .i_in_h         (in_h),
+    .i_scale_q88    (scale_q88),
 
-    .out_waddr   (out_waddr),
-    .out_wdata   (out_wdata),
-    .out_we      (out_we)
+    .o_out_w        (out_w_s),
+    .o_out_h        (out_h_s),
+
+    .in_raddr       (in_raddr_core),
+    .in_rdata       (in_rdata),
+
+    .out_waddr      (out_waddr),
+    .out_wdata      (out_wdata),
+    .out_we         (out_we),
+
+    .o_flop_count   (flop_count),
+    .o_mem_rd_count (mem_rd_count),
+    .o_mem_wr_count (mem_wr_count)
   );
 
   // =========================================================================

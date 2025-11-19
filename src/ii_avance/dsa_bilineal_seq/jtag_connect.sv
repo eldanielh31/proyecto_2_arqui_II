@@ -25,6 +25,10 @@ module jtag_connect #(
   output logic [15:0] cfg_in_h,
   output logic [15:0] cfg_scale_q88,
   input  logic        status_done,
+  input  logic        status_busy,
+  input  logic [31:0] perf_flops,
+  input  logic [31:0] perf_mem_rd,
+  input  logic [31:0] perf_mem_wr,
 
   // BRAM ENTRADA: lectura (UI)
   output logic [AW-1:0] in_mem_raddr,
@@ -50,7 +54,12 @@ module jtag_connect #(
   localparam byte ADDR_IN_H        = 8'h02;
   localparam byte ADDR_SCALE_Q88   = 8'h03;
 
-  localparam byte ADDR_STATUS      = 8'h10; // bit0: done
+  // Estado y performance
+  localparam byte ADDR_STATUS      = 8'h10; // bit0: done, bit1: busy, bit2: error
+  localparam byte ADDR_PERF_FLOPS  = 8'h11;
+  localparam byte ADDR_PERF_MEM_RD = 8'h12;
+  localparam byte ADDR_PERF_MEM_WR = 8'h13;
+  localparam byte ADDR_PROGRESS    = 8'h14; // progreso = píxeles escritos (mem_wr)
 
   // BRAM IN (view)
   localparam byte ADDR_IN_ADDR     = 8'h20; // set raddr
@@ -145,6 +154,9 @@ module jtag_connect #(
   logic [31:0] reg_in_waddr;           // único driver
   logic [7:0]  reg_in_data_sys, reg_out_data_sys;
 
+  logic [31:0] reg_perf_flops, reg_perf_mem_rd, reg_perf_mem_wr;
+  logic [31:0] reg_progress;
+
   assign in_mem_raddr  = reg_in_raddr[AW-1:0];
   assign out_mem_raddr = reg_out_raddr[AW-1:0];
 
@@ -177,6 +189,11 @@ module jtag_connect #(
 
       reg_in_data_sys  <= 8'd0;
       reg_out_data_sys <= 8'd0;
+
+      reg_perf_flops   <= 32'd0;
+      reg_perf_mem_rd  <= 32'd0;
+      reg_perf_mem_wr  <= 32'd0;
+      reg_progress     <= 32'd0;
     end else begin
       in_mem_we <= 1'b0;  // por defecto
 
@@ -201,9 +218,17 @@ module jtag_connect #(
         endcase
       end
 
-      // status (bit0=done)
+      // status: bit0=done, bit1=busy, bit2=error (sin uso por ahora)
       reg_status[0]     <= status_done;
-      reg_status[31:1]  <= '0;
+      reg_status[1]     <= status_busy;
+      reg_status[2]     <= 1'b0;
+      reg_status[31:3]  <= '0;
+
+      // performance y progreso (reflejados desde el core/top)
+      reg_perf_flops    <= perf_flops;
+      reg_perf_mem_rd   <= perf_mem_rd;
+      reg_perf_mem_wr   <= perf_mem_wr;
+      reg_progress      <= perf_mem_wr; // progreso ≈ píxeles escritos
 
       // captura continua desde BRAMs
       reg_in_data_sys   <= in_mem_rdata;
@@ -238,6 +263,11 @@ module jtag_connect #(
       ADDR_IN_H:        dr_read_data = reg_in_h;
       ADDR_SCALE_Q88:   dr_read_data = reg_scale;
       ADDR_STATUS:      dr_read_data = reg_status;
+
+      ADDR_PERF_FLOPS:  dr_read_data = reg_perf_flops;
+      ADDR_PERF_MEM_RD: dr_read_data = reg_perf_mem_rd;
+      ADDR_PERF_MEM_WR: dr_read_data = reg_perf_mem_wr;
+      ADDR_PROGRESS:    dr_read_data = reg_progress;
 
       ADDR_IN_DATA:     dr_read_data = {24'h0, in_data_sync};
       ADDR_OUT_DATA:    dr_read_data = {24'h0, out_data_sync};

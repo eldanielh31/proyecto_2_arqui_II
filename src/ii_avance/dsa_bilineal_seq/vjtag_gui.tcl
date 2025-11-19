@@ -6,7 +6,8 @@
 #   - Start
 #   - Read Status / Read IN_W
 #   - Dump mem_in / Dump mem_out
-#   - Upload Input HEX…  (NUEVO: sube archivo .hex a BRAM de entrada)
+#   - Upload Input HEX…  (sube archivo .hex a BRAM de entrada)
+#   - Read Perf (FLOPs / mem_rd / mem_wr)
 # =============================================================================
 
 if {[catch {package require Tk} err]} {
@@ -32,7 +33,13 @@ set ADDR_CONTROL     0x00 ;# bit0: start
 set ADDR_IN_W        0x01
 set ADDR_IN_H        0x02
 set ADDR_SCALE_Q88   0x03
-set ADDR_STATUS      0x10 ;# bit0: done
+set ADDR_STATUS      0x10 ;# bit0: done, bit1: busy, bit2: error
+
+# Performance counters / progreso
+set ADDR_PERF_FLOPS  0x11
+set ADDR_PERF_MEM_RD 0x12
+set ADDR_PERF_MEM_WR 0x13
+set ADDR_PROGRESS    0x14
 
 # BRAM ENTRADA (view)
 set ADDR_IN_ADDR     0x20
@@ -424,11 +431,26 @@ button .f.o_dump -text "Dump Output" -command {
 grid .f.o_autofill -row 20 -column 0 -pady 6 -sticky w
 grid .f.o_dump     -row 20 -column 1 -pady 6 -sticky e
 
+# ---- Performance counters ----
+label .f.lperf -text "Perf (FLOPs / mem_rd / mem_wr)"
+entry .f.eperf -width 40
+button .f.btnPerf -text "Read Perf" -command {
+  if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
+  set fl [read_reg $::ADDR_PERF_FLOPS]
+  set rd [read_reg $::ADDR_PERF_MEM_RD]
+  set wr [read_reg $::ADDR_PERF_MEM_WR]
+  .f.eperf delete 0 end
+  .f.eperf insert 0 "$fl / $rd / $wr"
+}
+grid .f.lperf  -row 22 -column 0 -sticky e
+grid .f.eperf  -row 22 -column 1 -sticky w
+grid .f.btnPerf -row 23 -column 1 -pady 4 -sticky e
+
 button .f.btnQuit -text "Quit" -command {
   jtag_close
   set ::__exit 1
 }
-grid   .f.btnQuit -row 21 -column 1 -pady 6 -sticky e
+grid   .f.btnQuit -row 24 -column 1 -pady 6 -sticky e
 
 # Defaults
 .f.ew insert 0 64
