@@ -13,7 +13,6 @@ module jtag_connect #(
   input  logic                tdi,
   output logic                tdo,
   input  logic [1:0]          ir_in,
-  input  logic [1:0]          ir_out,
 
   input  logic                vs_cdr,
   input  logic                vs_sdr,
@@ -59,7 +58,7 @@ module jtag_connect #(
   localparam byte ADDR_PERF_FLOPS  = 8'h11;
   localparam byte ADDR_PERF_MEM_RD = 8'h12;
   localparam byte ADDR_PERF_MEM_WR = 8'h13;
-  localparam byte ADDR_PROGRESS    = 8'h14; // progreso = píxeles escritos (mem_wr)
+  localparam byte ADDR_PROGRESS    = 8'h14; // progreso ≈ píxeles escritos
 
   // BRAM IN (view)
   localparam byte ADDR_IN_ADDR     = 8'h20; // set raddr
@@ -72,6 +71,32 @@ module jtag_connect #(
   // BRAM IN (upload)
   localparam byte ADDR_IN_WADDR    = 8'h22; // set waddr
   localparam byte ADDR_IN_WDATA    = 8'h23; // write byte y auto-incrementa waddr
+
+  // ========= Cuantización de factor de escala Q8.8 =========
+  function automatic [15:0] quantize_scale_q88(input [15:0] raw);
+    localparam [15:0] SCALE_MIN_Q88  = 16'd128; // 0.50 * 256
+    localparam [15:0] SCALE_MAX_Q88  = 16'd256; // 1.00 * 256
+    localparam [15:0] SCALE_STEP_Q88 = 16'd13;  // ≈ 0.05 * 256 ≈ 12.8
+
+    reg [15:0] val;
+    reg [15:0] delta;
+    reg [15:0] k;
+  begin
+    // Clamping al rango [0.5, 1.0]
+    if (raw < SCALE_MIN_Q88)      val = SCALE_MIN_Q88;
+    else if (raw > SCALE_MAX_Q88) val = SCALE_MAX_Q88;
+    else                          val = raw;
+
+    // Distancia desde 0.5
+    delta = val - SCALE_MIN_Q88;
+
+    // k = round( delta / STEP )  → 0..10
+    k = (delta + (SCALE_STEP_Q88 >> 1)) / SCALE_STEP_Q88;
+    if (k > 16'd10) k = 16'd10;
+
+    quantize_scale_q88 = SCALE_MIN_Q88 + k * SCALE_STEP_Q88;
+  end
+  endfunction
 
   // ========= Dominio JTAG (tck) =========
   logic [DRW-1:0] dr_shift;
@@ -176,7 +201,7 @@ module jtag_connect #(
     if (!rst_sys_n) begin
       reg_in_w         <= 32'd64;
       reg_in_h         <= 32'd64;
-      reg_scale        <= 32'd205;      // 0.80 Q8.8
+      reg_scale        <= 32'd205;      // 0.80 Q8.8 aprox.
       reg_status       <= 32'd0;
 
       reg_in_raddr     <= 32'd0;
@@ -201,7 +226,7 @@ module jtag_connect #(
         unique case (wr_addr_sync2)
           ADDR_IN_W:        reg_in_w      <= wr_data_sync2;
           ADDR_IN_H:        reg_in_h      <= wr_data_sync2;
-          ADDR_SCALE_Q88:   reg_scale     <= wr_data_sync2;
+          ADDR_SCALE_Q88:   reg_scale     <= {16'd0, quantize_scale_q88(wr_data_sync2[15:0])};
           ADDR_CONTROL:     /* sin latch; solo start_cnt */ ;
           ADDR_IN_ADDR:     reg_in_raddr  <= wr_data_sync2;
           ADDR_OUT_ADDR:    reg_out_raddr <= wr_data_sync2;

@@ -1,5 +1,6 @@
 // ============================================================================
 // top_dsa_seq.sv — Top con Virtual JTAG, LEDs y BRAMs (lectura/escritura)
+// Núcleo secuencial bilinear + performance counters.
 // ============================================================================
 `timescale 1ps/1ps
 `define MEM_INIT_FILE "img_in_64x64.hex"
@@ -35,6 +36,11 @@ module top_dsa_seq #(
   logic [7:0]    out_wdata;
   logic          out_we;
 
+  // Performance counters desde el core
+  logic [31:0] perf_flops;
+  logic [31:0] perf_mem_rd;
+  logic [31:0] perf_mem_wr;
+
   // Señales JTAG para BRAM (lectura/escritura)
   logic [AW-1:0] jtag_in_raddr;
   logic  [7:0]   jtag_in_rdata;
@@ -45,30 +51,18 @@ module top_dsa_seq #(
   logic  [7:0]   jtag_in_wdata;
   logic          jtag_in_we;
 
-  // Stepping (actualmente deshabilitado, pero presente en el core)
-  logic          step_en;
-  logic          step_pulse;
-
-  assign step_en    = 1'b0;
-  assign step_pulse = 1'b0;
-
-  // Contadores de performance desde el core
-  logic [31:0] flop_count;
-  logic [31:0] mem_rd_count;
-  logic [31:0] mem_wr_count;
-
   // =======================================================================
   // 1) Virtual JTAG + wrapper jtag_connect
   // =======================================================================
   wire tck, tdi, tdo;
-  wire [1:0] ir_in, ir_out;
-  wire vs_cdr, vs_sdr, vs_e1dr, vs_pdr, vs_e2dr, vs_udr, vs_cir, vs_uir;
+  wire [1:0] ir_in;
+  wire       vs_cdr, vs_sdr, vs_e1dr, vs_pdr, vs_e2dr, vs_udr, vs_cir, vs_uir;
 
   vjtag u_vjtag (
     .tdi                (tdi),
     .tdo                (tdo),
     .ir_in              (ir_in),
-    .ir_out             (ir_out),
+    .ir_out             (),     // no se usa ir_out en este diseño
     .virtual_state_cdr  (vs_cdr),
     .virtual_state_sdr  (vs_sdr),
     .virtual_state_e1dr (vs_e1dr),
@@ -81,37 +75,36 @@ module top_dsa_seq #(
   );
 
   jtag_connect #(.DRW(40), .AW(AW)) u_jc (
-    .tck         (tck),
-    .tdi         (tdi),
-    .tdo         (tdo),
-    .ir_in       (ir_in),
-    .ir_out      (ir_out),
-    .vs_cdr      (vs_cdr),
-    .vs_sdr      (vs_sdr),
-    .vs_udr      (vs_udr),
+    .tck           (tck),
+    .tdi           (tdi),
+    .tdo           (tdo),
+    .ir_in         (ir_in),
+    .vs_cdr        (vs_cdr),
+    .vs_sdr        (vs_sdr),
+    .vs_udr        (vs_udr),
 
-    .start_pulse     (start_pulse_jtag),
-    .cfg_in_w        (in_w_cfg),
-    .cfg_in_h        (in_h_cfg),
-    .cfg_scale_q88   (scale_q88_cfg),
-    .status_done     (done),
-    .status_busy     (busy),
-    .perf_flops      (flop_count),
-    .perf_mem_rd     (mem_rd_count),
-    .perf_mem_wr     (mem_wr_count),
+    .start_pulse   (start_pulse_jtag),
+    .cfg_in_w      (in_w_cfg),
+    .cfg_in_h      (in_h_cfg),
+    .cfg_scale_q88 (scale_q88_cfg),
+    .status_done   (done),
+    .status_busy   (busy),
+    .perf_flops    (perf_flops),
+    .perf_mem_rd   (perf_mem_rd),
+    .perf_mem_wr   (perf_mem_wr),
 
-    .in_mem_raddr    (jtag_in_raddr),
-    .in_mem_rdata    (jtag_in_rdata),
+    .in_mem_raddr  (jtag_in_raddr),
+    .in_mem_rdata  (jtag_in_rdata),
 
-    .in_mem_waddr    (jtag_in_waddr),
-    .in_mem_wdata    (jtag_in_wdata),
-    .in_mem_we       (jtag_in_we),
+    .in_mem_waddr  (jtag_in_waddr),
+    .in_mem_wdata  (jtag_in_wdata),
+    .in_mem_we     (jtag_in_we),
 
-    .out_mem_raddr   (jtag_out_raddr),
-    .out_mem_rdata   (jtag_out_rdata),
+    .out_mem_raddr (jtag_out_raddr),
+    .out_mem_rdata (jtag_out_rdata),
 
-    .clk_sys     (clk_50),
-    .rst_sys_n   (rst_n)
+    .clk_sys       (clk_50),
+    .rst_sys_n     (rst_n)
   );
 
   // =========================================================================
@@ -210,33 +203,32 @@ module top_dsa_seq #(
   // 6) Núcleo bilineal (secuencial)
   // =========================================================================
   bilinear_seq #(.AW(AW)) core (
-    .clk            (clk_50),
-    .rst_n          (rst_n),
+    .clk           (clk_50),
+    .rst_n         (rst_n),
+    .start         (start_any),
+    .busy          (busy),
+    .done          (done),
 
-    .start          (start_any),
-    .busy           (busy),
-    .done           (done),
+    .i_step_en     (1'b0),   // stepping desactivado por ahora
+    .i_step_pulse  (1'b0),
 
-    .i_step_en      (step_en),
-    .i_step_pulse   (step_pulse),
+    .i_in_w        (in_w),
+    .i_in_h        (in_h),
+    .i_scale_q88   (scale_q88),
 
-    .i_in_w         (in_w),
-    .i_in_h         (in_h),
-    .i_scale_q88    (scale_q88),
+    .o_out_w       (out_w_s),
+    .o_out_h       (out_h_s),
 
-    .o_out_w        (out_w_s),
-    .o_out_h        (out_h_s),
+    .in_raddr      (in_raddr_core),
+    .in_rdata      (in_rdata),
 
-    .in_raddr       (in_raddr_core),
-    .in_rdata       (in_rdata),
+    .out_waddr     (out_waddr),
+    .out_wdata     (out_wdata),
+    .out_we        (out_we),
 
-    .out_waddr      (out_waddr),
-    .out_wdata      (out_wdata),
-    .out_we         (out_we),
-
-    .o_flop_count   (flop_count),
-    .o_mem_rd_count (mem_rd_count),
-    .o_mem_wr_count (mem_wr_count)
+    .o_flop_count  (perf_flops),
+    .o_mem_rd_count(perf_mem_rd),
+    .o_mem_wr_count(perf_mem_wr)
   );
 
   // =========================================================================

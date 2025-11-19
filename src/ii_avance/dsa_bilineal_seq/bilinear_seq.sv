@@ -1,6 +1,6 @@
 // ============================================================================
 // bilinear_seq.sv  — Núcleo secuencial con interpolación bilineal Q8.8 real.
-// Extensión: stepping por píxel (i_step_en / i_step_pulse) y performance counters.
+// Extensión: stepping por píxel, performance counters y datapath pipelined.
 // ============================================================================
 
 `timescale 1ns/1ps
@@ -44,7 +44,7 @@ module bilinear_seq #(
   output reg  [31:0]  o_mem_wr_count
 );
 
-  localparam [8:0] ONE_Q08 = 9'd256;
+  localparam [8:0] ONE_Q08          = 9'd256;
   localparam [31:0] FLOPS_PER_PIXEL = 32'd11;  // aproximación: 8 mul + 3 sumas
 
   reg [15:0] out_w_reg, out_h_reg;
@@ -64,6 +64,7 @@ module bilinear_seq #(
 
   reg [7:0] I00, I10, I01, I11;
 
+  // Pesos Q0.8 → productos Q0.16 (9+9 bits)
   wire [8:0]  wx0_ext = ONE_Q08 - {1'b0, fx_q};
   wire [8:0]  wx1_ext = {1'b0, fx_q};
   wire [8:0]  wy0_ext = ONE_Q08 - {1'b0, fy_q};
@@ -74,12 +75,11 @@ module bilinear_seq #(
   wire [17:0] w01_q016 = wx0_ext * wy1_ext;
   wire [17:0] w11_q016 = wx1_ext * wy1_ext;
 
-  wire [31:0] p00 = w00_q016 * I00;
-  wire [31:0] p10 = w10_q016 * I10;
-  wire [31:0] p01 = w01_q016 * I01;
-  wire [31:0] p11 = w11_q016 * I11;
+  // Etapa de multiplicación (pipeline stage 1)
+  reg [31:0] p00_r, p10_r, p01_r, p11_r;
 
-  wire [31:0] sum_q016    = p00 + p10 + p01 + p11;
+  // Etapa de suma + redondeo (pipeline stage 2)
+  wire [31:0] sum_q016    = p00_r + p10_r + p01_r + p11_r;
   wire [31:0] sum_rounded = sum_q016 + 32'h0000_8000;
   wire [7:0]  PIX_next    = sum_rounded[23:16];
 
@@ -91,14 +91,18 @@ module bilinear_seq #(
   localparam S_READ10      = 4'd5;
   localparam S_READ01      = 4'd6;
   localparam S_READ11      = 4'd7;
-  localparam S_WRITE       = 4'd8;
-  localparam S_STEP_WAIT   = 4'd9;   // pausa por stepping
-  localparam S_ADVANCE     = 4'd10;
-  localparam S_DONE        = 4'd11;
+  localparam S_MUL         = 4'd8;   // nueva etapa de pipeline (multiplicaciones)
+  localparam S_WRITE       = 4'd9;
+  localparam S_STEP_WAIT   = 4'd10;
+  localparam S_ADVANCE     = 4'd11;
+  localparam S_DONE        = 4'd12;
 
   reg [3:0] state, state_n;
 
-  function [AW-1:0] linaddr;
+  // --------------------------------------------------------------------------
+  // Funciones auxiliares
+  // --------------------------------------------------------------------------
+  function automatic [AW-1:0] linaddr;
     input [15:0] x;
     input [15:0] y;
     input [15:0] width;
@@ -109,14 +113,21 @@ module bilinear_seq #(
   end
   endfunction
 
-  function [15:0] inv_q88;
+  // inv_q88: calcula 1/scale_q88 en Q8.8 (simple aproximación)
+  function automatic [15:0] inv_q88;
     input [15:0] scale_q88;
     reg   [31:0] num;
+    reg   [31:0] quo;
   begin
-    if (scale_q88 == 16'd0) inv_q88 = 16'hFFFF;
-    else begin
-      num     = 32'd65536 + (scale_q88 >> 8);
-      inv_q88 = num / scale_q88;
+    num = 32'd0;
+    quo = 32'd0;
+
+    if (scale_q88 == 16'd0) begin
+      inv_q88 = 16'hFFFF;
+    end else begin
+      num = 32'd65536 + (scale_q88 >> 8);
+      quo = num / scale_q88;   // 32 bits
+      inv_q88 = quo[15:0];     // evitar warning de truncamiento explícitamente
     end
   end
   endfunction
@@ -124,6 +135,9 @@ module bilinear_seq #(
   wire [31:0] mul_w = i_in_w * i_scale_q88; // Q8.8
   wire [31:0] mul_h = i_in_h * i_scale_q88; // Q8.8
 
+  // --------------------------------------------------------------------------
+  // Secuencia principal
+  // --------------------------------------------------------------------------
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
       state         <= S_IDLE;
@@ -154,6 +168,8 @@ module bilinear_seq #(
       fy_q          <= 8'd0;
 
       I00 <= 8'd0; I10 <= 8'd0; I01 <= 8'd0; I11 <= 8'd0;
+
+      p00_r <= 32'd0; p10_r <= 32'd0; p01_r <= 32'd0; p11_r <= 32'd0;
 
       o_flop_count   <= 32'd0;
       o_mem_rd_count <= 32'd0;
@@ -212,28 +228,37 @@ module bilinear_seq #(
         end
 
         S_READ00: begin
-          I00           <= in_rdata;
-          in_raddr      <= linaddr(xi_base + 16'd1, yi_base, i_in_w);
+          I00            <= in_rdata;
+          in_raddr       <= linaddr(xi_base + 16'd1, yi_base, i_in_w);
           o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_READ10: begin
-          I10           <= in_rdata;
-          in_raddr      <= linaddr(xi_base, yi_base + 16'd1, i_in_w);
+          I10            <= in_rdata;
+          in_raddr       <= linaddr(xi_base, yi_base + 16'd1, i_in_w);
           o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_READ01: begin
-          I01           <= in_rdata;
-          in_raddr      <= linaddr(xi_base + 16'd1, yi_base + 16'd1, i_in_w);
+          I01            <= in_rdata;
+          in_raddr       <= linaddr(xi_base + 16'd1, yi_base + 16'd1, i_in_w);
           o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
         S_READ11: begin
-          I11           <= in_rdata;
+          I11            <= in_rdata;
           o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
+        // Etapa de pipeline: multiplicaciones
+        S_MUL: begin
+          p00_r <= w00_q016 * I00;
+          p10_r <= w10_q016 * I10;
+          p01_r <= w01_q016 * I01;
+          p11_r <= w11_q016 * I11;
+        end
+
+        // Etapa de pipeline: suma, redondeo y escritura de píxel
         S_WRITE: begin
           out_waddr      <= linaddr(ox_cur, oy_cur, out_w_reg);
           out_wdata      <= PIX_next;
@@ -268,7 +293,7 @@ module bilinear_seq #(
     end
   end
 
-  // Próximo estado (incluye stepping)
+  // Próximo estado (incluye stepping y nueva etapa S_MUL)
   always @(*) begin
     state_n = state;
     case (state)
@@ -279,7 +304,9 @@ module bilinear_seq #(
       S_READ00:       state_n = S_READ10;
       S_READ10:       state_n = S_READ01;
       S_READ01:       state_n = S_READ11;
-      S_READ11:       state_n = S_WRITE;
+      S_READ11:       state_n = S_MUL;
+      S_MUL:          state_n = S_WRITE;
+
       S_WRITE: begin
         if (i_step_en) state_n = S_STEP_WAIT;
         else begin
@@ -289,6 +316,7 @@ module bilinear_seq #(
             state_n = S_ADVANCE;
         end
       end
+
       S_STEP_WAIT: begin
         if (i_step_pulse) begin
           if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
@@ -297,6 +325,7 @@ module bilinear_seq #(
             state_n = S_ADVANCE;
         end else state_n = S_STEP_WAIT;
       end
+
       S_ADVANCE: begin
         if ((ox_cur + 16'd1 >= out_w_reg) && (oy_cur + 16'd1 >= out_h_reg))
           state_n = S_DONE;
@@ -305,6 +334,7 @@ module bilinear_seq #(
         else
           state_n = S_PIXEL_START;
       end
+
       S_DONE:         state_n = S_IDLE;
       default:        state_n = S_IDLE;
     endcase
