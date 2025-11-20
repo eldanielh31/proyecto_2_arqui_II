@@ -67,13 +67,10 @@ set_location_assignment PIN_W21 -to led_start_on
 set_location_assignment PIN_W20 -to led_reset_evt
 set_global_assignment -name EDA_TEST_BENCH_FILE tb_bilinear_seq.sv -section_id tb_bilinear_seq
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
-set_location_assignment PIN_Y19 -to led_mode_simd
-set_global_assignment -name SYSTEMVERILOG_FILE bilinear_simd.sv
 set_global_assignment -name SDC_FILE top_dsa_seq.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE onchip_mem_dp.sv
 set_global_assignment -name QIP_FILE vjtag/synthesis/vjtag.qip
 set_global_assignment -name SYSTEMVERILOG_FILE jtag_connect.sv
 set_global_assignment -name SYSTEMVERILOG_FILE top_dsa_seq.sv
 set_global_assignment -name SYSTEMVERILOG_FILE bilinear_seq.sv
-set_location_assignment PIN_AD10 -to mode_simd_sw
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -20,7 +20,6 @@ module jtag_connect #(
 
   // Hacia el core/top
   output logic        start_pulse,       // pulso en clk_sys (N ciclos)
-  output logic        mode_simd,         // 1: seleccionar núcleo SIMD
   output logic [15:0] cfg_in_w,
   output logic [15:0] cfg_in_h,
   output logic [15:0] cfg_scale_q88,
@@ -49,7 +48,7 @@ module jtag_connect #(
 );
 
   // ========= Direcciones de registros =========
-  localparam byte ADDR_CONTROL     = 8'h00; // bit0: start, bit1: mode SIMD (1 = SIMD)
+  localparam byte ADDR_CONTROL     = 8'h00; // bit0: start
   localparam byte ADDR_IN_W        = 8'h01;
   localparam byte ADDR_IN_H        = 8'h02;
   localparam byte ADDR_SCALE_Q88   = 8'h03;
@@ -183,8 +182,6 @@ module jtag_connect #(
   logic [31:0] reg_perf_flops, reg_perf_mem_rd, reg_perf_mem_wr;
   logic [31:0] reg_progress;
 
-  logic        reg_mode_simd;   // modo SIMD latcheado desde ADDR_CONTROL
-
   assign in_mem_raddr  = reg_in_raddr[AW-1:0];
   assign out_mem_raddr = reg_out_raddr[AW-1:0];
 
@@ -241,8 +238,6 @@ module jtag_connect #(
       reg_perf_mem_rd  <= 32'd0;
       reg_perf_mem_wr  <= 32'd0;
       reg_progress     <= 32'd0;
-
-      reg_mode_simd    <= 1'b0;
     end else begin
       in_mem_we <= 1'b0;  // por defecto
 
@@ -251,10 +246,7 @@ module jtag_connect #(
           ADDR_IN_W:        reg_in_w      <= wr_data_sync2;
           ADDR_IN_H:        reg_in_h      <= wr_data_sync2;
           ADDR_SCALE_Q88:   reg_scale     <= {16'd0, quantize_scale_q88(wr_data_sync2[15:0])};
-          ADDR_CONTROL: begin
-            // bit1: modo SIMD
-            reg_mode_simd <= wr_data_sync2[1];
-          end
+          ADDR_CONTROL:     /* sin latch; solo start_cnt */ ;
           ADDR_IN_ADDR:     reg_in_raddr  <= wr_data_sync2;
           ADDR_OUT_ADDR:    reg_out_raddr <= wr_data_sync2;
 
@@ -292,7 +284,6 @@ module jtag_connect #(
   assign cfg_in_w      = reg_in_w[15:0];
   assign cfg_in_h      = reg_in_h[15:0];
   assign cfg_scale_q88 = reg_scale[15:0];
-  assign mode_simd     = reg_mode_simd;
 
   // tck: sincronizar datos de BRAMs para lecturas
   logic [7:0] in_data_meta,  in_data_sync;

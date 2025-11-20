@@ -1,6 +1,6 @@
 // ============================================================================
 // top_dsa_seq.sv — Top con Virtual JTAG, LEDs y BRAMs (lectura/escritura)
-// Núcleo secuencial bilinear + núcleo "SIMD" con N lanes + performance counters.
+// Núcleo secuencial bilinear + performance counters.
 // ============================================================================
 `timescale 1ps/1ps
 `define MEM_INIT_FILE "img_in_64x64.hex"
@@ -8,70 +8,35 @@
 module top_dsa_seq #(
   parameter int AW            = 12,
   parameter int DEB_W         = 20,
-  parameter int RST_STRETCH_W = 22,
-  parameter int LANES_SIMD    = 4   // N lanes lógicos del núcleo SIMD (N>=4)
+  parameter int RST_STRETCH_W = 22
 )(
   input  logic clk_50,
   input  logic rst_n,
-  input  logic start_sw,       // switch/botón de start
-  input  logic mode_simd_sw,   // switch físico para seleccionar modo SIMD
+  input  logic start_sw,
 
   output logic led_done,
   output logic led_reset_evt,
-  output logic led_start_on,
-  output logic led_mode_simd   // LED indica que el modo SIMD está activo
+  output logic led_start_on
 );
 
   // ---------------- Señales core ----------------
   logic        start_pulse_sw;
   logic        start_pulse_jtag;
-  logic        busy_seq, done_seq;
-  logic        busy_simd, done_simd;
-  logic        busy_any, done_any;
-
-  logic        mode_simd_jtag;
-  logic        mode_simd;      // modo efectivo (HW switch OR JTAG)
+  logic        busy, done;
 
   logic [15:0] in_w_cfg, in_h_cfg, scale_q88_cfg;
   logic [15:0] in_w, in_h, scale_q88;
 
-  logic [15:0] out_w_s, out_h_s;  // salidas del secuencial (no usadas, pero expuestas)
+  logic [15:0] out_w_s, out_h_s;
 
-  // Direcciones de lectura de BRAM entrada para cada core
-  logic [AW-1:0] in_raddr_seq;
-  logic [AW-1:0] in_raddr_simd;
-  logic [AW-1:0] in_raddr_core;   // hacia mem_in
-  logic [7:0]    in_rdata;        // desde mem_in (compartido)
+  logic [AW-1:0] in_raddr_core;
+  logic [7:0]    in_rdata;
 
-  // Escritura de salida (mem_out) para cada core
-  logic [AW-1:0] out_waddr_seq;
-  logic [7:0]    out_wdata_seq;
-  logic          out_we_seq;
+  logic [AW-1:0] out_waddr;
+  logic [7:0]    out_wdata;
+  logic          out_we;
 
-  logic [AW-1:0] out_waddr_simd;
-  logic [7:0]    out_wdata_simd;
-  logic          out_we_simd;
-
-  // Señales agregadas desde el core activo (antes de clearing)
-  logic [AW-1:0] out_waddr_core;
-  logic [7:0]    out_wdata_core;
-  logic          out_we_core;
-
-  // Señales hacia la BRAM de salida (después de clearing)
-  logic [AW-1:0] mem_out_waddr;
-  logic [7:0]    mem_out_wdata;
-  logic          mem_out_we;
-
-  // Performance counters desde cada core
-  logic [31:0] perf_flops_seq;
-  logic [31:0] perf_mem_rd_seq;
-  logic [31:0] perf_mem_wr_seq;
-
-  logic [31:0] perf_flops_simd;
-  logic [31:0] perf_mem_rd_simd;
-  logic [31:0] perf_mem_wr_simd;
-
-  // Performance visibles por JTAG (del core activo)
+  // Performance counters desde el core
   logic [31:0] perf_flops;
   logic [31:0] perf_mem_rd;
   logic [31:0] perf_mem_wr;
@@ -85,23 +50,6 @@ module top_dsa_seq #(
   logic [AW-1:0] jtag_in_waddr;
   logic  [7:0]   jtag_in_wdata;
   logic          jtag_in_we;
-
-  // busy/done agregados para status y bloqueo de escritura por JTAG
-  assign busy_any = busy_seq | busy_simd;
-  assign done_any = done_seq | done_simd;
-
-  // Selección de performance según modo
-  always_comb begin
-    if (mode_simd) begin
-      perf_flops   = perf_flops_simd;
-      perf_mem_rd  = perf_mem_rd_simd;
-      perf_mem_wr  = perf_mem_wr_simd;
-    end else begin
-      perf_flops   = perf_flops_seq;
-      perf_mem_rd  = perf_mem_rd_seq;
-      perf_mem_wr  = perf_mem_wr_seq;
-    end
-  end
 
   // =======================================================================
   // 1) Virtual JTAG + wrapper jtag_connect
@@ -136,12 +84,11 @@ module top_dsa_seq #(
     .vs_udr        (vs_udr),
 
     .start_pulse   (start_pulse_jtag),
-    .mode_simd     (mode_simd_jtag),
     .cfg_in_w      (in_w_cfg),
     .cfg_in_h      (in_h_cfg),
     .cfg_scale_q88 (scale_q88_cfg),
-    .status_done   (done_any),
-    .status_busy   (busy_any),
+    .status_done   (done),
+    .status_busy   (busy),
     .perf_flops    (perf_flops),
     .perf_mem_rd   (perf_mem_rd),
     .perf_mem_wr   (perf_mem_wr),
@@ -191,35 +138,6 @@ module top_dsa_seq #(
   assign led_start_on   = sw_debounced;
 
   // =========================================================================
-  // 2b) Sincronizador del switch de modo SIMD + LED
-  // =========================================================================
-  logic mode_sw_meta, mode_sw_sync;
-  always_ff @(posedge clk_50 or negedge rst_n) begin
-    if (!rst_n) begin
-      mode_sw_meta <= 1'b0;
-      mode_sw_sync <= 1'b0;
-    end else begin
-      mode_sw_meta <= mode_simd_sw;
-      mode_sw_sync <= mode_sw_meta;
-    end
-  end
-
-  // Modo efectivo: OR entre switch físico y bit de JTAG
-  assign mode_simd     = mode_sw_sync | mode_simd_jtag;
-  assign led_mode_simd = mode_simd;
-
-  // Start por JTAG o por switch
-  logic start_any;
-  always_comb begin
-    start_any = start_pulse_jtag | start_pulse_sw;
-  end
-
-  // Separar start para cada núcleo según modo
-  logic start_seq, start_simd;
-  assign start_seq  = start_any & ~mode_simd;
-  assign start_simd = start_any &  mode_simd;
-
-  // =========================================================================
   // 3) LED de evento de reset
   // =========================================================================
   logic [RST_STRETCH_W-1:0] rst_cnt;
@@ -232,10 +150,6 @@ module top_dsa_seq #(
   // =========================================================================
   // 4) Memorias on-chip (inferidas)
   // =========================================================================
-
-  // Selección de dirección de lectura para la BRAM de entrada
-  assign in_raddr_core = mode_simd ? in_raddr_simd : in_raddr_seq;
-
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b1)              // simulación: carga MEM_INIT_FILE (si está definido)
@@ -245,7 +159,7 @@ module top_dsa_seq #(
     .rdata (in_rdata),
     .waddr (jtag_in_waddr),
     .wdata (jtag_in_wdata),
-    .we    (jtag_in_we & ~busy_any) // evitar escribir durante procesamiento de cualquier core
+    .we    (jtag_in_we & ~busy) // evitar escribir durante procesamiento
   );
 
   onchip_mem_dp #(
@@ -257,46 +171,8 @@ module top_dsa_seq #(
     .rdata (jtag_in_rdata),
     .waddr (jtag_in_waddr),
     .wdata (jtag_in_wdata),
-    .we    (jtag_in_we & ~busy_any)
+    .we    (jtag_in_we & ~busy)
   );
-
-  // Memoria de salida: selección de core activo
-  assign out_waddr_core = mode_simd ? out_waddr_simd : out_waddr_seq;
-  assign out_wdata_core = mode_simd ? out_wdata_simd : out_wdata_seq;
-  assign out_we_core    = mode_simd ? out_we_simd    : out_we_seq;
-
-  // --- Lógica de clearing de mem_out tras reset ---
-  logic        clearing;
-  logic [AW-1:0] clear_addr;
-
-  always_ff @(posedge clk_50 or negedge rst_n) begin
-    if (!rst_n) begin
-      // Al entrar en reset, se marca que hay que limpiar la memoria de salida
-      clearing   <= 1'b1;
-      clear_addr <= '0;
-    end else begin
-      if (clearing) begin
-        clear_addr <= clear_addr + 1'b1;
-        // Cuando se recorre todo el espacio de direcciones, se termina
-        if (clear_addr == {AW{1'b1}}) begin
-          clearing <= 1'b0;
-        end
-      end
-    end
-  end
-
-  // Multiplexor entre escrituras de clearing y escrituras del core
-  always_comb begin
-    if (clearing) begin
-      mem_out_we    = 1'b1;
-      mem_out_waddr = clear_addr;
-      mem_out_wdata = 8'h00;
-    end else begin
-      mem_out_we    = out_we_core;
-      mem_out_waddr = out_waddr_core;
-      mem_out_wdata = out_wdata_core;
-    end
-  end
 
   onchip_mem_dp #(
     .ADDR_W (AW),
@@ -305,9 +181,9 @@ module top_dsa_seq #(
     .clk   (clk_50),
     .raddr (jtag_out_raddr),
     .rdata (jtag_out_rdata),
-    .waddr (mem_out_waddr),
-    .wdata (mem_out_wdata),
-    .we    (mem_out_we)
+    .waddr (out_waddr),
+    .wdata (out_wdata),
+    .we    (out_we)
   );
 
   // =========================================================================
@@ -317,15 +193,21 @@ module top_dsa_seq #(
   assign in_h      = in_h_cfg;
   assign scale_q88 = scale_q88_cfg;
 
+  // Start por JTAG o por switch (combinacional, sin inicialización en declaración)
+  logic start_any;
+  always_comb begin
+    start_any = start_pulse_jtag | start_pulse_sw;
+  end
+
   // =========================================================================
-  // 6) Núcleo bilineal secuencial
+  // 6) Núcleo bilineal (secuencial)
   // =========================================================================
-  bilinear_seq #(.AW(AW)) core_seq (
+  bilinear_seq #(.AW(AW)) core (
     .clk           (clk_50),
     .rst_n         (rst_n),
-    .start         (start_seq),
-    .busy          (busy_seq),
-    .done          (done_seq),
+    .start         (start_any),
+    .busy          (busy),
+    .done          (done),
 
     .i_step_en     (1'b0),   // stepping desactivado por ahora
     .i_step_pulse  (1'b0),
@@ -337,58 +219,26 @@ module top_dsa_seq #(
     .o_out_w       (out_w_s),
     .o_out_h       (out_h_s),
 
-    .in_raddr      (in_raddr_seq),
+    .in_raddr      (in_raddr_core),
     .in_rdata      (in_rdata),
 
-    .out_waddr     (out_waddr_seq),
-    .out_wdata     (out_wdata_seq),
-    .out_we        (out_we_seq),
+    .out_waddr     (out_waddr),
+    .out_wdata     (out_wdata),
+    .out_we        (out_we),
 
-    .o_flop_count  (perf_flops_seq),
-    .o_mem_rd_count(perf_mem_rd_seq),
-    .o_mem_wr_count(perf_mem_wr_seq)
+    .o_flop_count  (perf_flops),
+    .o_mem_rd_count(perf_mem_rd),
+    .o_mem_wr_count(perf_mem_wr)
   );
 
   // =========================================================================
-  // 6b) Núcleo bilineal "SIMD" (mismo interfaz, FLOPs escalados por LANES)
-  // =========================================================================
-  bilinear_simd #(.AW(AW), .LANES(LANES_SIMD)) core_simd (
-    .clk           (clk_50),
-    .rst_n         (rst_n),
-    .start         (start_simd),
-    .busy          (busy_simd),
-    .done          (done_simd),
-
-    .i_step_en     (1'b0),
-    .i_step_pulse  (1'b0),
-
-    .i_in_w        (in_w),
-    .i_in_h        (in_h),
-    .i_scale_q88   (scale_q88),
-
-    .o_out_w       (), // no se usan por ahora
-    .o_out_h       (),
-
-    .in_raddr      (in_raddr_simd),
-    .in_rdata      (in_rdata),
-
-    .out_waddr     (out_waddr_simd),
-    .out_wdata     (out_wdata_simd),
-    .out_we        (out_we_simd),
-
-    .o_flop_count  (perf_flops_simd),
-    .o_mem_rd_count(perf_mem_rd_simd),
-    .o_mem_wr_count(perf_mem_wr_simd)
-  );
-
-  // =========================================================================
-  // 7) LED done latcheado (cualquier core)
+  // 7) LED done latcheado
   // =========================================================================
   always_ff @(posedge clk_50 or negedge rst_n) begin
     if (!rst_n) led_done <= 1'b0;
     else begin
-      if (start_any)    led_done <= 1'b0;
-      else if (done_any) led_done <= 1'b1;
+      if (start_any) led_done <= 1'b0;
+      else if (done) led_done <= 1'b1;
     end
   end
 
