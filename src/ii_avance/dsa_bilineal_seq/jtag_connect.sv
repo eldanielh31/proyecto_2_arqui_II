@@ -19,7 +19,7 @@ module jtag_connect #(
   input  logic                vs_udr,
 
   // Hacia el core/top
-  output logic        start_pulse,       // pulso en clk_sys (8 ciclos)
+  output logic        start_pulse,       // pulso en clk_sys (N ciclos)
   output logic [15:0] cfg_in_w,
   output logic [15:0] cfg_in_h,
   output logic [15:0] cfg_scale_q88,
@@ -72,15 +72,21 @@ module jtag_connect #(
   localparam byte ADDR_IN_WADDR    = 8'h22; // set waddr
   localparam byte ADDR_IN_WDATA    = 8'h23; // write byte y auto-incrementa waddr
 
-  // ========= Cuantización de factor de escala Q8.8 =========
-  function automatic [15:0] quantize_scale_q88(input [15:0] raw);
-    localparam [15:0] SCALE_MIN_Q88  = 16'd128; // 0.50 * 256
-    localparam [15:0] SCALE_MAX_Q88  = 16'd256; // 1.00 * 256
-    localparam [15:0] SCALE_STEP_Q88 = 16'd13;  // ≈ 0.05 * 256 ≈ 12.8
+  // Parámetros "mágicos" como localparams
+  localparam logic [31:0] DEFAULT_IN_W       = 32'd64;
+  localparam logic [31:0] DEFAULT_IN_H       = 32'd64;
+  localparam logic [15:0] DEFAULT_SCALE_Q88  = 16'd205;   // ≈0.80 Q8.8
+  localparam logic [3:0]  START_PULSE_CYCLES = 4'd8;
 
-    reg [15:0] val;
-    reg [15:0] delta;
-    reg [15:0] k;
+  // ========= Cuantización de factor de escala Q8.8 =========
+  function automatic logic [15:0] quantize_scale_q88(input logic [15:0] raw);
+    localparam logic [15:0] SCALE_MIN_Q88  = 16'd128; // 0.50 * 256
+    localparam logic [15:0] SCALE_MAX_Q88  = 16'd256; // 1.00 * 256
+    localparam logic [15:0] SCALE_STEP_Q88 = 16'd13;  // ≈ 0.05 * 256 ≈ 12.8
+
+    logic [15:0] val;
+    logic [15:0] delta;
+    logic [15:0] k;
   begin
     // Clamping al rango [0.5, 1.0]
     if (raw < SCALE_MIN_Q88)      val = SCALE_MIN_Q88;
@@ -103,8 +109,12 @@ module jtag_connect #(
   logic [7:0]     latched_addr;
   logic [31:0]    dr_read_data;
 
-  wire is_write = (ir_in == 2'b01);
-  wire is_read  = (ir_in == 2'b10);
+  logic is_write, is_read;
+
+  always_comb begin
+    is_write = (ir_in == 2'b01);
+    is_read  = (ir_in == 2'b10);
+  end
 
   always_ff @(posedge tck) begin
     if (vs_cdr) begin
@@ -155,28 +165,18 @@ module jtag_connect #(
       wr_tog_sync_d <= wr_tog_sync;
     end
   end
-  wire wr_sys = (wr_tog_sync ^ wr_tog_sync_d);
 
-  // buses multi-bit
-  logic [7:0]  wr_addr_sync1, wr_addr_sync2;
-  logic [31:0] wr_data_sync1, wr_data_sync2;
-  always_ff @(posedge clk_sys or negedge rst_sys_n) begin
-    if (!rst_sys_n) begin
-      wr_addr_sync1 <= '0; wr_addr_sync2 <= '0;
-      wr_data_sync1 <= '0; wr_data_sync2 <= '0;
-    end else begin
-      wr_addr_sync1 <= wr_addr_hold_tck;
-      wr_addr_sync2 <= wr_addr_sync1;
-      wr_data_sync1 <= wr_data_hold_tck;
-      wr_data_sync2 <= wr_data_sync1;
-    end
+  logic wr_sys;
+
+  always_comb begin
+    wr_sys = (wr_tog_sync ^ wr_tog_sync_d);
   end
 
   // ========= Lado sistema =========
   logic [31:0] reg_in_w, reg_in_h, reg_scale;
   logic [31:0] reg_status;
   logic [31:0] reg_in_raddr, reg_out_raddr;
-  logic [31:0] reg_in_waddr;           // único driver
+  logic [31:0] reg_in_waddr;
   logic [7:0]  reg_in_data_sys, reg_out_data_sys;
 
   logic [31:0] reg_perf_flops, reg_perf_mem_rd, reg_perf_mem_wr;
@@ -185,23 +185,42 @@ module jtag_connect #(
   assign in_mem_raddr  = reg_in_raddr[AW-1:0];
   assign out_mem_raddr = reg_out_raddr[AW-1:0];
 
-  // START pulse (8 ciclos)
+  // START pulse (N ciclos)
   logic [3:0] start_cnt;
   always_ff @(posedge clk_sys or negedge rst_sys_n) begin
     if (!rst_sys_n) start_cnt <= 4'd0;
     else begin
-      if (wr_sys && (wr_addr_sync2 == ADDR_CONTROL) && wr_data_sync2[0]) start_cnt <= 4'd8;
-      else if (start_cnt != 4'd0) start_cnt <= start_cnt - 4'd1;
+      if (wr_sys && (wr_addr_sync2 == ADDR_CONTROL) && wr_data_sync2[0])
+        start_cnt <= START_PULSE_CYCLES;
+      else if (start_cnt != 4'd0)
+        start_cnt <= start_cnt - 4'd1;
     end
   end
   assign start_pulse = (start_cnt != 4'd0);
 
   // Banco de registros + subida de imagen
+  logic [7:0]  dummy_zero8;
+  logic [31:0] wr_addr_sync1, wr_addr_sync2;
+  logic [31:0] wr_data_sync1, wr_data_sync2;
+
+  // buses multi-bit sincronizados
   always_ff @(posedge clk_sys or negedge rst_sys_n) begin
     if (!rst_sys_n) begin
-      reg_in_w         <= 32'd64;
-      reg_in_h         <= 32'd64;
-      reg_scale        <= 32'd205;      // 0.80 Q8.8 aprox.
+      wr_addr_sync1 <= '0; wr_addr_sync2 <= '0;
+      wr_data_sync1 <= '0; wr_data_sync2 <= '0;
+    end else begin
+      wr_addr_sync1 <= {24'd0, wr_addr_hold_tck};
+      wr_addr_sync2 <= wr_addr_sync1;
+      wr_data_sync1 <= wr_data_hold_tck;
+      wr_data_sync2 <= wr_data_sync1;
+    end
+  end
+
+  always_ff @(posedge clk_sys or negedge rst_sys_n) begin
+    if (!rst_sys_n) begin
+      reg_in_w         <= DEFAULT_IN_W;
+      reg_in_h         <= DEFAULT_IN_H;
+      reg_scale        <= {16'd0, DEFAULT_SCALE_Q88};
       reg_status       <= 32'd0;
 
       reg_in_raddr     <= 32'd0;
@@ -223,7 +242,7 @@ module jtag_connect #(
       in_mem_we <= 1'b0;  // por defecto
 
       if (wr_sys) begin
-        unique case (wr_addr_sync2)
+        unique case (wr_addr_sync2[7:0])
           ADDR_IN_W:        reg_in_w      <= wr_data_sync2;
           ADDR_IN_H:        reg_in_h      <= wr_data_sync2;
           ADDR_SCALE_Q88:   reg_scale     <= {16'd0, quantize_scale_q88(wr_data_sync2[15:0])};

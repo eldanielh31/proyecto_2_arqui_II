@@ -6,107 +6,102 @@
 `timescale 1ns/1ps
 
 module bilinear_seq #(
-  parameter AW = 19
+  parameter int AW = 19
 )(
-  input  wire         clk,
-  input  wire         rst_n,
+  input  logic        clk,
+  input  logic        rst_n,
 
   // Control
-  input  wire         start,
-  output reg          busy,
-  output reg          done,
+  input  logic        start,
+  output logic        busy,
+  output logic        done,
 
   // Stepping
-  input  wire         i_step_en,      // si=1, pausa tras cada píxel
-  input  wire         i_step_pulse,   // avanzar un píxel cuando step_en=1
+  input  logic        i_step_en,      // si=1, pausa tras cada píxel
+  input  logic        i_step_pulse,   // avanzar un píxel cuando step_en=1
 
   // Dimensiones entrada y escala Q8.8
-  input  wire [15:0]  i_in_w,
-  input  wire [15:0]  i_in_h,
-  input  wire [15:0]  i_scale_q88,   // Q8.8, >0
+  input  logic [15:0] i_in_w,
+  input  logic [15:0] i_in_h,
+  input  logic [15:0] i_scale_q88,   // Q8.8, >0
 
   // Dimensiones salida reportadas
-  output reg  [15:0]  o_out_w,
-  output reg  [15:0]  o_out_h,
+  output logic [15:0] o_out_w,
+  output logic [15:0] o_out_h,
 
   // Lectura fuente (single-read port)
-  output reg  [AW-1:0] in_raddr,
-  input  wire [7:0]    in_rdata,
+  output logic [AW-1:0] in_raddr,
+  input  logic [7:0]    in_rdata,
 
   // Escritura destino
-  output reg  [AW-1:0] out_waddr,
-  output reg  [7:0]    out_wdata,
-  output reg           out_we,
+  output logic [AW-1:0] out_waddr,
+  output logic [7:0]    out_wdata,
+  output logic          out_we,
 
   // Performance counters (por ejecución)
-  output reg  [31:0]  o_flop_count,
-  output reg  [31:0]  o_mem_rd_count,
-  output reg  [31:0]  o_mem_wr_count
+  output logic [31:0]  o_flop_count,
+  output logic [31:0]  o_mem_rd_count,
+  output logic [31:0]  o_mem_wr_count
 );
 
-  localparam [8:0] ONE_Q08          = 9'd256;
-  localparam [31:0] FLOPS_PER_PIXEL = 32'd11;  // aproximación: 8 mul + 3 sumas
+  // ----------------- Constantes -----------------
+  localparam logic [8:0]  ONE_Q08          = 9'd256;
+  localparam logic [31:0] FLOPS_PER_PIXEL  = 32'd11;       // aprox: 8 mul + 3 sumas
+  localparam logic [31:0] ROUND_Q016       = 32'h0000_8000;
 
-  reg [15:0] out_w_reg, out_h_reg;
-  reg [15:0] ox_cur, oy_cur;
+  // ----------------- Registros internos -----------------
+  logic [15:0] out_w_reg, out_h_reg;
+  logic [15:0] ox_cur, oy_cur;
 
-  reg [23:0] sx_fix, sy_fix;
-  reg [15:0] inv_scale_q88;
+  logic [23:0] sx_fix, sy_fix;
+  logic [15:0] inv_scale_q88;
 
-  wire [7:0] ax_q = sx_fix[7:0];
-  wire [7:0] ay_q = sy_fix[7:0];
+  logic [7:0] ax_q, ay_q;
+  logic [15:0] sx_int, sy_int;
 
-  wire [15:0] sx_int = sx_fix[23:8];
-  wire [15:0] sy_int = sy_fix[23:8];
+  logic [15:0] xi_base, yi_base;
+  logic [7:0]  fx_q, fy_q;
 
-  reg [15:0] xi_base, yi_base;
-  reg [7:0]  fx_q, fy_q;
-
-  reg [7:0] I00, I10, I01, I11;
+  logic [7:0] I00, I10, I01, I11;
 
   // Pesos Q0.8 → productos Q0.16 (9+9 bits)
-  wire [8:0]  wx0_ext = ONE_Q08 - {1'b0, fx_q};
-  wire [8:0]  wx1_ext = {1'b0, fx_q};
-  wire [8:0]  wy0_ext = ONE_Q08 - {1'b0, fy_q};
-  wire [8:0]  wy1_ext = {1'b0, fy_q};
-
-  wire [17:0] w00_q016 = wx0_ext * wy0_ext;
-  wire [17:0] w10_q016 = wx1_ext * wy0_ext;
-  wire [17:0] w01_q016 = wx0_ext * wy1_ext;
-  wire [17:0] w11_q016 = wx1_ext * wy1_ext;
+  logic [8:0]  wx0_ext, wx1_ext, wy0_ext, wy1_ext;
+  logic [17:0] w00_q016, w10_q016, w01_q016, w11_q016;
 
   // Etapa de multiplicación (pipeline stage 1)
-  reg [31:0] p00_r, p10_r, p01_r, p11_r;
+  logic [31:0] p00_r, p10_r, p01_r, p11_r;
 
   // Etapa de suma + redondeo (pipeline stage 2)
-  wire [31:0] sum_q016    = p00_r + p10_r + p01_r + p11_r;
-  wire [31:0] sum_rounded = sum_q016 + 32'h0000_8000;
-  wire [7:0]  PIX_next    = sum_rounded[23:16];
+  logic [31:0] sum_q016;
+  logic [31:0] sum_rounded;
+  logic [7:0]  PIX_next;
 
-  localparam S_IDLE        = 4'd0;
-  localparam S_INIT        = 4'd1;
-  localparam S_ROW_INIT    = 4'd2;
-  localparam S_PIXEL_START = 4'd3;
-  localparam S_READ00      = 4'd4;
-  localparam S_READ10      = 4'd5;
-  localparam S_READ01      = 4'd6;
-  localparam S_READ11      = 4'd7;
-  localparam S_MUL         = 4'd8;   // nueva etapa de pipeline (multiplicaciones)
-  localparam S_WRITE       = 4'd9;
-  localparam S_STEP_WAIT   = 4'd10;
-  localparam S_ADVANCE     = 4'd11;
-  localparam S_DONE        = 4'd12;
+  // Estados FSM
+  localparam logic [3:0] S_IDLE        = 4'd0;
+  localparam logic [3:0] S_INIT        = 4'd1;
+  localparam logic [3:0] S_ROW_INIT    = 4'd2;
+  localparam logic [3:0] S_PIXEL_START = 4'd3;
+  localparam logic [3:0] S_READ00      = 4'd4;
+  localparam logic [3:0] S_READ10      = 4'd5;
+  localparam logic [3:0] S_READ01      = 4'd6;
+  localparam logic [3:0] S_READ11      = 4'd7;
+  localparam logic [3:0] S_MUL         = 4'd8;
+  localparam logic [3:0] S_WRITE       = 4'd9;
+  localparam logic [3:0] S_STEP_WAIT   = 4'd10;
+  localparam logic [3:0] S_ADVANCE     = 4'd11;
+  localparam logic [3:0] S_DONE        = 4'd12;
 
-  reg [3:0] state, state_n;
+  logic [3:0] state, state_n;
 
   // --------------------------------------------------------------------------
   // Funciones auxiliares
   // --------------------------------------------------------------------------
-  function automatic [AW-1:0] linaddr;
-    input [15:0] x;
-    input [15:0] y;
-    input [15:0] width;
-    reg   [31:0] tmp;
+  function automatic logic [AW-1:0] linaddr(
+    input logic [15:0] x,
+    input logic [15:0] y,
+    input logic [15:0] width
+  );
+    logic [31:0] tmp;
   begin
     tmp     = (y * width) + x;
     linaddr = tmp[AW-1:0];
@@ -114,40 +109,60 @@ module bilinear_seq #(
   endfunction
 
   // inv_q88: calcula 1/scale_q88 en Q8.8 (simple aproximación)
-  function automatic [15:0] inv_q88;
-    input [15:0] scale_q88;
-    reg   [31:0] num;
-    reg   [31:0] quo;
+  function automatic logic [15:0] inv_q88(input logic [15:0] scale_q88);
+    logic [31:0] num;
+    logic [31:0] quo;
   begin
-    num = 32'd0;
-    quo = 32'd0;
-
     if (scale_q88 == 16'd0) begin
       inv_q88 = 16'hFFFF;
     end else begin
       num = 32'd65536 + (scale_q88 >> 8);
-      quo = num / scale_q88;   // 32 bits
-      inv_q88 = quo[15:0];     // evitar warning de truncamiento explícitamente
+      quo = num / scale_q88;
+      inv_q88 = quo[15:0];
     end
   end
   endfunction
 
-  wire [31:0] mul_w = i_in_w * i_scale_q88; // Q8.8
-  wire [31:0] mul_h = i_in_h * i_scale_q88; // Q8.8
+  // Productos W*H en Q8.8 (combinacional)
+  logic [31:0] mul_w, mul_h;
+  assign mul_w = i_in_w * i_scale_q88;
+  assign mul_h = i_in_h * i_scale_q88;
+
+  // Derivados de sx_fix/sy_fix
+  assign ax_q   = sx_fix[7:0];
+  assign ay_q   = sy_fix[7:0];
+  assign sx_int = sx_fix[23:8];
+  assign sy_int = sy_fix[23:8];
+
+  // Pesos
+  assign wx0_ext = ONE_Q08 - {1'b0, fx_q};
+  assign wx1_ext = {1'b0, fx_q};
+  assign wy0_ext = ONE_Q08 - {1'b0, fy_q};
+  assign wy1_ext = {1'b0, fy_q};
+
+  assign w00_q016 = wx0_ext * wy0_ext;
+  assign w10_q016 = wx1_ext * wy0_ext;
+  assign w01_q016 = wx0_ext * wy1_ext;
+  assign w11_q016 = wx1_ext * wy1_ext;
+
+  // Suma y redondeo
+  assign sum_q016    = p00_r + p10_r + p01_r + p11_r;
+  assign sum_rounded = sum_q016 + ROUND_Q016;
+  assign PIX_next    = sum_rounded[23:16];
 
   // --------------------------------------------------------------------------
   // Secuencia principal
   // --------------------------------------------------------------------------
-  always @(posedge clk or negedge rst_n) begin
+  always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
       state         <= S_IDLE;
       busy          <= 1'b0;
       done          <= 1'b0;
       out_we        <= 1'b0;
 
-      out_waddr     <= {AW{1'b0}};
+      out_waddr     <= '0;
       out_wdata     <= 8'h00;
-      in_raddr      <= {AW{1'b0}};
+      in_raddr      <= '0;
 
       ox_cur        <= 16'd0;
       oy_cur        <= 16'd0;
@@ -189,7 +204,6 @@ module bilinear_seq #(
             o_out_h       <= mul_h[23:8];
             inv_scale_q88 <= inv_q88(i_scale_q88);
 
-            // reinicio de contadores para nueva ejecución
             o_flop_count   <= 32'd0;
             o_mem_rd_count <= 32'd0;
             o_mem_wr_count <= 32'd0;
@@ -293,10 +307,10 @@ module bilinear_seq #(
     end
   end
 
-  // Próximo estado (incluye stepping y nueva etapa S_MUL)
-  always @(*) begin
+  // Próximo estado (incluye stepping y etapa S_MUL)
+  always_comb begin
     state_n = state;
-    case (state)
+    unique case (state)
       S_IDLE:         state_n = (start) ? S_INIT : S_IDLE;
       S_INIT:         state_n = S_ROW_INIT;
       S_ROW_INIT:     state_n = S_PIXEL_START;

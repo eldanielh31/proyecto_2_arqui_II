@@ -54,15 +54,15 @@ module top_dsa_seq #(
   // =======================================================================
   // 1) Virtual JTAG + wrapper jtag_connect
   // =======================================================================
-  wire tck, tdi, tdo;
-  wire [1:0] ir_in;
-  wire       vs_cdr, vs_sdr, vs_e1dr, vs_pdr, vs_e2dr, vs_udr, vs_cir, vs_uir;
+  logic       tck, tdi, tdo;
+  logic [1:0] ir_in;
+  logic       vs_cdr, vs_sdr, vs_e1dr, vs_pdr, vs_e2dr, vs_udr, vs_cir, vs_uir;
 
   vjtag u_vjtag (
     .tdi                (tdi),
     .tdo                (tdo),
     .ir_in              (ir_in),
-    .ir_out             (),     // no se usa ir_out en este diseño
+    .ir_out             (),     // ir_out no se usa
     .virtual_state_cdr  (vs_cdr),
     .virtual_state_sdr  (vs_sdr),
     .virtual_state_e1dr (vs_e1dr),
@@ -150,7 +150,6 @@ module top_dsa_seq #(
   // =========================================================================
   // 4) Memorias on-chip (inferidas)
   // =========================================================================
-  // ENTRADA para el núcleo (lectura por core) + escritura desde JTAG cuando !busy
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b1)              // simulación: carga MEM_INIT_FILE (si está definido)
@@ -163,7 +162,6 @@ module top_dsa_seq #(
     .we    (jtag_in_we & ~busy) // evitar escribir durante procesamiento
   );
 
-  // ENTRADA "espejo" para JTAG (misma init) + espejo de escritura
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b1)
@@ -176,7 +174,6 @@ module top_dsa_seq #(
     .we    (jtag_in_we & ~busy)
   );
 
-  // SALIDA: escritura desde el core; lectura por JTAG
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b0)
@@ -196,8 +193,11 @@ module top_dsa_seq #(
   assign in_h      = in_h_cfg;
   assign scale_q88 = scale_q88_cfg;
 
-  // Start por JTAG o por switch
-  wire start_any = start_pulse_jtag | start_pulse_sw;
+  // Start por JTAG o por switch (combinacional, sin inicialización en declaración)
+  logic start_any;
+  always_comb begin
+    start_any = start_pulse_jtag | start_pulse_sw;
+  end
 
   // =========================================================================
   // 6) Núcleo bilineal (secuencial)

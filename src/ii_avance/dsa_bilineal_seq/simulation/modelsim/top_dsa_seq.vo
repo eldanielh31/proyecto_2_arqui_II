@@ -16,7 +16,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
 
-// DATE "11/19/2025 15:11:43"
+// DATE "11/19/2025 15:33:25"
 
 // 
 // Device: Altera 5CSEMA5F31C6 Package FBGA896
@@ -74,102 +74,102 @@ assign unknown = 1'bx;
 tri1 devclrn;
 tri1 devpor;
 tri1 devoe;
-wire \core|Mult4~8_resulta ;
-wire \core|Mult4~9 ;
-wire \core|Mult4~10 ;
-wire \core|Mult4~11 ;
-wire \core|Mult4~12 ;
-wire \core|Mult4~13 ;
-wire \core|Mult4~14 ;
-wire \core|Mult4~15 ;
-wire \core|Mult4~16 ;
-wire \core|Mult4~17 ;
-wire \core|Mult4~18 ;
-wire \core|Mult4~19 ;
-wire \core|Mult4~20 ;
-wire \core|Mult4~21 ;
-wire \core|Mult4~22 ;
-wire \core|Mult4~23 ;
-wire \core|Mult4~24 ;
-wire \core|Mult4~25 ;
-wire \core|Mult4~26 ;
-wire \core|Mult4~27 ;
-wire \core|Mult4~28 ;
-wire \core|Mult4~29 ;
-wire \core|Mult4~30 ;
-wire \core|Mult4~31 ;
-wire \core|Mult4~32 ;
-wire \core|Mult4~33 ;
-wire \core|Mult4~34 ;
-wire \core|Mult4~35 ;
-wire \core|Mult4~36 ;
-wire \core|Mult4~37 ;
-wire \core|Mult4~38 ;
-wire \core|Mult4~39 ;
-wire \core|Mult4~40 ;
-wire \core|Mult4~41 ;
-wire \core|Mult4~42 ;
-wire \core|Mult4~43 ;
-wire \core|Mult4~44 ;
-wire \core|Mult4~45 ;
-wire \core|Mult4~46 ;
-wire \core|Mult4~47 ;
-wire \core|Mult4~48 ;
-wire \core|Mult4~49 ;
-wire \core|Mult4~50 ;
-wire \core|Mult4~51 ;
-wire \core|Mult4~52 ;
-wire \core|Mult4~53 ;
-wire \core|Mult4~54 ;
-wire \core|Mult4~55 ;
-wire \core|Mult5~8_resulta ;
-wire \core|Mult5~9 ;
-wire \core|Mult5~10 ;
-wire \core|Mult5~11 ;
-wire \core|Mult5~12 ;
-wire \core|Mult5~13 ;
-wire \core|Mult5~14 ;
-wire \core|Mult5~15 ;
-wire \core|Mult5~16 ;
-wire \core|Mult5~17 ;
-wire \core|Mult5~18 ;
-wire \core|Mult5~19 ;
-wire \core|Mult5~20 ;
-wire \core|Mult5~21 ;
-wire \core|Mult5~22 ;
-wire \core|Mult5~23 ;
-wire \core|Mult5~24 ;
-wire \core|Mult5~25 ;
-wire \core|Mult5~26 ;
-wire \core|Mult5~27 ;
-wire \core|Mult5~28 ;
-wire \core|Mult5~29 ;
-wire \core|Mult5~30 ;
-wire \core|Mult5~31 ;
-wire \core|Mult5~32 ;
-wire \core|Mult5~33 ;
-wire \core|Mult5~34 ;
-wire \core|Mult5~35 ;
-wire \core|Mult5~36 ;
-wire \core|Mult5~37 ;
-wire \core|Mult5~38 ;
-wire \core|Mult5~39 ;
-wire \core|Mult5~40 ;
-wire \core|Mult5~41 ;
-wire \core|Mult5~42 ;
-wire \core|Mult5~43 ;
-wire \core|Mult5~44 ;
-wire \core|Mult5~45 ;
-wire \core|Mult5~46 ;
-wire \core|Mult5~47 ;
-wire \core|Mult5~48 ;
-wire \core|Mult5~49 ;
-wire \core|Mult5~50 ;
-wire \core|Mult5~51 ;
-wire \core|Mult5~52 ;
-wire \core|Mult5~53 ;
-wire \core|Mult5~54 ;
-wire \core|Mult5~55 ;
+wire \core|Mult0~8_resulta ;
+wire \core|Mult0~9 ;
+wire \core|Mult0~10 ;
+wire \core|Mult0~11 ;
+wire \core|Mult0~12 ;
+wire \core|Mult0~13 ;
+wire \core|Mult0~14 ;
+wire \core|Mult0~15 ;
+wire \core|Mult0~16 ;
+wire \core|Mult0~17 ;
+wire \core|Mult0~18 ;
+wire \core|Mult0~19 ;
+wire \core|Mult0~20 ;
+wire \core|Mult0~21 ;
+wire \core|Mult0~22 ;
+wire \core|Mult0~23 ;
+wire \core|Mult0~24 ;
+wire \core|Mult0~25 ;
+wire \core|Mult0~26 ;
+wire \core|Mult0~27 ;
+wire \core|Mult0~28 ;
+wire \core|Mult0~29 ;
+wire \core|Mult0~30 ;
+wire \core|Mult0~31 ;
+wire \core|Mult0~32 ;
+wire \core|Mult0~33 ;
+wire \core|Mult0~34 ;
+wire \core|Mult0~35 ;
+wire \core|Mult0~36 ;
+wire \core|Mult0~37 ;
+wire \core|Mult0~38 ;
+wire \core|Mult0~39 ;
+wire \core|Mult0~40 ;
+wire \core|Mult0~41 ;
+wire \core|Mult0~42 ;
+wire \core|Mult0~43 ;
+wire \core|Mult0~44 ;
+wire \core|Mult0~45 ;
+wire \core|Mult0~46 ;
+wire \core|Mult0~47 ;
+wire \core|Mult0~48 ;
+wire \core|Mult0~49 ;
+wire \core|Mult0~50 ;
+wire \core|Mult0~51 ;
+wire \core|Mult0~52 ;
+wire \core|Mult0~53 ;
+wire \core|Mult0~54 ;
+wire \core|Mult0~55 ;
+wire \core|Mult1~8_resulta ;
+wire \core|Mult1~9 ;
+wire \core|Mult1~10 ;
+wire \core|Mult1~11 ;
+wire \core|Mult1~12 ;
+wire \core|Mult1~13 ;
+wire \core|Mult1~14 ;
+wire \core|Mult1~15 ;
+wire \core|Mult1~16 ;
+wire \core|Mult1~17 ;
+wire \core|Mult1~18 ;
+wire \core|Mult1~19 ;
+wire \core|Mult1~20 ;
+wire \core|Mult1~21 ;
+wire \core|Mult1~22 ;
+wire \core|Mult1~23 ;
+wire \core|Mult1~24 ;
+wire \core|Mult1~25 ;
+wire \core|Mult1~26 ;
+wire \core|Mult1~27 ;
+wire \core|Mult1~28 ;
+wire \core|Mult1~29 ;
+wire \core|Mult1~30 ;
+wire \core|Mult1~31 ;
+wire \core|Mult1~32 ;
+wire \core|Mult1~33 ;
+wire \core|Mult1~34 ;
+wire \core|Mult1~35 ;
+wire \core|Mult1~36 ;
+wire \core|Mult1~37 ;
+wire \core|Mult1~38 ;
+wire \core|Mult1~39 ;
+wire \core|Mult1~40 ;
+wire \core|Mult1~41 ;
+wire \core|Mult1~42 ;
+wire \core|Mult1~43 ;
+wire \core|Mult1~44 ;
+wire \core|Mult1~45 ;
+wire \core|Mult1~46 ;
+wire \core|Mult1~47 ;
+wire \core|Mult1~48 ;
+wire \core|Mult1~49 ;
+wire \core|Mult1~50 ;
+wire \core|Mult1~51 ;
+wire \core|Mult1~52 ;
+wire \core|Mult1~53 ;
+wire \core|Mult1~54 ;
+wire \core|Mult1~55 ;
 wire \u_jc|Mult0~8 ;
 wire \u_jc|Mult0~9 ;
 wire \u_jc|Mult0~10 ;
@@ -390,144 +390,6 @@ wire \core|Mult11~68 ;
 wire \core|Mult11~69 ;
 wire \core|Mult11~70 ;
 wire \core|Mult11~71 ;
-wire \core|Mult1~8 ;
-wire \core|Mult1~9 ;
-wire \core|Mult1~10 ;
-wire \core|Mult1~11 ;
-wire \core|Mult1~12 ;
-wire \core|Mult1~13 ;
-wire \core|Mult1~14 ;
-wire \core|Mult1~15 ;
-wire \core|Mult1~16 ;
-wire \core|Mult1~17 ;
-wire \core|Mult1~18 ;
-wire \core|Mult1~19 ;
-wire \core|Mult1~20 ;
-wire \core|Mult1~21 ;
-wire \core|Mult1~22 ;
-wire \core|Mult1~23 ;
-wire \core|Mult1~24 ;
-wire \core|Mult1~25 ;
-wire \core|Mult1~26 ;
-wire \core|Mult1~27 ;
-wire \core|Mult1~28 ;
-wire \core|Mult1~29 ;
-wire \core|Mult1~30 ;
-wire \core|Mult1~31 ;
-wire \core|Mult1~32 ;
-wire \core|Mult1~33 ;
-wire \core|Mult1~34 ;
-wire \core|Mult1~35 ;
-wire \core|Mult1~36 ;
-wire \core|Mult1~37 ;
-wire \core|Mult1~38 ;
-wire \core|Mult1~39 ;
-wire \core|Mult1~40 ;
-wire \core|Mult1~41 ;
-wire \core|Mult1~42 ;
-wire \core|Mult1~43 ;
-wire \core|Mult1~44 ;
-wire \core|Mult1~45 ;
-wire \core|Mult1~46 ;
-wire \core|Mult1~47 ;
-wire \core|Mult1~48 ;
-wire \core|Mult1~49 ;
-wire \core|Mult1~50 ;
-wire \core|Mult1~51 ;
-wire \core|Mult1~52 ;
-wire \core|Mult1~53 ;
-wire \core|Mult0~8 ;
-wire \core|Mult0~9 ;
-wire \core|Mult0~10 ;
-wire \core|Mult0~11 ;
-wire \core|Mult0~12 ;
-wire \core|Mult0~13 ;
-wire \core|Mult0~14 ;
-wire \core|Mult0~15 ;
-wire \core|Mult0~16 ;
-wire \core|Mult0~17 ;
-wire \core|Mult0~18 ;
-wire \core|Mult0~19 ;
-wire \core|Mult0~20 ;
-wire \core|Mult0~21 ;
-wire \core|Mult0~22 ;
-wire \core|Mult0~23 ;
-wire \core|Mult0~24 ;
-wire \core|Mult0~25 ;
-wire \core|Mult0~26 ;
-wire \core|Mult0~27 ;
-wire \core|Mult0~28 ;
-wire \core|Mult0~29 ;
-wire \core|Mult0~30 ;
-wire \core|Mult0~31 ;
-wire \core|Mult0~32 ;
-wire \core|Mult0~33 ;
-wire \core|Mult0~34 ;
-wire \core|Mult0~35 ;
-wire \core|Mult0~36 ;
-wire \core|Mult0~37 ;
-wire \core|Mult0~38 ;
-wire \core|Mult0~39 ;
-wire \core|Mult0~40 ;
-wire \core|Mult0~41 ;
-wire \core|Mult0~42 ;
-wire \core|Mult0~43 ;
-wire \core|Mult0~44 ;
-wire \core|Mult0~45 ;
-wire \core|Mult0~46 ;
-wire \core|Mult0~47 ;
-wire \core|Mult0~48 ;
-wire \core|Mult0~49 ;
-wire \core|Mult0~50 ;
-wire \core|Mult0~51 ;
-wire \core|Mult0~52 ;
-wire \core|Mult0~53 ;
-wire \core|Mult2~8 ;
-wire \core|Mult2~9 ;
-wire \core|Mult2~10 ;
-wire \core|Mult2~11 ;
-wire \core|Mult2~12 ;
-wire \core|Mult2~13 ;
-wire \core|Mult2~14 ;
-wire \core|Mult2~15 ;
-wire \core|Mult2~16 ;
-wire \core|Mult2~17 ;
-wire \core|Mult2~18 ;
-wire \core|Mult2~19 ;
-wire \core|Mult2~20 ;
-wire \core|Mult2~21 ;
-wire \core|Mult2~22 ;
-wire \core|Mult2~23 ;
-wire \core|Mult2~24 ;
-wire \core|Mult2~25 ;
-wire \core|Mult2~26 ;
-wire \core|Mult2~27 ;
-wire \core|Mult2~28 ;
-wire \core|Mult2~29 ;
-wire \core|Mult2~30 ;
-wire \core|Mult2~31 ;
-wire \core|Mult2~32 ;
-wire \core|Mult2~33 ;
-wire \core|Mult2~34 ;
-wire \core|Mult2~35 ;
-wire \core|Mult2~36 ;
-wire \core|Mult2~37 ;
-wire \core|Mult2~38 ;
-wire \core|Mult2~39 ;
-wire \core|Mult2~40 ;
-wire \core|Mult2~41 ;
-wire \core|Mult2~42 ;
-wire \core|Mult2~43 ;
-wire \core|Mult2~44 ;
-wire \core|Mult2~45 ;
-wire \core|Mult2~46 ;
-wire \core|Mult2~47 ;
-wire \core|Mult2~48 ;
-wire \core|Mult2~49 ;
-wire \core|Mult2~50 ;
-wire \core|Mult2~51 ;
-wire \core|Mult2~52 ;
-wire \core|Mult2~53 ;
 wire \core|Mult3~8 ;
 wire \core|Mult3~9 ;
 wire \core|Mult3~10 ;
@@ -574,6 +436,144 @@ wire \core|Mult3~50 ;
 wire \core|Mult3~51 ;
 wire \core|Mult3~52 ;
 wire \core|Mult3~53 ;
+wire \core|Mult2~8 ;
+wire \core|Mult2~9 ;
+wire \core|Mult2~10 ;
+wire \core|Mult2~11 ;
+wire \core|Mult2~12 ;
+wire \core|Mult2~13 ;
+wire \core|Mult2~14 ;
+wire \core|Mult2~15 ;
+wire \core|Mult2~16 ;
+wire \core|Mult2~17 ;
+wire \core|Mult2~18 ;
+wire \core|Mult2~19 ;
+wire \core|Mult2~20 ;
+wire \core|Mult2~21 ;
+wire \core|Mult2~22 ;
+wire \core|Mult2~23 ;
+wire \core|Mult2~24 ;
+wire \core|Mult2~25 ;
+wire \core|Mult2~26 ;
+wire \core|Mult2~27 ;
+wire \core|Mult2~28 ;
+wire \core|Mult2~29 ;
+wire \core|Mult2~30 ;
+wire \core|Mult2~31 ;
+wire \core|Mult2~32 ;
+wire \core|Mult2~33 ;
+wire \core|Mult2~34 ;
+wire \core|Mult2~35 ;
+wire \core|Mult2~36 ;
+wire \core|Mult2~37 ;
+wire \core|Mult2~38 ;
+wire \core|Mult2~39 ;
+wire \core|Mult2~40 ;
+wire \core|Mult2~41 ;
+wire \core|Mult2~42 ;
+wire \core|Mult2~43 ;
+wire \core|Mult2~44 ;
+wire \core|Mult2~45 ;
+wire \core|Mult2~46 ;
+wire \core|Mult2~47 ;
+wire \core|Mult2~48 ;
+wire \core|Mult2~49 ;
+wire \core|Mult2~50 ;
+wire \core|Mult2~51 ;
+wire \core|Mult2~52 ;
+wire \core|Mult2~53 ;
+wire \core|Mult4~8 ;
+wire \core|Mult4~9 ;
+wire \core|Mult4~10 ;
+wire \core|Mult4~11 ;
+wire \core|Mult4~12 ;
+wire \core|Mult4~13 ;
+wire \core|Mult4~14 ;
+wire \core|Mult4~15 ;
+wire \core|Mult4~16 ;
+wire \core|Mult4~17 ;
+wire \core|Mult4~18 ;
+wire \core|Mult4~19 ;
+wire \core|Mult4~20 ;
+wire \core|Mult4~21 ;
+wire \core|Mult4~22 ;
+wire \core|Mult4~23 ;
+wire \core|Mult4~24 ;
+wire \core|Mult4~25 ;
+wire \core|Mult4~26 ;
+wire \core|Mult4~27 ;
+wire \core|Mult4~28 ;
+wire \core|Mult4~29 ;
+wire \core|Mult4~30 ;
+wire \core|Mult4~31 ;
+wire \core|Mult4~32 ;
+wire \core|Mult4~33 ;
+wire \core|Mult4~34 ;
+wire \core|Mult4~35 ;
+wire \core|Mult4~36 ;
+wire \core|Mult4~37 ;
+wire \core|Mult4~38 ;
+wire \core|Mult4~39 ;
+wire \core|Mult4~40 ;
+wire \core|Mult4~41 ;
+wire \core|Mult4~42 ;
+wire \core|Mult4~43 ;
+wire \core|Mult4~44 ;
+wire \core|Mult4~45 ;
+wire \core|Mult4~46 ;
+wire \core|Mult4~47 ;
+wire \core|Mult4~48 ;
+wire \core|Mult4~49 ;
+wire \core|Mult4~50 ;
+wire \core|Mult4~51 ;
+wire \core|Mult4~52 ;
+wire \core|Mult4~53 ;
+wire \core|Mult5~8 ;
+wire \core|Mult5~9 ;
+wire \core|Mult5~10 ;
+wire \core|Mult5~11 ;
+wire \core|Mult5~12 ;
+wire \core|Mult5~13 ;
+wire \core|Mult5~14 ;
+wire \core|Mult5~15 ;
+wire \core|Mult5~16 ;
+wire \core|Mult5~17 ;
+wire \core|Mult5~18 ;
+wire \core|Mult5~19 ;
+wire \core|Mult5~20 ;
+wire \core|Mult5~21 ;
+wire \core|Mult5~22 ;
+wire \core|Mult5~23 ;
+wire \core|Mult5~24 ;
+wire \core|Mult5~25 ;
+wire \core|Mult5~26 ;
+wire \core|Mult5~27 ;
+wire \core|Mult5~28 ;
+wire \core|Mult5~29 ;
+wire \core|Mult5~30 ;
+wire \core|Mult5~31 ;
+wire \core|Mult5~32 ;
+wire \core|Mult5~33 ;
+wire \core|Mult5~34 ;
+wire \core|Mult5~35 ;
+wire \core|Mult5~36 ;
+wire \core|Mult5~37 ;
+wire \core|Mult5~38 ;
+wire \core|Mult5~39 ;
+wire \core|Mult5~40 ;
+wire \core|Mult5~41 ;
+wire \core|Mult5~42 ;
+wire \core|Mult5~43 ;
+wire \core|Mult5~44 ;
+wire \core|Mult5~45 ;
+wire \core|Mult5~46 ;
+wire \core|Mult5~47 ;
+wire \core|Mult5~48 ;
+wire \core|Mult5~49 ;
+wire \core|Mult5~50 ;
+wire \core|Mult5~51 ;
+wire \core|Mult5~52 ;
+wire \core|Mult5~53 ;
 wire \core|Mult7~20 ;
 wire \core|Mult7~21 ;
 wire \core|Mult7~22 ;
@@ -911,7 +911,7 @@ wire \u_jc|wr_addr_sync1[7]~feeder_combout ;
 wire \u_jc|wr_addr_hold_tck[2]~feeder_combout ;
 wire \u_jc|wr_addr_sync1[2]~feeder_combout ;
 wire \u_jc|wr_tog_sync_d~q ;
-wire \u_jc|always6~0_combout ;
+wire \u_jc|always7~0_combout ;
 wire \u_jc|wr_addr_hold_tck[0]~feeder_combout ;
 wire \u_jc|wr_addr_sync1[0]~feeder_combout ;
 wire \u_jc|wr_addr_sync1[4]~feeder_combout ;
@@ -2804,7 +2804,7 @@ wire \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag
 wire \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|tdo_mux_out~5_combout ;
 wire \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|tdo~q ;
 wire \altera_internal_jtag~TCKUTAP ;
-wire \u_jc|always6~1_combout ;
+wire \u_jc|always7~1_combout ;
 wire \u_jc|start_cnt~0_combout ;
 wire \u_jc|start_cnt[2]~1_combout ;
 wire \u_jc|start_cnt[0]~4_combout ;
@@ -3001,9 +3001,9 @@ wire [3:0] \u_jc|start_cnt ;
 wire [7:0] \u_jc|latched_addr ;
 wire [3:0] \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|hub_info_reg|WORD_SR ;
 wire [31:0] \u_jc|wr_data_sync2 ;
-wire [7:0] \u_jc|wr_addr_sync2 ;
+wire [31:0] \u_jc|wr_addr_sync2 ;
 wire [31:0] \u_jc|wr_data_sync1 ;
-wire [7:0] \u_jc|wr_addr_sync1 ;
+wire [31:0] \u_jc|wr_addr_sync1 ;
 wire [31:0] \u_jc|wr_data_hold_tck ;
 wire [7:0] \u_jc|wr_addr_hold_tck ;
 wire [31:0] \u_jc|reg_scale ;
@@ -3037,8 +3037,8 @@ wire [3:0] \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:wit
 wire [2:0] \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|hub_mode_reg ;
 wire [4:0] \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|hub_info_reg|word_counter ;
 
-wire [63:0] \core|Mult4~8_RESULTA_bus ;
-wire [63:0] \core|Mult5~8_RESULTA_bus ;
+wire [63:0] \core|Mult0~8_RESULTA_bus ;
+wire [63:0] \core|Mult1~8_RESULTA_bus ;
 wire [63:0] \u_jc|Mult0~mac_RESULTA_bus ;
 wire [1:0] \mem_in_view|mem_rtl_0|auto_generated|ram_block1a0_PORTBDATAOUT_bus ;
 wire [1:0] \mem_out|mem_rtl_0|auto_generated|ram_block1a0_PORTBDATAOUT_bus ;
@@ -3052,10 +3052,10 @@ wire [63:0] \core|Mult10~8_RESULTA_bus ;
 wire [1:0] \mem_out|mem_rtl_0|auto_generated|ram_block1a6_PORTBDATAOUT_bus ;
 wire [1:0] \mem_in_view|mem_rtl_0|auto_generated|ram_block1a6_PORTBDATAOUT_bus ;
 wire [63:0] \core|Mult11~8_RESULTA_bus ;
-wire [63:0] \core|Mult1~mac_RESULTA_bus ;
-wire [63:0] \core|Mult0~mac_RESULTA_bus ;
-wire [63:0] \core|Mult2~mac_RESULTA_bus ;
 wire [63:0] \core|Mult3~mac_RESULTA_bus ;
+wire [63:0] \core|Mult2~mac_RESULTA_bus ;
+wire [63:0] \core|Mult4~mac_RESULTA_bus ;
+wire [63:0] \core|Mult5~mac_RESULTA_bus ;
 wire [1:0] \mem_in|mem_rtl_0|auto_generated|ram_block1a0_PORTBDATAOUT_bus ;
 wire [1:0] \mem_in|mem_rtl_0|auto_generated|ram_block1a2_PORTBDATAOUT_bus ;
 wire [1:0] \mem_in|mem_rtl_0|auto_generated|ram_block1a4_PORTBDATAOUT_bus ;
@@ -3063,135 +3063,135 @@ wire [1:0] \mem_in|mem_rtl_0|auto_generated|ram_block1a6_PORTBDATAOUT_bus ;
 wire [63:0] \core|Mult7~8_RESULTA_bus ;
 wire [63:0] \core|Mult6~8_RESULTA_bus ;
 
-assign \core|Mult4~8_resulta  = \core|Mult4~8_RESULTA_bus [0];
-assign \core|Mult4~9  = \core|Mult4~8_RESULTA_bus [1];
-assign \core|Mult4~10  = \core|Mult4~8_RESULTA_bus [2];
-assign \core|Mult4~11  = \core|Mult4~8_RESULTA_bus [3];
-assign \core|Mult4~12  = \core|Mult4~8_RESULTA_bus [4];
-assign \core|Mult4~13  = \core|Mult4~8_RESULTA_bus [5];
-assign \core|Mult4~14  = \core|Mult4~8_RESULTA_bus [6];
-assign \core|Mult4~15  = \core|Mult4~8_RESULTA_bus [7];
-assign \core|out_w_reg [0] = \core|Mult4~8_RESULTA_bus [8];
-assign \core|out_w_reg [1] = \core|Mult4~8_RESULTA_bus [9];
-assign \core|out_w_reg [2] = \core|Mult4~8_RESULTA_bus [10];
-assign \core|out_w_reg [3] = \core|Mult4~8_RESULTA_bus [11];
-assign \core|out_w_reg [4] = \core|Mult4~8_RESULTA_bus [12];
-assign \core|out_w_reg [5] = \core|Mult4~8_RESULTA_bus [13];
-assign \core|out_w_reg [6] = \core|Mult4~8_RESULTA_bus [14];
-assign \core|out_w_reg [7] = \core|Mult4~8_RESULTA_bus [15];
-assign \core|out_w_reg [8] = \core|Mult4~8_RESULTA_bus [16];
-assign \core|out_w_reg [9] = \core|Mult4~8_RESULTA_bus [17];
-assign \core|out_w_reg [10] = \core|Mult4~8_RESULTA_bus [18];
-assign \core|out_w_reg [11] = \core|Mult4~8_RESULTA_bus [19];
-assign \core|out_w_reg [12] = \core|Mult4~8_RESULTA_bus [20];
-assign \core|out_w_reg [13] = \core|Mult4~8_RESULTA_bus [21];
-assign \core|out_w_reg [14] = \core|Mult4~8_RESULTA_bus [22];
-assign \core|out_w_reg [15] = \core|Mult4~8_RESULTA_bus [23];
-assign \core|Mult4~16  = \core|Mult4~8_RESULTA_bus [24];
-assign \core|Mult4~17  = \core|Mult4~8_RESULTA_bus [25];
-assign \core|Mult4~18  = \core|Mult4~8_RESULTA_bus [26];
-assign \core|Mult4~19  = \core|Mult4~8_RESULTA_bus [27];
-assign \core|Mult4~20  = \core|Mult4~8_RESULTA_bus [28];
-assign \core|Mult4~21  = \core|Mult4~8_RESULTA_bus [29];
-assign \core|Mult4~22  = \core|Mult4~8_RESULTA_bus [30];
-assign \core|Mult4~23  = \core|Mult4~8_RESULTA_bus [31];
-assign \core|Mult4~24  = \core|Mult4~8_RESULTA_bus [32];
-assign \core|Mult4~25  = \core|Mult4~8_RESULTA_bus [33];
-assign \core|Mult4~26  = \core|Mult4~8_RESULTA_bus [34];
-assign \core|Mult4~27  = \core|Mult4~8_RESULTA_bus [35];
-assign \core|Mult4~28  = \core|Mult4~8_RESULTA_bus [36];
-assign \core|Mult4~29  = \core|Mult4~8_RESULTA_bus [37];
-assign \core|Mult4~30  = \core|Mult4~8_RESULTA_bus [38];
-assign \core|Mult4~31  = \core|Mult4~8_RESULTA_bus [39];
-assign \core|Mult4~32  = \core|Mult4~8_RESULTA_bus [40];
-assign \core|Mult4~33  = \core|Mult4~8_RESULTA_bus [41];
-assign \core|Mult4~34  = \core|Mult4~8_RESULTA_bus [42];
-assign \core|Mult4~35  = \core|Mult4~8_RESULTA_bus [43];
-assign \core|Mult4~36  = \core|Mult4~8_RESULTA_bus [44];
-assign \core|Mult4~37  = \core|Mult4~8_RESULTA_bus [45];
-assign \core|Mult4~38  = \core|Mult4~8_RESULTA_bus [46];
-assign \core|Mult4~39  = \core|Mult4~8_RESULTA_bus [47];
-assign \core|Mult4~40  = \core|Mult4~8_RESULTA_bus [48];
-assign \core|Mult4~41  = \core|Mult4~8_RESULTA_bus [49];
-assign \core|Mult4~42  = \core|Mult4~8_RESULTA_bus [50];
-assign \core|Mult4~43  = \core|Mult4~8_RESULTA_bus [51];
-assign \core|Mult4~44  = \core|Mult4~8_RESULTA_bus [52];
-assign \core|Mult4~45  = \core|Mult4~8_RESULTA_bus [53];
-assign \core|Mult4~46  = \core|Mult4~8_RESULTA_bus [54];
-assign \core|Mult4~47  = \core|Mult4~8_RESULTA_bus [55];
-assign \core|Mult4~48  = \core|Mult4~8_RESULTA_bus [56];
-assign \core|Mult4~49  = \core|Mult4~8_RESULTA_bus [57];
-assign \core|Mult4~50  = \core|Mult4~8_RESULTA_bus [58];
-assign \core|Mult4~51  = \core|Mult4~8_RESULTA_bus [59];
-assign \core|Mult4~52  = \core|Mult4~8_RESULTA_bus [60];
-assign \core|Mult4~53  = \core|Mult4~8_RESULTA_bus [61];
-assign \core|Mult4~54  = \core|Mult4~8_RESULTA_bus [62];
-assign \core|Mult4~55  = \core|Mult4~8_RESULTA_bus [63];
+assign \core|Mult0~8_resulta  = \core|Mult0~8_RESULTA_bus [0];
+assign \core|Mult0~9  = \core|Mult0~8_RESULTA_bus [1];
+assign \core|Mult0~10  = \core|Mult0~8_RESULTA_bus [2];
+assign \core|Mult0~11  = \core|Mult0~8_RESULTA_bus [3];
+assign \core|Mult0~12  = \core|Mult0~8_RESULTA_bus [4];
+assign \core|Mult0~13  = \core|Mult0~8_RESULTA_bus [5];
+assign \core|Mult0~14  = \core|Mult0~8_RESULTA_bus [6];
+assign \core|Mult0~15  = \core|Mult0~8_RESULTA_bus [7];
+assign \core|out_w_reg [0] = \core|Mult0~8_RESULTA_bus [8];
+assign \core|out_w_reg [1] = \core|Mult0~8_RESULTA_bus [9];
+assign \core|out_w_reg [2] = \core|Mult0~8_RESULTA_bus [10];
+assign \core|out_w_reg [3] = \core|Mult0~8_RESULTA_bus [11];
+assign \core|out_w_reg [4] = \core|Mult0~8_RESULTA_bus [12];
+assign \core|out_w_reg [5] = \core|Mult0~8_RESULTA_bus [13];
+assign \core|out_w_reg [6] = \core|Mult0~8_RESULTA_bus [14];
+assign \core|out_w_reg [7] = \core|Mult0~8_RESULTA_bus [15];
+assign \core|out_w_reg [8] = \core|Mult0~8_RESULTA_bus [16];
+assign \core|out_w_reg [9] = \core|Mult0~8_RESULTA_bus [17];
+assign \core|out_w_reg [10] = \core|Mult0~8_RESULTA_bus [18];
+assign \core|out_w_reg [11] = \core|Mult0~8_RESULTA_bus [19];
+assign \core|out_w_reg [12] = \core|Mult0~8_RESULTA_bus [20];
+assign \core|out_w_reg [13] = \core|Mult0~8_RESULTA_bus [21];
+assign \core|out_w_reg [14] = \core|Mult0~8_RESULTA_bus [22];
+assign \core|out_w_reg [15] = \core|Mult0~8_RESULTA_bus [23];
+assign \core|Mult0~16  = \core|Mult0~8_RESULTA_bus [24];
+assign \core|Mult0~17  = \core|Mult0~8_RESULTA_bus [25];
+assign \core|Mult0~18  = \core|Mult0~8_RESULTA_bus [26];
+assign \core|Mult0~19  = \core|Mult0~8_RESULTA_bus [27];
+assign \core|Mult0~20  = \core|Mult0~8_RESULTA_bus [28];
+assign \core|Mult0~21  = \core|Mult0~8_RESULTA_bus [29];
+assign \core|Mult0~22  = \core|Mult0~8_RESULTA_bus [30];
+assign \core|Mult0~23  = \core|Mult0~8_RESULTA_bus [31];
+assign \core|Mult0~24  = \core|Mult0~8_RESULTA_bus [32];
+assign \core|Mult0~25  = \core|Mult0~8_RESULTA_bus [33];
+assign \core|Mult0~26  = \core|Mult0~8_RESULTA_bus [34];
+assign \core|Mult0~27  = \core|Mult0~8_RESULTA_bus [35];
+assign \core|Mult0~28  = \core|Mult0~8_RESULTA_bus [36];
+assign \core|Mult0~29  = \core|Mult0~8_RESULTA_bus [37];
+assign \core|Mult0~30  = \core|Mult0~8_RESULTA_bus [38];
+assign \core|Mult0~31  = \core|Mult0~8_RESULTA_bus [39];
+assign \core|Mult0~32  = \core|Mult0~8_RESULTA_bus [40];
+assign \core|Mult0~33  = \core|Mult0~8_RESULTA_bus [41];
+assign \core|Mult0~34  = \core|Mult0~8_RESULTA_bus [42];
+assign \core|Mult0~35  = \core|Mult0~8_RESULTA_bus [43];
+assign \core|Mult0~36  = \core|Mult0~8_RESULTA_bus [44];
+assign \core|Mult0~37  = \core|Mult0~8_RESULTA_bus [45];
+assign \core|Mult0~38  = \core|Mult0~8_RESULTA_bus [46];
+assign \core|Mult0~39  = \core|Mult0~8_RESULTA_bus [47];
+assign \core|Mult0~40  = \core|Mult0~8_RESULTA_bus [48];
+assign \core|Mult0~41  = \core|Mult0~8_RESULTA_bus [49];
+assign \core|Mult0~42  = \core|Mult0~8_RESULTA_bus [50];
+assign \core|Mult0~43  = \core|Mult0~8_RESULTA_bus [51];
+assign \core|Mult0~44  = \core|Mult0~8_RESULTA_bus [52];
+assign \core|Mult0~45  = \core|Mult0~8_RESULTA_bus [53];
+assign \core|Mult0~46  = \core|Mult0~8_RESULTA_bus [54];
+assign \core|Mult0~47  = \core|Mult0~8_RESULTA_bus [55];
+assign \core|Mult0~48  = \core|Mult0~8_RESULTA_bus [56];
+assign \core|Mult0~49  = \core|Mult0~8_RESULTA_bus [57];
+assign \core|Mult0~50  = \core|Mult0~8_RESULTA_bus [58];
+assign \core|Mult0~51  = \core|Mult0~8_RESULTA_bus [59];
+assign \core|Mult0~52  = \core|Mult0~8_RESULTA_bus [60];
+assign \core|Mult0~53  = \core|Mult0~8_RESULTA_bus [61];
+assign \core|Mult0~54  = \core|Mult0~8_RESULTA_bus [62];
+assign \core|Mult0~55  = \core|Mult0~8_RESULTA_bus [63];
 
-assign \core|Mult5~8_resulta  = \core|Mult5~8_RESULTA_bus [0];
-assign \core|Mult5~9  = \core|Mult5~8_RESULTA_bus [1];
-assign \core|Mult5~10  = \core|Mult5~8_RESULTA_bus [2];
-assign \core|Mult5~11  = \core|Mult5~8_RESULTA_bus [3];
-assign \core|Mult5~12  = \core|Mult5~8_RESULTA_bus [4];
-assign \core|Mult5~13  = \core|Mult5~8_RESULTA_bus [5];
-assign \core|Mult5~14  = \core|Mult5~8_RESULTA_bus [6];
-assign \core|Mult5~15  = \core|Mult5~8_RESULTA_bus [7];
-assign \core|out_h_reg [0] = \core|Mult5~8_RESULTA_bus [8];
-assign \core|out_h_reg [1] = \core|Mult5~8_RESULTA_bus [9];
-assign \core|out_h_reg [2] = \core|Mult5~8_RESULTA_bus [10];
-assign \core|out_h_reg [3] = \core|Mult5~8_RESULTA_bus [11];
-assign \core|out_h_reg [4] = \core|Mult5~8_RESULTA_bus [12];
-assign \core|out_h_reg [5] = \core|Mult5~8_RESULTA_bus [13];
-assign \core|out_h_reg [6] = \core|Mult5~8_RESULTA_bus [14];
-assign \core|out_h_reg [7] = \core|Mult5~8_RESULTA_bus [15];
-assign \core|out_h_reg [8] = \core|Mult5~8_RESULTA_bus [16];
-assign \core|out_h_reg [9] = \core|Mult5~8_RESULTA_bus [17];
-assign \core|out_h_reg [10] = \core|Mult5~8_RESULTA_bus [18];
-assign \core|out_h_reg [11] = \core|Mult5~8_RESULTA_bus [19];
-assign \core|out_h_reg [12] = \core|Mult5~8_RESULTA_bus [20];
-assign \core|out_h_reg [13] = \core|Mult5~8_RESULTA_bus [21];
-assign \core|out_h_reg [14] = \core|Mult5~8_RESULTA_bus [22];
-assign \core|out_h_reg [15] = \core|Mult5~8_RESULTA_bus [23];
-assign \core|Mult5~16  = \core|Mult5~8_RESULTA_bus [24];
-assign \core|Mult5~17  = \core|Mult5~8_RESULTA_bus [25];
-assign \core|Mult5~18  = \core|Mult5~8_RESULTA_bus [26];
-assign \core|Mult5~19  = \core|Mult5~8_RESULTA_bus [27];
-assign \core|Mult5~20  = \core|Mult5~8_RESULTA_bus [28];
-assign \core|Mult5~21  = \core|Mult5~8_RESULTA_bus [29];
-assign \core|Mult5~22  = \core|Mult5~8_RESULTA_bus [30];
-assign \core|Mult5~23  = \core|Mult5~8_RESULTA_bus [31];
-assign \core|Mult5~24  = \core|Mult5~8_RESULTA_bus [32];
-assign \core|Mult5~25  = \core|Mult5~8_RESULTA_bus [33];
-assign \core|Mult5~26  = \core|Mult5~8_RESULTA_bus [34];
-assign \core|Mult5~27  = \core|Mult5~8_RESULTA_bus [35];
-assign \core|Mult5~28  = \core|Mult5~8_RESULTA_bus [36];
-assign \core|Mult5~29  = \core|Mult5~8_RESULTA_bus [37];
-assign \core|Mult5~30  = \core|Mult5~8_RESULTA_bus [38];
-assign \core|Mult5~31  = \core|Mult5~8_RESULTA_bus [39];
-assign \core|Mult5~32  = \core|Mult5~8_RESULTA_bus [40];
-assign \core|Mult5~33  = \core|Mult5~8_RESULTA_bus [41];
-assign \core|Mult5~34  = \core|Mult5~8_RESULTA_bus [42];
-assign \core|Mult5~35  = \core|Mult5~8_RESULTA_bus [43];
-assign \core|Mult5~36  = \core|Mult5~8_RESULTA_bus [44];
-assign \core|Mult5~37  = \core|Mult5~8_RESULTA_bus [45];
-assign \core|Mult5~38  = \core|Mult5~8_RESULTA_bus [46];
-assign \core|Mult5~39  = \core|Mult5~8_RESULTA_bus [47];
-assign \core|Mult5~40  = \core|Mult5~8_RESULTA_bus [48];
-assign \core|Mult5~41  = \core|Mult5~8_RESULTA_bus [49];
-assign \core|Mult5~42  = \core|Mult5~8_RESULTA_bus [50];
-assign \core|Mult5~43  = \core|Mult5~8_RESULTA_bus [51];
-assign \core|Mult5~44  = \core|Mult5~8_RESULTA_bus [52];
-assign \core|Mult5~45  = \core|Mult5~8_RESULTA_bus [53];
-assign \core|Mult5~46  = \core|Mult5~8_RESULTA_bus [54];
-assign \core|Mult5~47  = \core|Mult5~8_RESULTA_bus [55];
-assign \core|Mult5~48  = \core|Mult5~8_RESULTA_bus [56];
-assign \core|Mult5~49  = \core|Mult5~8_RESULTA_bus [57];
-assign \core|Mult5~50  = \core|Mult5~8_RESULTA_bus [58];
-assign \core|Mult5~51  = \core|Mult5~8_RESULTA_bus [59];
-assign \core|Mult5~52  = \core|Mult5~8_RESULTA_bus [60];
-assign \core|Mult5~53  = \core|Mult5~8_RESULTA_bus [61];
-assign \core|Mult5~54  = \core|Mult5~8_RESULTA_bus [62];
-assign \core|Mult5~55  = \core|Mult5~8_RESULTA_bus [63];
+assign \core|Mult1~8_resulta  = \core|Mult1~8_RESULTA_bus [0];
+assign \core|Mult1~9  = \core|Mult1~8_RESULTA_bus [1];
+assign \core|Mult1~10  = \core|Mult1~8_RESULTA_bus [2];
+assign \core|Mult1~11  = \core|Mult1~8_RESULTA_bus [3];
+assign \core|Mult1~12  = \core|Mult1~8_RESULTA_bus [4];
+assign \core|Mult1~13  = \core|Mult1~8_RESULTA_bus [5];
+assign \core|Mult1~14  = \core|Mult1~8_RESULTA_bus [6];
+assign \core|Mult1~15  = \core|Mult1~8_RESULTA_bus [7];
+assign \core|out_h_reg [0] = \core|Mult1~8_RESULTA_bus [8];
+assign \core|out_h_reg [1] = \core|Mult1~8_RESULTA_bus [9];
+assign \core|out_h_reg [2] = \core|Mult1~8_RESULTA_bus [10];
+assign \core|out_h_reg [3] = \core|Mult1~8_RESULTA_bus [11];
+assign \core|out_h_reg [4] = \core|Mult1~8_RESULTA_bus [12];
+assign \core|out_h_reg [5] = \core|Mult1~8_RESULTA_bus [13];
+assign \core|out_h_reg [6] = \core|Mult1~8_RESULTA_bus [14];
+assign \core|out_h_reg [7] = \core|Mult1~8_RESULTA_bus [15];
+assign \core|out_h_reg [8] = \core|Mult1~8_RESULTA_bus [16];
+assign \core|out_h_reg [9] = \core|Mult1~8_RESULTA_bus [17];
+assign \core|out_h_reg [10] = \core|Mult1~8_RESULTA_bus [18];
+assign \core|out_h_reg [11] = \core|Mult1~8_RESULTA_bus [19];
+assign \core|out_h_reg [12] = \core|Mult1~8_RESULTA_bus [20];
+assign \core|out_h_reg [13] = \core|Mult1~8_RESULTA_bus [21];
+assign \core|out_h_reg [14] = \core|Mult1~8_RESULTA_bus [22];
+assign \core|out_h_reg [15] = \core|Mult1~8_RESULTA_bus [23];
+assign \core|Mult1~16  = \core|Mult1~8_RESULTA_bus [24];
+assign \core|Mult1~17  = \core|Mult1~8_RESULTA_bus [25];
+assign \core|Mult1~18  = \core|Mult1~8_RESULTA_bus [26];
+assign \core|Mult1~19  = \core|Mult1~8_RESULTA_bus [27];
+assign \core|Mult1~20  = \core|Mult1~8_RESULTA_bus [28];
+assign \core|Mult1~21  = \core|Mult1~8_RESULTA_bus [29];
+assign \core|Mult1~22  = \core|Mult1~8_RESULTA_bus [30];
+assign \core|Mult1~23  = \core|Mult1~8_RESULTA_bus [31];
+assign \core|Mult1~24  = \core|Mult1~8_RESULTA_bus [32];
+assign \core|Mult1~25  = \core|Mult1~8_RESULTA_bus [33];
+assign \core|Mult1~26  = \core|Mult1~8_RESULTA_bus [34];
+assign \core|Mult1~27  = \core|Mult1~8_RESULTA_bus [35];
+assign \core|Mult1~28  = \core|Mult1~8_RESULTA_bus [36];
+assign \core|Mult1~29  = \core|Mult1~8_RESULTA_bus [37];
+assign \core|Mult1~30  = \core|Mult1~8_RESULTA_bus [38];
+assign \core|Mult1~31  = \core|Mult1~8_RESULTA_bus [39];
+assign \core|Mult1~32  = \core|Mult1~8_RESULTA_bus [40];
+assign \core|Mult1~33  = \core|Mult1~8_RESULTA_bus [41];
+assign \core|Mult1~34  = \core|Mult1~8_RESULTA_bus [42];
+assign \core|Mult1~35  = \core|Mult1~8_RESULTA_bus [43];
+assign \core|Mult1~36  = \core|Mult1~8_RESULTA_bus [44];
+assign \core|Mult1~37  = \core|Mult1~8_RESULTA_bus [45];
+assign \core|Mult1~38  = \core|Mult1~8_RESULTA_bus [46];
+assign \core|Mult1~39  = \core|Mult1~8_RESULTA_bus [47];
+assign \core|Mult1~40  = \core|Mult1~8_RESULTA_bus [48];
+assign \core|Mult1~41  = \core|Mult1~8_RESULTA_bus [49];
+assign \core|Mult1~42  = \core|Mult1~8_RESULTA_bus [50];
+assign \core|Mult1~43  = \core|Mult1~8_RESULTA_bus [51];
+assign \core|Mult1~44  = \core|Mult1~8_RESULTA_bus [52];
+assign \core|Mult1~45  = \core|Mult1~8_RESULTA_bus [53];
+assign \core|Mult1~46  = \core|Mult1~8_RESULTA_bus [54];
+assign \core|Mult1~47  = \core|Mult1~8_RESULTA_bus [55];
+assign \core|Mult1~48  = \core|Mult1~8_RESULTA_bus [56];
+assign \core|Mult1~49  = \core|Mult1~8_RESULTA_bus [57];
+assign \core|Mult1~50  = \core|Mult1~8_RESULTA_bus [58];
+assign \core|Mult1~51  = \core|Mult1~8_RESULTA_bus [59];
+assign \core|Mult1~52  = \core|Mult1~8_RESULTA_bus [60];
+assign \core|Mult1~53  = \core|Mult1~8_RESULTA_bus [61];
+assign \core|Mult1~54  = \core|Mult1~8_RESULTA_bus [62];
+assign \core|Mult1~55  = \core|Mult1~8_RESULTA_bus [63];
 
 assign \u_jc|Mult0~mac_resulta  = \u_jc|Mult0~mac_RESULTA_bus [0];
 assign \u_jc|Mult0~325  = \u_jc|Mult0~mac_RESULTA_bus [1];
@@ -3542,154 +3542,89 @@ assign \core|Mult11~69  = \core|Mult11~8_RESULTA_bus [61];
 assign \core|Mult11~70  = \core|Mult11~8_RESULTA_bus [62];
 assign \core|Mult11~71  = \core|Mult11~8_RESULTA_bus [63];
 
-assign \core|w10_q016 [0] = \core|Mult1~mac_RESULTA_bus [0];
-assign \core|w10_q016 [1] = \core|Mult1~mac_RESULTA_bus [1];
-assign \core|w10_q016 [2] = \core|Mult1~mac_RESULTA_bus [2];
-assign \core|w10_q016 [3] = \core|Mult1~mac_RESULTA_bus [3];
-assign \core|w10_q016 [4] = \core|Mult1~mac_RESULTA_bus [4];
-assign \core|w10_q016 [5] = \core|Mult1~mac_RESULTA_bus [5];
-assign \core|w10_q016 [6] = \core|Mult1~mac_RESULTA_bus [6];
-assign \core|w10_q016 [7] = \core|Mult1~mac_RESULTA_bus [7];
-assign \core|w10_q016 [8] = \core|Mult1~mac_RESULTA_bus [8];
-assign \core|w10_q016 [9] = \core|Mult1~mac_RESULTA_bus [9];
-assign \core|w10_q016 [10] = \core|Mult1~mac_RESULTA_bus [10];
-assign \core|w10_q016 [11] = \core|Mult1~mac_RESULTA_bus [11];
-assign \core|w10_q016 [12] = \core|Mult1~mac_RESULTA_bus [12];
-assign \core|w10_q016 [13] = \core|Mult1~mac_RESULTA_bus [13];
-assign \core|w10_q016 [14] = \core|Mult1~mac_RESULTA_bus [14];
-assign \core|w10_q016 [15] = \core|Mult1~mac_RESULTA_bus [15];
-assign \core|w10_q016 [16] = \core|Mult1~mac_RESULTA_bus [16];
-assign \core|w10_q016 [17] = \core|Mult1~mac_RESULTA_bus [17];
-assign \core|Mult1~8  = \core|Mult1~mac_RESULTA_bus [18];
-assign \core|Mult1~9  = \core|Mult1~mac_RESULTA_bus [19];
-assign \core|Mult1~10  = \core|Mult1~mac_RESULTA_bus [20];
-assign \core|Mult1~11  = \core|Mult1~mac_RESULTA_bus [21];
-assign \core|Mult1~12  = \core|Mult1~mac_RESULTA_bus [22];
-assign \core|Mult1~13  = \core|Mult1~mac_RESULTA_bus [23];
-assign \core|Mult1~14  = \core|Mult1~mac_RESULTA_bus [24];
-assign \core|Mult1~15  = \core|Mult1~mac_RESULTA_bus [25];
-assign \core|Mult1~16  = \core|Mult1~mac_RESULTA_bus [26];
-assign \core|Mult1~17  = \core|Mult1~mac_RESULTA_bus [27];
-assign \core|Mult1~18  = \core|Mult1~mac_RESULTA_bus [28];
-assign \core|Mult1~19  = \core|Mult1~mac_RESULTA_bus [29];
-assign \core|Mult1~20  = \core|Mult1~mac_RESULTA_bus [30];
-assign \core|Mult1~21  = \core|Mult1~mac_RESULTA_bus [31];
-assign \core|Mult1~22  = \core|Mult1~mac_RESULTA_bus [32];
-assign \core|Mult1~23  = \core|Mult1~mac_RESULTA_bus [33];
-assign \core|Mult1~24  = \core|Mult1~mac_RESULTA_bus [34];
-assign \core|Mult1~25  = \core|Mult1~mac_RESULTA_bus [35];
-assign \core|Mult1~26  = \core|Mult1~mac_RESULTA_bus [36];
-assign \core|Mult1~27  = \core|Mult1~mac_RESULTA_bus [37];
-assign \core|Mult1~28  = \core|Mult1~mac_RESULTA_bus [38];
-assign \core|Mult1~29  = \core|Mult1~mac_RESULTA_bus [39];
-assign \core|Mult1~30  = \core|Mult1~mac_RESULTA_bus [40];
-assign \core|Mult1~31  = \core|Mult1~mac_RESULTA_bus [41];
-assign \core|Mult1~32  = \core|Mult1~mac_RESULTA_bus [42];
-assign \core|Mult1~33  = \core|Mult1~mac_RESULTA_bus [43];
-assign \core|Mult1~34  = \core|Mult1~mac_RESULTA_bus [44];
-assign \core|Mult1~35  = \core|Mult1~mac_RESULTA_bus [45];
-assign \core|Mult1~36  = \core|Mult1~mac_RESULTA_bus [46];
-assign \core|Mult1~37  = \core|Mult1~mac_RESULTA_bus [47];
-assign \core|Mult1~38  = \core|Mult1~mac_RESULTA_bus [48];
-assign \core|Mult1~39  = \core|Mult1~mac_RESULTA_bus [49];
-assign \core|Mult1~40  = \core|Mult1~mac_RESULTA_bus [50];
-assign \core|Mult1~41  = \core|Mult1~mac_RESULTA_bus [51];
-assign \core|Mult1~42  = \core|Mult1~mac_RESULTA_bus [52];
-assign \core|Mult1~43  = \core|Mult1~mac_RESULTA_bus [53];
-assign \core|Mult1~44  = \core|Mult1~mac_RESULTA_bus [54];
-assign \core|Mult1~45  = \core|Mult1~mac_RESULTA_bus [55];
-assign \core|Mult1~46  = \core|Mult1~mac_RESULTA_bus [56];
-assign \core|Mult1~47  = \core|Mult1~mac_RESULTA_bus [57];
-assign \core|Mult1~48  = \core|Mult1~mac_RESULTA_bus [58];
-assign \core|Mult1~49  = \core|Mult1~mac_RESULTA_bus [59];
-assign \core|Mult1~50  = \core|Mult1~mac_RESULTA_bus [60];
-assign \core|Mult1~51  = \core|Mult1~mac_RESULTA_bus [61];
-assign \core|Mult1~52  = \core|Mult1~mac_RESULTA_bus [62];
-assign \core|Mult1~53  = \core|Mult1~mac_RESULTA_bus [63];
+assign \core|w10_q016 [0] = \core|Mult3~mac_RESULTA_bus [0];
+assign \core|w10_q016 [1] = \core|Mult3~mac_RESULTA_bus [1];
+assign \core|w10_q016 [2] = \core|Mult3~mac_RESULTA_bus [2];
+assign \core|w10_q016 [3] = \core|Mult3~mac_RESULTA_bus [3];
+assign \core|w10_q016 [4] = \core|Mult3~mac_RESULTA_bus [4];
+assign \core|w10_q016 [5] = \core|Mult3~mac_RESULTA_bus [5];
+assign \core|w10_q016 [6] = \core|Mult3~mac_RESULTA_bus [6];
+assign \core|w10_q016 [7] = \core|Mult3~mac_RESULTA_bus [7];
+assign \core|w10_q016 [8] = \core|Mult3~mac_RESULTA_bus [8];
+assign \core|w10_q016 [9] = \core|Mult3~mac_RESULTA_bus [9];
+assign \core|w10_q016 [10] = \core|Mult3~mac_RESULTA_bus [10];
+assign \core|w10_q016 [11] = \core|Mult3~mac_RESULTA_bus [11];
+assign \core|w10_q016 [12] = \core|Mult3~mac_RESULTA_bus [12];
+assign \core|w10_q016 [13] = \core|Mult3~mac_RESULTA_bus [13];
+assign \core|w10_q016 [14] = \core|Mult3~mac_RESULTA_bus [14];
+assign \core|w10_q016 [15] = \core|Mult3~mac_RESULTA_bus [15];
+assign \core|w10_q016 [16] = \core|Mult3~mac_RESULTA_bus [16];
+assign \core|w10_q016 [17] = \core|Mult3~mac_RESULTA_bus [17];
+assign \core|Mult3~8  = \core|Mult3~mac_RESULTA_bus [18];
+assign \core|Mult3~9  = \core|Mult3~mac_RESULTA_bus [19];
+assign \core|Mult3~10  = \core|Mult3~mac_RESULTA_bus [20];
+assign \core|Mult3~11  = \core|Mult3~mac_RESULTA_bus [21];
+assign \core|Mult3~12  = \core|Mult3~mac_RESULTA_bus [22];
+assign \core|Mult3~13  = \core|Mult3~mac_RESULTA_bus [23];
+assign \core|Mult3~14  = \core|Mult3~mac_RESULTA_bus [24];
+assign \core|Mult3~15  = \core|Mult3~mac_RESULTA_bus [25];
+assign \core|Mult3~16  = \core|Mult3~mac_RESULTA_bus [26];
+assign \core|Mult3~17  = \core|Mult3~mac_RESULTA_bus [27];
+assign \core|Mult3~18  = \core|Mult3~mac_RESULTA_bus [28];
+assign \core|Mult3~19  = \core|Mult3~mac_RESULTA_bus [29];
+assign \core|Mult3~20  = \core|Mult3~mac_RESULTA_bus [30];
+assign \core|Mult3~21  = \core|Mult3~mac_RESULTA_bus [31];
+assign \core|Mult3~22  = \core|Mult3~mac_RESULTA_bus [32];
+assign \core|Mult3~23  = \core|Mult3~mac_RESULTA_bus [33];
+assign \core|Mult3~24  = \core|Mult3~mac_RESULTA_bus [34];
+assign \core|Mult3~25  = \core|Mult3~mac_RESULTA_bus [35];
+assign \core|Mult3~26  = \core|Mult3~mac_RESULTA_bus [36];
+assign \core|Mult3~27  = \core|Mult3~mac_RESULTA_bus [37];
+assign \core|Mult3~28  = \core|Mult3~mac_RESULTA_bus [38];
+assign \core|Mult3~29  = \core|Mult3~mac_RESULTA_bus [39];
+assign \core|Mult3~30  = \core|Mult3~mac_RESULTA_bus [40];
+assign \core|Mult3~31  = \core|Mult3~mac_RESULTA_bus [41];
+assign \core|Mult3~32  = \core|Mult3~mac_RESULTA_bus [42];
+assign \core|Mult3~33  = \core|Mult3~mac_RESULTA_bus [43];
+assign \core|Mult3~34  = \core|Mult3~mac_RESULTA_bus [44];
+assign \core|Mult3~35  = \core|Mult3~mac_RESULTA_bus [45];
+assign \core|Mult3~36  = \core|Mult3~mac_RESULTA_bus [46];
+assign \core|Mult3~37  = \core|Mult3~mac_RESULTA_bus [47];
+assign \core|Mult3~38  = \core|Mult3~mac_RESULTA_bus [48];
+assign \core|Mult3~39  = \core|Mult3~mac_RESULTA_bus [49];
+assign \core|Mult3~40  = \core|Mult3~mac_RESULTA_bus [50];
+assign \core|Mult3~41  = \core|Mult3~mac_RESULTA_bus [51];
+assign \core|Mult3~42  = \core|Mult3~mac_RESULTA_bus [52];
+assign \core|Mult3~43  = \core|Mult3~mac_RESULTA_bus [53];
+assign \core|Mult3~44  = \core|Mult3~mac_RESULTA_bus [54];
+assign \core|Mult3~45  = \core|Mult3~mac_RESULTA_bus [55];
+assign \core|Mult3~46  = \core|Mult3~mac_RESULTA_bus [56];
+assign \core|Mult3~47  = \core|Mult3~mac_RESULTA_bus [57];
+assign \core|Mult3~48  = \core|Mult3~mac_RESULTA_bus [58];
+assign \core|Mult3~49  = \core|Mult3~mac_RESULTA_bus [59];
+assign \core|Mult3~50  = \core|Mult3~mac_RESULTA_bus [60];
+assign \core|Mult3~51  = \core|Mult3~mac_RESULTA_bus [61];
+assign \core|Mult3~52  = \core|Mult3~mac_RESULTA_bus [62];
+assign \core|Mult3~53  = \core|Mult3~mac_RESULTA_bus [63];
 
-assign \core|w00_q016 [0] = \core|Mult0~mac_RESULTA_bus [0];
-assign \core|w00_q016 [1] = \core|Mult0~mac_RESULTA_bus [1];
-assign \core|w00_q016 [2] = \core|Mult0~mac_RESULTA_bus [2];
-assign \core|w00_q016 [3] = \core|Mult0~mac_RESULTA_bus [3];
-assign \core|w00_q016 [4] = \core|Mult0~mac_RESULTA_bus [4];
-assign \core|w00_q016 [5] = \core|Mult0~mac_RESULTA_bus [5];
-assign \core|w00_q016 [6] = \core|Mult0~mac_RESULTA_bus [6];
-assign \core|w00_q016 [7] = \core|Mult0~mac_RESULTA_bus [7];
-assign \core|w00_q016 [8] = \core|Mult0~mac_RESULTA_bus [8];
-assign \core|w00_q016 [9] = \core|Mult0~mac_RESULTA_bus [9];
-assign \core|w00_q016 [10] = \core|Mult0~mac_RESULTA_bus [10];
-assign \core|w00_q016 [11] = \core|Mult0~mac_RESULTA_bus [11];
-assign \core|w00_q016 [12] = \core|Mult0~mac_RESULTA_bus [12];
-assign \core|w00_q016 [13] = \core|Mult0~mac_RESULTA_bus [13];
-assign \core|w00_q016 [14] = \core|Mult0~mac_RESULTA_bus [14];
-assign \core|w00_q016 [15] = \core|Mult0~mac_RESULTA_bus [15];
-assign \core|w00_q016 [16] = \core|Mult0~mac_RESULTA_bus [16];
-assign \core|w00_q016 [17] = \core|Mult0~mac_RESULTA_bus [17];
-assign \core|Mult0~8  = \core|Mult0~mac_RESULTA_bus [18];
-assign \core|Mult0~9  = \core|Mult0~mac_RESULTA_bus [19];
-assign \core|Mult0~10  = \core|Mult0~mac_RESULTA_bus [20];
-assign \core|Mult0~11  = \core|Mult0~mac_RESULTA_bus [21];
-assign \core|Mult0~12  = \core|Mult0~mac_RESULTA_bus [22];
-assign \core|Mult0~13  = \core|Mult0~mac_RESULTA_bus [23];
-assign \core|Mult0~14  = \core|Mult0~mac_RESULTA_bus [24];
-assign \core|Mult0~15  = \core|Mult0~mac_RESULTA_bus [25];
-assign \core|Mult0~16  = \core|Mult0~mac_RESULTA_bus [26];
-assign \core|Mult0~17  = \core|Mult0~mac_RESULTA_bus [27];
-assign \core|Mult0~18  = \core|Mult0~mac_RESULTA_bus [28];
-assign \core|Mult0~19  = \core|Mult0~mac_RESULTA_bus [29];
-assign \core|Mult0~20  = \core|Mult0~mac_RESULTA_bus [30];
-assign \core|Mult0~21  = \core|Mult0~mac_RESULTA_bus [31];
-assign \core|Mult0~22  = \core|Mult0~mac_RESULTA_bus [32];
-assign \core|Mult0~23  = \core|Mult0~mac_RESULTA_bus [33];
-assign \core|Mult0~24  = \core|Mult0~mac_RESULTA_bus [34];
-assign \core|Mult0~25  = \core|Mult0~mac_RESULTA_bus [35];
-assign \core|Mult0~26  = \core|Mult0~mac_RESULTA_bus [36];
-assign \core|Mult0~27  = \core|Mult0~mac_RESULTA_bus [37];
-assign \core|Mult0~28  = \core|Mult0~mac_RESULTA_bus [38];
-assign \core|Mult0~29  = \core|Mult0~mac_RESULTA_bus [39];
-assign \core|Mult0~30  = \core|Mult0~mac_RESULTA_bus [40];
-assign \core|Mult0~31  = \core|Mult0~mac_RESULTA_bus [41];
-assign \core|Mult0~32  = \core|Mult0~mac_RESULTA_bus [42];
-assign \core|Mult0~33  = \core|Mult0~mac_RESULTA_bus [43];
-assign \core|Mult0~34  = \core|Mult0~mac_RESULTA_bus [44];
-assign \core|Mult0~35  = \core|Mult0~mac_RESULTA_bus [45];
-assign \core|Mult0~36  = \core|Mult0~mac_RESULTA_bus [46];
-assign \core|Mult0~37  = \core|Mult0~mac_RESULTA_bus [47];
-assign \core|Mult0~38  = \core|Mult0~mac_RESULTA_bus [48];
-assign \core|Mult0~39  = \core|Mult0~mac_RESULTA_bus [49];
-assign \core|Mult0~40  = \core|Mult0~mac_RESULTA_bus [50];
-assign \core|Mult0~41  = \core|Mult0~mac_RESULTA_bus [51];
-assign \core|Mult0~42  = \core|Mult0~mac_RESULTA_bus [52];
-assign \core|Mult0~43  = \core|Mult0~mac_RESULTA_bus [53];
-assign \core|Mult0~44  = \core|Mult0~mac_RESULTA_bus [54];
-assign \core|Mult0~45  = \core|Mult0~mac_RESULTA_bus [55];
-assign \core|Mult0~46  = \core|Mult0~mac_RESULTA_bus [56];
-assign \core|Mult0~47  = \core|Mult0~mac_RESULTA_bus [57];
-assign \core|Mult0~48  = \core|Mult0~mac_RESULTA_bus [58];
-assign \core|Mult0~49  = \core|Mult0~mac_RESULTA_bus [59];
-assign \core|Mult0~50  = \core|Mult0~mac_RESULTA_bus [60];
-assign \core|Mult0~51  = \core|Mult0~mac_RESULTA_bus [61];
-assign \core|Mult0~52  = \core|Mult0~mac_RESULTA_bus [62];
-assign \core|Mult0~53  = \core|Mult0~mac_RESULTA_bus [63];
-
-assign \core|w01_q016 [0] = \core|Mult2~mac_RESULTA_bus [0];
-assign \core|w01_q016 [1] = \core|Mult2~mac_RESULTA_bus [1];
-assign \core|w01_q016 [2] = \core|Mult2~mac_RESULTA_bus [2];
-assign \core|w01_q016 [3] = \core|Mult2~mac_RESULTA_bus [3];
-assign \core|w01_q016 [4] = \core|Mult2~mac_RESULTA_bus [4];
-assign \core|w01_q016 [5] = \core|Mult2~mac_RESULTA_bus [5];
-assign \core|w01_q016 [6] = \core|Mult2~mac_RESULTA_bus [6];
-assign \core|w01_q016 [7] = \core|Mult2~mac_RESULTA_bus [7];
-assign \core|w01_q016 [8] = \core|Mult2~mac_RESULTA_bus [8];
-assign \core|w01_q016 [9] = \core|Mult2~mac_RESULTA_bus [9];
-assign \core|w01_q016 [10] = \core|Mult2~mac_RESULTA_bus [10];
-assign \core|w01_q016 [11] = \core|Mult2~mac_RESULTA_bus [11];
-assign \core|w01_q016 [12] = \core|Mult2~mac_RESULTA_bus [12];
-assign \core|w01_q016 [13] = \core|Mult2~mac_RESULTA_bus [13];
-assign \core|w01_q016 [14] = \core|Mult2~mac_RESULTA_bus [14];
-assign \core|w01_q016 [15] = \core|Mult2~mac_RESULTA_bus [15];
-assign \core|w01_q016 [16] = \core|Mult2~mac_RESULTA_bus [16];
-assign \core|w01_q016 [17] = \core|Mult2~mac_RESULTA_bus [17];
+assign \core|w00_q016 [0] = \core|Mult2~mac_RESULTA_bus [0];
+assign \core|w00_q016 [1] = \core|Mult2~mac_RESULTA_bus [1];
+assign \core|w00_q016 [2] = \core|Mult2~mac_RESULTA_bus [2];
+assign \core|w00_q016 [3] = \core|Mult2~mac_RESULTA_bus [3];
+assign \core|w00_q016 [4] = \core|Mult2~mac_RESULTA_bus [4];
+assign \core|w00_q016 [5] = \core|Mult2~mac_RESULTA_bus [5];
+assign \core|w00_q016 [6] = \core|Mult2~mac_RESULTA_bus [6];
+assign \core|w00_q016 [7] = \core|Mult2~mac_RESULTA_bus [7];
+assign \core|w00_q016 [8] = \core|Mult2~mac_RESULTA_bus [8];
+assign \core|w00_q016 [9] = \core|Mult2~mac_RESULTA_bus [9];
+assign \core|w00_q016 [10] = \core|Mult2~mac_RESULTA_bus [10];
+assign \core|w00_q016 [11] = \core|Mult2~mac_RESULTA_bus [11];
+assign \core|w00_q016 [12] = \core|Mult2~mac_RESULTA_bus [12];
+assign \core|w00_q016 [13] = \core|Mult2~mac_RESULTA_bus [13];
+assign \core|w00_q016 [14] = \core|Mult2~mac_RESULTA_bus [14];
+assign \core|w00_q016 [15] = \core|Mult2~mac_RESULTA_bus [15];
+assign \core|w00_q016 [16] = \core|Mult2~mac_RESULTA_bus [16];
+assign \core|w00_q016 [17] = \core|Mult2~mac_RESULTA_bus [17];
 assign \core|Mult2~8  = \core|Mult2~mac_RESULTA_bus [18];
 assign \core|Mult2~9  = \core|Mult2~mac_RESULTA_bus [19];
 assign \core|Mult2~10  = \core|Mult2~mac_RESULTA_bus [20];
@@ -3737,70 +3672,135 @@ assign \core|Mult2~51  = \core|Mult2~mac_RESULTA_bus [61];
 assign \core|Mult2~52  = \core|Mult2~mac_RESULTA_bus [62];
 assign \core|Mult2~53  = \core|Mult2~mac_RESULTA_bus [63];
 
-assign \core|w11_q016 [0] = \core|Mult3~mac_RESULTA_bus [0];
-assign \core|w11_q016 [1] = \core|Mult3~mac_RESULTA_bus [1];
-assign \core|w11_q016 [2] = \core|Mult3~mac_RESULTA_bus [2];
-assign \core|w11_q016 [3] = \core|Mult3~mac_RESULTA_bus [3];
-assign \core|w11_q016 [4] = \core|Mult3~mac_RESULTA_bus [4];
-assign \core|w11_q016 [5] = \core|Mult3~mac_RESULTA_bus [5];
-assign \core|w11_q016 [6] = \core|Mult3~mac_RESULTA_bus [6];
-assign \core|w11_q016 [7] = \core|Mult3~mac_RESULTA_bus [7];
-assign \core|w11_q016 [8] = \core|Mult3~mac_RESULTA_bus [8];
-assign \core|w11_q016 [9] = \core|Mult3~mac_RESULTA_bus [9];
-assign \core|w11_q016 [10] = \core|Mult3~mac_RESULTA_bus [10];
-assign \core|w11_q016 [11] = \core|Mult3~mac_RESULTA_bus [11];
-assign \core|w11_q016 [12] = \core|Mult3~mac_RESULTA_bus [12];
-assign \core|w11_q016 [13] = \core|Mult3~mac_RESULTA_bus [13];
-assign \core|w11_q016 [14] = \core|Mult3~mac_RESULTA_bus [14];
-assign \core|w11_q016 [15] = \core|Mult3~mac_RESULTA_bus [15];
-assign \core|w11_q016 [16] = \core|Mult3~mac_RESULTA_bus [16];
-assign \core|w11_q016 [17] = \core|Mult3~mac_RESULTA_bus [17];
-assign \core|Mult3~8  = \core|Mult3~mac_RESULTA_bus [18];
-assign \core|Mult3~9  = \core|Mult3~mac_RESULTA_bus [19];
-assign \core|Mult3~10  = \core|Mult3~mac_RESULTA_bus [20];
-assign \core|Mult3~11  = \core|Mult3~mac_RESULTA_bus [21];
-assign \core|Mult3~12  = \core|Mult3~mac_RESULTA_bus [22];
-assign \core|Mult3~13  = \core|Mult3~mac_RESULTA_bus [23];
-assign \core|Mult3~14  = \core|Mult3~mac_RESULTA_bus [24];
-assign \core|Mult3~15  = \core|Mult3~mac_RESULTA_bus [25];
-assign \core|Mult3~16  = \core|Mult3~mac_RESULTA_bus [26];
-assign \core|Mult3~17  = \core|Mult3~mac_RESULTA_bus [27];
-assign \core|Mult3~18  = \core|Mult3~mac_RESULTA_bus [28];
-assign \core|Mult3~19  = \core|Mult3~mac_RESULTA_bus [29];
-assign \core|Mult3~20  = \core|Mult3~mac_RESULTA_bus [30];
-assign \core|Mult3~21  = \core|Mult3~mac_RESULTA_bus [31];
-assign \core|Mult3~22  = \core|Mult3~mac_RESULTA_bus [32];
-assign \core|Mult3~23  = \core|Mult3~mac_RESULTA_bus [33];
-assign \core|Mult3~24  = \core|Mult3~mac_RESULTA_bus [34];
-assign \core|Mult3~25  = \core|Mult3~mac_RESULTA_bus [35];
-assign \core|Mult3~26  = \core|Mult3~mac_RESULTA_bus [36];
-assign \core|Mult3~27  = \core|Mult3~mac_RESULTA_bus [37];
-assign \core|Mult3~28  = \core|Mult3~mac_RESULTA_bus [38];
-assign \core|Mult3~29  = \core|Mult3~mac_RESULTA_bus [39];
-assign \core|Mult3~30  = \core|Mult3~mac_RESULTA_bus [40];
-assign \core|Mult3~31  = \core|Mult3~mac_RESULTA_bus [41];
-assign \core|Mult3~32  = \core|Mult3~mac_RESULTA_bus [42];
-assign \core|Mult3~33  = \core|Mult3~mac_RESULTA_bus [43];
-assign \core|Mult3~34  = \core|Mult3~mac_RESULTA_bus [44];
-assign \core|Mult3~35  = \core|Mult3~mac_RESULTA_bus [45];
-assign \core|Mult3~36  = \core|Mult3~mac_RESULTA_bus [46];
-assign \core|Mult3~37  = \core|Mult3~mac_RESULTA_bus [47];
-assign \core|Mult3~38  = \core|Mult3~mac_RESULTA_bus [48];
-assign \core|Mult3~39  = \core|Mult3~mac_RESULTA_bus [49];
-assign \core|Mult3~40  = \core|Mult3~mac_RESULTA_bus [50];
-assign \core|Mult3~41  = \core|Mult3~mac_RESULTA_bus [51];
-assign \core|Mult3~42  = \core|Mult3~mac_RESULTA_bus [52];
-assign \core|Mult3~43  = \core|Mult3~mac_RESULTA_bus [53];
-assign \core|Mult3~44  = \core|Mult3~mac_RESULTA_bus [54];
-assign \core|Mult3~45  = \core|Mult3~mac_RESULTA_bus [55];
-assign \core|Mult3~46  = \core|Mult3~mac_RESULTA_bus [56];
-assign \core|Mult3~47  = \core|Mult3~mac_RESULTA_bus [57];
-assign \core|Mult3~48  = \core|Mult3~mac_RESULTA_bus [58];
-assign \core|Mult3~49  = \core|Mult3~mac_RESULTA_bus [59];
-assign \core|Mult3~50  = \core|Mult3~mac_RESULTA_bus [60];
-assign \core|Mult3~51  = \core|Mult3~mac_RESULTA_bus [61];
-assign \core|Mult3~52  = \core|Mult3~mac_RESULTA_bus [62];
-assign \core|Mult3~53  = \core|Mult3~mac_RESULTA_bus [63];
+assign \core|w01_q016 [0] = \core|Mult4~mac_RESULTA_bus [0];
+assign \core|w01_q016 [1] = \core|Mult4~mac_RESULTA_bus [1];
+assign \core|w01_q016 [2] = \core|Mult4~mac_RESULTA_bus [2];
+assign \core|w01_q016 [3] = \core|Mult4~mac_RESULTA_bus [3];
+assign \core|w01_q016 [4] = \core|Mult4~mac_RESULTA_bus [4];
+assign \core|w01_q016 [5] = \core|Mult4~mac_RESULTA_bus [5];
+assign \core|w01_q016 [6] = \core|Mult4~mac_RESULTA_bus [6];
+assign \core|w01_q016 [7] = \core|Mult4~mac_RESULTA_bus [7];
+assign \core|w01_q016 [8] = \core|Mult4~mac_RESULTA_bus [8];
+assign \core|w01_q016 [9] = \core|Mult4~mac_RESULTA_bus [9];
+assign \core|w01_q016 [10] = \core|Mult4~mac_RESULTA_bus [10];
+assign \core|w01_q016 [11] = \core|Mult4~mac_RESULTA_bus [11];
+assign \core|w01_q016 [12] = \core|Mult4~mac_RESULTA_bus [12];
+assign \core|w01_q016 [13] = \core|Mult4~mac_RESULTA_bus [13];
+assign \core|w01_q016 [14] = \core|Mult4~mac_RESULTA_bus [14];
+assign \core|w01_q016 [15] = \core|Mult4~mac_RESULTA_bus [15];
+assign \core|w01_q016 [16] = \core|Mult4~mac_RESULTA_bus [16];
+assign \core|w01_q016 [17] = \core|Mult4~mac_RESULTA_bus [17];
+assign \core|Mult4~8  = \core|Mult4~mac_RESULTA_bus [18];
+assign \core|Mult4~9  = \core|Mult4~mac_RESULTA_bus [19];
+assign \core|Mult4~10  = \core|Mult4~mac_RESULTA_bus [20];
+assign \core|Mult4~11  = \core|Mult4~mac_RESULTA_bus [21];
+assign \core|Mult4~12  = \core|Mult4~mac_RESULTA_bus [22];
+assign \core|Mult4~13  = \core|Mult4~mac_RESULTA_bus [23];
+assign \core|Mult4~14  = \core|Mult4~mac_RESULTA_bus [24];
+assign \core|Mult4~15  = \core|Mult4~mac_RESULTA_bus [25];
+assign \core|Mult4~16  = \core|Mult4~mac_RESULTA_bus [26];
+assign \core|Mult4~17  = \core|Mult4~mac_RESULTA_bus [27];
+assign \core|Mult4~18  = \core|Mult4~mac_RESULTA_bus [28];
+assign \core|Mult4~19  = \core|Mult4~mac_RESULTA_bus [29];
+assign \core|Mult4~20  = \core|Mult4~mac_RESULTA_bus [30];
+assign \core|Mult4~21  = \core|Mult4~mac_RESULTA_bus [31];
+assign \core|Mult4~22  = \core|Mult4~mac_RESULTA_bus [32];
+assign \core|Mult4~23  = \core|Mult4~mac_RESULTA_bus [33];
+assign \core|Mult4~24  = \core|Mult4~mac_RESULTA_bus [34];
+assign \core|Mult4~25  = \core|Mult4~mac_RESULTA_bus [35];
+assign \core|Mult4~26  = \core|Mult4~mac_RESULTA_bus [36];
+assign \core|Mult4~27  = \core|Mult4~mac_RESULTA_bus [37];
+assign \core|Mult4~28  = \core|Mult4~mac_RESULTA_bus [38];
+assign \core|Mult4~29  = \core|Mult4~mac_RESULTA_bus [39];
+assign \core|Mult4~30  = \core|Mult4~mac_RESULTA_bus [40];
+assign \core|Mult4~31  = \core|Mult4~mac_RESULTA_bus [41];
+assign \core|Mult4~32  = \core|Mult4~mac_RESULTA_bus [42];
+assign \core|Mult4~33  = \core|Mult4~mac_RESULTA_bus [43];
+assign \core|Mult4~34  = \core|Mult4~mac_RESULTA_bus [44];
+assign \core|Mult4~35  = \core|Mult4~mac_RESULTA_bus [45];
+assign \core|Mult4~36  = \core|Mult4~mac_RESULTA_bus [46];
+assign \core|Mult4~37  = \core|Mult4~mac_RESULTA_bus [47];
+assign \core|Mult4~38  = \core|Mult4~mac_RESULTA_bus [48];
+assign \core|Mult4~39  = \core|Mult4~mac_RESULTA_bus [49];
+assign \core|Mult4~40  = \core|Mult4~mac_RESULTA_bus [50];
+assign \core|Mult4~41  = \core|Mult4~mac_RESULTA_bus [51];
+assign \core|Mult4~42  = \core|Mult4~mac_RESULTA_bus [52];
+assign \core|Mult4~43  = \core|Mult4~mac_RESULTA_bus [53];
+assign \core|Mult4~44  = \core|Mult4~mac_RESULTA_bus [54];
+assign \core|Mult4~45  = \core|Mult4~mac_RESULTA_bus [55];
+assign \core|Mult4~46  = \core|Mult4~mac_RESULTA_bus [56];
+assign \core|Mult4~47  = \core|Mult4~mac_RESULTA_bus [57];
+assign \core|Mult4~48  = \core|Mult4~mac_RESULTA_bus [58];
+assign \core|Mult4~49  = \core|Mult4~mac_RESULTA_bus [59];
+assign \core|Mult4~50  = \core|Mult4~mac_RESULTA_bus [60];
+assign \core|Mult4~51  = \core|Mult4~mac_RESULTA_bus [61];
+assign \core|Mult4~52  = \core|Mult4~mac_RESULTA_bus [62];
+assign \core|Mult4~53  = \core|Mult4~mac_RESULTA_bus [63];
+
+assign \core|w11_q016 [0] = \core|Mult5~mac_RESULTA_bus [0];
+assign \core|w11_q016 [1] = \core|Mult5~mac_RESULTA_bus [1];
+assign \core|w11_q016 [2] = \core|Mult5~mac_RESULTA_bus [2];
+assign \core|w11_q016 [3] = \core|Mult5~mac_RESULTA_bus [3];
+assign \core|w11_q016 [4] = \core|Mult5~mac_RESULTA_bus [4];
+assign \core|w11_q016 [5] = \core|Mult5~mac_RESULTA_bus [5];
+assign \core|w11_q016 [6] = \core|Mult5~mac_RESULTA_bus [6];
+assign \core|w11_q016 [7] = \core|Mult5~mac_RESULTA_bus [7];
+assign \core|w11_q016 [8] = \core|Mult5~mac_RESULTA_bus [8];
+assign \core|w11_q016 [9] = \core|Mult5~mac_RESULTA_bus [9];
+assign \core|w11_q016 [10] = \core|Mult5~mac_RESULTA_bus [10];
+assign \core|w11_q016 [11] = \core|Mult5~mac_RESULTA_bus [11];
+assign \core|w11_q016 [12] = \core|Mult5~mac_RESULTA_bus [12];
+assign \core|w11_q016 [13] = \core|Mult5~mac_RESULTA_bus [13];
+assign \core|w11_q016 [14] = \core|Mult5~mac_RESULTA_bus [14];
+assign \core|w11_q016 [15] = \core|Mult5~mac_RESULTA_bus [15];
+assign \core|w11_q016 [16] = \core|Mult5~mac_RESULTA_bus [16];
+assign \core|w11_q016 [17] = \core|Mult5~mac_RESULTA_bus [17];
+assign \core|Mult5~8  = \core|Mult5~mac_RESULTA_bus [18];
+assign \core|Mult5~9  = \core|Mult5~mac_RESULTA_bus [19];
+assign \core|Mult5~10  = \core|Mult5~mac_RESULTA_bus [20];
+assign \core|Mult5~11  = \core|Mult5~mac_RESULTA_bus [21];
+assign \core|Mult5~12  = \core|Mult5~mac_RESULTA_bus [22];
+assign \core|Mult5~13  = \core|Mult5~mac_RESULTA_bus [23];
+assign \core|Mult5~14  = \core|Mult5~mac_RESULTA_bus [24];
+assign \core|Mult5~15  = \core|Mult5~mac_RESULTA_bus [25];
+assign \core|Mult5~16  = \core|Mult5~mac_RESULTA_bus [26];
+assign \core|Mult5~17  = \core|Mult5~mac_RESULTA_bus [27];
+assign \core|Mult5~18  = \core|Mult5~mac_RESULTA_bus [28];
+assign \core|Mult5~19  = \core|Mult5~mac_RESULTA_bus [29];
+assign \core|Mult5~20  = \core|Mult5~mac_RESULTA_bus [30];
+assign \core|Mult5~21  = \core|Mult5~mac_RESULTA_bus [31];
+assign \core|Mult5~22  = \core|Mult5~mac_RESULTA_bus [32];
+assign \core|Mult5~23  = \core|Mult5~mac_RESULTA_bus [33];
+assign \core|Mult5~24  = \core|Mult5~mac_RESULTA_bus [34];
+assign \core|Mult5~25  = \core|Mult5~mac_RESULTA_bus [35];
+assign \core|Mult5~26  = \core|Mult5~mac_RESULTA_bus [36];
+assign \core|Mult5~27  = \core|Mult5~mac_RESULTA_bus [37];
+assign \core|Mult5~28  = \core|Mult5~mac_RESULTA_bus [38];
+assign \core|Mult5~29  = \core|Mult5~mac_RESULTA_bus [39];
+assign \core|Mult5~30  = \core|Mult5~mac_RESULTA_bus [40];
+assign \core|Mult5~31  = \core|Mult5~mac_RESULTA_bus [41];
+assign \core|Mult5~32  = \core|Mult5~mac_RESULTA_bus [42];
+assign \core|Mult5~33  = \core|Mult5~mac_RESULTA_bus [43];
+assign \core|Mult5~34  = \core|Mult5~mac_RESULTA_bus [44];
+assign \core|Mult5~35  = \core|Mult5~mac_RESULTA_bus [45];
+assign \core|Mult5~36  = \core|Mult5~mac_RESULTA_bus [46];
+assign \core|Mult5~37  = \core|Mult5~mac_RESULTA_bus [47];
+assign \core|Mult5~38  = \core|Mult5~mac_RESULTA_bus [48];
+assign \core|Mult5~39  = \core|Mult5~mac_RESULTA_bus [49];
+assign \core|Mult5~40  = \core|Mult5~mac_RESULTA_bus [50];
+assign \core|Mult5~41  = \core|Mult5~mac_RESULTA_bus [51];
+assign \core|Mult5~42  = \core|Mult5~mac_RESULTA_bus [52];
+assign \core|Mult5~43  = \core|Mult5~mac_RESULTA_bus [53];
+assign \core|Mult5~44  = \core|Mult5~mac_RESULTA_bus [54];
+assign \core|Mult5~45  = \core|Mult5~mac_RESULTA_bus [55];
+assign \core|Mult5~46  = \core|Mult5~mac_RESULTA_bus [56];
+assign \core|Mult5~47  = \core|Mult5~mac_RESULTA_bus [57];
+assign \core|Mult5~48  = \core|Mult5~mac_RESULTA_bus [58];
+assign \core|Mult5~49  = \core|Mult5~mac_RESULTA_bus [59];
+assign \core|Mult5~50  = \core|Mult5~mac_RESULTA_bus [60];
+assign \core|Mult5~51  = \core|Mult5~mac_RESULTA_bus [61];
+assign \core|Mult5~52  = \core|Mult5~mac_RESULTA_bus [62];
+assign \core|Mult5~53  = \core|Mult5~mac_RESULTA_bus [63];
 
 assign \mem_in|mem_rtl_0|auto_generated|ram_block1a0~portbdataout  = \mem_in|mem_rtl_0|auto_generated|ram_block1a0_PORTBDATAOUT_bus [0];
 assign \mem_in|mem_rtl_0|auto_generated|ram_block1a1  = \mem_in|mem_rtl_0|auto_generated|ram_block1a0_PORTBDATAOUT_bus [1];
@@ -10400,9 +10400,9 @@ defparam \u_jc|wr_tog_sync_d .power_up = "low";
 // synopsys translate_on
 
 // Location: LABCELL_X9_Y6_N6
-cyclonev_lcell_comb \u_jc|always6~0 (
+cyclonev_lcell_comb \u_jc|always7~0 (
 // Equation(s):
-// \u_jc|always6~0_combout  = ( !\u_jc|wr_addr_sync2 [2] & ( \u_jc|wr_tog_sync_d~q  & ( (!\u_jc|wr_addr_sync2 [6] & (!\u_jc|wr_addr_sync2 [3] & (!\u_jc|wr_tog_sync~q  & !\u_jc|wr_addr_sync2 [7]))) ) ) ) # ( !\u_jc|wr_addr_sync2 [2] & ( !\u_jc|wr_tog_sync_d~q 
+// \u_jc|always7~0_combout  = ( !\u_jc|wr_addr_sync2 [2] & ( \u_jc|wr_tog_sync_d~q  & ( (!\u_jc|wr_addr_sync2 [6] & (!\u_jc|wr_addr_sync2 [3] & (!\u_jc|wr_tog_sync~q  & !\u_jc|wr_addr_sync2 [7]))) ) ) ) # ( !\u_jc|wr_addr_sync2 [2] & ( !\u_jc|wr_tog_sync_d~q 
 //  & ( (!\u_jc|wr_addr_sync2 [6] & (!\u_jc|wr_addr_sync2 [3] & (\u_jc|wr_tog_sync~q  & !\u_jc|wr_addr_sync2 [7]))) ) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [6]),
@@ -10414,14 +10414,14 @@ cyclonev_lcell_comb \u_jc|always6~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\u_jc|always6~0_combout ),
+	.combout(\u_jc|always7~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \u_jc|always6~0 .extended_lut = "off";
-defparam \u_jc|always6~0 .lut_mask = 64'h0800000080000000;
-defparam \u_jc|always6~0 .shared_arith = "off";
+defparam \u_jc|always7~0 .extended_lut = "off";
+defparam \u_jc|always7~0 .lut_mask = 64'h0800000080000000;
+defparam \u_jc|always7~0 .shared_arith = "off";
 // synopsys translate_on
 
 // Location: LABCELL_X7_Y2_N18
@@ -10718,10 +10718,10 @@ defparam \u_jc|wr_addr_sync2[1] .power_up = "low";
 // Location: LABCELL_X9_Y6_N54
 cyclonev_lcell_comb \u_jc|reg_in_h[0]~0 (
 // Equation(s):
-// \u_jc|reg_in_h[0]~0_combout  = ( \u_jc|wr_addr_sync2 [1] & ( (!\u_jc|wr_addr_sync2 [5] & (\u_jc|always6~0_combout  & (!\u_jc|wr_addr_sync2 [0] & !\u_jc|wr_addr_sync2 [4]))) ) )
+// \u_jc|reg_in_h[0]~0_combout  = ( \u_jc|wr_addr_sync2 [1] & ( (!\u_jc|wr_addr_sync2 [5] & (\u_jc|always7~0_combout  & (!\u_jc|wr_addr_sync2 [0] & !\u_jc|wr_addr_sync2 [4]))) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
-	.datab(!\u_jc|always6~0_combout ),
+	.datab(!\u_jc|always7~0_combout ),
 	.datac(!\u_jc|wr_addr_sync2 [0]),
 	.datad(!\u_jc|wr_addr_sync2 [4]),
 	.datae(gnd),
@@ -10866,14 +10866,14 @@ defparam \u_jc|Mult0~mac .use_chainadder = "false";
 // Location: LABCELL_X9_Y6_N30
 cyclonev_lcell_comb \u_jc|reg_scale[0]~0 (
 // Equation(s):
-// \u_jc|reg_scale[0]~0_combout  = ( \u_jc|always6~0_combout  & ( (!\u_jc|wr_addr_sync2 [5] & (\u_jc|wr_addr_sync2 [1] & (\u_jc|wr_addr_sync2 [0] & !\u_jc|wr_addr_sync2 [4]))) ) )
+// \u_jc|reg_scale[0]~0_combout  = ( \u_jc|always7~0_combout  & ( (!\u_jc|wr_addr_sync2 [5] & (\u_jc|wr_addr_sync2 [1] & (\u_jc|wr_addr_sync2 [0] & !\u_jc|wr_addr_sync2 [4]))) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
 	.datab(!\u_jc|wr_addr_sync2 [1]),
 	.datac(!\u_jc|wr_addr_sync2 [0]),
 	.datad(!\u_jc|wr_addr_sync2 [4]),
 	.datae(gnd),
-	.dataf(!\u_jc|always6~0_combout ),
+	.dataf(!\u_jc|always7~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -10909,14 +10909,14 @@ defparam \u_jc|reg_scale[15] .power_up = "low";
 // Location: LABCELL_X9_Y6_N3
 cyclonev_lcell_comb \u_jc|reg_in_w[0]~0 (
 // Equation(s):
-// \u_jc|reg_in_w[0]~0_combout  = ( \u_jc|wr_addr_sync2 [0] & ( \u_jc|always6~0_combout  & ( (!\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [4] & !\u_jc|wr_addr_sync2 [1])) ) ) )
+// \u_jc|reg_in_w[0]~0_combout  = ( \u_jc|wr_addr_sync2 [0] & ( \u_jc|always7~0_combout  & ( (!\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [4] & !\u_jc|wr_addr_sync2 [1])) ) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
 	.datab(!\u_jc|wr_addr_sync2 [4]),
 	.datac(!\u_jc|wr_addr_sync2 [1]),
 	.datad(gnd),
 	.datae(!\u_jc|wr_addr_sync2 [0]),
-	.dataf(!\u_jc|always6~0_combout ),
+	.dataf(!\u_jc|always7~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -20634,10 +20634,10 @@ defparam \core|out_we .power_up = "low";
 // Location: LABCELL_X9_Y6_N57
 cyclonev_lcell_comb \u_jc|in_mem_we~0 (
 // Equation(s):
-// \u_jc|in_mem_we~0_combout  = ( \u_jc|wr_addr_sync2 [1] & ( (\u_jc|wr_addr_sync2 [5] & (\u_jc|always6~0_combout  & (\u_jc|wr_addr_sync2 [0] & !\u_jc|wr_addr_sync2 [4]))) ) )
+// \u_jc|in_mem_we~0_combout  = ( \u_jc|wr_addr_sync2 [1] & ( (\u_jc|wr_addr_sync2 [5] & (\u_jc|always7~0_combout  & (\u_jc|wr_addr_sync2 [0] & !\u_jc|wr_addr_sync2 [4]))) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
-	.datab(!\u_jc|always6~0_combout ),
+	.datab(!\u_jc|always7~0_combout ),
 	.datac(!\u_jc|wr_addr_sync2 [0]),
 	.datad(!\u_jc|wr_addr_sync2 [4]),
 	.datae(gnd),
@@ -20913,14 +20913,14 @@ defparam \u_jc|Add4~1 .shared_arith = "off";
 // Location: LABCELL_X9_Y6_N33
 cyclonev_lcell_comb \u_jc|reg_in_waddr[0]~0 (
 // Equation(s):
-// \u_jc|reg_in_waddr[0]~0_combout  = ( \u_jc|always6~0_combout  & ( (\u_jc|wr_addr_sync2 [5] & (\u_jc|wr_addr_sync2 [1] & !\u_jc|wr_addr_sync2 [4])) ) )
+// \u_jc|reg_in_waddr[0]~0_combout  = ( \u_jc|always7~0_combout  & ( (\u_jc|wr_addr_sync2 [5] & (\u_jc|wr_addr_sync2 [1] & !\u_jc|wr_addr_sync2 [4])) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
 	.datab(gnd),
 	.datac(!\u_jc|wr_addr_sync2 [1]),
 	.datad(!\u_jc|wr_addr_sync2 [4]),
 	.datae(gnd),
-	.dataf(!\u_jc|always6~0_combout ),
+	.dataf(!\u_jc|always7~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -35530,7 +35530,7 @@ defparam \core|sx_fix[8] .power_up = "low";
 // synopsys translate_on
 
 // Location: DSP_X32_Y6_N0
-cyclonev_mac \core|Mult5~8 (
+cyclonev_mac \core|Mult1~8 (
 	.sub(gnd),
 	.negate(gnd),
 	.accumulate(gnd),
@@ -35550,62 +35550,62 @@ cyclonev_mac \core|Mult5~8 (
 	.scanin(27'b000000000000000000000000000),
 	.chainin(1'b0),
 	.dftout(),
-	.resulta(\core|Mult5~8_RESULTA_bus ),
+	.resulta(\core|Mult1~8_RESULTA_bus ),
 	.resultb(),
 	.scanout(),
 	.chainout());
 // synopsys translate_off
-defparam \core|Mult5~8 .accumulate_clock = "none";
-defparam \core|Mult5~8 .ax_clock = "none";
-defparam \core|Mult5~8 .ax_width = 16;
-defparam \core|Mult5~8 .ay_scan_in_clock = "none";
-defparam \core|Mult5~8 .ay_scan_in_width = 16;
-defparam \core|Mult5~8 .ay_use_scan_in = "false";
-defparam \core|Mult5~8 .az_clock = "none";
-defparam \core|Mult5~8 .bx_clock = "none";
-defparam \core|Mult5~8 .by_clock = "none";
-defparam \core|Mult5~8 .by_use_scan_in = "false";
-defparam \core|Mult5~8 .bz_clock = "none";
-defparam \core|Mult5~8 .coef_a_0 = 0;
-defparam \core|Mult5~8 .coef_a_1 = 0;
-defparam \core|Mult5~8 .coef_a_2 = 0;
-defparam \core|Mult5~8 .coef_a_3 = 0;
-defparam \core|Mult5~8 .coef_a_4 = 0;
-defparam \core|Mult5~8 .coef_a_5 = 0;
-defparam \core|Mult5~8 .coef_a_6 = 0;
-defparam \core|Mult5~8 .coef_a_7 = 0;
-defparam \core|Mult5~8 .coef_b_0 = 0;
-defparam \core|Mult5~8 .coef_b_1 = 0;
-defparam \core|Mult5~8 .coef_b_2 = 0;
-defparam \core|Mult5~8 .coef_b_3 = 0;
-defparam \core|Mult5~8 .coef_b_4 = 0;
-defparam \core|Mult5~8 .coef_b_5 = 0;
-defparam \core|Mult5~8 .coef_b_6 = 0;
-defparam \core|Mult5~8 .coef_b_7 = 0;
-defparam \core|Mult5~8 .coef_sel_a_clock = "none";
-defparam \core|Mult5~8 .coef_sel_b_clock = "none";
-defparam \core|Mult5~8 .delay_scan_out_ay = "false";
-defparam \core|Mult5~8 .delay_scan_out_by = "false";
-defparam \core|Mult5~8 .enable_double_accum = "false";
-defparam \core|Mult5~8 .load_const_clock = "none";
-defparam \core|Mult5~8 .load_const_value = 0;
-defparam \core|Mult5~8 .mode_sub_location = 0;
-defparam \core|Mult5~8 .negate_clock = "none";
-defparam \core|Mult5~8 .operand_source_max = "input";
-defparam \core|Mult5~8 .operand_source_may = "input";
-defparam \core|Mult5~8 .operand_source_mbx = "input";
-defparam \core|Mult5~8 .operand_source_mby = "input";
-defparam \core|Mult5~8 .operation_mode = "m18x18_full";
-defparam \core|Mult5~8 .output_clock = "0";
-defparam \core|Mult5~8 .preadder_subtract_a = "false";
-defparam \core|Mult5~8 .preadder_subtract_b = "false";
-defparam \core|Mult5~8 .result_a_width = 64;
-defparam \core|Mult5~8 .signed_max = "false";
-defparam \core|Mult5~8 .signed_may = "false";
-defparam \core|Mult5~8 .signed_mbx = "false";
-defparam \core|Mult5~8 .signed_mby = "false";
-defparam \core|Mult5~8 .sub_clock = "none";
-defparam \core|Mult5~8 .use_chainadder = "false";
+defparam \core|Mult1~8 .accumulate_clock = "none";
+defparam \core|Mult1~8 .ax_clock = "none";
+defparam \core|Mult1~8 .ax_width = 16;
+defparam \core|Mult1~8 .ay_scan_in_clock = "none";
+defparam \core|Mult1~8 .ay_scan_in_width = 16;
+defparam \core|Mult1~8 .ay_use_scan_in = "false";
+defparam \core|Mult1~8 .az_clock = "none";
+defparam \core|Mult1~8 .bx_clock = "none";
+defparam \core|Mult1~8 .by_clock = "none";
+defparam \core|Mult1~8 .by_use_scan_in = "false";
+defparam \core|Mult1~8 .bz_clock = "none";
+defparam \core|Mult1~8 .coef_a_0 = 0;
+defparam \core|Mult1~8 .coef_a_1 = 0;
+defparam \core|Mult1~8 .coef_a_2 = 0;
+defparam \core|Mult1~8 .coef_a_3 = 0;
+defparam \core|Mult1~8 .coef_a_4 = 0;
+defparam \core|Mult1~8 .coef_a_5 = 0;
+defparam \core|Mult1~8 .coef_a_6 = 0;
+defparam \core|Mult1~8 .coef_a_7 = 0;
+defparam \core|Mult1~8 .coef_b_0 = 0;
+defparam \core|Mult1~8 .coef_b_1 = 0;
+defparam \core|Mult1~8 .coef_b_2 = 0;
+defparam \core|Mult1~8 .coef_b_3 = 0;
+defparam \core|Mult1~8 .coef_b_4 = 0;
+defparam \core|Mult1~8 .coef_b_5 = 0;
+defparam \core|Mult1~8 .coef_b_6 = 0;
+defparam \core|Mult1~8 .coef_b_7 = 0;
+defparam \core|Mult1~8 .coef_sel_a_clock = "none";
+defparam \core|Mult1~8 .coef_sel_b_clock = "none";
+defparam \core|Mult1~8 .delay_scan_out_ay = "false";
+defparam \core|Mult1~8 .delay_scan_out_by = "false";
+defparam \core|Mult1~8 .enable_double_accum = "false";
+defparam \core|Mult1~8 .load_const_clock = "none";
+defparam \core|Mult1~8 .load_const_value = 0;
+defparam \core|Mult1~8 .mode_sub_location = 0;
+defparam \core|Mult1~8 .negate_clock = "none";
+defparam \core|Mult1~8 .operand_source_max = "input";
+defparam \core|Mult1~8 .operand_source_may = "input";
+defparam \core|Mult1~8 .operand_source_mbx = "input";
+defparam \core|Mult1~8 .operand_source_mby = "input";
+defparam \core|Mult1~8 .operation_mode = "m18x18_full";
+defparam \core|Mult1~8 .output_clock = "0";
+defparam \core|Mult1~8 .preadder_subtract_a = "false";
+defparam \core|Mult1~8 .preadder_subtract_b = "false";
+defparam \core|Mult1~8 .result_a_width = 64;
+defparam \core|Mult1~8 .signed_max = "false";
+defparam \core|Mult1~8 .signed_may = "false";
+defparam \core|Mult1~8 .signed_mbx = "false";
+defparam \core|Mult1~8 .signed_mby = "false";
+defparam \core|Mult1~8 .sub_clock = "none";
+defparam \core|Mult1~8 .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: LABCELL_X30_Y7_N54
@@ -41143,7 +41143,7 @@ defparam \core|fy_q~7 .shared_arith = "off";
 // synopsys translate_on
 
 // Location: DSP_X32_Y2_N0
-cyclonev_mac \core|Mult3~mac (
+cyclonev_mac \core|Mult5~mac (
 	.sub(gnd),
 	.negate(gnd),
 	.accumulate(gnd),
@@ -41162,62 +41162,62 @@ cyclonev_mac \core|Mult3~mac (
 	.scanin(27'b000000000000000000000000000),
 	.chainin(1'b0),
 	.dftout(),
-	.resulta(\core|Mult3~mac_RESULTA_bus ),
+	.resulta(\core|Mult5~mac_RESULTA_bus ),
 	.resultb(),
 	.scanout(),
 	.chainout());
 // synopsys translate_off
-defparam \core|Mult3~mac .accumulate_clock = "none";
-defparam \core|Mult3~mac .ax_clock = "0";
-defparam \core|Mult3~mac .ax_width = 8;
-defparam \core|Mult3~mac .ay_scan_in_clock = "0";
-defparam \core|Mult3~mac .ay_scan_in_width = 8;
-defparam \core|Mult3~mac .ay_use_scan_in = "false";
-defparam \core|Mult3~mac .az_clock = "none";
-defparam \core|Mult3~mac .bx_clock = "none";
-defparam \core|Mult3~mac .by_clock = "none";
-defparam \core|Mult3~mac .by_use_scan_in = "false";
-defparam \core|Mult3~mac .bz_clock = "none";
-defparam \core|Mult3~mac .coef_a_0 = 0;
-defparam \core|Mult3~mac .coef_a_1 = 0;
-defparam \core|Mult3~mac .coef_a_2 = 0;
-defparam \core|Mult3~mac .coef_a_3 = 0;
-defparam \core|Mult3~mac .coef_a_4 = 0;
-defparam \core|Mult3~mac .coef_a_5 = 0;
-defparam \core|Mult3~mac .coef_a_6 = 0;
-defparam \core|Mult3~mac .coef_a_7 = 0;
-defparam \core|Mult3~mac .coef_b_0 = 0;
-defparam \core|Mult3~mac .coef_b_1 = 0;
-defparam \core|Mult3~mac .coef_b_2 = 0;
-defparam \core|Mult3~mac .coef_b_3 = 0;
-defparam \core|Mult3~mac .coef_b_4 = 0;
-defparam \core|Mult3~mac .coef_b_5 = 0;
-defparam \core|Mult3~mac .coef_b_6 = 0;
-defparam \core|Mult3~mac .coef_b_7 = 0;
-defparam \core|Mult3~mac .coef_sel_a_clock = "none";
-defparam \core|Mult3~mac .coef_sel_b_clock = "none";
-defparam \core|Mult3~mac .delay_scan_out_ay = "false";
-defparam \core|Mult3~mac .delay_scan_out_by = "false";
-defparam \core|Mult3~mac .enable_double_accum = "false";
-defparam \core|Mult3~mac .load_const_clock = "none";
-defparam \core|Mult3~mac .load_const_value = 0;
-defparam \core|Mult3~mac .mode_sub_location = 0;
-defparam \core|Mult3~mac .negate_clock = "none";
-defparam \core|Mult3~mac .operand_source_max = "input";
-defparam \core|Mult3~mac .operand_source_may = "input";
-defparam \core|Mult3~mac .operand_source_mbx = "input";
-defparam \core|Mult3~mac .operand_source_mby = "input";
-defparam \core|Mult3~mac .operation_mode = "m9x9";
-defparam \core|Mult3~mac .output_clock = "none";
-defparam \core|Mult3~mac .preadder_subtract_a = "false";
-defparam \core|Mult3~mac .preadder_subtract_b = "false";
-defparam \core|Mult3~mac .result_a_width = 64;
-defparam \core|Mult3~mac .signed_max = "false";
-defparam \core|Mult3~mac .signed_may = "false";
-defparam \core|Mult3~mac .signed_mbx = "false";
-defparam \core|Mult3~mac .signed_mby = "false";
-defparam \core|Mult3~mac .sub_clock = "none";
-defparam \core|Mult3~mac .use_chainadder = "false";
+defparam \core|Mult5~mac .accumulate_clock = "none";
+defparam \core|Mult5~mac .ax_clock = "0";
+defparam \core|Mult5~mac .ax_width = 8;
+defparam \core|Mult5~mac .ay_scan_in_clock = "0";
+defparam \core|Mult5~mac .ay_scan_in_width = 8;
+defparam \core|Mult5~mac .ay_use_scan_in = "false";
+defparam \core|Mult5~mac .az_clock = "none";
+defparam \core|Mult5~mac .bx_clock = "none";
+defparam \core|Mult5~mac .by_clock = "none";
+defparam \core|Mult5~mac .by_use_scan_in = "false";
+defparam \core|Mult5~mac .bz_clock = "none";
+defparam \core|Mult5~mac .coef_a_0 = 0;
+defparam \core|Mult5~mac .coef_a_1 = 0;
+defparam \core|Mult5~mac .coef_a_2 = 0;
+defparam \core|Mult5~mac .coef_a_3 = 0;
+defparam \core|Mult5~mac .coef_a_4 = 0;
+defparam \core|Mult5~mac .coef_a_5 = 0;
+defparam \core|Mult5~mac .coef_a_6 = 0;
+defparam \core|Mult5~mac .coef_a_7 = 0;
+defparam \core|Mult5~mac .coef_b_0 = 0;
+defparam \core|Mult5~mac .coef_b_1 = 0;
+defparam \core|Mult5~mac .coef_b_2 = 0;
+defparam \core|Mult5~mac .coef_b_3 = 0;
+defparam \core|Mult5~mac .coef_b_4 = 0;
+defparam \core|Mult5~mac .coef_b_5 = 0;
+defparam \core|Mult5~mac .coef_b_6 = 0;
+defparam \core|Mult5~mac .coef_b_7 = 0;
+defparam \core|Mult5~mac .coef_sel_a_clock = "none";
+defparam \core|Mult5~mac .coef_sel_b_clock = "none";
+defparam \core|Mult5~mac .delay_scan_out_ay = "false";
+defparam \core|Mult5~mac .delay_scan_out_by = "false";
+defparam \core|Mult5~mac .enable_double_accum = "false";
+defparam \core|Mult5~mac .load_const_clock = "none";
+defparam \core|Mult5~mac .load_const_value = 0;
+defparam \core|Mult5~mac .mode_sub_location = 0;
+defparam \core|Mult5~mac .negate_clock = "none";
+defparam \core|Mult5~mac .operand_source_max = "input";
+defparam \core|Mult5~mac .operand_source_may = "input";
+defparam \core|Mult5~mac .operand_source_mbx = "input";
+defparam \core|Mult5~mac .operand_source_mby = "input";
+defparam \core|Mult5~mac .operation_mode = "m9x9";
+defparam \core|Mult5~mac .output_clock = "none";
+defparam \core|Mult5~mac .preadder_subtract_a = "false";
+defparam \core|Mult5~mac .preadder_subtract_b = "false";
+defparam \core|Mult5~mac .result_a_width = 64;
+defparam \core|Mult5~mac .signed_max = "false";
+defparam \core|Mult5~mac .signed_may = "false";
+defparam \core|Mult5~mac .signed_mbx = "false";
+defparam \core|Mult5~mac .signed_mby = "false";
+defparam \core|Mult5~mac .sub_clock = "none";
+defparam \core|Mult5~mac .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: DSP_X32_Y4_N0
@@ -41925,7 +41925,7 @@ defparam \core|Add1~33 .shared_arith = "off";
 // synopsys translate_on
 
 // Location: DSP_X54_Y2_N0
-cyclonev_mac \core|Mult1~mac (
+cyclonev_mac \core|Mult3~mac (
 	.sub(gnd),
 	.negate(gnd),
 	.accumulate(gnd),
@@ -41944,62 +41944,62 @@ cyclonev_mac \core|Mult1~mac (
 	.scanin(27'b000000000000000000000000000),
 	.chainin(1'b0),
 	.dftout(),
-	.resulta(\core|Mult1~mac_RESULTA_bus ),
+	.resulta(\core|Mult3~mac_RESULTA_bus ),
 	.resultb(),
 	.scanout(),
 	.chainout());
 // synopsys translate_off
-defparam \core|Mult1~mac .accumulate_clock = "none";
-defparam \core|Mult1~mac .ax_clock = "none";
-defparam \core|Mult1~mac .ax_width = 9;
-defparam \core|Mult1~mac .ay_scan_in_clock = "0";
-defparam \core|Mult1~mac .ay_scan_in_width = 8;
-defparam \core|Mult1~mac .ay_use_scan_in = "false";
-defparam \core|Mult1~mac .az_clock = "none";
-defparam \core|Mult1~mac .bx_clock = "none";
-defparam \core|Mult1~mac .by_clock = "none";
-defparam \core|Mult1~mac .by_use_scan_in = "false";
-defparam \core|Mult1~mac .bz_clock = "none";
-defparam \core|Mult1~mac .coef_a_0 = 0;
-defparam \core|Mult1~mac .coef_a_1 = 0;
-defparam \core|Mult1~mac .coef_a_2 = 0;
-defparam \core|Mult1~mac .coef_a_3 = 0;
-defparam \core|Mult1~mac .coef_a_4 = 0;
-defparam \core|Mult1~mac .coef_a_5 = 0;
-defparam \core|Mult1~mac .coef_a_6 = 0;
-defparam \core|Mult1~mac .coef_a_7 = 0;
-defparam \core|Mult1~mac .coef_b_0 = 0;
-defparam \core|Mult1~mac .coef_b_1 = 0;
-defparam \core|Mult1~mac .coef_b_2 = 0;
-defparam \core|Mult1~mac .coef_b_3 = 0;
-defparam \core|Mult1~mac .coef_b_4 = 0;
-defparam \core|Mult1~mac .coef_b_5 = 0;
-defparam \core|Mult1~mac .coef_b_6 = 0;
-defparam \core|Mult1~mac .coef_b_7 = 0;
-defparam \core|Mult1~mac .coef_sel_a_clock = "none";
-defparam \core|Mult1~mac .coef_sel_b_clock = "none";
-defparam \core|Mult1~mac .delay_scan_out_ay = "false";
-defparam \core|Mult1~mac .delay_scan_out_by = "false";
-defparam \core|Mult1~mac .enable_double_accum = "false";
-defparam \core|Mult1~mac .load_const_clock = "none";
-defparam \core|Mult1~mac .load_const_value = 0;
-defparam \core|Mult1~mac .mode_sub_location = 0;
-defparam \core|Mult1~mac .negate_clock = "none";
-defparam \core|Mult1~mac .operand_source_max = "input";
-defparam \core|Mult1~mac .operand_source_may = "input";
-defparam \core|Mult1~mac .operand_source_mbx = "input";
-defparam \core|Mult1~mac .operand_source_mby = "input";
-defparam \core|Mult1~mac .operation_mode = "m9x9";
-defparam \core|Mult1~mac .output_clock = "none";
-defparam \core|Mult1~mac .preadder_subtract_a = "false";
-defparam \core|Mult1~mac .preadder_subtract_b = "false";
-defparam \core|Mult1~mac .result_a_width = 64;
-defparam \core|Mult1~mac .signed_max = "false";
-defparam \core|Mult1~mac .signed_may = "false";
-defparam \core|Mult1~mac .signed_mbx = "false";
-defparam \core|Mult1~mac .signed_mby = "false";
-defparam \core|Mult1~mac .sub_clock = "none";
-defparam \core|Mult1~mac .use_chainadder = "false";
+defparam \core|Mult3~mac .accumulate_clock = "none";
+defparam \core|Mult3~mac .ax_clock = "none";
+defparam \core|Mult3~mac .ax_width = 9;
+defparam \core|Mult3~mac .ay_scan_in_clock = "0";
+defparam \core|Mult3~mac .ay_scan_in_width = 8;
+defparam \core|Mult3~mac .ay_use_scan_in = "false";
+defparam \core|Mult3~mac .az_clock = "none";
+defparam \core|Mult3~mac .bx_clock = "none";
+defparam \core|Mult3~mac .by_clock = "none";
+defparam \core|Mult3~mac .by_use_scan_in = "false";
+defparam \core|Mult3~mac .bz_clock = "none";
+defparam \core|Mult3~mac .coef_a_0 = 0;
+defparam \core|Mult3~mac .coef_a_1 = 0;
+defparam \core|Mult3~mac .coef_a_2 = 0;
+defparam \core|Mult3~mac .coef_a_3 = 0;
+defparam \core|Mult3~mac .coef_a_4 = 0;
+defparam \core|Mult3~mac .coef_a_5 = 0;
+defparam \core|Mult3~mac .coef_a_6 = 0;
+defparam \core|Mult3~mac .coef_a_7 = 0;
+defparam \core|Mult3~mac .coef_b_0 = 0;
+defparam \core|Mult3~mac .coef_b_1 = 0;
+defparam \core|Mult3~mac .coef_b_2 = 0;
+defparam \core|Mult3~mac .coef_b_3 = 0;
+defparam \core|Mult3~mac .coef_b_4 = 0;
+defparam \core|Mult3~mac .coef_b_5 = 0;
+defparam \core|Mult3~mac .coef_b_6 = 0;
+defparam \core|Mult3~mac .coef_b_7 = 0;
+defparam \core|Mult3~mac .coef_sel_a_clock = "none";
+defparam \core|Mult3~mac .coef_sel_b_clock = "none";
+defparam \core|Mult3~mac .delay_scan_out_ay = "false";
+defparam \core|Mult3~mac .delay_scan_out_by = "false";
+defparam \core|Mult3~mac .enable_double_accum = "false";
+defparam \core|Mult3~mac .load_const_clock = "none";
+defparam \core|Mult3~mac .load_const_value = 0;
+defparam \core|Mult3~mac .mode_sub_location = 0;
+defparam \core|Mult3~mac .negate_clock = "none";
+defparam \core|Mult3~mac .operand_source_max = "input";
+defparam \core|Mult3~mac .operand_source_may = "input";
+defparam \core|Mult3~mac .operand_source_mbx = "input";
+defparam \core|Mult3~mac .operand_source_mby = "input";
+defparam \core|Mult3~mac .operation_mode = "m9x9";
+defparam \core|Mult3~mac .output_clock = "none";
+defparam \core|Mult3~mac .preadder_subtract_a = "false";
+defparam \core|Mult3~mac .preadder_subtract_b = "false";
+defparam \core|Mult3~mac .result_a_width = 64;
+defparam \core|Mult3~mac .signed_max = "false";
+defparam \core|Mult3~mac .signed_may = "false";
+defparam \core|Mult3~mac .signed_mbx = "false";
+defparam \core|Mult3~mac .signed_mby = "false";
+defparam \core|Mult3~mac .sub_clock = "none";
+defparam \core|Mult3~mac .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: FF_X36_Y4_N44
@@ -42379,7 +42379,7 @@ defparam \core|Add0~33 .shared_arith = "off";
 // synopsys translate_on
 
 // Location: DSP_X54_Y4_N0
-cyclonev_mac \core|Mult0~mac (
+cyclonev_mac \core|Mult2~mac (
 	.sub(gnd),
 	.negate(gnd),
 	.accumulate(gnd),
@@ -42398,62 +42398,62 @@ cyclonev_mac \core|Mult0~mac (
 	.scanin(27'b000000000000000000000000000),
 	.chainin(1'b0),
 	.dftout(),
-	.resulta(\core|Mult0~mac_RESULTA_bus ),
+	.resulta(\core|Mult2~mac_RESULTA_bus ),
 	.resultb(),
 	.scanout(),
 	.chainout());
 // synopsys translate_off
-defparam \core|Mult0~mac .accumulate_clock = "none";
-defparam \core|Mult0~mac .ax_clock = "none";
-defparam \core|Mult0~mac .ax_width = 9;
-defparam \core|Mult0~mac .ay_scan_in_clock = "none";
-defparam \core|Mult0~mac .ay_scan_in_width = 9;
-defparam \core|Mult0~mac .ay_use_scan_in = "false";
-defparam \core|Mult0~mac .az_clock = "none";
-defparam \core|Mult0~mac .bx_clock = "none";
-defparam \core|Mult0~mac .by_clock = "none";
-defparam \core|Mult0~mac .by_use_scan_in = "false";
-defparam \core|Mult0~mac .bz_clock = "none";
-defparam \core|Mult0~mac .coef_a_0 = 0;
-defparam \core|Mult0~mac .coef_a_1 = 0;
-defparam \core|Mult0~mac .coef_a_2 = 0;
-defparam \core|Mult0~mac .coef_a_3 = 0;
-defparam \core|Mult0~mac .coef_a_4 = 0;
-defparam \core|Mult0~mac .coef_a_5 = 0;
-defparam \core|Mult0~mac .coef_a_6 = 0;
-defparam \core|Mult0~mac .coef_a_7 = 0;
-defparam \core|Mult0~mac .coef_b_0 = 0;
-defparam \core|Mult0~mac .coef_b_1 = 0;
-defparam \core|Mult0~mac .coef_b_2 = 0;
-defparam \core|Mult0~mac .coef_b_3 = 0;
-defparam \core|Mult0~mac .coef_b_4 = 0;
-defparam \core|Mult0~mac .coef_b_5 = 0;
-defparam \core|Mult0~mac .coef_b_6 = 0;
-defparam \core|Mult0~mac .coef_b_7 = 0;
-defparam \core|Mult0~mac .coef_sel_a_clock = "none";
-defparam \core|Mult0~mac .coef_sel_b_clock = "none";
-defparam \core|Mult0~mac .delay_scan_out_ay = "false";
-defparam \core|Mult0~mac .delay_scan_out_by = "false";
-defparam \core|Mult0~mac .enable_double_accum = "false";
-defparam \core|Mult0~mac .load_const_clock = "none";
-defparam \core|Mult0~mac .load_const_value = 0;
-defparam \core|Mult0~mac .mode_sub_location = 0;
-defparam \core|Mult0~mac .negate_clock = "none";
-defparam \core|Mult0~mac .operand_source_max = "input";
-defparam \core|Mult0~mac .operand_source_may = "input";
-defparam \core|Mult0~mac .operand_source_mbx = "input";
-defparam \core|Mult0~mac .operand_source_mby = "input";
-defparam \core|Mult0~mac .operation_mode = "m9x9";
-defparam \core|Mult0~mac .output_clock = "none";
-defparam \core|Mult0~mac .preadder_subtract_a = "false";
-defparam \core|Mult0~mac .preadder_subtract_b = "false";
-defparam \core|Mult0~mac .result_a_width = 64;
-defparam \core|Mult0~mac .signed_max = "false";
-defparam \core|Mult0~mac .signed_may = "false";
-defparam \core|Mult0~mac .signed_mbx = "false";
-defparam \core|Mult0~mac .signed_mby = "false";
-defparam \core|Mult0~mac .sub_clock = "none";
-defparam \core|Mult0~mac .use_chainadder = "false";
+defparam \core|Mult2~mac .accumulate_clock = "none";
+defparam \core|Mult2~mac .ax_clock = "none";
+defparam \core|Mult2~mac .ax_width = 9;
+defparam \core|Mult2~mac .ay_scan_in_clock = "none";
+defparam \core|Mult2~mac .ay_scan_in_width = 9;
+defparam \core|Mult2~mac .ay_use_scan_in = "false";
+defparam \core|Mult2~mac .az_clock = "none";
+defparam \core|Mult2~mac .bx_clock = "none";
+defparam \core|Mult2~mac .by_clock = "none";
+defparam \core|Mult2~mac .by_use_scan_in = "false";
+defparam \core|Mult2~mac .bz_clock = "none";
+defparam \core|Mult2~mac .coef_a_0 = 0;
+defparam \core|Mult2~mac .coef_a_1 = 0;
+defparam \core|Mult2~mac .coef_a_2 = 0;
+defparam \core|Mult2~mac .coef_a_3 = 0;
+defparam \core|Mult2~mac .coef_a_4 = 0;
+defparam \core|Mult2~mac .coef_a_5 = 0;
+defparam \core|Mult2~mac .coef_a_6 = 0;
+defparam \core|Mult2~mac .coef_a_7 = 0;
+defparam \core|Mult2~mac .coef_b_0 = 0;
+defparam \core|Mult2~mac .coef_b_1 = 0;
+defparam \core|Mult2~mac .coef_b_2 = 0;
+defparam \core|Mult2~mac .coef_b_3 = 0;
+defparam \core|Mult2~mac .coef_b_4 = 0;
+defparam \core|Mult2~mac .coef_b_5 = 0;
+defparam \core|Mult2~mac .coef_b_6 = 0;
+defparam \core|Mult2~mac .coef_b_7 = 0;
+defparam \core|Mult2~mac .coef_sel_a_clock = "none";
+defparam \core|Mult2~mac .coef_sel_b_clock = "none";
+defparam \core|Mult2~mac .delay_scan_out_ay = "false";
+defparam \core|Mult2~mac .delay_scan_out_by = "false";
+defparam \core|Mult2~mac .enable_double_accum = "false";
+defparam \core|Mult2~mac .load_const_clock = "none";
+defparam \core|Mult2~mac .load_const_value = 0;
+defparam \core|Mult2~mac .mode_sub_location = 0;
+defparam \core|Mult2~mac .negate_clock = "none";
+defparam \core|Mult2~mac .operand_source_max = "input";
+defparam \core|Mult2~mac .operand_source_may = "input";
+defparam \core|Mult2~mac .operand_source_mbx = "input";
+defparam \core|Mult2~mac .operand_source_mby = "input";
+defparam \core|Mult2~mac .operation_mode = "m9x9";
+defparam \core|Mult2~mac .output_clock = "none";
+defparam \core|Mult2~mac .preadder_subtract_a = "false";
+defparam \core|Mult2~mac .preadder_subtract_b = "false";
+defparam \core|Mult2~mac .result_a_width = 64;
+defparam \core|Mult2~mac .signed_max = "false";
+defparam \core|Mult2~mac .signed_may = "false";
+defparam \core|Mult2~mac .signed_mbx = "false";
+defparam \core|Mult2~mac .signed_mby = "false";
+defparam \core|Mult2~mac .sub_clock = "none";
+defparam \core|Mult2~mac .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: DSP_X54_Y6_N0
@@ -42541,7 +42541,7 @@ defparam \core|Add2~8 .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: DSP_X32_Y10_N0
-cyclonev_mac \core|Mult2~mac (
+cyclonev_mac \core|Mult4~mac (
 	.sub(gnd),
 	.negate(gnd),
 	.accumulate(gnd),
@@ -42560,62 +42560,62 @@ cyclonev_mac \core|Mult2~mac (
 	.scanin(27'b000000000000000000000000000),
 	.chainin(1'b0),
 	.dftout(),
-	.resulta(\core|Mult2~mac_RESULTA_bus ),
+	.resulta(\core|Mult4~mac_RESULTA_bus ),
 	.resultb(),
 	.scanout(),
 	.chainout());
 // synopsys translate_off
-defparam \core|Mult2~mac .accumulate_clock = "none";
-defparam \core|Mult2~mac .ax_clock = "none";
-defparam \core|Mult2~mac .ax_width = 9;
-defparam \core|Mult2~mac .ay_scan_in_clock = "0";
-defparam \core|Mult2~mac .ay_scan_in_width = 8;
-defparam \core|Mult2~mac .ay_use_scan_in = "false";
-defparam \core|Mult2~mac .az_clock = "none";
-defparam \core|Mult2~mac .bx_clock = "none";
-defparam \core|Mult2~mac .by_clock = "none";
-defparam \core|Mult2~mac .by_use_scan_in = "false";
-defparam \core|Mult2~mac .bz_clock = "none";
-defparam \core|Mult2~mac .coef_a_0 = 0;
-defparam \core|Mult2~mac .coef_a_1 = 0;
-defparam \core|Mult2~mac .coef_a_2 = 0;
-defparam \core|Mult2~mac .coef_a_3 = 0;
-defparam \core|Mult2~mac .coef_a_4 = 0;
-defparam \core|Mult2~mac .coef_a_5 = 0;
-defparam \core|Mult2~mac .coef_a_6 = 0;
-defparam \core|Mult2~mac .coef_a_7 = 0;
-defparam \core|Mult2~mac .coef_b_0 = 0;
-defparam \core|Mult2~mac .coef_b_1 = 0;
-defparam \core|Mult2~mac .coef_b_2 = 0;
-defparam \core|Mult2~mac .coef_b_3 = 0;
-defparam \core|Mult2~mac .coef_b_4 = 0;
-defparam \core|Mult2~mac .coef_b_5 = 0;
-defparam \core|Mult2~mac .coef_b_6 = 0;
-defparam \core|Mult2~mac .coef_b_7 = 0;
-defparam \core|Mult2~mac .coef_sel_a_clock = "none";
-defparam \core|Mult2~mac .coef_sel_b_clock = "none";
-defparam \core|Mult2~mac .delay_scan_out_ay = "false";
-defparam \core|Mult2~mac .delay_scan_out_by = "false";
-defparam \core|Mult2~mac .enable_double_accum = "false";
-defparam \core|Mult2~mac .load_const_clock = "none";
-defparam \core|Mult2~mac .load_const_value = 0;
-defparam \core|Mult2~mac .mode_sub_location = 0;
-defparam \core|Mult2~mac .negate_clock = "none";
-defparam \core|Mult2~mac .operand_source_max = "input";
-defparam \core|Mult2~mac .operand_source_may = "input";
-defparam \core|Mult2~mac .operand_source_mbx = "input";
-defparam \core|Mult2~mac .operand_source_mby = "input";
-defparam \core|Mult2~mac .operation_mode = "m9x9";
-defparam \core|Mult2~mac .output_clock = "none";
-defparam \core|Mult2~mac .preadder_subtract_a = "false";
-defparam \core|Mult2~mac .preadder_subtract_b = "false";
-defparam \core|Mult2~mac .result_a_width = 64;
-defparam \core|Mult2~mac .signed_max = "false";
-defparam \core|Mult2~mac .signed_may = "false";
-defparam \core|Mult2~mac .signed_mbx = "false";
-defparam \core|Mult2~mac .signed_mby = "false";
-defparam \core|Mult2~mac .sub_clock = "none";
-defparam \core|Mult2~mac .use_chainadder = "false";
+defparam \core|Mult4~mac .accumulate_clock = "none";
+defparam \core|Mult4~mac .ax_clock = "none";
+defparam \core|Mult4~mac .ax_width = 9;
+defparam \core|Mult4~mac .ay_scan_in_clock = "0";
+defparam \core|Mult4~mac .ay_scan_in_width = 8;
+defparam \core|Mult4~mac .ay_use_scan_in = "false";
+defparam \core|Mult4~mac .az_clock = "none";
+defparam \core|Mult4~mac .bx_clock = "none";
+defparam \core|Mult4~mac .by_clock = "none";
+defparam \core|Mult4~mac .by_use_scan_in = "false";
+defparam \core|Mult4~mac .bz_clock = "none";
+defparam \core|Mult4~mac .coef_a_0 = 0;
+defparam \core|Mult4~mac .coef_a_1 = 0;
+defparam \core|Mult4~mac .coef_a_2 = 0;
+defparam \core|Mult4~mac .coef_a_3 = 0;
+defparam \core|Mult4~mac .coef_a_4 = 0;
+defparam \core|Mult4~mac .coef_a_5 = 0;
+defparam \core|Mult4~mac .coef_a_6 = 0;
+defparam \core|Mult4~mac .coef_a_7 = 0;
+defparam \core|Mult4~mac .coef_b_0 = 0;
+defparam \core|Mult4~mac .coef_b_1 = 0;
+defparam \core|Mult4~mac .coef_b_2 = 0;
+defparam \core|Mult4~mac .coef_b_3 = 0;
+defparam \core|Mult4~mac .coef_b_4 = 0;
+defparam \core|Mult4~mac .coef_b_5 = 0;
+defparam \core|Mult4~mac .coef_b_6 = 0;
+defparam \core|Mult4~mac .coef_b_7 = 0;
+defparam \core|Mult4~mac .coef_sel_a_clock = "none";
+defparam \core|Mult4~mac .coef_sel_b_clock = "none";
+defparam \core|Mult4~mac .delay_scan_out_ay = "false";
+defparam \core|Mult4~mac .delay_scan_out_by = "false";
+defparam \core|Mult4~mac .enable_double_accum = "false";
+defparam \core|Mult4~mac .load_const_clock = "none";
+defparam \core|Mult4~mac .load_const_value = 0;
+defparam \core|Mult4~mac .mode_sub_location = 0;
+defparam \core|Mult4~mac .negate_clock = "none";
+defparam \core|Mult4~mac .operand_source_max = "input";
+defparam \core|Mult4~mac .operand_source_may = "input";
+defparam \core|Mult4~mac .operand_source_mbx = "input";
+defparam \core|Mult4~mac .operand_source_mby = "input";
+defparam \core|Mult4~mac .operation_mode = "m9x9";
+defparam \core|Mult4~mac .output_clock = "none";
+defparam \core|Mult4~mac .preadder_subtract_a = "false";
+defparam \core|Mult4~mac .preadder_subtract_b = "false";
+defparam \core|Mult4~mac .result_a_width = 64;
+defparam \core|Mult4~mac .signed_max = "false";
+defparam \core|Mult4~mac .signed_may = "false";
+defparam \core|Mult4~mac .signed_mbx = "false";
+defparam \core|Mult4~mac .signed_mby = "false";
+defparam \core|Mult4~mac .sub_clock = "none";
+defparam \core|Mult4~mac .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: DSP_X54_Y8_N0
@@ -43300,7 +43300,7 @@ defparam \core|out_wdata[6] .power_up = "low";
 // synopsys translate_on
 
 // Location: DSP_X20_Y8_N0
-cyclonev_mac \core|Mult4~8 (
+cyclonev_mac \core|Mult0~8 (
 	.sub(gnd),
 	.negate(gnd),
 	.accumulate(gnd),
@@ -43320,62 +43320,62 @@ cyclonev_mac \core|Mult4~8 (
 	.scanin(27'b000000000000000000000000000),
 	.chainin(1'b0),
 	.dftout(),
-	.resulta(\core|Mult4~8_RESULTA_bus ),
+	.resulta(\core|Mult0~8_RESULTA_bus ),
 	.resultb(),
 	.scanout(),
 	.chainout());
 // synopsys translate_off
-defparam \core|Mult4~8 .accumulate_clock = "none";
-defparam \core|Mult4~8 .ax_clock = "none";
-defparam \core|Mult4~8 .ax_width = 16;
-defparam \core|Mult4~8 .ay_scan_in_clock = "none";
-defparam \core|Mult4~8 .ay_scan_in_width = 16;
-defparam \core|Mult4~8 .ay_use_scan_in = "false";
-defparam \core|Mult4~8 .az_clock = "none";
-defparam \core|Mult4~8 .bx_clock = "none";
-defparam \core|Mult4~8 .by_clock = "none";
-defparam \core|Mult4~8 .by_use_scan_in = "false";
-defparam \core|Mult4~8 .bz_clock = "none";
-defparam \core|Mult4~8 .coef_a_0 = 0;
-defparam \core|Mult4~8 .coef_a_1 = 0;
-defparam \core|Mult4~8 .coef_a_2 = 0;
-defparam \core|Mult4~8 .coef_a_3 = 0;
-defparam \core|Mult4~8 .coef_a_4 = 0;
-defparam \core|Mult4~8 .coef_a_5 = 0;
-defparam \core|Mult4~8 .coef_a_6 = 0;
-defparam \core|Mult4~8 .coef_a_7 = 0;
-defparam \core|Mult4~8 .coef_b_0 = 0;
-defparam \core|Mult4~8 .coef_b_1 = 0;
-defparam \core|Mult4~8 .coef_b_2 = 0;
-defparam \core|Mult4~8 .coef_b_3 = 0;
-defparam \core|Mult4~8 .coef_b_4 = 0;
-defparam \core|Mult4~8 .coef_b_5 = 0;
-defparam \core|Mult4~8 .coef_b_6 = 0;
-defparam \core|Mult4~8 .coef_b_7 = 0;
-defparam \core|Mult4~8 .coef_sel_a_clock = "none";
-defparam \core|Mult4~8 .coef_sel_b_clock = "none";
-defparam \core|Mult4~8 .delay_scan_out_ay = "false";
-defparam \core|Mult4~8 .delay_scan_out_by = "false";
-defparam \core|Mult4~8 .enable_double_accum = "false";
-defparam \core|Mult4~8 .load_const_clock = "none";
-defparam \core|Mult4~8 .load_const_value = 0;
-defparam \core|Mult4~8 .mode_sub_location = 0;
-defparam \core|Mult4~8 .negate_clock = "none";
-defparam \core|Mult4~8 .operand_source_max = "input";
-defparam \core|Mult4~8 .operand_source_may = "input";
-defparam \core|Mult4~8 .operand_source_mbx = "input";
-defparam \core|Mult4~8 .operand_source_mby = "input";
-defparam \core|Mult4~8 .operation_mode = "m18x18_full";
-defparam \core|Mult4~8 .output_clock = "0";
-defparam \core|Mult4~8 .preadder_subtract_a = "false";
-defparam \core|Mult4~8 .preadder_subtract_b = "false";
-defparam \core|Mult4~8 .result_a_width = 64;
-defparam \core|Mult4~8 .signed_max = "false";
-defparam \core|Mult4~8 .signed_may = "false";
-defparam \core|Mult4~8 .signed_mbx = "false";
-defparam \core|Mult4~8 .signed_mby = "false";
-defparam \core|Mult4~8 .sub_clock = "none";
-defparam \core|Mult4~8 .use_chainadder = "false";
+defparam \core|Mult0~8 .accumulate_clock = "none";
+defparam \core|Mult0~8 .ax_clock = "none";
+defparam \core|Mult0~8 .ax_width = 16;
+defparam \core|Mult0~8 .ay_scan_in_clock = "none";
+defparam \core|Mult0~8 .ay_scan_in_width = 16;
+defparam \core|Mult0~8 .ay_use_scan_in = "false";
+defparam \core|Mult0~8 .az_clock = "none";
+defparam \core|Mult0~8 .bx_clock = "none";
+defparam \core|Mult0~8 .by_clock = "none";
+defparam \core|Mult0~8 .by_use_scan_in = "false";
+defparam \core|Mult0~8 .bz_clock = "none";
+defparam \core|Mult0~8 .coef_a_0 = 0;
+defparam \core|Mult0~8 .coef_a_1 = 0;
+defparam \core|Mult0~8 .coef_a_2 = 0;
+defparam \core|Mult0~8 .coef_a_3 = 0;
+defparam \core|Mult0~8 .coef_a_4 = 0;
+defparam \core|Mult0~8 .coef_a_5 = 0;
+defparam \core|Mult0~8 .coef_a_6 = 0;
+defparam \core|Mult0~8 .coef_a_7 = 0;
+defparam \core|Mult0~8 .coef_b_0 = 0;
+defparam \core|Mult0~8 .coef_b_1 = 0;
+defparam \core|Mult0~8 .coef_b_2 = 0;
+defparam \core|Mult0~8 .coef_b_3 = 0;
+defparam \core|Mult0~8 .coef_b_4 = 0;
+defparam \core|Mult0~8 .coef_b_5 = 0;
+defparam \core|Mult0~8 .coef_b_6 = 0;
+defparam \core|Mult0~8 .coef_b_7 = 0;
+defparam \core|Mult0~8 .coef_sel_a_clock = "none";
+defparam \core|Mult0~8 .coef_sel_b_clock = "none";
+defparam \core|Mult0~8 .delay_scan_out_ay = "false";
+defparam \core|Mult0~8 .delay_scan_out_by = "false";
+defparam \core|Mult0~8 .enable_double_accum = "false";
+defparam \core|Mult0~8 .load_const_clock = "none";
+defparam \core|Mult0~8 .load_const_value = 0;
+defparam \core|Mult0~8 .mode_sub_location = 0;
+defparam \core|Mult0~8 .negate_clock = "none";
+defparam \core|Mult0~8 .operand_source_max = "input";
+defparam \core|Mult0~8 .operand_source_may = "input";
+defparam \core|Mult0~8 .operand_source_mbx = "input";
+defparam \core|Mult0~8 .operand_source_mby = "input";
+defparam \core|Mult0~8 .operation_mode = "m18x18_full";
+defparam \core|Mult0~8 .output_clock = "0";
+defparam \core|Mult0~8 .preadder_subtract_a = "false";
+defparam \core|Mult0~8 .preadder_subtract_b = "false";
+defparam \core|Mult0~8 .result_a_width = 64;
+defparam \core|Mult0~8 .signed_max = "false";
+defparam \core|Mult0~8 .signed_may = "false";
+defparam \core|Mult0~8 .signed_mbx = "false";
+defparam \core|Mult0~8 .signed_mby = "false";
+defparam \core|Mult0~8 .sub_clock = "none";
+defparam \core|Mult0~8 .use_chainadder = "false";
 // synopsys translate_on
 
 // Location: FF_X30_Y6_N59
@@ -45496,11 +45496,11 @@ defparam \u_jc|reg_out_raddr[0]~feeder .shared_arith = "off";
 // Location: LABCELL_X9_Y6_N21
 cyclonev_lcell_comb \u_jc|reg_out_raddr[0]~0 (
 // Equation(s):
-// \u_jc|reg_out_raddr[0]~0_combout  = ( \u_jc|wr_addr_sync2 [4] & ( (\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [1] & (\u_jc|always6~0_combout  & !\u_jc|wr_addr_sync2 [0]))) ) )
+// \u_jc|reg_out_raddr[0]~0_combout  = ( \u_jc|wr_addr_sync2 [4] & ( (\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [1] & (\u_jc|always7~0_combout  & !\u_jc|wr_addr_sync2 [0]))) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
 	.datab(!\u_jc|wr_addr_sync2 [1]),
-	.datac(!\u_jc|always6~0_combout ),
+	.datac(!\u_jc|always7~0_combout ),
 	.datad(!\u_jc|wr_addr_sync2 [0]),
 	.datae(!\u_jc|wr_addr_sync2 [4]),
 	.dataf(gnd),
@@ -46132,14 +46132,14 @@ defparam \u_jc|out_data_sync[6] .power_up = "low";
 // Location: LABCELL_X9_Y6_N15
 cyclonev_lcell_comb \u_jc|reg_in_raddr[0]~0 (
 // Equation(s):
-// \u_jc|reg_in_raddr[0]~0_combout  = ( !\u_jc|wr_addr_sync2 [0] & ( \u_jc|always6~0_combout  & ( (\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [4] & !\u_jc|wr_addr_sync2 [1])) ) ) )
+// \u_jc|reg_in_raddr[0]~0_combout  = ( !\u_jc|wr_addr_sync2 [0] & ( \u_jc|always7~0_combout  & ( (\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [4] & !\u_jc|wr_addr_sync2 [1])) ) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
 	.datab(!\u_jc|wr_addr_sync2 [4]),
 	.datac(!\u_jc|wr_addr_sync2 [1]),
 	.datad(gnd),
 	.datae(!\u_jc|wr_addr_sync2 [0]),
-	.dataf(!\u_jc|always6~0_combout ),
+	.dataf(!\u_jc|always7~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -56996,37 +56996,37 @@ defparam \u_jc|wr_addr_sync2[5] .power_up = "low";
 // synopsys translate_on
 
 // Location: LABCELL_X9_Y6_N45
-cyclonev_lcell_comb \u_jc|always6~1 (
+cyclonev_lcell_comb \u_jc|always7~1 (
 // Equation(s):
-// \u_jc|always6~1_combout  = ( !\u_jc|wr_addr_sync2 [4] & ( !\u_jc|wr_addr_sync2 [1] & ( (!\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [0] & (\u_jc|always6~0_combout  & \u_jc|wr_data_sync2 [0]))) ) ) )
+// \u_jc|always7~1_combout  = ( !\u_jc|wr_addr_sync2 [4] & ( !\u_jc|wr_addr_sync2 [1] & ( (!\u_jc|wr_addr_sync2 [5] & (!\u_jc|wr_addr_sync2 [0] & (\u_jc|always7~0_combout  & \u_jc|wr_data_sync2 [0]))) ) ) )
 
 	.dataa(!\u_jc|wr_addr_sync2 [5]),
 	.datab(!\u_jc|wr_addr_sync2 [0]),
-	.datac(!\u_jc|always6~0_combout ),
+	.datac(!\u_jc|always7~0_combout ),
 	.datad(!\u_jc|wr_data_sync2 [0]),
 	.datae(!\u_jc|wr_addr_sync2 [4]),
 	.dataf(!\u_jc|wr_addr_sync2 [1]),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\u_jc|always6~1_combout ),
+	.combout(\u_jc|always7~1_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \u_jc|always6~1 .extended_lut = "off";
-defparam \u_jc|always6~1 .lut_mask = 64'h0008000000000000;
-defparam \u_jc|always6~1 .shared_arith = "off";
+defparam \u_jc|always7~1 .extended_lut = "off";
+defparam \u_jc|always7~1 .lut_mask = 64'h0008000000000000;
+defparam \u_jc|always7~1 .shared_arith = "off";
 // synopsys translate_on
 
 // Location: MLABCELL_X28_Y5_N57
 cyclonev_lcell_comb \u_jc|start_cnt~0 (
 // Equation(s):
-// \u_jc|start_cnt~0_combout  = ( \u_jc|start_cnt [3] & ( \u_jc|start_cnt[2]~DUPLICATE_q  ) ) # ( !\u_jc|start_cnt [3] & ( \u_jc|start_cnt[2]~DUPLICATE_q  & ( \u_jc|always6~1_combout  ) ) ) # ( \u_jc|start_cnt [3] & ( !\u_jc|start_cnt[2]~DUPLICATE_q  & ( 
-// ((\u_jc|start_cnt [1]) # (\u_jc|start_cnt [0])) # (\u_jc|always6~1_combout ) ) ) ) # ( !\u_jc|start_cnt [3] & ( !\u_jc|start_cnt[2]~DUPLICATE_q  & ( \u_jc|always6~1_combout  ) ) )
+// \u_jc|start_cnt~0_combout  = ( \u_jc|start_cnt [3] & ( \u_jc|start_cnt[2]~DUPLICATE_q  ) ) # ( !\u_jc|start_cnt [3] & ( \u_jc|start_cnt[2]~DUPLICATE_q  & ( \u_jc|always7~1_combout  ) ) ) # ( \u_jc|start_cnt [3] & ( !\u_jc|start_cnt[2]~DUPLICATE_q  & ( 
+// ((\u_jc|start_cnt [1]) # (\u_jc|start_cnt [0])) # (\u_jc|always7~1_combout ) ) ) ) # ( !\u_jc|start_cnt [3] & ( !\u_jc|start_cnt[2]~DUPLICATE_q  & ( \u_jc|always7~1_combout  ) ) )
 
 	.dataa(gnd),
-	.datab(!\u_jc|always6~1_combout ),
+	.datab(!\u_jc|always7~1_combout ),
 	.datac(!\u_jc|start_cnt [0]),
 	.datad(!\u_jc|start_cnt [1]),
 	.datae(!\u_jc|start_cnt [3]),
@@ -57066,10 +57066,10 @@ defparam \u_jc|start_cnt[3] .power_up = "low";
 // Location: MLABCELL_X28_Y5_N21
 cyclonev_lcell_comb \u_jc|start_cnt[2]~1 (
 // Equation(s):
-// \u_jc|start_cnt[2]~1_combout  = ( \u_jc|start_cnt [3] & ( !\u_jc|always6~1_combout  ) ) # ( !\u_jc|start_cnt [3] & ( (!\u_jc|always6~1_combout  & (((\u_jc|start_cnt [1]) # (\u_jc|start_cnt [0])) # (\u_jc|start_cnt[2]~DUPLICATE_q ))) ) )
+// \u_jc|start_cnt[2]~1_combout  = ( \u_jc|start_cnt [3] & ( !\u_jc|always7~1_combout  ) ) # ( !\u_jc|start_cnt [3] & ( (!\u_jc|always7~1_combout  & (((\u_jc|start_cnt [1]) # (\u_jc|start_cnt [0])) # (\u_jc|start_cnt[2]~DUPLICATE_q ))) ) )
 
 	.dataa(!\u_jc|start_cnt[2]~DUPLICATE_q ),
-	.datab(!\u_jc|always6~1_combout ),
+	.datab(!\u_jc|always7~1_combout ),
 	.datac(!\u_jc|start_cnt [0]),
 	.datad(!\u_jc|start_cnt [1]),
 	.datae(gnd),
