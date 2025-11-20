@@ -23,6 +23,9 @@ module jtag_connect #(
   output logic [15:0] cfg_in_w,
   output logic [15:0] cfg_in_h,
   output logic [15:0] cfg_scale_q88,
+  // Nuevo: modo SIMD (bit1 de CONTROL)
+  output logic        cfg_mode_simd,
+
   input  logic        status_done,
   input  logic        status_busy,
   input  logic [31:0] perf_flops,
@@ -48,7 +51,7 @@ module jtag_connect #(
 );
 
   // ========= Direcciones de registros =========
-  localparam byte ADDR_CONTROL     = 8'h00; // bit0: start
+  localparam byte ADDR_CONTROL     = 8'h00; // bit0: start, bit1: modo SIMD
   localparam byte ADDR_IN_W        = 8'h01;
   localparam byte ADDR_IN_H        = 8'h02;
   localparam byte ADDR_SCALE_Q88   = 8'h03;
@@ -182,6 +185,9 @@ module jtag_connect #(
   logic [31:0] reg_perf_flops, reg_perf_mem_rd, reg_perf_mem_wr;
   logic [31:0] reg_progress;
 
+  // Nuevo: modo SIMD (1 bit)
+  logic        reg_mode_simd;
+
   assign in_mem_raddr  = reg_in_raddr[AW-1:0];
   assign out_mem_raddr = reg_out_raddr[AW-1:0];
 
@@ -190,7 +196,7 @@ module jtag_connect #(
   always_ff @(posedge clk_sys or negedge rst_sys_n) begin
     if (!rst_sys_n) start_cnt <= 4'd0;
     else begin
-      if (wr_sys && (wr_addr_sync2 == ADDR_CONTROL) && wr_data_sync2[0])
+      if (wr_sys && (wr_addr_sync2[7:0] == ADDR_CONTROL) && wr_data_sync2[0])
         start_cnt <= START_PULSE_CYCLES;
       else if (start_cnt != 4'd0)
         start_cnt <= start_cnt - 4'd1;
@@ -199,7 +205,6 @@ module jtag_connect #(
   assign start_pulse = (start_cnt != 4'd0);
 
   // Banco de registros + subida de imagen
-  logic [7:0]  dummy_zero8;
   logic [31:0] wr_addr_sync1, wr_addr_sync2;
   logic [31:0] wr_data_sync1, wr_data_sync2;
 
@@ -238,6 +243,8 @@ module jtag_connect #(
       reg_perf_mem_rd  <= 32'd0;
       reg_perf_mem_wr  <= 32'd0;
       reg_progress     <= 32'd0;
+
+      reg_mode_simd    <= 1'b0;
     end else begin
       in_mem_we <= 1'b0;  // por defecto
 
@@ -246,7 +253,12 @@ module jtag_connect #(
           ADDR_IN_W:        reg_in_w      <= wr_data_sync2;
           ADDR_IN_H:        reg_in_h      <= wr_data_sync2;
           ADDR_SCALE_Q88:   reg_scale     <= {16'd0, quantize_scale_q88(wr_data_sync2[15:0])};
-          ADDR_CONTROL:     /* sin latch; solo start_cnt */ ;
+
+          // CONTROL: bit0 = start (solo genera pulso), bit1 = modo SIMD
+          ADDR_CONTROL: begin
+            reg_mode_simd <= wr_data_sync2[1];
+          end
+
           ADDR_IN_ADDR:     reg_in_raddr  <= wr_data_sync2;
           ADDR_OUT_ADDR:    reg_out_raddr <= wr_data_sync2;
 
@@ -284,6 +296,7 @@ module jtag_connect #(
   assign cfg_in_w      = reg_in_w[15:0];
   assign cfg_in_h      = reg_in_h[15:0];
   assign cfg_scale_q88 = reg_scale[15:0];
+  assign cfg_mode_simd = reg_mode_simd;
 
   // tck: sincronizar datos de BRAMs para lecturas
   logic [7:0] in_data_meta,  in_data_sync;
@@ -307,6 +320,9 @@ module jtag_connect #(
       ADDR_IN_H:        dr_read_data = reg_in_h;
       ADDR_SCALE_Q88:   dr_read_data = reg_scale;
       ADDR_STATUS:      dr_read_data = reg_status;
+
+      // CONTROL: bit1 = modo SIMD, bit0 no se latchea (siempre 0 al leer)
+      ADDR_CONTROL:     dr_read_data = {30'd0, reg_mode_simd, 1'b0};
 
       ADDR_PERF_FLOPS:  dr_read_data = reg_perf_flops;
       ADDR_PERF_MEM_RD: dr_read_data = reg_perf_mem_rd;

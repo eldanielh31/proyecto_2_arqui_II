@@ -1,7 +1,9 @@
 // ============================================================================
 // top_dsa_seq.sv — Top con Virtual JTAG, LEDs y BRAMs (lectura/escritura)
-// Núcleo secuencial bilinear + performance counters.
+// Núcleo secuencial + núcleo SIMD4, seleccionables por modo (JTAG + switch).
+// Añadido: limpieza de mem_out tras reset.
 // ============================================================================
+
 `timescale 1ps/1ps
 `define MEM_INIT_FILE "img_in_64x64.hex"
 
@@ -12,31 +14,50 @@ module top_dsa_seq #(
 )(
   input  logic clk_50,
   input  logic rst_n,
+
+  // Switch físico de start
   input  logic start_sw,
 
+  // Switch físico para modo SIMD x4
+  input  logic mode_simd_sw,
+
+  // LEDs
   output logic led_done,
   output logic led_reset_evt,
-  output logic led_start_on
+  output logic led_start_on,
+  output logic led_simd_mode
 );
 
-  // ---------------- Señales core ----------------
+  // ---------------- Señales core (comunes) ----------------
   logic        start_pulse_sw;
   logic        start_pulse_jtag;
-  logic        busy, done;
 
+  // Señales de estado global (después de multiplexar núcleos)
+  logic        busy;   // desde núcleo seleccionado
+  logic        done;   // desde núcleo seleccionado
+
+  // Configuración desde JTAG
   logic [15:0] in_w_cfg, in_h_cfg, scale_q88_cfg;
   logic [15:0] in_w, in_h, scale_q88;
 
-  logic [15:0] out_w_s, out_h_s;
+  // Modo SIMD desde JTAG y efectivo
+  logic        mode_simd_cfg;
+  logic        mode_simd_eff;   // OR de JTAG + switch físico
 
+  // Señales de lectura/escritura de BRAM compartidas
   logic [AW-1:0] in_raddr_core;
   logic [7:0]    in_rdata;
 
-  logic [AW-1:0] out_waddr;
-  logic [7:0]    out_wdata;
-  logic          out_we;
+  logic [AW-1:0] out_waddr_core;
+  logic [7:0]    out_wdata_core;
+  logic          out_we_core;
 
-  // Performance counters desde el core
+  // Señales hacia mem_out, tras multiplexar con limpieza
+  logic [AW-1:0] out_waddr_mux;
+  logic [7:0]    out_wdata_mux;
+  logic          out_we_mux;
+
+  // Performance counters globales (núcleo seleccionado)
   logic [31:0] perf_flops;
   logic [31:0] perf_mem_rd;
   logic [31:0] perf_mem_wr;
@@ -87,6 +108,10 @@ module top_dsa_seq #(
     .cfg_in_w      (in_w_cfg),
     .cfg_in_h      (in_h_cfg),
     .cfg_scale_q88 (scale_q88_cfg),
+
+    // Modo SIMD desde JTAG
+    .cfg_mode_simd (mode_simd_cfg),
+
     .status_done   (done),
     .status_busy   (busy),
     .perf_flops    (perf_flops),
@@ -150,6 +175,7 @@ module top_dsa_seq #(
   // =========================================================================
   // 4) Memorias on-chip (inferidas)
   // =========================================================================
+  // Lectura desde núcleo seleccionado / escritura desde JTAG (upload)
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b1)              // simulación: carga MEM_INIT_FILE (si está definido)
@@ -162,6 +188,7 @@ module top_dsa_seq #(
     .we    (jtag_in_we & ~busy) // evitar escribir durante procesamiento
   );
 
+  // BRAM de entrada para vista por JTAG (lectura)
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b1)
@@ -174,6 +201,7 @@ module top_dsa_seq #(
     .we    (jtag_in_we & ~busy)
   );
 
+  // BRAM de salida (escritura desde núcleo o desde limpiador, lectura por JTAG)
   onchip_mem_dp #(
     .ADDR_W (AW),
     .INIT_EN(1'b0)
@@ -181,9 +209,9 @@ module top_dsa_seq #(
     .clk   (clk_50),
     .raddr (jtag_out_raddr),
     .rdata (jtag_out_rdata),
-    .waddr (out_waddr),
-    .wdata (out_wdata),
-    .we    (out_we)
+    .waddr (out_waddr_mux),
+    .wdata (out_wdata_mux),
+    .we    (out_we_mux)
   );
 
   // =========================================================================
@@ -193,46 +221,149 @@ module top_dsa_seq #(
   assign in_h      = in_h_cfg;
   assign scale_q88 = scale_q88_cfg;
 
-  // Start por JTAG o por switch (combinacional, sin inicialización en declaración)
+  // Modo SIMD efectivo: OR entre JTAG y switch físico
+  assign mode_simd_eff = mode_simd_cfg | mode_simd_sw;
+  assign led_simd_mode = mode_simd_eff;
+
+  // =========================================================================
+  // 6) Limpieza de mem_out tras reset
+  // =========================================================================
+  localparam int OUT_DEPTH = (1 << AW);
+
+  logic                clear_active;
+  logic [AW-1:0]       clear_addr;
+
+  always_ff @(posedge clk_50 or negedge rst_n) begin
+    if (!rst_n) begin
+      clear_active <= 1'b1;          // tras cualquier reset, limpiar mem_out
+      clear_addr   <= {AW{1'b0}};
+    end else begin
+      if (clear_active) begin
+        clear_addr <= clear_addr + 1'b1;
+        if (clear_addr == OUT_DEPTH-1)
+          clear_active <= 1'b0;
+      end
+    end
+  end
+
+  // Mux de escritura a mem_out: limpiador vs núcleo
+  assign out_waddr_mux = clear_active ? clear_addr       : out_waddr_core;
+  assign out_wdata_mux = clear_active ? 8'h00            : out_wdata_core;
+  assign out_we_mux    = clear_active ? 1'b1             : out_we_core;
+
+  // =========================================================================
+  // 7) Start global (bloqueado mientras se limpia mem_out)
+  // =========================================================================
+  logic start_any_raw;
   logic start_any;
+
   always_comb begin
-    start_any = start_pulse_jtag | start_pulse_sw;
+    start_any_raw = start_pulse_jtag | start_pulse_sw;
+    start_any     = start_any_raw & ~clear_active;  // no iniciar mientras se limpia mem_out
   end
 
   // =========================================================================
-  // 6) Núcleo bilineal (secuencial)
+  // 8) Núcleos bilineales: secuencial + SIMD4
   // =========================================================================
-  bilinear_seq #(.AW(AW)) core (
+
+  // Señales núcleo secuencial
+  logic        busy_seq,  done_seq;
+  logic [AW-1:0] in_raddr_seq;
+  logic [AW-1:0] out_waddr_seq;
+  logic [7:0]    out_wdata_seq;
+  logic          out_we_seq;
+  logic [31:0]   perf_flops_seq, perf_mem_rd_seq, perf_mem_wr_seq;
+  logic [15:0]   out_w_s_seq, out_h_s_seq;
+
+  // Señales núcleo SIMD4
+  logic        busy_simd, done_simd;
+  logic [AW-1:0] in_raddr_simd;
+  logic [AW-1:0] out_waddr_simd;
+  logic [7:0]    out_wdata_simd;
+  logic          out_we_simd;
+  logic [31:0]   perf_flops_simd, perf_mem_rd_simd, perf_mem_wr_simd;
+  logic [15:0]   out_w_s_simd, out_h_s_simd;
+
+  // Señales de start hacia cada núcleo (solo uno activo)
+  logic start_seq, start_simd;
+  assign start_seq  = start_any & ~mode_simd_eff;
+  assign start_simd = start_any &  mode_simd_eff;
+
+  // Multiplexor de direcciones/datos de memoria hacia BRAM
+  assign in_raddr_core  = mode_simd_eff ? in_raddr_simd  : in_raddr_seq;
+  assign out_waddr_core = mode_simd_eff ? out_waddr_simd : out_waddr_seq;
+  assign out_wdata_core = mode_simd_eff ? out_wdata_simd : out_wdata_seq;
+  assign out_we_core    = mode_simd_eff ? out_we_simd    : out_we_seq;
+
+  // Multiplexor de estado/performance hacia JTAG
+  assign busy         = mode_simd_eff ? busy_simd        : busy_seq;
+  assign done         = mode_simd_eff ? done_simd        : done_seq;
+  assign perf_flops   = mode_simd_eff ? perf_flops_simd  : perf_flops_seq;
+  assign perf_mem_rd  = mode_simd_eff ? perf_mem_rd_simd : perf_mem_rd_seq;
+  assign perf_mem_wr  = mode_simd_eff ? perf_mem_wr_simd : perf_mem_wr_seq;
+
+  // Núcleo secuencial
+  bilinear_seq #(.AW(AW)) u_core_seq (
     .clk           (clk_50),
     .rst_n         (rst_n),
-    .start         (start_any),
-    .busy          (busy),
-    .done          (done),
+    .start         (start_seq),
+    .busy          (busy_seq),
+    .done          (done_seq),
 
-    .i_step_en     (1'b0),   // stepping desactivado por ahora
+    .i_step_en     (1'b0),
     .i_step_pulse  (1'b0),
 
     .i_in_w        (in_w),
     .i_in_h        (in_h),
     .i_scale_q88   (scale_q88),
 
-    .o_out_w       (out_w_s),
-    .o_out_h       (out_h_s),
+    .o_out_w       (out_w_s_seq),
+    .o_out_h       (out_h_s_seq),
 
-    .in_raddr      (in_raddr_core),
+    .in_raddr      (in_raddr_seq),
     .in_rdata      (in_rdata),
 
-    .out_waddr     (out_waddr),
-    .out_wdata     (out_wdata),
-    .out_we        (out_we),
+    .out_waddr     (out_waddr_seq),
+    .out_wdata     (out_wdata_seq),
+    .out_we        (out_we_seq),
 
-    .o_flop_count  (perf_flops),
-    .o_mem_rd_count(perf_mem_rd),
-    .o_mem_wr_count(perf_mem_wr)
+    .o_flop_count  (perf_flops_seq),
+    .o_mem_rd_count(perf_mem_rd_seq),
+    .o_mem_wr_count(perf_mem_wr_seq)
+  );
+
+  // Núcleo SIMD4
+  bilinear_simd4 #(.AW(AW)) u_core_simd4 (
+    .clk           (clk_50),
+    .rst_n         (rst_n),
+    .start         (start_simd),
+    .busy          (busy_simd),
+    .done          (done_simd),
+
+    .i_step_en     (1'b0),
+    .i_step_pulse  (1'b0),
+
+    .i_in_w        (in_w),
+    .i_in_h        (in_h),
+    .i_scale_q88   (scale_q88),
+
+    .o_out_w       (out_w_s_simd),
+    .o_out_h       (out_h_s_simd),
+
+    .in_raddr      (in_raddr_simd),
+    .in_rdata      (in_rdata),
+
+    .out_waddr     (out_waddr_simd),
+    .out_wdata     (out_wdata_simd),
+    .out_we        (out_we_simd),
+
+    .o_flop_count  (perf_flops_simd),
+    .o_mem_rd_count(perf_mem_rd_simd),
+    .o_mem_wr_count(perf_mem_wr_simd)
   );
 
   // =========================================================================
-  // 7) LED done latcheado
+  // 9) LED done latcheado (independiente del modo)
   // =========================================================================
   always_ff @(posedge clk_50 or negedge rst_n) begin
     if (!rst_n) led_done <= 1'b0;

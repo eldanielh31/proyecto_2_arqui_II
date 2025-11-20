@@ -3,7 +3,7 @@
 # Acciones:
 #   - Connect / Close
 #   - Set Params (IN_W, IN_H, SCALE_Q88)
-#   - Start
+#   - Start (bit0 CONTROL) + modo SIMD x4 (bit1 CONTROL)
 #   - Read Status / Read IN_W
 #   - Dump mem_in / Dump mem_out
 #   - Upload Input HEX…  (sube archivo .hex a BRAM de entrada)
@@ -28,8 +28,12 @@ set __connected 0
 set __hw ""
 set __dev ""
 
+# Modo SIMD x4 (bit1 de CONTROL)
+set simd_mode 0
+
 # --- Direcciones de registros (coinciden con RTL) ---
-set ADDR_CONTROL     0x00 ;# bit0: start
+# CONTROL: bit0 = start, bit1 = SIMD x4
+set ADDR_CONTROL     0x00 ;# bit0: start, bit1: SIMD
 set ADDR_IN_W        0x01
 set ADDR_IN_H        0x02
 set ADDR_SCALE_Q88   0x03
@@ -252,8 +256,11 @@ proc dump_mem_out {start count filepath} {
 # Subir un .hex a BRAM de entrada (una línea = 2 dígitos hex por byte)
 proc upload_hex_to_input {{base_addr 0}} {
   require_inst
-  set path [tk_getOpenFile -title "Seleccione archivo .hex" -filetypes {{"HEX Files" {.hex}} {"All Files" {*}}}]
-  if {$path eq ""} { return }
+  set path [tk_getOpenFile -title "Seleccione archivo .hex" \
+    -filetypes {{"HEX Files" {.hex}} {"All Files" {*}}}]
+  if {$path eq ""} {
+    return
+  }
   set fd [open $path "r"]
   fconfigure $fd -translation lf
   write_in_waddr $base_addr
@@ -262,7 +269,9 @@ proc upload_hex_to_input {{base_addr 0}} {
     set line [string trim $line]
     if {$line eq ""} { continue }
     if {![string is xdigit -strict $line]} { continue }
-    if {[string length $line] > 2} { set line [string range $line end-1 end] }
+    if {[string length $line] > 2} {
+      set line [string range $line end-1 end]
+    }
     if {[scan $line %x v] != 1} { continue }
     write_in_wdata [expr {$v & 0xFF}]
     incr n
@@ -270,6 +279,7 @@ proc upload_hex_to_input {{base_addr 0}} {
   close $fd
   tk_messageBox -message "Upload OK: $n bytes escritos a mem_in desde addr $base_addr"
 }
+
 
 # =============================================================================
 # Construcción GUI
@@ -316,6 +326,10 @@ grid .f.eh -row 6 -column 1 -sticky w
 grid .f.ls -row 7 -column 0 -sticky e
 grid .f.es -row 7 -column 1 -sticky w
 
+# Casilla para modo SIMD x4 (CONTROL bit1)
+checkbutton .f.cbSimd -text "SIMD x4 mode" -variable simd_mode
+grid .f.cbSimd -row 8 -column 0 -columnspan 2 -sticky w
+
 button .f.btnSet   -text "Set Params" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
   set w [parse_uint [.f.ew get]]
@@ -328,7 +342,9 @@ button .f.btnSet   -text "Set Params" -command {
 }
 button .f.btnStart -text "Start" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
-  write_reg $::ADDR_CONTROL 1
+  # CONTROL: bit1 = SIMD, bit0 = start
+  set ctrl [expr {(($::simd_mode ? 2 : 0) | 1)}]
+  write_reg $::ADDR_CONTROL $ctrl
   catch {
     vjtag_ir $::IR_READ
     set _dr1 [pack_dr $::ADDR_STATUS 0]
@@ -336,8 +352,8 @@ button .f.btnStart -text "Start" -command {
     vjtag_dr 0
   }
 }
-grid .f.btnSet   -row 8 -column 0 -pady 6 -sticky w
-grid .f.btnStart -row 8 -column 1 -pady 6 -sticky e
+grid .f.btnSet   -row 9 -column 0 -pady 6 -sticky w
+grid .f.btnStart -row 9 -column 1 -pady 6 -sticky e
 
 label .f.lst -text "status"
 entry .f.est -width 16
@@ -347,20 +363,20 @@ button .f.btnRd -text "Read Status" -command {
   .f.est delete 0 end
   .f.est insert 0 $d
 }
-grid .f.lst  -row 9 -column 0 -sticky e
-grid .f.est  -row 9 -column 1 -sticky w
-grid .f.btnRd -row 10 -column 0 -pady 6 -sticky w
+grid .f.lst  -row 10 -column 0 -sticky e
+grid .f.est  -row 10 -column 1 -sticky w
+grid .f.btnRd -row 11 -column 0 -pady 6 -sticky w
 
 button .f.btnRdW -text "Read IN_W" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
   set w [read_reg $::ADDR_IN_W]
   tk_messageBox -message "IN_W = $w"
 }
-grid .f.btnRdW -row 10 -column 1 -pady 6 -sticky e
+grid .f.btnRdW -row 11 -column 1 -pady 6 -sticky e
 
 # ---- Dump Input BRAM ----
 label .f.i_hdr -text "Dump Input BRAM (mem_in)"
-grid  .f.i_hdr -row 11 -column 0 -columnspan 2 -sticky w -pady 6
+grid  .f.i_hdr -row 12 -column 0 -columnspan 2 -sticky w -pady 6
 
 label .f.i_start -text "start (dec/hex)"
 entry .f.i_estart -width 12
@@ -369,12 +385,12 @@ entry .f.i_ecount -width 12
 label .f.i_file  -text "file"
 entry .f.i_efile -width 24
 
-grid .f.i_start -row 12 -column 0 -sticky e
-grid .f.i_estart -row 12 -column 1 -sticky w
-grid .f.i_count -row 13 -column 0 -sticky e
-grid .f.i_ecount -row 13 -column 1 -sticky w
-grid .f.i_file  -row 14 -column 0 -sticky e
-grid .f.i_efile -row 14 -column 1 -sticky w
+grid .f.i_start -row 13 -column 0 -sticky e
+grid .f.i_estart -row 13 -column 1 -sticky w
+grid .f.i_count -row 14 -column 0 -sticky e
+grid .f.i_ecount -row 14 -column 1 -sticky w
+grid .f.i_file  -row 15 -column 0 -sticky e
+grid .f.i_efile -row 15 -column 1 -sticky w
 
 button .f.i_dump -text "Dump Input" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
@@ -384,7 +400,7 @@ button .f.i_dump -text "Dump Input" -command {
   if {$file eq ""} { set file "mem_in_dump.hex" }
   dump_mem_in $start $count $file
 }
-grid .f.i_dump -row 15 -column 1 -pady 6 -sticky e
+grid .f.i_dump -row 16 -column 1 -pady 6 -sticky e
 
 # ---- Upload Input HEX (nuevo) ----
 button .f.i_upload -text "Upload Input HEX…" -command {
@@ -392,11 +408,11 @@ button .f.i_upload -text "Upload Input HEX…" -command {
   set base [parse_uint [.f.i_estart get]]
   upload_hex_to_input $base
 }
-grid .f.i_upload -row 15 -column 0 -pady 6 -sticky w
+grid .f.i_upload -row 16 -column 0 -pady 6 -sticky w
 
 # ---- Dump Output BRAM ----
 label .f.o_hdr -text "Dump Output BRAM (mem_out)"
-grid  .f.o_hdr -row 16 -column 0 -columnspan 2 -sticky w -pady 6
+grid  .f.o_hdr -row 17 -column 0 -columnspan 2 -sticky w -pady 6
 
 label .f.o_start -text "start (dec/hex)"
 entry .f.o_estart -width 12
@@ -405,12 +421,12 @@ entry .f.o_ecount -width 12
 label .f.o_file  -text "file"
 entry .f.o_efile -width 24
 
-grid .f.o_start -row 17 -column 0 -sticky e
-grid .f.o_estart -row 17 -column 1 -sticky w
-grid .f.o_count -row 18 -column 0 -sticky e
-grid .f.o_ecount -row 18 -column 1 -sticky w
-grid .f.o_file  -row 19 -column 0 -sticky e
-grid .f.o_efile -row 19 -column 1 -sticky w
+grid .f.o_start -row 18 -column 0 -sticky e
+grid .f.o_estart -row 18 -column 1 -sticky w
+grid .f.o_count -row 19 -column 0 -sticky e
+grid .f.o_ecount -row 19 -column 1 -sticky w
+grid .f.o_file  -row 20 -column 0 -sticky e
+grid .f.o_efile -row 20 -column 1 -sticky w
 
 button .f.o_autofill -text "Auto-fill W'*H'" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
@@ -428,8 +444,8 @@ button .f.o_dump -text "Dump Output" -command {
   if {$file eq ""} { set file "mem_out.hex" }
   dump_mem_out $start $count $file
 }
-grid .f.o_autofill -row 20 -column 0 -pady 6 -sticky w
-grid .f.o_dump     -row 20 -column 1 -pady 6 -sticky e
+grid .f.o_autofill -row 21 -column 0 -pady 6 -sticky w
+grid .f.o_dump     -row 21 -column 1 -pady 6 -sticky e
 
 # ---- Performance counters ----
 label .f.lperf -text "Perf (FLOPs / mem_rd / mem_wr)"
@@ -442,15 +458,15 @@ button .f.btnPerf -text "Read Perf" -command {
   .f.eperf delete 0 end
   .f.eperf insert 0 "$fl / $rd / $wr"
 }
-grid .f.lperf  -row 22 -column 0 -sticky e
-grid .f.eperf  -row 22 -column 1 -sticky w
-grid .f.btnPerf -row 23 -column 1 -pady 4 -sticky e
+grid .f.lperf  -row 23 -column 0 -sticky e
+grid .f.eperf  -row 23 -column 1 -sticky w
+grid .f.btnPerf -row 24 -column 1 -pady 4 -sticky e
 
 button .f.btnQuit -text "Quit" -command {
   jtag_close
   set ::__exit 1
 }
-grid   .f.btnQuit -row 24 -column 1 -pady 6 -sticky e
+grid   .f.btnQuit -row 25 -column 1 -pady 6 -sticky e
 
 # Defaults
 .f.ew insert 0 64
