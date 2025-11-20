@@ -3,7 +3,7 @@
 # Acciones:
 #   - Connect / Close
 #   - Set Params (IN_W, IN_H, SCALE_Q88)
-#   - Start
+#   - Start Seq / Start SIMD
 #   - Read Status / Read IN_W
 #   - Dump mem_in / Dump mem_out
 #   - Upload Input HEX…  (sube archivo .hex a BRAM de entrada)
@@ -29,7 +29,7 @@ set __hw ""
 set __dev ""
 
 # --- Direcciones de registros (coinciden con RTL) ---
-set ADDR_CONTROL     0x00 ;# bit0: start
+set ADDR_CONTROL     0x00 ;# bit0: start, bit1: SIMD mode (1 = SIMD)
 set ADDR_IN_W        0x01
 set ADDR_IN_H        0x02
 set ADDR_SCALE_Q88   0x03
@@ -326,7 +326,9 @@ button .f.btnSet   -text "Set Params" -command {
   write_reg $::ADDR_SCALE_Q88 $s
   tk_messageBox -message "Params written"
 }
-button .f.btnStart -text "Start" -command {
+
+# Start secuencial (bit0=1, bit1=0)
+button .f.btnStartSeq -text "Start Seq" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
   write_reg $::ADDR_CONTROL 1
   catch {
@@ -336,8 +338,22 @@ button .f.btnStart -text "Start" -command {
     vjtag_dr 0
   }
 }
-grid .f.btnSet   -row 8 -column 0 -pady 6 -sticky w
-grid .f.btnStart -row 8 -column 1 -pady 6 -sticky e
+
+# Start SIMD (bit0=1, bit1=1 => 3)
+button .f.btnStartSimd -text "Start SIMD" -command {
+  if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
+  write_reg $::ADDR_CONTROL 3
+  catch {
+    vjtag_ir $::IR_READ
+    set _dr1 [pack_dr $::ADDR_STATUS 0]
+    vjtag_dr $_dr1
+    vjtag_dr 0
+  }
+}
+
+grid .f.btnSet       -row 8 -column 0 -pady 6 -sticky w
+grid .f.btnStartSeq  -row 8 -column 1 -pady 6 -sticky w
+grid .f.btnStartSimd -row 8 -column 1 -pady 6 -sticky e
 
 label .f.lst -text "status"
 entry .f.est -width 16
