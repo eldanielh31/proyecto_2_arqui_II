@@ -1,6 +1,25 @@
 // ============================================================================
 // bilinear_seq.sv  — Núcleo secuencial con interpolación bilineal Q8.8 real.
-// Extensión: stepping por píxel, performance counters y datapath pipelined.
+// Implementa exactamente el modelo discreto definido en Q8.8/Q0.16:
+//
+// - Dimensiones de salida:
+//     out_w = floor((i_in_w * i_scale_q88) / 256)
+//     out_h = floor((i_in_h * i_scale_q88) / 256)
+// - Coordenadas fuente (por acumulación):
+//     inv_scale_q88 = floor(65536 / i_scale_q88)  // 1/s en Q8.8
+//     sx_fix, sy_fix en Q16.8
+//     sx_fix_{n+1} = sx_fix_n + inv_scale_q88
+//     x0 = sx_fix[23:8],  fx_q = sx_fix[7:0]
+//     (análogamente para y)
+// - Pesos bilineales:
+//     fx_q, fy_q en Q0.8  → wx*, wy* en Q0.8  → w_ij en Q0.16
+// - Píxel final:
+//     sum = Σ (w_ij * p_ij)   // Q8.16
+//     PIX = round(sum / 2^16) // +0x8000 y luego >>16
+//
+// Si el modelo de referencia en software utiliza las mismas fórmulas
+// (misma inv_scale_q88, mismo clamping y mismo redondeo), el resultado
+// es bit a bit idéntico.
 // ============================================================================
 
 `timescale 1ns/1ps
@@ -53,10 +72,11 @@ module bilinear_seq #(
   logic [15:0] out_w_reg, out_h_reg;
   logic [15:0] ox_cur, oy_cur;
 
+  // sx_fix, sy_fix se tratan como Q16.8: [23:8] entero, [7:0] fracción
   logic [23:0] sx_fix, sy_fix;
   logic [15:0] inv_scale_q88;
 
-  logic [7:0] ax_q, ay_q;
+  logic [7:0]  ax_q, ay_q;
   logic [15:0] sx_int, sy_int;
 
   logic [15:0] xi_base, yi_base;
@@ -108,27 +128,29 @@ module bilinear_seq #(
   end
   endfunction
 
-  // inv_q88: calcula 1/scale_q88 en Q8.8 (simple aproximación)
+  // inv_q88: calcula 1/scale_q88 en Q8.8 como floor(65536 / scale_q88)
+  // donde scale_q88 representa s en Q8.8 (s = scale_q88 / 256).
+  // En otras palabras:
+  //   inv_scale_q88 ≈ (1/s) en Q8.8  = floor(256 / s)
+  //                  = floor(65536 / scale_q88).
   function automatic logic [15:0] inv_q88(input logic [15:0] scale_q88);
     logic [31:0] num;
-    logic [31:0] quo;
   begin
     if (scale_q88 == 16'd0) begin
       inv_q88 = 16'hFFFF;
     end else begin
-      num = 32'd65536 + (scale_q88 >> 8);
-      quo = num / scale_q88;
-      inv_q88 = quo[15:0];
+      num     = 32'd65536;           // 256 * 256
+      inv_q88 = (num / scale_q88);   // floor(65536 / scale_q88)
     end
   end
   endfunction
 
-  // Productos W*H en Q8.8 (combinacional)
+  // Productos W*H en Q8.8 (combinacional) para out_w/out_h
   logic [31:0] mul_w, mul_h;
   assign mul_w = i_in_w * i_scale_q88;
   assign mul_h = i_in_h * i_scale_q88;
 
-  // Derivados de sx_fix/sy_fix
+  // Derivados de sx_fix/sy_fix (Q16.8)
   assign ax_q   = sx_fix[7:0];
   assign ay_q   = sy_fix[7:0];
   assign sx_int = sx_fix[23:8];
@@ -145,7 +167,7 @@ module bilinear_seq #(
   assign w01_q016 = wx0_ext * wy1_ext;
   assign w11_q016 = wx1_ext * wy1_ext;
 
-  // Suma y redondeo
+  // Suma y redondeo en Q8.16 → entero 8 bits
   assign sum_q016    = p00_r + p10_r + p01_r + p11_r;
   assign sum_rounded = sum_q016 + ROUND_Q016;
   assign PIX_next    = sum_rounded[23:16];
@@ -198,10 +220,13 @@ module bilinear_seq #(
           done <= 1'b0;
           busy <= 1'b0;
           if (start) begin
+            // out_w = floor((W * scale_q88)/256)
             out_w_reg     <= mul_w[23:8];
             out_h_reg     <= mul_h[23:8];
             o_out_w       <= mul_w[23:8];
             o_out_h       <= mul_h[23:8];
+
+            // 1/s en Q8.8 según el modelo discreto
             inv_scale_q88 <= inv_q88(i_scale_q88);
 
             o_flop_count   <= 32'd0;
@@ -224,11 +249,13 @@ module bilinear_seq #(
         end
 
         S_PIXEL_START: begin
+          // Coordenadas fuente a partir de acumuladores Q16.8
           xi_base <= sx_int;
           yi_base <= sy_int;
           fx_q    <= ax_q;
           fy_q    <= ay_q;
 
+          // Clamping de bordes
           if (sx_int >= i_in_w - 16'd1) begin
             xi_base <= i_in_w - 16'd2;
             fx_q    <= 8'hFF;
@@ -289,11 +316,13 @@ module bilinear_seq #(
         S_ADVANCE: begin
           if (ox_cur + 16'd1 < out_w_reg) begin
             ox_cur <= ox_cur + 16'd1;
+            // Avance en x: sx_fix_{n+1} = sx_fix_n + inv_scale_q88
             sx_fix <= sx_fix + {8'd0, inv_scale_q88};
           end else begin
             if (oy_cur + 16'd1 < out_h_reg) begin
               oy_cur <= oy_cur + 16'd1;
               sx_fix <= 24'd0;
+              // Avance en y: sy_fix_{m+1} = sy_fix_m + inv_scale_q88
               sy_fix <= sy_fix + {8'd0, inv_scale_q88};
             end
           end
