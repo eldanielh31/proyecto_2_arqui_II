@@ -8,19 +8,25 @@
 // - Dimensiones de salida:
 //     out_w = floor((i_in_w * i_scale_q88) / 256)
 //     out_h = floor((i_in_h * i_scale_q88) / 256)
+//
 // - Coordenadas fuente (por acumulación):
 //     inv_scale_q88 = floor(65536 / i_scale_q88)  // 1/s en Q8.8
 //     sx_fix, sy_fix en Q16.8
 //     sx_fix_{n+1} = sx_fix_n + inv_scale_q88
+//     sy_fix_{m+1} = sy_fix_m + inv_scale_q88
 //     x0 = sx_fix[23:8],  fx_q = sx_fix[7:0]
-//     (análogamente para y)
+//     y0 = sy_fix[23:8],  fy_q = sy_fix[7:0]
+//
 // - Pesos bilineales:
 //     fx_q, fy_q en Q0.8  → wx*, wy* en Q0.8  → w_ij en Q0.16
+//
 // - Píxel final:
 //     sum = Σ (w_ij * p_ij)   // Q8.16
 //     PIX = round(sum / 2^16) // +0x8000 y luego >>16
 //
 // Con el mismo modelo en software, el resultado es bit a bit idéntico.
+// Además, este núcleo sirve como referencia para el SIMD: bilinear_simd4
+// replica exactamente estas fórmulas, pero procesando 4 píxeles en paralelo.
 // ============================================================================
 
 module bilinear_seq #(
@@ -34,7 +40,7 @@ module bilinear_seq #(
   output logic        busy,
   output logic        done,
 
-  // Stepping
+  // Stepping (modo paso a paso opcional)
   input  logic        i_step_en,      // si=1, pausa tras cada píxel
   input  logic        i_step_pulse,   // avanzar un píxel cuando step_en=1
 
@@ -63,28 +69,42 @@ module bilinear_seq #(
 );
 
   // ----------------- Constantes -----------------
+  // 1.0 en Q0.8
   localparam logic [8:0]  ONE_Q08          = 9'd256;
-  localparam logic [31:0] FLOPS_PER_PIXEL  = 32'd11;       // aprox: 8 mul + 3 sumas
+
+  // Conteo aproximado de FLOPs por píxel: 8 mul + 3 sumas
+  localparam logic [31:0] FLOPS_PER_PIXEL  = 32'd11;
+
+  // Redondeo al pasar de Q8.16 a entero de 8 bits
   localparam logic [31:0] ROUND_Q016       = 32'h0000_8000;
 
   // ----------------- Registros internos -----------------
+
+  // Dimensiones de salida (enteras)
   logic [15:0] out_w_reg, out_h_reg;
+
+  // Coordenadas de salida (ox_cur, oy_cur)
   logic [15:0] ox_cur, oy_cur;
 
   // sx_fix, sy_fix se tratan como Q16.8: [23:8] entero, [7:0] fracción
   logic [23:0] sx_fix, sy_fix;
+
+  // inv_scale_q88 representa 1/scale en Q8.8
   logic [15:0] inv_scale_q88;
 
+  // Partes fraccionarias y enteras de sx_fix/sy_fix
   logic [7:0]  ax_q, ay_q;
   logic [15:0] sx_int, sy_int;
 
+  // Coordenadas fuente base y fracciones clampadas
   logic [15:0] xi_base, yi_base;
   logic [7:0]  fx_q, fy_q;
 
-  // Versión "next" para usar en la primera lectura de BRAM
+  // Versión "next" para calcular coordenadas clampadas antes de registrarlas
   logic [15:0] xi_base_next, yi_base_next;
   logic [7:0]  fx_q_next, fy_q_next;
 
+  // Intensidades fuente
   logic [7:0] I00, I10, I01, I11;
 
   // Pesos Q0.8 → productos Q0.16 (9+9 bits)
@@ -99,7 +119,7 @@ module bilinear_seq #(
   logic [31:0] sum_rounded;
   logic [7:0]  PIX_next;
 
-  // Estados FSM
+  // ----------------- FSM -----------------
   localparam logic [3:0] S_IDLE        = 4'd0;
   localparam logic [3:0] S_INIT        = 4'd1;
   localparam logic [3:0] S_ROW_INIT    = 4'd2;
@@ -119,6 +139,8 @@ module bilinear_seq #(
   // --------------------------------------------------------------------------
   // Funciones auxiliares
   // --------------------------------------------------------------------------
+
+  // Conversión (x,y,width) → dirección lineal
   function automatic logic [AW-1:0] linaddr(
     input logic [15:0] x,
     input logic [15:0] y,
@@ -155,7 +177,7 @@ module bilinear_seq #(
   assign sx_int = sx_fix[23:8];
   assign sy_int = sy_fix[23:8];
 
-  // Pesos
+  // Pesos 1D y 2D en Q0.8/Q0.16
   assign wx0_ext = ONE_Q08 - {1'b0, fx_q};
   assign wx1_ext = {1'b0, fx_q};
   assign wy0_ext = ONE_Q08 - {1'b0, fy_q};
@@ -166,13 +188,13 @@ module bilinear_seq #(
   assign w01_q016 = wx0_ext * wy1_ext;
   assign w11_q016 = wx1_ext * wy1_ext;
 
-  // Suma y redondeo en Q8.16 → entero 8 bits
+  // Suma bilineal y redondeo en Q8.16 → entero 8 bits
   assign sum_q016    = p00_r + p10_r + p01_r + p11_r;
   assign sum_rounded = sum_q016 + ROUND_Q016;
   assign PIX_next    = sum_rounded[23:16];
 
   // --------------------------------------------------------------------------
-  // Secuencia principal
+  // Secuencia principal (FSM + datapath)
   // --------------------------------------------------------------------------
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -220,6 +242,9 @@ module bilinear_seq #(
       out_we <= 1'b0; // por defecto
 
       case (state)
+        // ---------------------------------------------------
+        // S_IDLE: espera de start, cálculo inicial de tamaños
+        // ---------------------------------------------------
         S_IDLE: begin
           done <= 1'b0;
           busy <= 1'b0;
@@ -233,12 +258,16 @@ module bilinear_seq #(
             // 1/s en Q8.8
             inv_scale_q88 <= inv_q88(i_scale_q88);
 
+            // Reinicio contadores
             o_flop_count   <= 32'd0;
             o_mem_rd_count <= 32'd0;
             o_mem_wr_count <= 32'd0;
           end
         end
 
+        // ---------------------------------------------------
+        // S_INIT: inicio de recorrido, primera fila y pixel (0,0)
+        // ---------------------------------------------------
         S_INIT: begin
           busy   <= 1'b1;
           ox_cur <= 16'd0;
@@ -247,38 +276,53 @@ module bilinear_seq #(
           sy_fix <= 24'd0;
         end
 
+        // ---------------------------------------------------
+        // S_ROW_INIT: al pasar a una nueva fila Y de salida
+        // ---------------------------------------------------
         S_ROW_INIT: begin
           ox_cur <= 16'd0;
           sx_fix <= 24'd0;
         end
 
-        // Cálculo de coordenadas fuente y dirección de I00
+        // ---------------------------------------------------
+        // S_PIXEL_START:
+        //   - Calcula coordenadas fuente (sx,sy) a partir de
+        //     sx_fix/sy_fix, aplica clamping y dispara la
+        //     primera lectura I00.
+        // ---------------------------------------------------
         S_PIXEL_START: begin
-          // Primero se construyen las coordenadas clampadas en variables "next"
+          // Coordenadas base sin clamping
           xi_base_next = sx_int;
           yi_base_next = sy_int;
           fx_q_next    = ax_q;
           fy_q_next    = ay_q;
 
+          // Clamping en X
           if (sx_int >= i_in_w - 16'd1) begin
             xi_base_next = i_in_w - 16'd2;
             fx_q_next    = 8'hFF;
           end
+          // Clamping en Y
           if (sy_int >= i_in_h - 16'd1) begin
             yi_base_next = i_in_h - 16'd2;
             fy_q_next    = 8'hFF;
           end
 
-          // Luego se registran
+          // Registro de las coordenadas clampadas
           xi_base <= xi_base_next;
           yi_base <= yi_base_next;
           fx_q    <= fx_q_next;
           fy_q    <= fy_q_next;
 
-          // Y se emite la dirección de I00 usando los valores ya clampados
+          // Lectura I00 con coordenadas clampadas
           in_raddr <= linaddr(xi_base_next, yi_base_next, i_in_w);
         end
 
+        // ---------------------------------------------------
+        // S_READ00..S_READ11:
+        //   - Realizan las 4 lecturas I00/I10/I01/I11 desde la
+        //     BRAM en 4 ciclos consecutivos.
+        // ---------------------------------------------------
         S_READ00: begin
           I00            <= in_rdata;
           in_raddr       <= linaddr(xi_base + 16'd1, yi_base, i_in_w);
@@ -302,7 +346,10 @@ module bilinear_seq #(
           o_mem_rd_count <= o_mem_rd_count + 32'd1;
         end
 
-        // Etapa de pipeline: multiplicaciones
+        // ---------------------------------------------------
+        // S_MUL:
+        //   - Productos w_ij * I_ij en Q8.16.
+        // ---------------------------------------------------
         S_MUL: begin
           p00_r <= w00_q016 * I00;
           p10_r <= w10_q016 * I10;
@@ -310,7 +357,12 @@ module bilinear_seq #(
           p11_r <= w11_q016 * I11;
         end
 
-        // Etapa de pipeline: suma, redondeo y escritura de píxel
+        // ---------------------------------------------------
+        // S_WRITE:
+        //   - Suma bilineal, redondeo y escritura de un píxel
+        //     de salida.
+        //   - Actualiza contadores de FLOPs y escrituras.
+        // ---------------------------------------------------
         S_WRITE: begin
           out_waddr      <= linaddr(ox_cur, oy_cur, out_w_reg);
           out_wdata      <= PIX_next;
@@ -320,25 +372,40 @@ module bilinear_seq #(
           o_flop_count   <= o_flop_count + FLOPS_PER_PIXEL;
         end
 
+        // ---------------------------------------------------
+        // S_STEP_WAIT:
+        //   - Modo debug: espera a que llegue i_step_pulse
+        //     para avanzar al siguiente píxel.
+        // ---------------------------------------------------
         S_STEP_WAIT: begin
-          // espera por step_pulse si step_en estaba activo
+          // No se modifica nada; la transición se controla en state_n
         end
 
+        // ---------------------------------------------------
+        // S_ADVANCE:
+        //   - Avanza al siguiente píxel en X o a la siguiente
+        //     fila en Y, actualizando sx_fix y sy_fix.
+        // ---------------------------------------------------
         S_ADVANCE: begin
           if (ox_cur + 16'd1 < out_w_reg) begin
+            // Siguiente píxel en la misma fila
             ox_cur <= ox_cur + 16'd1;
-            // Avance en x: sx_fix_{n+1} = sx_fix_n + inv_scale_q88
+            // sx_fix_{n+1} = sx_fix_n + inv_scale_q88
             sx_fix <= sx_fix + {8'd0, inv_scale_q88};
           end else begin
+            // Fin de fila → siguiente fila si aún hay más
             if (oy_cur + 16'd1 < out_h_reg) begin
               oy_cur <= oy_cur + 16'd1;
               sx_fix <= 24'd0;
-              // Avance en y: sy_fix_{m+1} = sy_fix_m + inv_scale_q88
+              // sy_fix_{m+1} = sy_fix_m + inv_scale_q88
               sy_fix <= sy_fix + {8'd0, inv_scale_q88};
             end
           end
         end
 
+        // ---------------------------------------------------
+        // S_DONE: señaliza fin de procesamiento
+        // ---------------------------------------------------
         S_DONE: begin
           busy <= 1'b0;
           done <= 1'b1;
@@ -347,7 +414,9 @@ module bilinear_seq #(
     end
   end
 
-  // Próximo estado (incluye stepping y etapa S_MUL)
+  // --------------------------------------------------------------------------
+  // Próximo estado (incluye stepping opcional)
+  // --------------------------------------------------------------------------
   always_comb begin
     state_n = state;
     unique case (state)
