@@ -1,27 +1,23 @@
 `timescale 1ns/1ps
 
 // ============================================================================
-// bilinear_simd4.sv  — Núcleo SIMD x4 para interpolación bilineal Q8.8 real.
+// bilinear_simd4.sv  — Núcleo SIMD x4 para interpolación bilineal Q8.8.
 //
-// - Misma matemática que bilinear_seq:
-//     * out_w = floor((i_in_w * i_scale_q88) / 256)
-//     * out_h = floor((i_in_h * i_scale_q88) / 256)
-//     * inv_scale_q88 = floor(65536 / i_scale_q88)  // Q8.8
-//     * Coordenadas fuente: sx,sy en Q16.8, clamp en bordes
-//     * Pesos fx_q,fy_q -> w_ij en Q0.16
-//     * sum = Σ(w_ij * p_ij) en Q8.16, redondeo +0x8000 >>16
+// Misma matemática que bilinear_seq, pero procesando 4 píxeles por grupo:
 //
-// - Procesa grupos de 4 píxeles (lanes 0..3) por vez:
-//     * lane_x[i] = group_ox + i
-//     * lane_valid[i] = (lane_x[i] < out_w_reg)
-// - Todos los lanes usan la MISMA lógica de coordenadas que el secuencial.
-//
-// - La BRAM de entrada es 1R síncrona (latencia 1 ciclo):
-//     * Cada patrón de acceso usa estados: *_INIT -> *_WAIT -> *_DATA
-//       para evitar capturar datos desfasados.
-//
-// Este diseño es más verboso pero mucho más robusto y elimina el problema
-// de un lane con valor constante (columnas "dc").
+// - out_w = floor((i_in_w * i_scale_q88) / 256)
+// - out_h = floor((i_in_h * i_scale_q88) / 256)
+// - inv_scale_q88 = floor(65536 / i_scale_q88)
+// - Coordenadas fuente en Q16.8 (acumulativas):
+//     * sy_fix_row (por fila): sy_fix_row_{row+1} = sy_fix_row_row + inv_scale_q88
+//     * sx_fix_group (por grupo):
+//           sx_fix_group_{grp+1} = sx_fix_group_grp + 4*inv_scale_q88
+//     * lane k (0..3):
+//           sx_fix_lane = sx_fix_group + k*inv_scale_q88
+// - Pesos Q0.8/Q0.16 por lane y mezcla bilineal Q8.16 → 8 bits en paralelo.
+// - La BRAM de entrada es 1R: las lecturas de los 16 píxeles fuente
+//   (I00/I10/I01/I11 para 4 lanes) se serializan, pero el cálculo de los
+//   4 píxeles de salida es completamente paralelo.
 // ============================================================================
 
 module bilinear_simd4 #(
@@ -63,10 +59,10 @@ module bilinear_simd4 #(
   output logic [31:0]  o_mem_wr_count
 );
 
-  localparam int       LANES            = 4;
-  localparam logic[8:0]  ONE_Q08        = 9'd256;
-  localparam logic[31:0] FLOPS_PER_PIXEL= 32'd11;
-  localparam logic[31:0] ROUND_Q016     = 32'h0000_8000;
+  localparam int         LANES            = 4;
+  localparam logic [8:0] ONE_Q08         = 9'd256;
+  localparam logic [31:0]FLOPS_PER_PIXEL = 32'd11;         // 8 mul + 3 sumas
+  localparam logic [31:0]ROUND_Q016      = 32'h0000_8000;  // redondeo Q8.16
 
   // --------------------------------------------------------------------------
   // Dimensiones de salida e inversa de escala
@@ -74,27 +70,23 @@ module bilinear_simd4 #(
   logic [15:0] out_w_reg, out_h_reg;
   logic [15:0] inv_scale_q88;
 
-  // Productos W,H * scale_q88 (Q8.8)
   logic [31:0] mul_w, mul_h;
   assign mul_w = i_in_w * i_scale_q88;
   assign mul_h = i_in_h * i_scale_q88;
 
-  // Inv_q88 idéntica a bilinear_seq
   function automatic logic [15:0] inv_q88(input logic [15:0] scale_q88);
     logic [31:0] num;
   begin
     if (scale_q88 == 16'd0) begin
       inv_q88 = 16'hFFFF;
     end else begin
-      num     = 32'd65536;          // 256 * 256
-      inv_q88 = (num / scale_q88);  // floor(65536 / scale_q88)
+      num     = 32'd65536;         // 256 * 256
+      inv_q88 = (num / scale_q88); // floor(65536 / scale_q88)
     end
   end
   endfunction
 
-  // --------------------------------------------------------------------------
-  // Función de direccionamiento lineal (igual a bilinear_seq)
-  // --------------------------------------------------------------------------
+  // Dirección lineal
   function automatic logic [AW-1:0] linaddr(
     input logic [15:0] x,
     input logic [15:0] y,
@@ -108,44 +100,40 @@ module bilinear_simd4 #(
   endfunction
 
   // --------------------------------------------------------------------------
-  // Coordenadas de salida
+  // Coordenadas de salida y acumuladores Q16.8
   // --------------------------------------------------------------------------
-  logic [15:0] oy_cur;      // fila de salida actual
-  logic [15:0] group_ox;    // x base del grupo (0,4,8,...)
+  logic [15:0] oy_cur;        // fila de salida actual
+  logic [15:0] group_ox;      // x base del grupo (0,4,8,...)
+
+  // sx_fix_group: coordenada fuente X (Q16.8) para lane 0 del grupo
+  // sy_fix_row:   coordenada fuente Y (Q16.8) para la fila actual
+  logic [23:0] sx_fix_group;
+  logic [23:0] sy_fix_row;
 
   // Coordenadas x por lane
   logic [15:0] lane_x     [LANES];
   logic        lane_valid [LANES];
 
   // Coordenadas fuente X por lane
-  logic [15:0] xi_base    [LANES];  // entero fuente X
-  logic [7:0]  fx_q       [LANES];  // fracción X (Q0.8)
+  logic [15:0] xi_base    [LANES];
+  logic [7:0]  fx_q       [LANES];
 
   // Coordenadas fuente Y (comunes a los 4 lanes)
   logic [15:0] yi_base_row;
   logic [7:0]  fy_q_row;
 
-  // Cálculo de sy (para la fila actual)
-  logic [31:0] sy_mul;
-  logic [23:0] sy_fix_row;
+  // Variables temporales para descomponer sy_fix_row
   logic [15:0] sy_int_row;
   logic [7:0]  ay_row;
 
-  // Cálculo de sx por lane
-  logic [31:0] sx_mul_lane;
-  logic [23:0] sx_fix_lane;
-  logic [15:0] sx_int_lane;
-  logic [7:0]  ax_lane;
-
   // --------------------------------------------------------------------------
-  // Intensidades por lane
+  // Intensidades y pesos por lane
   // --------------------------------------------------------------------------
   logic [7:0] I00[LANES];
   logic [7:0] I10[LANES];
   logic [7:0] I01[LANES];
   logic [7:0] I11[LANES];
 
-  // Pesos por lane
   logic [8:0] wx0_ext[LANES];
   logic [8:0] wx1_ext[LANES];
   logic [8:0] wy0_ext;
@@ -156,13 +144,11 @@ module bilinear_simd4 #(
   logic [17:0] w01_q016[LANES];
   logic [17:0] w11_q016[LANES];
 
-  // Productos por lane (Q8.16)
   logic [31:0] p00_r[LANES];
   logic [31:0] p10_r[LANES];
   logic [31:0] p01_r[LANES];
   logic [31:0] p11_r[LANES];
 
-  // Suma y redondeo por lane
   logic [31:0] sum_q016_lane   [LANES];
   logic [31:0] sum_rounded_lane[LANES];
   logic [7:0]  PIX_lane        [LANES];
@@ -171,7 +157,6 @@ module bilinear_simd4 #(
   assign wy0_ext = ONE_Q08 - {1'b0, fy_q_row};
   assign wy1_ext = {1'b0, fy_q_row};
 
-  // Generación de pesos y suma por lane
   genvar g;
   generate
     for (g = 0; g < LANES; g++) begin : GEN_WEIGHTS
@@ -245,8 +230,11 @@ module bilinear_simd4 #(
 
   state_t state, state_n;
 
-  // Índice de lane para lecturas secuenciales
+  // Índice de lane para lecturas en la BRAM de entrada
   logic [1:0] lane_idx;
+
+  // delta4_q88: 4 * inv_scale_q88 en Q16.8
+  logic [23:0] delta4_q88;
 
   // --------------------------------------------------------------------------
   // Próximo estado
@@ -357,6 +345,9 @@ module bilinear_simd4 #(
       oy_cur       <= 16'd0;
       group_ox     <= 16'd0;
 
+      sy_fix_row   <= 24'd0;
+      sx_fix_group <= 24'd0;
+
       yi_base_row  <= 16'd0;
       fy_q_row     <= 8'd0;
 
@@ -380,6 +371,8 @@ module bilinear_simd4 #(
       o_mem_rd_count  <= 32'd0;
       o_mem_wr_count  <= 32'd0;
 
+      delta4_q88      <= 24'd0;
+
     end else begin
       state  <= state_n;
       out_we <= 1'b0;  // por defecto
@@ -391,12 +384,15 @@ module bilinear_simd4 #(
           busy <= 1'b0;
           done <= 1'b0;
           if (start) begin
-            // Calcular out_w/out_h e inv_scale_q88 (igual que bilinear_seq)
             out_w_reg     <= mul_w[23:8];
             out_h_reg     <= mul_h[23:8];
             o_out_w       <= mul_w[23:8];
             o_out_h       <= mul_h[23:8];
+
             inv_scale_q88 <= inv_q88(i_scale_q88);
+
+            // delta de 4 píxeles en Q16.8
+            delta4_q88    <= ({8'd0, inv_q88(i_scale_q88)} << 2);
 
             o_flop_count   <= 32'd0;
             o_mem_rd_count <= 32'd0;
@@ -406,21 +402,22 @@ module bilinear_simd4 #(
 
         // -------------------------------------------------------
         S_INIT: begin
-          busy    <= 1'b1;
-          oy_cur  <= 16'd0;
-          group_ox<= 16'd0;
+          busy         <= 1'b1;
+          oy_cur       <= 16'd0;
+          group_ox     <= 16'd0;
+          sy_fix_row   <= 24'd0;   // fila 0 → sy=0
+          sx_fix_group <= 24'd0;   // grupo 0 → sx=0
         end
 
         // -------------------------------------------------------
-        // Inicialización de fila: calcular Y fuente (Q16.8)
+        // Inicialización de fila: calcular Y fuente a partir de sy_fix_row
         // -------------------------------------------------------
         S_ROW_INIT: begin
-          group_ox <= 16'd0;
+          group_ox     <= 16'd0;
+          sx_fix_group <= 24'd0;
 
-          sy_mul      = oy_cur * inv_scale_q88;
-          sy_fix_row  = sy_mul[23:0];
-          sy_int_row  = sy_fix_row[23:8];
-          ay_row      = sy_fix_row[7:0];
+          sy_int_row   = sy_fix_row[23:8];
+          ay_row       = sy_fix_row[7:0];
 
           if (sy_int_row >= i_in_h - 16'd1) begin
             yi_base_row <= i_in_h - 16'd2;
@@ -433,25 +430,77 @@ module bilinear_simd4 #(
 
         // -------------------------------------------------------
         // Configuración de grupo: coordenadas X por lane
+        // sx_fix_lane = sx_fix_group + k*inv_scale_q88
         // -------------------------------------------------------
         S_GROUP_SETUP: begin
-          for (i = 0; i < LANES; i = i + 1) begin
-            lane_x[i]     <= group_ox + i[15:0];
-            lane_valid[i] <= ((group_ox + i[15:0]) < out_w_reg);
+          logic [23:0] sx_fix_lane;
+          logic [15:0] sx_int_lane;
+          logic [7:0]  ax_lane;
 
-            // sx = lane_x * inv_scale_q88 (Q16.8)
-            sx_mul_lane = (group_ox + i[15:0]) * inv_scale_q88;
-            sx_fix_lane = sx_mul_lane[23:0];
-            sx_int_lane = sx_fix_lane[23:8];
-            ax_lane     = sx_fix_lane[7:0];
+          // Lane 0
+          lane_x[0]     <= group_ox;
+          lane_valid[0] <= (group_ox < out_w_reg);
 
-            if (sx_int_lane >= i_in_w - 16'd1) begin
-              xi_base[i] <= i_in_w - 16'd2;
-              fx_q[i]    <= 8'hFF;
-            end else begin
-              xi_base[i] <= sx_int_lane;
-              fx_q[i]    <= ax_lane;
-            end
+          sx_fix_lane   = sx_fix_group;
+          sx_int_lane   = sx_fix_lane[23:8];
+          ax_lane       = sx_fix_lane[7:0];
+
+          if (sx_int_lane >= i_in_w - 16'd1) begin
+            xi_base[0] <= i_in_w - 16'd2;
+            fx_q[0]    <= 8'hFF;
+          end else begin
+            xi_base[0] <= sx_int_lane;
+            fx_q[0]    <= ax_lane;
+          end
+
+          // Lane 1
+          lane_x[1]     <= group_ox + 16'd1;
+          lane_valid[1] <= ((group_ox + 16'd1) < out_w_reg);
+
+          sx_fix_lane   = sx_fix_group + {8'd0, inv_scale_q88};
+          sx_int_lane   = sx_fix_lane[23:8];
+          ax_lane       = sx_fix_lane[7:0];
+
+          if (sx_int_lane >= i_in_w - 16'd1) begin
+            xi_base[1] <= i_in_w - 16'd2;
+            fx_q[1]    <= 8'hFF;
+          end else begin
+            xi_base[1] <= sx_int_lane;
+            fx_q[1]    <= ax_lane;
+          end
+
+          // Lane 2
+          lane_x[2]     <= group_ox + 16'd2;
+          lane_valid[2] <= ((group_ox + 16'd2) < out_w_reg);
+
+          sx_fix_lane   = sx_fix_group + ({8'd0, inv_scale_q88} << 1); // *2
+          sx_int_lane   = sx_fix_lane[23:8];
+          ax_lane       = sx_fix_lane[7:0];
+
+          if (sx_int_lane >= i_in_w - 16'd1) begin
+            xi_base[2] <= i_in_w - 16'd2;
+            fx_q[2]    <= 8'hFF;
+          end else begin
+            xi_base[2] <= sx_int_lane;
+            fx_q[2]    <= ax_lane;
+          end
+
+          // Lane 3
+          lane_x[3]     <= group_ox + 16'd3;
+          lane_valid[3] <= ((group_ox + 16'd3) < out_w_reg);
+
+          // 3*inv_scale_q88 = (1+2)*inv_scale_q88
+          sx_fix_lane   = sx_fix_group + {8'd0, inv_scale_q88}
+                                        + ({8'd0, inv_scale_q88} << 1);
+          sx_int_lane   = sx_fix_lane[23:8];
+          ax_lane       = sx_fix_lane[7:0];
+
+          if (sx_int_lane >= i_in_w - 16'd1) begin
+            xi_base[3] <= i_in_w - 16'd2;
+            fx_q[3]    <= 8'hFF;
+          end else begin
+            xi_base[3] <= sx_int_lane;
+            fx_q[3]    <= ax_lane;
           end
         end
 
@@ -464,14 +513,12 @@ module bilinear_simd4 #(
         end
 
         S_G00_WAIT: begin
-          // sólo se espera un ciclo para que la BRAM cargue el primer dato
         end
 
         S_G00_DATA: begin
-          // Captura para lane_idx actual
           if (lane_valid[lane_idx]) begin
-            I00[lane_idx]    <= in_rdata;
-            o_mem_rd_count   <= o_mem_rd_count + 32'd1;
+            I00[lane_idx]  <= in_rdata;
+            o_mem_rd_count <= o_mem_rd_count + 32'd1;
           end
 
           if (lane_idx < 2'd3) begin
@@ -493,13 +540,15 @@ module bilinear_simd4 #(
 
         S_G10_DATA: begin
           if (lane_valid[lane_idx]) begin
-            I10[lane_idx]    <= in_rdata;
-            o_mem_rd_count   <= o_mem_rd_count + 32'd1;
+            I10[lane_idx]  <= in_rdata;
+            o_mem_rd_count <= o_mem_rd_count + 32'd1;
           end
 
           if (lane_idx < 2'd3) begin
             lane_idx <= lane_idx + 2'd1;
-            in_raddr <= linaddr(xi_base[lane_idx + 1] + 16'd1, yi_base_row, i_in_w);
+            in_raddr <= linaddr(xi_base[lane_idx + 1] + 16'd1,
+                                yi_base_row,
+                                i_in_w);
           end
         end
 
@@ -516,13 +565,15 @@ module bilinear_simd4 #(
 
         S_G01_DATA: begin
           if (lane_valid[lane_idx]) begin
-            I01[lane_idx]    <= in_rdata;
-            o_mem_rd_count   <= o_mem_rd_count + 32'd1;
+            I01[lane_idx]  <= in_rdata;
+            o_mem_rd_count <= o_mem_rd_count + 32'd1;
           end
 
           if (lane_idx < 2'd3) begin
             lane_idx <= lane_idx + 2'd1;
-            in_raddr <= linaddr(xi_base[lane_idx + 1], yi_base_row + 16'd1, i_in_w);
+            in_raddr <= linaddr(xi_base[lane_idx + 1],
+                                yi_base_row + 16'd1,
+                                i_in_w);
           end
         end
 
@@ -531,7 +582,9 @@ module bilinear_simd4 #(
         // -------------------------------------------------------
         S_G11_INIT: begin
           lane_idx <= 2'd0;
-          in_raddr <= linaddr(xi_base[0] + 16'd1, yi_base_row + 16'd1, i_in_w);
+          in_raddr <= linaddr(xi_base[0] + 16'd1,
+                              yi_base_row + 16'd1,
+                              i_in_w);
         end
 
         S_G11_WAIT: begin
@@ -539,8 +592,8 @@ module bilinear_simd4 #(
 
         S_G11_DATA: begin
           if (lane_valid[lane_idx]) begin
-            I11[lane_idx]    <= in_rdata;
-            o_mem_rd_count   <= o_mem_rd_count + 32'd1;
+            I11[lane_idx]  <= in_rdata;
+            o_mem_rd_count <= o_mem_rd_count + 32'd1;
           end
 
           if (lane_idx < 2'd3) begin
@@ -572,7 +625,7 @@ module bilinear_simd4 #(
         end
 
         // -------------------------------------------------------
-        // Escritura de píxeles (un lane por ciclo, write-port único)
+        // Escritura de píxeles (un lane por ciclo, por puerto único)
         // -------------------------------------------------------
         S_WRITE0: begin
           if (lane_valid[0]) begin
@@ -614,11 +667,13 @@ module bilinear_simd4 #(
         // Avance de grupo y fila
         // -------------------------------------------------------
         S_NEXT_GROUP: begin
-          group_ox <= group_ox + LANES[15:0];
+          group_ox     <= group_ox + LANES[15:0];
+          sx_fix_group <= sx_fix_group + delta4_q88; // +4*inv_scale_q88 en Q16.8
         end
 
         S_NEXT_ROW: begin
-          oy_cur <= oy_cur + 16'd1;
+          oy_cur       <= oy_cur + 16'd1;
+          sy_fix_row   <= sy_fix_row + {8'd0, inv_scale_q88};
         end
 
         S_DONE: begin

@@ -1,5 +1,8 @@
+`timescale 1ns/1ps
+
 // ============================================================================
 // bilinear_seq.sv  — Núcleo secuencial con interpolación bilineal Q8.8 real.
+//
 // Implementa exactamente el modelo discreto definido en Q8.8/Q0.16:
 //
 // - Dimensiones de salida:
@@ -17,12 +20,8 @@
 //     sum = Σ (w_ij * p_ij)   // Q8.16
 //     PIX = round(sum / 2^16) // +0x8000 y luego >>16
 //
-// Si el modelo de referencia en software utiliza las mismas fórmulas
-// (misma inv_scale_q88, mismo clamping y mismo redondeo), el resultado
-// es bit a bit idéntico.
+// Con el mismo modelo en software, el resultado es bit a bit idéntico.
 // ============================================================================
-
-`timescale 1ns/1ps
 
 module bilinear_seq #(
   parameter int AW = 19
@@ -82,6 +81,10 @@ module bilinear_seq #(
   logic [15:0] xi_base, yi_base;
   logic [7:0]  fx_q, fy_q;
 
+  // Versión "next" para usar en la primera lectura de BRAM
+  logic [15:0] xi_base_next, yi_base_next;
+  logic [7:0]  fx_q_next, fy_q_next;
+
   logic [7:0] I00, I10, I01, I11;
 
   // Pesos Q0.8 → productos Q0.16 (9+9 bits)
@@ -129,10 +132,6 @@ module bilinear_seq #(
   endfunction
 
   // inv_q88: calcula 1/scale_q88 en Q8.8 como floor(65536 / scale_q88)
-  // donde scale_q88 representa s en Q8.8 (s = scale_q88 / 256).
-  // En otras palabras:
-  //   inv_scale_q88 ≈ (1/s) en Q8.8  = floor(256 / s)
-  //                  = floor(65536 / scale_q88).
   function automatic logic [15:0] inv_q88(input logic [15:0] scale_q88);
     logic [31:0] num;
   begin
@@ -204,6 +203,11 @@ module bilinear_seq #(
       fx_q          <= 8'd0;
       fy_q          <= 8'd0;
 
+      xi_base_next  <= 16'd0;
+      yi_base_next  <= 16'd0;
+      fx_q_next     <= 8'd0;
+      fy_q_next     <= 8'd0;
+
       I00 <= 8'd0; I10 <= 8'd0; I01 <= 8'd0; I11 <= 8'd0;
 
       p00_r <= 32'd0; p10_r <= 32'd0; p01_r <= 32'd0; p11_r <= 32'd0;
@@ -220,13 +224,13 @@ module bilinear_seq #(
           done <= 1'b0;
           busy <= 1'b0;
           if (start) begin
-            // out_w = floor((W * scale_q88)/256)
+            // Dimensiones de salida
             out_w_reg     <= mul_w[23:8];
             out_h_reg     <= mul_h[23:8];
             o_out_w       <= mul_w[23:8];
             o_out_h       <= mul_h[23:8];
 
-            // 1/s en Q8.8 según el modelo discreto
+            // 1/s en Q8.8
             inv_scale_q88 <= inv_q88(i_scale_q88);
 
             o_flop_count   <= 32'd0;
@@ -248,24 +252,31 @@ module bilinear_seq #(
           sx_fix <= 24'd0;
         end
 
+        // Cálculo de coordenadas fuente y dirección de I00
         S_PIXEL_START: begin
-          // Coordenadas fuente a partir de acumuladores Q16.8
-          xi_base <= sx_int;
-          yi_base <= sy_int;
-          fx_q    <= ax_q;
-          fy_q    <= ay_q;
+          // Primero se construyen las coordenadas clampadas en variables "next"
+          xi_base_next = sx_int;
+          yi_base_next = sy_int;
+          fx_q_next    = ax_q;
+          fy_q_next    = ay_q;
 
-          // Clamping de bordes
           if (sx_int >= i_in_w - 16'd1) begin
-            xi_base <= i_in_w - 16'd2;
-            fx_q    <= 8'hFF;
+            xi_base_next = i_in_w - 16'd2;
+            fx_q_next    = 8'hFF;
           end
           if (sy_int >= i_in_h - 16'd1) begin
-            yi_base <= i_in_h - 16'd2;
-            fy_q    <= 8'hFF;
+            yi_base_next = i_in_h - 16'd2;
+            fy_q_next    = 8'hFF;
           end
 
-          in_raddr <= linaddr(xi_base, yi_base, i_in_w);
+          // Luego se registran
+          xi_base <= xi_base_next;
+          yi_base <= yi_base_next;
+          fx_q    <= fx_q_next;
+          fy_q    <= fy_q_next;
+
+          // Y se emite la dirección de I00 usando los valores ya clampados
+          in_raddr <= linaddr(xi_base_next, yi_base_next, i_in_w);
         end
 
         S_READ00: begin
