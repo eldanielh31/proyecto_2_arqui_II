@@ -20,6 +20,7 @@ module onchip_mem_dp #(
 
   localparam int DEPTH = 1 << ADDR_W;
 
+  // M10K inferido
   (* ramstyle = "M10K" *) logic [7:0] mem [0:DEPTH-1];
 
   // --------------------------
@@ -41,8 +42,13 @@ module onchip_mem_dp #(
   // --------------------------
   // 1R/1W, un solo reloj
   // --------------------------
-  always_ff @(posedge clk) begin
-    if (we) mem[waddr] <= wdata;
+  // NOTA: usamos 'always' en lugar de 'always_ff' para evitar el conflicto
+  // con el 'initial' que también escribe en 'mem' durante simulación.
+  always @(posedge clk) begin
+    if (we) begin
+      mem[waddr] <= wdata;
+    end
+    // lectura síncrona
     rdata <= mem[raddr];
   end
 

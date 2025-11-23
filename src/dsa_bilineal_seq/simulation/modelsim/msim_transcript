@@ -10,113 +10,67 @@
 # Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlib vjtag
-# ** Warning: (vlib-34) Library already exists at "vjtag".
-# vmap vjtag vjtag
-# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
-# vmap vjtag vjtag 
-# Modifying modelsim.ini
-# vlog -vlog01compat -work vjtag +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:15:42 on Nov 12,2025
-# vlog -reportprogress 300 -vlog01compat -work vjtag "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v 
-# -- Compiling module vjtag
+# Start time: 19:45:57 on Nov 22,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv 
+# -- Compiling module bilinear_simd4
 # 
 # Top level modules:
-# 	vjtag
-# End time: 18:15:42 on Nov 12,2025, Elapsed time: 0:00:00
+# 	bilinear_simd4
+# End time: 19:45:57 on Nov 22,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/jtag_connect.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:15:42 on Nov 12,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/jtag_connect.sv 
-# -- Compiling module jtag_connect
+# Start time: 19:45:57 on Nov 22,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv 
+# -- Compiling module onchip_mem_dp
 # 
 # Top level modules:
-# 	jtag_connect
-# End time: 18:15:42 on Nov 12,2025, Elapsed time: 0:00:00
+# 	onchip_mem_dp
+# End time: 19:45:57 on Nov 22,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/bilinear_seq.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:15:42 on Nov 12,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/bilinear_seq.sv 
-# -- Compiling module bilinear_seq
-# 
-# Top level modules:
-# 	bilinear_seq
-# End time: 18:15:42 on Nov 12,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/top_dsa_seq.sv}
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:15:42 on Nov 12,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/top_dsa_seq.sv 
+# Start time: 19:45:57 on Nov 22,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv 
 # -- Compiling module top_dsa_seq
 # 
 # Top level modules:
 # 	top_dsa_seq
-# End time: 18:15:42 on Nov 12,2025, Elapsed time: 0:00:00
+# End time: 19:45:57 on Nov 22,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:15:42 on Nov 12,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/onchip_mem_img.sv 
-# -- Compiling module onchip_mem_img
+# Start time: 19:45:57 on Nov 22,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv 
+# -- Compiling module bilinear_seq
 # 
 # Top level modules:
-# 	onchip_mem_img
-# End time: 18:15:42 on Nov 12,2025, Elapsed time: 0:00:00
+# 	bilinear_seq
+# End time: 19:45:58 on Nov 22,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:15:42 on Nov 12,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv 
+# Start time: 19:45:58 on Nov 22,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv 
 # -- Compiling module tb_bilinear_seq
-# ** Warning: C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(57): (vlog-2244) Variable 'IMG_FILE' is implicitly static. You must either explicitly declare it as static or automatic
-# or remove the initialization in the declaration of variable.
-# ** Warning: C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(103): (vlog-2244) Variable 'cycles' is implicitly static. You must either explicitly declare it as static or automatic
-# or remove the initialization in the declaration of variable.
-# ** Warning: C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(104): (vlog-2244) Variable 'MAX_CYCLES' is implicitly static. You must either explicitly declare it as static or automatic
-# or remove the initialization in the declaration of variable.
 # 
 # Top level modules:
 # 	tb_bilinear_seq
-# End time: 18:15:42 on Nov 12,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 3
+# End time: 19:45:58 on Nov 22,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
 # 
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -L vjtag -voptargs="+acc"  tb_bilinear_seq
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -L vjtag -voptargs=""+acc"" tb_bilinear_seq 
-# Start time: 18:15:43 on Nov 12,2025
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_bilinear_seq
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_bilinear_seq 
+# Start time: 19:45:58 on Nov 22,2025
 # Loading sv_std.std
 # Loading work.tb_bilinear_seq
 # Loading work.top_dsa_seq
-# Loading work.onchip_mem_img
+# Loading work.onchip_mem_dp
 # Loading work.bilinear_seq
-# Loading vjtag.vjtag
-# Loading altera_mf_ver.sld_virtual_jtag
-# Loading altera_mf_ver.signal_gen
-# Loading altera_mf_ver.jtag_tap_controller
-# Loading altera_mf_ver.dummy_hub
-# Loading work.jtag_connect
-# ** Warning: (vsim-3017) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Too few port connections. Expected 30, found 13.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_bilinear_seq/dut/G_VJTAG/u_vjtag/virtual_jtag_0 File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/altera_mf.v
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_tlr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_rti'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_sdrs'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_cdr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_sdr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_e1dr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_pdr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_e2dr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_udr'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_sirs'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_cir'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_sir'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_e1ir'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_pir'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_e2ir'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'jtag_state_uir'.
-# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/vjtag/synthesis/vjtag.v(26): [TFMPC] - Missing connection for port 'tms'.
+# Loading work.bilinear_simd4
 # 
 # add wave *
 # view structure
@@ -124,14 +78,99 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# [TB] in_w=x in_h=x scale_q88=x
-# Tap Controller State machine output error
-# Time: 0  Instance: tb_bilinear_seq.dut.G_VJTAG.u_vjtag.virtual_jtag_0.jtag.output_logic
-# [TB] 'C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_in_64x64.hex' cargado. Checksum(0..511) = 50228
-# [TB][INFO] 1k ciclos...
-# [TB] done=1; out_w=51 out_h=51
-# [TB] Archivo C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/img_out.hex generado. (pixeles útiles: 51 x 51)
-# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/ii_avance/dsa_bilineal_seq/tb_bilinear_seq.sv(123)
-#    Time: 365550 ns  Iteration: 2  Instance: /tb_bilinear_seq
-# End time: 18:15:48 on Nov 12,2025, Elapsed time: 0:00:05
-# Errors: 0, Warnings: 18
+# [TB] Forzando i_in_w=i_in_h=10 en u_core_seq en t=100000
+# [TB] Cargando imagen de entrada desde 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_in_10x10.hex' en mem_in...
+# [TB] mem_in[0] = 0xdc
+# [TB] mem_in[1] = 0xdc
+# [TB] mem_in[2] = 0xdc
+# [TB] mem_in[3] = 0xdc
+# [TB] mem_in[4] = 0xdc
+# [TB] mem_in[5] = 0xdc
+# [TB] mem_in[6] = 0xdc
+# [TB] mem_in[7] = 0xdc
+# [TB] mem_in[8] = 0xdc
+# [TB] mem_in[9] = 0xdc
+# [TB] mem_in[10] = 0xdc
+# [TB] mem_in[11] = 0xdc
+# [TB] mem_in[12] = 0x2a
+# [TB] mem_in[13] = 0x38
+# [TB] mem_in[14] = 0x46
+# [TB] mem_in[15] = 0x55
+# [TB] Forzando start_pulse_sw interno en t=82110000 (clear_active=0)
+# [SEQ][t=82330000] WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_fix=0.0 sy_fix=0.0 | xi=0 yi=0 fx_q=0 fy_q=0
+# [SEQ][t=82490000] WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_fix=1.63 sy_fix=0.0 | xi=1 yi=0 fx_q=63 fy_q=0
+# [SEQ][t=82650000] WRITE ox=2 oy=0 addr=2 pix=0x82 | sx_fix=2.126 sy_fix=0.0 | xi=2 yi=0 fx_q=126 fy_q=0
+# [SEQ][t=82810000] WRITE ox=3 oy=0 addr=3 pix=0xb1 | sx_fix=3.189 sy_fix=0.0 | xi=3 yi=0 fx_q=189 fy_q=0
+# [SEQ][t=82970000] WRITE ox=4 oy=0 addr=4 pix=0xda | sx_fix=4.252 sy_fix=0.0 | xi=4 yi=0 fx_q=252 fy_q=0
+# [SEQ][t=83130000] WRITE ox=5 oy=0 addr=5 pix=0x74 | sx_fix=6.59 sy_fix=0.0 | xi=6 yi=0 fx_q=59 fy_q=0
+# [SEQ][t=83290000] WRITE ox=6 oy=0 addr=6 pix=0xa4 | sx_fix=7.122 sy_fix=0.0 | xi=7 yi=0 fx_q=122 fy_q=0
+# [SEQ][t=83450000] WRITE ox=7 oy=0 addr=7 pix=0xdc | sx_fix=8.185 sy_fix=0.0 | xi=8 yi=0 fx_q=185 fy_q=0
+# [SEQ][t=83630000] WRITE ox=0 oy=1 addr=8 pix=0xdc | sx_fix=0.0 sy_fix=1.63 | xi=0 yi=1 fx_q=0 fy_q=63
+# [SEQ][t=83790000] WRITE ox=1 oy=1 addr=9 pix=0x4b | sx_fix=1.63 sy_fix=1.63 | xi=1 yi=1 fx_q=63 fy_q=63
+# [SEQ][t=83950000] WRITE ox=2 oy=1 addr=10 pix=0x85 | sx_fix=2.126 sy_fix=1.63 | xi=2 yi=1 fx_q=126 fy_q=63
+# [SEQ][t=84110000] WRITE ox=3 oy=1 addr=11 pix=0x3e | sx_fix=3.189 sy_fix=1.63 | xi=3 yi=1 fx_q=189 fy_q=63
+# [SEQ][t=84270000] WRITE ox=4 oy=1 addr=12 pix=0x4a | sx_fix=4.252 sy_fix=1.63 | xi=4 yi=1 fx_q=252 fy_q=63
+# [SEQ][t=84430000] WRITE ox=5 oy=1 addr=13 pix=0x66 | sx_fix=6.59 sy_fix=1.63 | xi=6 yi=1 fx_q=59 fy_q=63
+# [SEQ][t=84590000] WRITE ox=6 oy=1 addr=14 pix=0xb6 | sx_fix=7.122 sy_fix=1.63 | xi=7 yi=1 fx_q=122 fy_q=63
+# [SEQ][t=84750000] WRITE ox=7 oy=1 addr=15 pix=0xbd | sx_fix=8.185 sy_fix=1.63 | xi=8 yi=1 fx_q=185 fy_q=63
+# [SEQ][t=84930000] WRITE ox=0 oy=2 addr=16 pix=0x84 | sx_fix=0.0 sy_fix=2.126 | xi=0 yi=2 fx_q=0 fy_q=126
+# [SEQ][t=85090000] WRITE ox=1 oy=2 addr=17 pix=0x73 | sx_fix=1.63 sy_fix=2.126 | xi=1 yi=2 fx_q=63 fy_q=126
+# [SEQ][t=85250000] WRITE ox=2 oy=2 addr=18 pix=0x6b | sx_fix=2.126 sy_fix=2.126 | xi=2 yi=2 fx_q=126 fy_q=126
+# [SEQ][t=85410000] WRITE ox=3 oy=2 addr=19 pix=0x92 | sx_fix=3.189 sy_fix=2.126 | xi=3 yi=2 fx_q=189 fy_q=126
+# [SEQ][t=85570000] WRITE ox=4 oy=2 addr=20 pix=0x5c | sx_fix=4.252 sy_fix=2.126 | xi=4 yi=2 fx_q=252 fy_q=126
+# [SEQ][t=85730000] WRITE ox=5 oy=2 addr=21 pix=0xa6 | sx_fix=6.59 sy_fix=2.126 | xi=6 yi=2 fx_q=59 fy_q=126
+# [SEQ][t=85890000] WRITE ox=6 oy=2 addr=22 pix=0xa0 | sx_fix=7.122 sy_fix=2.126 | xi=7 yi=2 fx_q=122 fy_q=126
+# [SEQ][t=86050000] WRITE ox=7 oy=2 addr=23 pix=0x9f | sx_fix=8.185 sy_fix=2.126 | xi=8 yi=2 fx_q=185 fy_q=126
+# [SEQ][t=86230000] WRITE ox=0 oy=3 addr=24 pix=0x63 | sx_fix=0.0 sy_fix=3.189 | xi=0 yi=3 fx_q=0 fy_q=189
+# [SEQ][t=86390000] WRITE ox=1 oy=3 addr=25 pix=0x45 | sx_fix=1.63 sy_fix=3.189 | xi=1 yi=3 fx_q=63 fy_q=189
+# [SEQ][t=86550000] WRITE ox=2 oy=3 addr=26 pix=0x86 | sx_fix=2.126 sy_fix=3.189 | xi=2 yi=3 fx_q=126 fy_q=189
+# [SEQ][t=86710000] WRITE ox=3 oy=3 addr=27 pix=0x7a | sx_fix=3.189 sy_fix=3.189 | xi=3 yi=3 fx_q=189 fy_q=189
+# [SEQ][t=86870000] WRITE ox=4 oy=3 addr=28 pix=0xbc | sx_fix=4.252 sy_fix=3.189 | xi=4 yi=3 fx_q=252 fy_q=189
+# [SEQ][t=87030000] WRITE ox=5 oy=3 addr=29 pix=0xa2 | sx_fix=6.59 sy_fix=3.189 | xi=6 yi=3 fx_q=59 fy_q=189
+# [SEQ][t=87190000] WRITE ox=6 oy=3 addr=30 pix=0x99 | sx_fix=7.122 sy_fix=3.189 | xi=7 yi=3 fx_q=122 fy_q=189
+# [SEQ][t=87350000] WRITE ox=7 oy=3 addr=31 pix=0xb1 | sx_fix=8.185 sy_fix=3.189 | xi=8 yi=3 fx_q=185 fy_q=189
+# [SEQ][t=87530000] WRITE ox=0 oy=4 addr=32 pix=0x48 | sx_fix=0.0 sy_fix=4.252 | xi=0 yi=4 fx_q=0 fy_q=252
+# [SEQ][t=87690000] WRITE ox=1 oy=4 addr=33 pix=0x55 | sx_fix=1.63 sy_fix=4.252 | xi=1 yi=4 fx_q=63 fy_q=252
+# [SEQ][t=87850000] WRITE ox=2 oy=4 addr=34 pix=0x63 | sx_fix=2.126 sy_fix=4.252 | xi=2 yi=4 fx_q=126 fy_q=252
+# [SEQ][t=88010000] WRITE ox=3 oy=4 addr=35 pix=0x8c | sx_fix=3.189 sy_fix=4.252 | xi=3 yi=4 fx_q=189 fy_q=252
+# [SEQ][t=88170000] WRITE ox=4 oy=4 addr=36 pix=0xdc | sx_fix=4.252 sy_fix=4.252 | xi=4 yi=4 fx_q=252 fy_q=252
+# [SEQ][t=88330000] WRITE ox=5 oy=4 addr=37 pix=0x9c | sx_fix=6.59 sy_fix=4.252 | xi=6 yi=4 fx_q=59 fy_q=252
+# [SEQ][t=88490000] WRITE ox=6 oy=4 addr=38 pix=0xaa | sx_fix=7.122 sy_fix=4.252 | xi=7 yi=4 fx_q=122 fy_q=252
+# [SEQ][t=88650000] WRITE ox=7 oy=4 addr=39 pix=0xc2 | sx_fix=8.185 sy_fix=4.252 | xi=8 yi=4 fx_q=185 fy_q=252
+# [SEQ][t=88830000] WRITE ox=0 oy=5 addr=40 pix=0xc0 | sx_fix=0.0 sy_fix=6.59 | xi=0 yi=6 fx_q=0 fy_q=59
+# [SEQ][t=88990000] WRITE ox=1 oy=5 addr=41 pix=0x6e | sx_fix=1.63 sy_fix=6.59 | xi=1 yi=6 fx_q=63 fy_q=59
+# [SEQ][t=89150000] WRITE ox=2 oy=5 addr=42 pix=0xb3 | sx_fix=2.126 sy_fix=6.59 | xi=2 yi=6 fx_q=126 fy_q=59
+# [SEQ][t=89310000] WRITE ox=3 oy=5 addr=43 pix=0xba | sx_fix=3.189 sy_fix=6.59 | xi=3 yi=6 fx_q=189 fy_q=59
+# [SEQ][t=89470000] WRITE ox=4 oy=5 addr=44 pix=0x90 | sx_fix=4.252 sy_fix=6.59 | xi=4 yi=6 fx_q=252 fy_q=59
+# [SEQ][t=89630000] WRITE ox=5 oy=5 addr=45 pix=0xb6 | sx_fix=6.59 sy_fix=6.59 | xi=6 yi=6 fx_q=59 fy_q=59
+# [SEQ][t=89790000] WRITE ox=6 oy=5 addr=46 pix=0xcc | sx_fix=7.122 sy_fix=6.59 | xi=7 yi=6 fx_q=122 fy_q=59
+# [SEQ][t=89950000] WRITE ox=7 oy=5 addr=47 pix=0xcd | sx_fix=8.185 sy_fix=6.59 | xi=8 yi=6 fx_q=185 fy_q=59
+# [SEQ][t=90130000] WRITE ox=0 oy=6 addr=48 pix=0xac | sx_fix=0.0 sy_fix=7.122 | xi=0 yi=7 fx_q=0 fy_q=122
+# [SEQ][t=90290000] WRITE ox=1 oy=6 addr=49 pix=0xce | sx_fix=1.63 sy_fix=7.122 | xi=1 yi=7 fx_q=63 fy_q=122
+# [SEQ][t=90450000] WRITE ox=2 oy=6 addr=50 pix=0xa1 | sx_fix=2.126 sy_fix=7.122 | xi=2 yi=7 fx_q=126 fy_q=122
+# [SEQ][t=90610000] WRITE ox=3 oy=6 addr=51 pix=0x96 | sx_fix=3.189 sy_fix=7.122 | xi=3 yi=7 fx_q=189 fy_q=122
+# [SEQ][t=90770000] WRITE ox=4 oy=6 addr=52 pix=0xa2 | sx_fix=4.252 sy_fix=7.122 | xi=4 yi=7 fx_q=252 fy_q=122
+# [SEQ][t=90930000] WRITE ox=5 oy=6 addr=53 pix=0xc7 | sx_fix=6.59 sy_fix=7.122 | xi=6 yi=7 fx_q=59 fy_q=122
+# [SEQ][t=91090000] WRITE ox=6 oy=6 addr=54 pix=0xd6 | sx_fix=7.122 sy_fix=7.122 | xi=7 yi=7 fx_q=122 fy_q=122
+# [SEQ][t=91250000] WRITE ox=7 oy=6 addr=55 pix=0xdd | sx_fix=8.185 sy_fix=7.122 | xi=8 yi=7 fx_q=185 fy_q=122
+# [SEQ][t=91430000] WRITE ox=0 oy=7 addr=56 pix=0xe2 | sx_fix=0.0 sy_fix=8.185 | xi=0 yi=8 fx_q=0 fy_q=185
+# [SEQ][t=91590000] WRITE ox=1 oy=7 addr=57 pix=0xb1 | sx_fix=1.63 sy_fix=8.185 | xi=1 yi=8 fx_q=63 fy_q=185
+# [SEQ][t=91750000] WRITE ox=2 oy=7 addr=58 pix=0xb9 | sx_fix=2.126 sy_fix=8.185 | xi=2 yi=8 fx_q=126 fy_q=185
+# [SEQ][t=91910000] WRITE ox=3 oy=7 addr=59 pix=0xc5 | sx_fix=3.189 sy_fix=8.185 | xi=3 yi=8 fx_q=189 fy_q=185
+# [SEQ][t=92070000] WRITE ox=4 oy=7 addr=60 pix=0xce | sx_fix=4.252 sy_fix=8.185 | xi=4 yi=8 fx_q=252 fy_q=185
+# [SEQ][t=92230000] WRITE ox=5 oy=7 addr=61 pix=0xd6 | sx_fix=6.59 sy_fix=8.185 | xi=6 yi=8 fx_q=59 fy_q=185
+# [SEQ][t=92390000] WRITE ox=6 oy=7 addr=62 pix=0xe0 | sx_fix=7.122 sy_fix=8.185 | xi=7 yi=8 fx_q=122 fy_q=185
+# [SEQ][t=92550000] WRITE ox=7 oy=7 addr=63 pix=0xed | sx_fix=8.185 sy_fix=8.185 | xi=8 yi=8 fx_q=185 fy_q=185
+# [TB] DONE detectado en t=92550000
+# [TB] mode_simd_eff = 0 (0=SEQ, 1=SIMD4)
+# [TB] out_w = 8, out_h = 8
+# [TB] perf: flops=704 mem_rd=256 mem_wr=64
+# [TB] Volcando mem_out (8x8) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_tb.hex'
+# [TB] Dump completado.
+# [TB] Simulación terminada.
+# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(258)
+#    Time: 92550 ns  Iteration: 2  Instance: /tb_bilinear_seq
+# 1
+# Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 258
+# End time: 19:49:35 on Nov 22,2025, Elapsed time: 0:03:37
+# Errors: 0, Warnings: 0

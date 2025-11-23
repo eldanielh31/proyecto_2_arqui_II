@@ -2,6 +2,8 @@
 // top_dsa_seq.sv — Top con Virtual JTAG, LEDs y BRAMs (lectura/escritura)
 // Núcleo secuencial + núcleo SIMD4, seleccionables por modo (JTAG + switch).
 // Añadido: limpieza de mem_out tras reset.
+// En esta versión, el JTAG se deshabilita para simulación (se fuerzan
+// constantes internas y se comenta la instanciación de vjtag/jtag_connect).
 // ============================================================================
 
 `timescale 1ps/1ps
@@ -72,9 +74,33 @@ module top_dsa_seq #(
   logic  [7:0]   jtag_in_wdata;
   logic          jtag_in_we;
 
+  // =========================================================================
+  // SIM ONLY: deshabilitar JTAG, usar constantes internas
+  // =========================================================================
+ 
+  // JTAG nunca dispara start en simulación
+  assign start_pulse_jtag = 1'b0;
+
+  // Parámetros fijos para pruebas (se pueden ajustar)
+  assign in_w_cfg      = 16'd64;
+  assign in_h_cfg      = 16'd64;
+  assign scale_q88_cfg = 16'd205;   // ≈0.80 en Q8.8
+
+  // Modo seleccionado solo por switch físico
+  assign mode_simd_cfg = 1'b0;      // JTAG no fuerza SIMD
+
+  // BRAM vistas por JTAG: amarradas a 0 en simulación
+  assign jtag_in_raddr  = '0;
+  assign jtag_out_raddr = '0;
+  assign jtag_in_waddr  = '0;
+  assign jtag_in_wdata  = 8'h00;
+  assign jtag_in_we     = 1'b0;
+
+
   // =======================================================================
-  // 1) Virtual JTAG + wrapper jtag_connect
+  // 1) Virtual JTAG + wrapper jtag_connect  (DESHABILITADO EN SIM)
   // =======================================================================
+  /*
   logic       tck, tdi, tdo;
   logic [1:0] ir_in;
   logic       vs_cdr, vs_sdr, vs_e1dr, vs_pdr, vs_e2dr, vs_udr, vs_cir, vs_uir;
@@ -131,7 +157,8 @@ module top_dsa_seq #(
     .clk_sys       (clk_50),
     .rst_sys_n     (rst_n)
   );
-
+  */
+  
   // =========================================================================
   // 2) Sincronizador + antirrebote del switch de start
   // =========================================================================
