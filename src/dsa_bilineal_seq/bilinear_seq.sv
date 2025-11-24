@@ -463,4 +463,63 @@ module bilinear_seq #(
     endcase
   end
 
+  // --------------------------------------------------------------------------
+  // DEBUG INTERNO (solo sim): ver cálculo de vecinos y pesos
+  // --------------------------------------------------------------------------
+`ifdef SIM_DEBUG
+  // Limitar logs a primeras direcciones de salida para no saturar
+  localparam int SEQ_DBG_ADDR_MAX = 16;
+
+  always_ff @(posedge clk) begin
+    // Log de coordenadas fuente antes/después de clamp
+    if (state == S_PIXEL_START) begin
+      $display("[SEQ-DBG][t=%0t] PIX_START ox=%0d oy=%0d | sx_fix=%0d.%0d sy_fix=%0d.%0d | sx_int=%0d sy_int=%0d ax_q=%0d ay_q=%0d | xi_base_next=%0d yi_base_next=%0d fx_q_next=%0d fy_q_next=%0d",
+        $time,
+        ox_cur, oy_cur,
+        sx_fix[23:8], sx_fix[7:0],
+        sy_fix[23:8], sy_fix[7:0],
+        sx_int, sy_int, ax_q, ay_q,
+        xi_base_next, yi_base_next, fx_q_next, fy_q_next
+      );
+    end
+
+    // Log de vecinos justo después de leer I11 (ya tenemos I00..I11)
+    if (state == S_READ11) begin
+      $display("[SEQ-DBG][t=%0t] NEIGH ox=%0d oy=%0d | xi_base=%0d yi_base=%0d fx_q=%0d fy_q=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
+        $time,
+        ox_cur, oy_cur,
+        xi_base, yi_base, fx_q, fy_q,
+        I00, I10, I01, I11
+      );
+    end
+
+    // Log de pesos W00..W11
+    if (state == S_MUL) begin
+      $display("[SEQ-DBG][t=%0t] WEIGHTS ox=%0d oy=%0d | wx0=%0d wx1=%0d wy0=%0d wy1=%0d | w00=%0d w10=%0d w01=%0d w11=%0d",
+        $time,
+        ox_cur, oy_cur,
+        wx0_ext, wx1_ext, wy0_ext, wy1_ext,
+        w00_q016, w10_q016, w01_q016, w11_q016
+      );
+      $display("[SEQ-DBG][t=%0t] MUL-INPUTS ox=%0d oy=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
+        $time,
+        ox_cur, oy_cur,
+        I00, I10, I01, I11
+      );
+    end
+
+    // Log final: productos, suma, redondeo y píxel escrito
+    if (state == S_WRITE && out_we && out_waddr < SEQ_DBG_ADDR_MAX) begin
+      $display("[SEQ-DBG][t=%0t] PIX_WRITE ox=%0d oy=%0d addr=%0d | p00=%0d p10=%0d p01=%0d p11=%0d | sum=%0d sum_rounded=%0d -> PIX=0x%02h",
+        $time,
+        ox_cur, oy_cur,
+        out_waddr,
+        p00_r, p10_r, p01_r, p11_r,
+        sum_q016, sum_rounded,
+        out_wdata
+      );
+    end
+  end
+`endif
+
 endmodule
