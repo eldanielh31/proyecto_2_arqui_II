@@ -12,65 +12,75 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:24:05 on Nov 22,2025
+# Start time: 19:11:33 on Nov 23,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv 
 # -- Compiling module bilinear_simd4
 # 
 # Top level modules:
 # 	bilinear_simd4
-# End time: 20:24:05 on Nov 22,2025, Elapsed time: 0:00:00
+# End time: 19:11:33 on Nov 23,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:24:05 on Nov 22,2025
+# Start time: 19:11:33 on Nov 23,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv 
 # -- Compiling module onchip_mem_dp
 # 
 # Top level modules:
 # 	onchip_mem_dp
-# End time: 20:24:05 on Nov 22,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv}
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:24:05 on Nov 22,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv 
-# -- Compiling module top_dsa_seq
-# 
-# Top level modules:
-# 	top_dsa_seq
-# End time: 20:24:05 on Nov 22,2025, Elapsed time: 0:00:00
+# End time: 19:11:33 on Nov 23,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:24:05 on Nov 22,2025
+# Start time: 19:11:33 on Nov 23,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv 
 # -- Compiling module bilinear_seq
 # 
 # Top level modules:
 # 	bilinear_seq
-# End time: 20:24:05 on Nov 22,2025, Elapsed time: 0:00:00
+# End time: 19:11:33 on Nov 23,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:11:33 on Nov 23,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv 
+# -- Compiling module top_dsa_seq
+# 
+# Top level modules:
+# 	top_dsa_seq
+# End time: 19:11:33 on Nov 23,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:24:05 on Nov 22,2025
+# Start time: 19:11:33 on Nov 23,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv 
 # -- Compiling module tb_bilinear_seq
 # 
 # Top level modules:
 # 	tb_bilinear_seq
-# End time: 20:24:06 on Nov 22,2025, Elapsed time: 0:00:01
+# End time: 19:11:33 on Nov 23,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_bilinear_seq
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_bilinear_seq 
-# Start time: 20:24:06 on Nov 22,2025
+# Start time: 19:11:33 on Nov 23,2025
 # Loading sv_std.std
 # Loading work.tb_bilinear_seq
 # Loading work.top_dsa_seq
 # Loading work.onchip_mem_dp
 # Loading work.bilinear_seq
 # Loading work.bilinear_simd4
+# ** Warning: (vsim-3017) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Too few port connections. Expected 67, found 59.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_bilinear_seq/dut/u_core_simd4 File: C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_raddr0'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_raddr1'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_raddr2'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_raddr3'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_rdata0'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_rdata1'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_rdata2'.
+# ** Warning: (vsim-3722) C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv(499): [TFMPC] - Missing connection for port 'in_rdata3'.
 # 
 # add wave *
 # view structure
@@ -178,55 +188,87 @@
 # [TB] ===== INICIO CORRIDA 2: SIMD4 (10x10) ===== t=174650000
 # 
 # [TB][SIMD4] Forzando start_pulse_sw en t=174650000
-# [SIMD][RUN=2][t=175270000] WRITE lane=1 oy=0 group_ox=0 addr=0 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=0 | fx_q={0,63,126,189} fy_q_row=0
-# [SIMD][RUN=2][t=175290000] WRITE lane=2 oy=0 group_ox=0 addr=1 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=0 | fx_q={0,63,126,189} fy_q_row=0
-# [SIMD][RUN=2][t=175310000] WRITE lane=3 oy=0 group_ox=0 addr=2 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=0 | fx_q={0,63,126,189} fy_q_row=0
-# [SIMD][RUN=2][t=175890000] WRITE lane=1 oy=0 group_ox=4 addr=4 pix=0xdc | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=0 | fx_q={252,59,122,185} fy_q_row=0
-# [SIMD][RUN=2][t=175910000] WRITE lane=2 oy=0 group_ox=4 addr=5 pix=0xdc | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=0 | fx_q={252,59,122,185} fy_q_row=0
-# [SIMD][RUN=2][t=175930000] WRITE lane=3 oy=0 group_ox=4 addr=6 pix=0xdc | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=0 | fx_q={252,59,122,185} fy_q_row=0
-# [SIMD][RUN=2][t=176550000] WRITE lane=1 oy=1 group_ox=0 addr=8 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=1 | fx_q={0,63,126,189} fy_q_row=63
-# [SIMD][RUN=2][t=176570000] WRITE lane=2 oy=1 group_ox=0 addr=9 pix=0xd1 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=1 | fx_q={0,63,126,189} fy_q_row=63
-# [SIMD][RUN=2][t=176590000] WRITE lane=3 oy=1 group_ox=0 addr=10 pix=0x84 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=1 | fx_q={0,63,126,189} fy_q_row=63
-# [SIMD][RUN=2][t=177170000] WRITE lane=1 oy=1 group_ox=4 addr=12 pix=0x58 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=1 | fx_q={252,59,122,185} fy_q_row=63
-# [SIMD][RUN=2][t=177190000] WRITE lane=2 oy=1 group_ox=4 addr=13 pix=0x4d | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=1 | fx_q={252,59,122,185} fy_q_row=63
-# [SIMD][RUN=2][t=177210000] WRITE lane=3 oy=1 group_ox=4 addr=14 pix=0x78 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=1 | fx_q={252,59,122,185} fy_q_row=63
-# [SIMD][RUN=2][t=177830000] WRITE lane=1 oy=2 group_ox=0 addr=16 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=2 | fx_q={0,63,126,189} fy_q_row=126
-# [SIMD][RUN=2][t=177850000] WRITE lane=2 oy=2 group_ox=0 addr=17 pix=0xb2 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=2 | fx_q={0,63,126,189} fy_q_row=126
-# [SIMD][RUN=2][t=177870000] WRITE lane=3 oy=2 group_ox=0 addr=18 pix=0x61 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=2 | fx_q={0,63,126,189} fy_q_row=126
-# [SIMD][RUN=2][t=178450000] WRITE lane=1 oy=2 group_ox=4 addr=20 pix=0x6a | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=2 | fx_q={252,59,122,185} fy_q_row=126
-# [SIMD][RUN=2][t=178470000] WRITE lane=2 oy=2 group_ox=4 addr=21 pix=0x5f | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=2 | fx_q={252,59,122,185} fy_q_row=126
-# [SIMD][RUN=2][t=178490000] WRITE lane=3 oy=2 group_ox=4 addr=22 pix=0xad | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=2 | fx_q={252,59,122,185} fy_q_row=126
-# [SIMD][RUN=2][t=179110000] WRITE lane=1 oy=3 group_ox=0 addr=24 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=3 | fx_q={0,63,126,189} fy_q_row=189
-# [SIMD][RUN=2][t=179130000] WRITE lane=2 oy=3 group_ox=0 addr=25 pix=0xb6 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=3 | fx_q={0,63,126,189} fy_q_row=189
-# [SIMD][RUN=2][t=179150000] WRITE lane=3 oy=3 group_ox=0 addr=26 pix=0x4a | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=3 | fx_q={0,63,126,189} fy_q_row=189
-# [SIMD][RUN=2][t=179730000] WRITE lane=1 oy=3 group_ox=4 addr=28 pix=0xc0 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=3 | fx_q={252,59,122,185} fy_q_row=189
-# [SIMD][RUN=2][t=179750000] WRITE lane=2 oy=3 group_ox=4 addr=29 pix=0xbd | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=3 | fx_q={252,59,122,185} fy_q_row=189
-# [SIMD][RUN=2][t=179770000] WRITE lane=3 oy=3 group_ox=4 addr=30 pix=0x9d | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=3 | fx_q={252,59,122,185} fy_q_row=189
-# [SIMD][RUN=2][t=180390000] WRITE lane=1 oy=4 group_ox=0 addr=32 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=4 | fx_q={0,63,126,189} fy_q_row=252
-# [SIMD][RUN=2][t=180410000] WRITE lane=2 oy=4 group_ox=0 addr=33 pix=0xbb | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=4 | fx_q={0,63,126,189} fy_q_row=252
-# [SIMD][RUN=2][t=180430000] WRITE lane=3 oy=4 group_ox=0 addr=34 pix=0x5c | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=4 | fx_q={0,63,126,189} fy_q_row=252
-# [SIMD][RUN=2][t=181010000] WRITE lane=1 oy=4 group_ox=4 addr=36 pix=0xdc | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=4 | fx_q={252,59,122,185} fy_q_row=252
-# [SIMD][RUN=2][t=181030000] WRITE lane=2 oy=4 group_ox=4 addr=37 pix=0xdc | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=4 | fx_q={252,59,122,185} fy_q_row=252
-# [SIMD][RUN=2][t=181050000] WRITE lane=3 oy=4 group_ox=4 addr=38 pix=0xa2 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=4 | fx_q={252,59,122,185} fy_q_row=252
-# [SIMD][RUN=2][t=181670000] WRITE lane=1 oy=5 group_ox=0 addr=40 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=6 | fx_q={0,63,126,189} fy_q_row=59
-# [SIMD][RUN=2][t=181690000] WRITE lane=2 oy=5 group_ox=0 addr=41 pix=0xbf | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=6 | fx_q={0,63,126,189} fy_q_row=59
-# [SIMD][RUN=2][t=181710000] WRITE lane=3 oy=5 group_ox=0 addr=42 pix=0x78 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=6 | fx_q={0,63,126,189} fy_q_row=59
-# [SIMD][RUN=2][t=182290000] WRITE lane=1 oy=5 group_ox=4 addr=44 pix=0x9e | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=6 | fx_q={252,59,122,185} fy_q_row=59
-# [SIMD][RUN=2][t=182310000] WRITE lane=2 oy=5 group_ox=4 addr=45 pix=0x94 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=6 | fx_q={252,59,122,185} fy_q_row=59
-# [SIMD][RUN=2][t=182330000] WRITE lane=3 oy=5 group_ox=4 addr=46 pix=0xca | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=6 | fx_q={252,59,122,185} fy_q_row=59
-# [SIMD][RUN=2][t=182950000] WRITE lane=1 oy=6 group_ox=0 addr=48 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=7 | fx_q={0,63,126,189} fy_q_row=122
-# [SIMD][RUN=2][t=182970000] WRITE lane=2 oy=6 group_ox=0 addr=49 pix=0xce | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=7 | fx_q={0,63,126,189} fy_q_row=122
-# [SIMD][RUN=2][t=182990000] WRITE lane=3 oy=6 group_ox=0 addr=50 pix=0xad | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=7 | fx_q={0,63,126,189} fy_q_row=122
-# [SIMD][RUN=2][t=183570000] WRITE lane=1 oy=6 group_ox=4 addr=52 pix=0xb0 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=7 | fx_q={252,59,122,185} fy_q_row=122
-# [SIMD][RUN=2][t=183590000] WRITE lane=2 oy=6 group_ox=4 addr=53 pix=0xa5 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=7 | fx_q={252,59,122,185} fy_q_row=122
-# [SIMD][RUN=2][t=183610000] WRITE lane=3 oy=6 group_ox=4 addr=54 pix=0xcb | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=7 | fx_q={252,59,122,185} fy_q_row=122
-# [SIMD][RUN=2][t=184230000] WRITE lane=1 oy=7 group_ox=0 addr=56 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=8 | fx_q={0,63,126,189} fy_q_row=185
-# [SIMD][RUN=2][t=184250000] WRITE lane=2 oy=7 group_ox=0 addr=57 pix=0xdc | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=8 | fx_q={0,63,126,189} fy_q_row=185
-# [SIMD][RUN=2][t=184270000] WRITE lane=3 oy=7 group_ox=0 addr=58 pix=0xd1 | lane_x={0,1,2,3} | xi={0,1,2,3} yi_row=8 | fx_q={0,63,126,189} fy_q_row=185
-# [SIMD][RUN=2][t=184850000] WRITE lane=1 oy=7 group_ox=4 addr=60 pix=0xd2 | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=8 | fx_q={252,59,122,185} fy_q_row=185
-# [SIMD][RUN=2][t=184870000] WRITE lane=2 oy=7 group_ox=4 addr=61 pix=0xcf | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=8 | fx_q={252,59,122,185} fy_q_row=185
-# [SIMD][RUN=2][t=184890000] WRITE lane=3 oy=7 group_ox=4 addr=62 pix=0xda | lane_x={4,5,6,7} | xi={4,6,7,8} yi_row=8 | fx_q={252,59,122,185} fy_q_row=185
-# [TB][SIMD4] DONE detectado en t=184950000
+# [SIMD][RUN=2][t=174950000] WRITE addr=0 pix=0xdc
+# [SIMD] L0 WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_int=0 ax_q=0 sy_int=0 ay_q=0 xi=0 yi=0 fx_q=0 fy_q=0 I00=220 I10=220 I01=220 I11=220
+# [SIMD] L1 WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_int=1 ax_q=63 sy_int=0 ay_q=0 xi=1 yi=0 fx_q=63 fy_q=0 I00=220 I10=220 I01=220 I11=220
+# [SIMD] L2 WRITE ox=2 oy=0 addr=2 pix=0xdc | sx_int=2 ax_q=126 sy_int=0 ay_q=0 xi=2 yi=0 fx_q=126 fy_q=0 I00=220 I10=220 I01=220 I11=42
+# [SIMD] L3 WRITE ox=3 oy=0 addr=3 pix=0xdc | sx_int=3 ax_q=189 sy_int=0 ay_q=0 xi=3 yi=0 fx_q=189 fy_q=0 I00=220 I10=220 I01=220 I11=56
+# [SIMD][RUN=2][t=175190000] WRITE addr=4 pix=0xdc
+# [SIMD] L0 WRITE ox=4 oy=0 addr=4 pix=0xdc | sx_int=4 ax_q=252 sy_int=0 ay_q=0 xi=4 yi=0 fx_q=252 fy_q=0 I00=220 I10=220 I01=220 I11=70
+# [SIMD] L1 WRITE ox=5 oy=0 addr=5 pix=0x53 | sx_int=6 ax_q=59 sy_int=0 ay_q=0 xi=6 yi=0 fx_q=59 fy_q=0 I00=42 I10=220 I01=220 I11=99
+# [SIMD] L2 WRITE ox=6 oy=0 addr=6 pix=0x86 | sx_int=7 ax_q=122 sy_int=0 ay_q=0 xi=7 yi=0 fx_q=122 fy_q=0 I00=56 I10=220 I01=220 I11=113
+# [SIMD] L3 WRITE ox=7 oy=0 addr=7 pix=0xb2 | sx_int=8 ax_q=185 sy_int=0 ay_q=0 xi=8 yi=0 fx_q=185 fy_q=0 I00=70 I10=220 I01=220 I11=220
+# [SIMD][RUN=2][t=175450000] WRITE addr=8 pix=0x76
+# [SIMD] L0 WRITE ox=0 oy=1 addr=8 pix=0x76 | sx_int=0 ax_q=0 sy_int=1 ay_q=63 xi=0 yi=1 fx_q=0 fy_q=63 I00=85 I10=220 I01=220 I11=220
+# [SIMD] L1 WRITE ox=1 oy=1 addr=9 pix=0x73 | sx_int=1 ax_q=63 sy_int=1 ay_q=63 xi=1 yi=1 fx_q=63 fy_q=63 I00=113 I10=220 I01=42 I11=42
+# [SIMD] L2 WRITE ox=2 oy=1 addr=10 pix=0x85 | sx_int=2 ax_q=126 sy_int=1 ay_q=63 xi=2 yi=1 fx_q=126 fy_q=63 I00=220 I10=42 I01=56 I11=220
+# [SIMD] L3 WRITE ox=3 oy=1 addr=11 pix=0x5c | sx_int=3 ax_q=189 sy_int=1 ay_q=63 xi=3 yi=1 fx_q=189 fy_q=63 I00=220 I10=56 I01=70 I11=70
+# [SIMD][RUN=2][t=175690000] WRITE addr=12 pix=0x49
+# [SIMD] L0 WRITE ox=4 oy=1 addr=12 pix=0x49 | sx_int=4 ax_q=252 sy_int=1 ay_q=63 xi=4 yi=1 fx_q=252 fy_q=63 I00=42 I10=70 I01=85 I11=85
+# [SIMD] L1 WRITE ox=5 oy=1 addr=13 pix=0xad | sx_int=6 ax_q=59 sy_int=1 ay_q=63 xi=6 yi=1 fx_q=59 fy_q=63 I00=220 I10=99 I01=113 I11=113
+# [SIMD] L2 WRITE ox=6 oy=1 addr=14 pix=0x7a | sx_int=7 ax_q=122 sy_int=1 ay_q=63 xi=7 yi=1 fx_q=122 fy_q=63 I00=70 I10=113 I01=220 I11=220
+# [SIMD] L3 WRITE ox=7 oy=1 addr=15 pix=0xb2 | sx_int=8 ax_q=185 sy_int=1 ay_q=63 xi=8 yi=1 fx_q=185 fy_q=63 I00=85 I10=220 I01=220 I11=141
+# [SIMD][RUN=2][t=175950000] WRITE addr=16 pix=0x47
+# [SIMD] L0 WRITE ox=0 oy=2 addr=16 pix=0x47 | sx_int=0 ax_q=0 sy_int=2 ay_q=126 xi=0 yi=2 fx_q=0 fy_q=126 I00=99 I10=220 I01=42 I11=220
+# [SIMD] L1 WRITE ox=1 oy=2 addr=17 pix=0xb2 | sx_int=1 ax_q=63 sy_int=2 ay_q=126 xi=1 yi=2 fx_q=63 fy_q=126 I00=220 I10=42 I01=220 I11=56
+# [SIMD] L2 WRITE ox=2 oy=2 addr=18 pix=0x7e | sx_int=2 ax_q=126 sy_int=2 ay_q=126 xi=2 yi=2 fx_q=126 fy_q=126 I00=141 I10=220 I01=70 I11=70
+# [SIMD] L3 WRITE ox=3 oy=2 addr=19 pix=0x92 | sx_int=3 ax_q=189 sy_int=2 ay_q=126 xi=3 yi=2 fx_q=189 fy_q=126 I00=220 I10=70 I01=85 I11=220
+# [SIMD][RUN=2][t=176190000] WRITE addr=20 pix=0x5c
+# [SIMD] L0 WRITE ox=4 oy=2 addr=20 pix=0x5c | sx_int=4 ax_q=252 sy_int=2 ay_q=126 xi=4 yi=2 fx_q=252 fy_q=126 I00=56 I10=85 I01=99 I11=99
+# [SIMD] L1 WRITE ox=5 oy=2 addr=21 pix=0x95 | sx_int=6 ax_q=59 sy_int=2 ay_q=126 xi=6 yi=2 fx_q=59 fy_q=126 I00=70 I10=113 I01=220 I11=220
+# [SIMD] L2 WRITE ox=6 oy=2 addr=22 pix=0xb5 | sx_int=7 ax_q=122 sy_int=2 ay_q=126 xi=7 yi=2 fx_q=122 fy_q=126 I00=220 I10=220 I01=141 I11=141
+# [SIMD] L3 WRITE ox=7 oy=2 addr=23 pix=0x97 | sx_int=8 ax_q=185 sy_int=2 ay_q=126 xi=8 yi=2 fx_q=185 fy_q=126 I00=99 I10=141 I01=220 I11=155
+# [SIMD][RUN=2][t=176450000] WRITE addr=24 pix=0x47
+# [SIMD] L0 WRITE ox=0 oy=3 addr=24 pix=0x47 | sx_int=0 ax_q=0 sy_int=3 ay_q=189 xi=0 yi=3 fx_q=0 fy_q=189 I00=113 I10=220 I01=56 I11=220
+# [SIMD] L1 WRITE ox=1 oy=3 addr=25 pix=0x53 | sx_int=1 ax_q=63 sy_int=3 ay_q=189 xi=1 yi=3 fx_q=63 fy_q=189 I00=141 I10=56 I01=70 I11=70
+# [SIMD] L2 WRITE ox=2 oy=3 addr=26 pix=0x8f | sx_int=2 ax_q=126 sy_int=3 ay_q=189 xi=2 yi=3 fx_q=126 fy_q=189 I00=155 I10=70 I01=220 I11=85
+# [SIMD] L3 WRITE ox=3 oy=3 addr=27 pix=0x83 | sx_int=3 ax_q=189 sy_int=3 ay_q=189 xi=3 yi=3 fx_q=189 fy_q=189 I00=220 I10=220 I01=99 I11=99
+# [SIMD][RUN=2][t=176690000] WRITE addr=28 pix=0xbb
+# [SIMD] L0 WRITE ox=4 oy=3 addr=28 pix=0xbb | sx_int=4 ax_q=252 sy_int=3 ay_q=189 xi=4 yi=3 fx_q=252 fy_q=189 I00=70 I10=99 I01=113 I11=220
+# [SIMD] L1 WRITE ox=5 oy=3 addr=29 pix=0x86 | sx_int=6 ax_q=59 sy_int=3 ay_q=189 xi=6 yi=3 fx_q=59 fy_q=189 I00=85 I10=220 I01=141 I11=141
+# [SIMD] L2 WRITE ox=6 oy=3 addr=30 pix=0x92 | sx_int=7 ax_q=122 sy_int=3 ay_q=189 xi=7 yi=3 fx_q=122 fy_q=189 I00=99 I10=141 I01=155 I11=155
+# [SIMD] L3 WRITE ox=7 oy=3 addr=31 pix=0xb5 | sx_int=8 ax_q=185 sy_int=3 ay_q=189 xi=8 yi=3 fx_q=185 fy_q=189 I00=220 I10=155 I01=220 I11=170
+# [SIMD][RUN=2][t=176950000] WRITE addr=32 pix=0x48
+# [SIMD] L0 WRITE ox=0 oy=4 addr=32 pix=0x48 | sx_int=0 ax_q=0 sy_int=4 ay_q=252 xi=0 yi=4 fx_q=0 fy_q=252 I00=220 I10=220 I01=70 I11=220
+# [SIMD] L1 WRITE ox=1 oy=4 addr=33 pix=0x56 | sx_int=1 ax_q=63 sy_int=4 ay_q=252 xi=1 yi=4 fx_q=63 fy_q=252 I00=155 I10=70 I01=85 I11=85
+# [SIMD] L2 WRITE ox=2 oy=4 addr=34 pix=0x63 | sx_int=2 ax_q=126 sy_int=4 ay_q=252 xi=2 yi=4 fx_q=126 fy_q=252 I00=170 I10=85 I01=99 I11=99
+# [SIMD] L3 WRITE ox=3 oy=4 addr=35 pix=0x8d | sx_int=3 ax_q=189 sy_int=4 ay_q=252 xi=3 yi=4 fx_q=189 fy_q=252 I00=220 I10=99 I01=220 I11=113
+# [SIMD][RUN=2][t=177190000] WRITE addr=36 pix=0xdc
+# [SIMD] L0 WRITE ox=4 oy=4 addr=36 pix=0xdc | sx_int=4 ax_q=252 sy_int=4 ay_q=252 xi=4 yi=4 fx_q=252 fy_q=252 I00=85 I10=220 I01=220 I11=220
+# [SIMD] L1 WRITE ox=5 oy=4 addr=37 pix=0x9a | sx_int=6 ax_q=59 sy_int=4 ay_q=252 xi=6 yi=4 fx_q=59 fy_q=252 I00=99 I10=141 I01=155 I11=155
+# [SIMD] L2 WRITE ox=6 oy=4 addr=38 pix=0xa9 | sx_int=7 ax_q=122 sy_int=4 ay_q=252 xi=7 yi=4 fx_q=122 fy_q=252 I00=113 I10=155 I01=170 I11=170
+# [SIMD] L3 WRITE ox=7 oy=4 addr=39 pix=0xc2 | sx_int=8 ax_q=185 sy_int=4 ay_q=252 xi=8 yi=4 fx_q=185 fy_q=252 I00=220 I10=170 I01=220 I11=184
+# [SIMD][RUN=2][t=177450000] WRITE addr=40 pix=0xc0
+# [SIMD] L0 WRITE ox=0 oy=5 addr=40 pix=0xc0 | sx_int=0 ax_q=0 sy_int=6 ay_q=59 xi=0 yi=6 fx_q=0 fy_q=59 I00=220 I10=220 I01=99 I11=220
+# [SIMD] L1 WRITE ox=1 oy=5 addr=41 pix=0x8f | sx_int=1 ax_q=63 sy_int=6 ay_q=59 xi=1 yi=6 fx_q=63 fy_q=59 I00=170 I10=99 I01=113 I11=113
+# [SIMD] L2 WRITE ox=2 oy=5 addr=42 pix=0xa5 | sx_int=2 ax_q=126 sy_int=6 ay_q=59 xi=2 yi=6 fx_q=126 fy_q=59 I00=184 I10=113 I01=220 I11=220
+# [SIMD] L3 WRITE ox=3 oy=5 addr=43 pix=0xca | sx_int=3 ax_q=189 sy_int=6 ay_q=59 xi=3 yi=6 fx_q=189 fy_q=59 I00=220 I10=220 I01=141 I11=141
+# [SIMD][RUN=2][t=177690000] WRITE addr=44 pix=0x90
+# [SIMD] L0 WRITE ox=4 oy=5 addr=44 pix=0x90 | sx_int=4 ax_q=252 sy_int=6 ay_q=59 xi=4 yi=6 fx_q=252 fy_q=59 I00=113 I10=141 I01=155 I11=155
+# [SIMD] L1 WRITE ox=5 oy=5 addr=45 pix=0xd4 | sx_int=6 ax_q=59 sy_int=6 ay_q=59 xi=6 yi=6 fx_q=59 fy_q=59 I00=220 I10=220 I01=184 I11=184
+# [SIMD] L2 WRITE ox=6 oy=5 addr=46 pix=0xac | sx_int=7 ax_q=122 sy_int=6 ay_q=59 xi=7 yi=6 fx_q=122 fy_q=59 I00=141 I10=184 I01=198 I11=220
+# [SIMD] L3 WRITE ox=7 oy=5 addr=47 pix=0xc1 | sx_int=8 ax_q=185 sy_int=6 ay_q=59 xi=8 yi=6 fx_q=185 fy_q=59 I00=155 I10=198 I01=220 I11=212
+# [SIMD][RUN=2][t=177950000] WRITE addr=48 pix=0x8f
+# [SIMD] L0 WRITE ox=0 oy=6 addr=48 pix=0x8f | sx_int=0 ax_q=0 sy_int=7 ay_q=122 xi=0 yi=7 fx_q=0 fy_q=122 I00=170 I10=220 I01=113 I11=220
+# [SIMD] L1 WRITE ox=1 oy=6 addr=49 pix=0xce | sx_int=1 ax_q=63 sy_int=7 ay_q=122 xi=1 yi=7 fx_q=63 fy_q=122 I00=220 I10=113 I01=220 I11=220
+# [SIMD] L2 WRITE ox=2 oy=6 addr=50 pix=0xb4 | sx_int=2 ax_q=126 sy_int=7 ay_q=122 xi=2 yi=7 fx_q=126 fy_q=122 I00=212 I10=220 I01=141 I11=141
+# [SIMD] L3 WRITE ox=3 oy=6 addr=51 pix=0x9f | sx_int=3 ax_q=189 sy_int=7 ay_q=122 xi=3 yi=7 fx_q=189 fy_q=122 I00=226 I10=141 I01=155 I11=155
+# [SIMD][RUN=2][t=178190000] WRITE addr=52 pix=0xa3
+# [SIMD] L0 WRITE ox=4 oy=6 addr=52 pix=0xa3 | sx_int=4 ax_q=252 sy_int=7 ay_q=122 xi=4 yi=7 fx_q=252 fy_q=122 I00=220 I10=155 I01=170 I11=170
+# [SIMD] L1 WRITE ox=5 oy=6 addr=53 pix=0xb5 | sx_int=6 ax_q=59 sy_int=7 ay_q=122 xi=6 yi=7 fx_q=59 fy_q=122 I00=141 I10=184 I01=220 I11=198
+# [SIMD] L2 WRITE ox=6 oy=6 addr=54 pix=0xc6 | sx_int=7 ax_q=122 sy_int=7 ay_q=122 xi=7 yi=7 fx_q=122 fy_q=122 I00=155 I10=220 I01=212 I11=212
+# [SIMD] L3 WRITE ox=7 oy=6 addr=55 pix=0xd5 | sx_int=8 ax_q=185 sy_int=7 ay_q=122 xi=8 yi=7 fx_q=185 fy_q=122 I00=170 I10=212 I01=226 I11=226
+# [SIMD][RUN=2][t=178450000] WRITE addr=56 pix=0xd2
+# [SIMD] L0 WRITE ox=0 oy=7 addr=56 pix=0xd2 | sx_int=0 ax_q=0 sy_int=8 ay_q=185 xi=0 yi=8 fx_q=0 fy_q=185 I00=184 I10=220 I01=220 I11=220
+# [SIMD] L1 WRITE ox=1 oy=7 addr=57 pix=0xaf | sx_int=1 ax_q=63 sy_int=8 ay_q=185 xi=1 yi=8 fx_q=63 fy_q=185 I00=212 I10=220 I01=141 I11=220
+# [SIMD] L2 WRITE ox=2 oy=7 addr=58 pix=0xba | sx_int=2 ax_q=126 sy_int=8 ay_q=185 xi=2 yi=8 fx_q=126 fy_q=185 I00=226 I10=141 I01=155 I11=220
+# [SIMD] L3 WRITE ox=3 oy=7 addr=59 pix=0xc7 | sx_int=3 ax_q=189 sy_int=8 ay_q=185 xi=3 yi=8 fx_q=189 fy_q=185 I00=240 I10=155 I01=170 I11=220
+# [SIMD][RUN=2][t=178690000] WRITE addr=60 pix=0xce
+# [SIMD] L0 WRITE ox=4 oy=7 addr=60 pix=0xce | sx_int=4 ax_q=252 sy_int=8 ay_q=185 xi=4 yi=8 fx_q=252 fy_q=185 I00=220 I10=170 I01=184 I11=220
+# [SIMD] L1 WRITE ox=5 oy=7 addr=61 pix=0xd6 | sx_int=6 ax_q=59 sy_int=8 ay_q=185 xi=6 yi=8 fx_q=59 fy_q=185 I00=220 I10=198 I01=212 I11=220
+# [SIMD] L2 WRITE ox=6 oy=7 addr=62 pix=0xdf | sx_int=7 ax_q=122 sy_int=8 ay_q=185 xi=7 yi=8 fx_q=122 fy_q=185 I00=220 I10=212 I01=226 I11=226
+# [SIMD] L3 WRITE ox=7 oy=7 addr=63 pix=0xec | sx_int=8 ax_q=185 sy_int=8 ay_q=185 xi=8 yi=8 fx_q=185 fy_q=185 I00=220 I10=226 I01=240 I11=240
+# [TB][SIMD4] DONE detectado en t=178690000
 # [TB][SIMD4] mode_simd_eff = 1 (0=SEQ,1=SIMD4)
 # [TB][SIMD4] out_w = 8, out_h = 8
 # [TB][SIMD4] perf: flops=704 mem_rd=256 mem_wr=64
@@ -234,8 +276,8 @@
 # [TB] Dump completado.
 # [TB] Simulación terminada correctamente.
 # ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(249)
-#    Time: 184950 ns  Iteration: 2  Instance: /tb_bilinear_seq
+#    Time: 178690 ns  Iteration: 2  Instance: /tb_bilinear_seq
 # 1
 # Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 249
-# End time: 20:28:33 on Nov 22,2025, Elapsed time: 0:04:27
-# Errors: 0, Warnings: 0
+# End time: 19:12:12 on Nov 23,2025, Elapsed time: 0:00:39
+# Errors: 0, Warnings: 9

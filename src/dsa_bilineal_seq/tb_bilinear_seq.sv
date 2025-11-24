@@ -25,7 +25,7 @@ module tb_bilinear_seq;
   logic clk_50;
   logic rst_n;
 
-  // Switch físico de start (no se usa directamente, se forza start_pulse_sw)
+  // Switch físico de start (no se usa directamente, se força start_pulse_sw)
   logic start_sw;
 
   // Switch físico para modo SIMD por hardware
@@ -270,14 +270,14 @@ module tb_bilinear_seq;
   // Monitor SECUENCIAL: logs solo desde el TB
   // --------------------------------------------------------------------------
   always @(posedge clk_50) begin
-    if (!dut.mode_simd_eff && dut.out_we_core) begin
+    if (!dut.mode_simd_eff && dut.u_core_seq.out_we) begin
       $display("[SEQ][RUN=%0d][t=%0t] WRITE ox=%0d oy=%0d addr=%0d pix=0x%02h | sx_fix=%0d.%0d sy_fix=%0d.%0d | xi=%0d yi=%0d fx_q=%0d fy_q=%0d I00=%0d I10=%0d I01=%0d I11=%0d",
         run_id,
         $time,
         dut.u_core_seq.ox_cur,
         dut.u_core_seq.oy_cur,
-        dut.out_waddr_core,
-        dut.out_wdata_core,
+        dut.u_core_seq.out_waddr,
+        dut.u_core_seq.out_wdata,
         dut.u_core_seq.sx_fix[23:8], dut.u_core_seq.sx_fix[7:0],
         dut.u_core_seq.sy_fix[23:8], dut.u_core_seq.sy_fix[7:0],
         dut.u_core_seq.xi_base,
@@ -293,42 +293,115 @@ module tb_bilinear_seq;
   end
 
   // --------------------------------------------------------------------------
-  // Monitor SIMD4: logs solo desde el TB
-  //   - Se imprime una línea por escritura (1 lane por ciclo).
-  //   - Muestra coordenadas de fila, group_ox, lanes y pesos.
+  // Monitor SIMD4: logs detallados por lane desde el TB
+  //   - Usa señales internas de dut.u_core_simd4 (ox_lane, sx_int_lane, etc.).
+  //   - Permite comparar 1:1 con los resultados matemáticos del secuencial.
   // --------------------------------------------------------------------------
   always @(posedge clk_50) begin
-    if (dut.mode_simd_eff && dut.out_we_core) begin
-      // Determinar qué lane se está escribiendo según el estado interno
-      automatic int lane_sel;
-      lane_sel = 0;
-      unique case (dut.u_core_simd4.state)
-        dut.u_core_simd4.S_WRITE0: lane_sel = 0;
-        dut.u_core_simd4.S_WRITE1: lane_sel = 1;
-        dut.u_core_simd4.S_WRITE2: lane_sel = 2;
-        dut.u_core_simd4.S_WRITE3: lane_sel = 3;
-        default:                    lane_sel = -1;
-      endcase
+    if (dut.mode_simd_eff) begin
 
-      if (lane_sel >= 0 && lane_sel < 4) begin
-        $display("[SIMD][RUN=%0d][t=%0t] WRITE lane=%0d oy=%0d group_ox=%0d addr=%0d pix=0x%02h | lane_x={%0d,%0d,%0d,%0d} | xi={%0d,%0d,%0d,%0d} yi_row=%0d | fx_q={%0d,%0d,%0d,%0d} fy_q_row=%0d",
-          run_id,
-          $time,
-          lane_sel,
+      // Resumen por ciclo cuando cualquier lane escribe (opcional)
+      if (dut.u_core_simd4.out_we0 || dut.u_core_simd4.out_we1 ||
+          dut.u_core_simd4.out_we2 || dut.u_core_simd4.out_we3) begin
+        // Se muestra solo el primer addr/pix (lane 0) como resumen
+        if (dut.u_core_simd4.out_we0) begin
+          $display("[SIMD][RUN=%0d][t=%0t] WRITE addr=%0d pix=0x%02h",
+            run_id,
+            $time,
+            dut.u_core_simd4.out_waddr0,
+            dut.u_core_simd4.out_wdata0
+          );
+        end
+      end
+
+      // -------- Lane 0 --------
+      if (dut.u_core_simd4.out_we0) begin
+        $display("[SIMD] L0 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d I00=%0d I10=%0d I01=%0d I11=%0d",
+          dut.u_core_simd4.ox_lane[0],
           dut.u_core_simd4.oy_cur,
-          dut.u_core_simd4.group_ox,
-          dut.out_waddr_core,
-          dut.out_wdata_core,
-          dut.u_core_simd4.lane_x[0], dut.u_core_simd4.lane_x[1],
-          dut.u_core_simd4.lane_x[2], dut.u_core_simd4.lane_x[3],
-          dut.u_core_simd4.xi_base[0], dut.u_core_simd4.xi_base[1],
-          dut.u_core_simd4.xi_base[2], dut.u_core_simd4.xi_base[3],
+          dut.u_core_simd4.out_waddr0,
+          dut.u_core_simd4.out_wdata0,
+          dut.u_core_simd4.sx_int_lane[0],
+          dut.u_core_simd4.ax_q_lane[0],
+          dut.u_core_simd4.sy_int_row,
+          dut.u_core_simd4.ay_q_row,
+          dut.u_core_simd4.xi_base_lane[0],
           dut.u_core_simd4.yi_base_row,
-          dut.u_core_simd4.fx_q[0], dut.u_core_simd4.fx_q[1],
-          dut.u_core_simd4.fx_q[2], dut.u_core_simd4.fx_q[3],
-          dut.u_core_simd4.fy_q_row
+          dut.u_core_simd4.fx_q_lane[0],
+          dut.u_core_simd4.fy_q_row,
+          dut.u_core_simd4.I00[0],
+          dut.u_core_simd4.I10[0],
+          dut.u_core_simd4.I01[0],
+          dut.u_core_simd4.I11[0]
         );
       end
+
+      // -------- Lane 1 --------
+      if (dut.u_core_simd4.out_we1) begin
+        $display("[SIMD] L1 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d I00=%0d I10=%0d I01=%0d I11=%0d",
+          dut.u_core_simd4.ox_lane[1],
+          dut.u_core_simd4.oy_cur,
+          dut.u_core_simd4.out_waddr1,
+          dut.u_core_simd4.out_wdata1,
+          dut.u_core_simd4.sx_int_lane[1],
+          dut.u_core_simd4.ax_q_lane[1],
+          dut.u_core_simd4.sy_int_row,
+          dut.u_core_simd4.ay_q_row,
+          dut.u_core_simd4.xi_base_lane[1],
+          dut.u_core_simd4.yi_base_row,
+          dut.u_core_simd4.fx_q_lane[1],
+          dut.u_core_simd4.fy_q_row,
+          dut.u_core_simd4.I00[1],
+          dut.u_core_simd4.I10[1],
+          dut.u_core_simd4.I01[1],
+          dut.u_core_simd4.I11[1]
+        );
+      end
+
+      // -------- Lane 2 --------
+      if (dut.u_core_simd4.out_we2) begin
+        $display("[SIMD] L2 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d I00=%0d I10=%0d I01=%0d I11=%0d",
+          dut.u_core_simd4.ox_lane[2],
+          dut.u_core_simd4.oy_cur,
+          dut.u_core_simd4.out_waddr2,
+          dut.u_core_simd4.out_wdata2,
+          dut.u_core_simd4.sx_int_lane[2],
+          dut.u_core_simd4.ax_q_lane[2],
+          dut.u_core_simd4.sy_int_row,
+          dut.u_core_simd4.ay_q_row,
+          dut.u_core_simd4.xi_base_lane[2],
+          dut.u_core_simd4.yi_base_row,
+          dut.u_core_simd4.fx_q_lane[2],
+          dut.u_core_simd4.fy_q_row,
+          dut.u_core_simd4.I00[2],
+          dut.u_core_simd4.I10[2],
+          dut.u_core_simd4.I01[2],
+          dut.u_core_simd4.I11[2]
+        );
+      end
+
+      // -------- Lane 3 --------
+      if (dut.u_core_simd4.out_we3) begin
+        $display("[SIMD] L3 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d I00=%0d I10=%0d I01=%0d I11=%0d",
+          dut.u_core_simd4.ox_lane[3],
+          dut.u_core_simd4.oy_cur,
+          dut.u_core_simd4.out_waddr3,
+          dut.u_core_simd4.out_wdata3,
+          dut.u_core_simd4.sx_int_lane[3],
+          dut.u_core_simd4.ax_q_lane[3],
+          dut.u_core_simd4.sy_int_row,
+          dut.u_core_simd4.ay_q_row,
+          dut.u_core_simd4.xi_base_lane[3],
+          dut.u_core_simd4.yi_base_row,
+          dut.u_core_simd4.fx_q_lane[3],
+          dut.u_core_simd4.fy_q_row,
+          dut.u_core_simd4.I00[3],
+          dut.u_core_simd4.I10[3],
+          dut.u_core_simd4.I01[3],
+          dut.u_core_simd4.I11[3]
+        );
+      end
+
     end
   end
 
