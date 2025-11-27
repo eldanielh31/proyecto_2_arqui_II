@@ -121,8 +121,8 @@ module bilinear_seq_wide #(
   // Instantiate memory read controller
   mem_read_controller #(
     .ADDR_W(AW),
-    .IMG_WIDTH(64),  // Match your image size
-    .IMG_HEIGHT(64)
+    .IMG_WIDTH(16),  // Match your image size
+    .IMG_HEIGHT(16)
   ) u_mem_ctrl (
     .clk(clk),
     .rst_n(rst_n),

@@ -7,8 +7,8 @@
 // ============================================================================
 module mem_read_controller #(
   parameter int ADDR_W     = 10,
-  parameter int IMG_WIDTH  = 64,
-  parameter int IMG_HEIGHT = 64
+  parameter int IMG_WIDTH  = 16,
+  parameter int IMG_HEIGHT = 16
 )(
   input  logic         clk,
   input  logic         rst_n,

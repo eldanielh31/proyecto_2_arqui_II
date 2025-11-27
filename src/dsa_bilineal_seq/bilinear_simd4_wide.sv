@@ -157,8 +157,8 @@ module bilinear_simd4_wide #(
 
   mem_read_controller #(
     .ADDR_W(AW),
-    .IMG_WIDTH(64),
-    .IMG_HEIGHT(64)
+    .IMG_WIDTH(16),
+    .IMG_HEIGHT(16)
   ) u_mem_ctrl (
     .clk(clk),
     .rst_n(rst_n),
