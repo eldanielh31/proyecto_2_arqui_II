@@ -1,14 +1,19 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 // ============================================================================
-// onchip_mem_dp.sv — RAM 8-bit inferida con 4R/4W, 1 clock.
-// - Síntesis: infiere M10K sin altsyncram.
-// - Simulación: admite $readmemh si se define MEM_INIT_FILE y INIT_EN=1.
+// onchip_mem_dp.sv
+//   - Memoria inferida con 4 puertos de lectura y 4 puertos de escritura.
+//   - Lectura SINCRÓNICA (1 ciclo de latencia).
+//   - Escrituras con prioridad de puerto 0 > 1 > 2 > 3 (si coinciden direcciones).
+//   - INIT_EN:
+//       * 1 -> inicializa con archivo MEM_INIT_FILE si está definido.
+//       * 0 -> inicializa a 0x00.
+//   - El arreglo 'mem' es visible desde el testbench: dut.mem_in.mem[addr].
 // ============================================================================
 
 module onchip_mem_dp #(
   parameter int ADDR_W  = 12,
-  parameter bit INIT_EN = 1'b0        // 1: cargar archivo en simulación
+  parameter bit INIT_EN = 1'b0
 )(
   input  logic              clk,
 
@@ -43,42 +48,57 @@ module onchip_mem_dp #(
   input  logic              we3
 );
 
-  localparam int DEPTH = 1 << ADDR_W;
+  // --------------------------------------------------------------------------
+  // Memoria interna
+  // --------------------------------------------------------------------------
+  localparam int DEPTH = (1 << ADDR_W);
 
-  // M10K inferido
-  (* ramstyle = "M10K" *) logic [7:0] mem [0:DEPTH-1];
+  // Visible desde el testbench: dut.<instancia>.mem[addr]
+  logic [7:0] mem [0:DEPTH-1];
 
-  // --------------------------
-  // Simulación: carga opcional
-  // --------------------------
-  // synthesis translate_off
-  integer i;
-  initial begin
-    for (i = 0; i < DEPTH; i++) mem[i] = 8'h00;
-`ifdef MEM_INIT_FILE
-    if (INIT_EN) begin
-      $display("onchip_mem_dp (sim): $readmemh from %s", `MEM_INIT_FILE);
-      $readmemh(`MEM_INIT_FILE, mem);
+  // --------------------------------------------------------------------------
+  // Inicialización (solo para simulación)
+  // --------------------------------------------------------------------------
+  generate
+    if (INIT_EN) begin : g_init_file
+      initial begin : init_with_file
+      `ifdef MEM_INIT_FILE
+        $display("[onchip_mem_dp] INIT_EN=1, cargando archivo HEX '%s'", `MEM_INIT_FILE);
+        $readmemh(`MEM_INIT_FILE, mem);
+      `else
+        integer i;
+        $display("[onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.");
+        for (i = 0; i < DEPTH; i = i + 1)
+          mem[i] = 8'h00;
+      `endif
+      end
+    end else begin : g_init_zero
+      initial begin : init_zero
+        integer i;
+        $display("[onchip_mem_dp] INIT_EN=0, inicializando memoria a 0x00.");
+        for (i = 0; i < DEPTH; i = i + 1)
+          mem[i] = 8'h00;
+      end
     end
-`endif
-  end
-  // synthesis translate_on
+  endgenerate
 
-  // --------------------------
-  // 4R/4W, un solo reloj
-  // --------------------------
+  // --------------------------------------------------------------------------
+  // Lecturas sincronizadas y escrituras multi-puerto
+  //   - rdataX se actualiza en flanco positivo (latencia 1 ciclo).
+  //   - Escrituras con prioridad 0 > 1 > 2 > 3 si coinciden direcciones.
+  // --------------------------------------------------------------------------
   always @(posedge clk) begin
-    // Escrituras (prioridad 0>1>2>3 si coinciden direcciones)
-    if (we0) mem[waddr0] <= wdata0;
-    if (we1) mem[waddr1] <= wdata1;
-    if (we2) mem[waddr2] <= wdata2;
-    if (we3) mem[waddr3] <= wdata3;
-
-    // Lecturas síncronas
+    // Lecturas (sincrónicas)
     rdata0 <= mem[raddr0];
     rdata1 <= mem[raddr1];
     rdata2 <= mem[raddr2];
     rdata3 <= mem[raddr3];
+
+    // Escrituras: prioridad simple por puerto
+    if (we0) mem[waddr0] <= wdata0;
+    if (we1) mem[waddr1] <= wdata1;
+    if (we2) mem[waddr2] <= wdata2;
+    if (we3) mem[waddr3] <= wdata3;
   end
 
 endmodule

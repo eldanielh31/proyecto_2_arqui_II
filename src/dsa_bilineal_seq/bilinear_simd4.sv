@@ -3,36 +3,10 @@
 // ============================================================================
 // bilinear_simd4.sv  — Núcleo SIMD x4 para interpolación bilineal Q8.8.
 //
-// Objetivo:
-//   - Reproducir la misma interpolación Q8.8 de bilinear_seq,
-//     pero procesando hasta 4 píxeles de salida por grupo (SIMD x4).
-//
-//   - Formato y fórmulas (idénticas al secuencial):
-//       out_w = floor((i_in_w * i_scale_q88) / 256)
-//       out_h = floor((i_in_h * i_scale_q88) / 256)
-//       inv_scale_q88 = floor(65536 / i_scale_q88)
-//
-//       sx_fix, sy_fix en Q16.8 (24 bits): [23:8]=entero, [7:0]=fracción.
-//
-//       sum = Σ (w_ij * p_ij)   en Q8.16
-//       PIX = round(sum / 2^16)  (+0x8000 y >>16)
-//
-// Estrategia SIMD (alineada con bilinear_seq):
-//   - En Y (por fila):
-//        inv_step_q168 = {8'd0, inv_scale_q88}    // Q16.8
-//        sy_fix_row_{m+1} = sy_fix_row_m + inv_step_q168
-//
-//   - En X (por grupo de 4 píxeles):
-//        sx_fix_group_{g+1} = sx_fix_group_g + 4*inv_step_q168
-//
-//     Dentro de un grupo (lanes 0..3):
-//        sx_lane(0) = sx_fix_group
-//        sx_lane(1) = sx_fix_group +   inv_step_q168
-//        sx_lane(2) = sx_fix_group + 2*inv_step_q168
-//        sx_lane(3) = sx_fix_group + 3*inv_step_q168
-//
-//   De esta forma, para cada (ox,oy), las coordenadas fuente
-//   (xi, yi, fx_q, fy_q) son bit a bit idénticas a bilinear_seq.
+// - Misma interpolación que bilinear_seq (Q8.8).
+// - Procesa hasta 4 píxeles por grupo (SIMD x4).
+// - FSM optimizada: lectura de los 16 vecinos (4 píxeles × 4 vecinos)
+//   en un único par de estados READ_A / READ_D (2 ciclos de lectura).
 // ============================================================================
 
 module bilinear_simd4 #(
@@ -160,7 +134,6 @@ module bilinear_simd4 #(
 
   // Q16.8 en Y (por fila)
   logic [23:0] sy_fix_row;
-  logic [31:0] sy_fix_tmp32;   // solo para sim / debug
 
   // Pasos en Q16.8
   logic [23:0] inv_step_q168;   // = {8'd0, inv_scale_q88}
@@ -171,24 +144,10 @@ module bilinear_simd4 #(
 
   // Q16.8 por grupo en X
   logic [23:0] sx_fix_group;
+  // Temporal para calcular sx por lane
+  logic [23:0] sx_loc;
 
-  // Q16.8 por lane en X
-  logic [23:0] sx_fix_lane       [0:3];
-  logic [23:0] sx_fix_loc        [0:3];
-  logic [31:0] sx_fix_tmp32_lane [0:3]; // solo sim / debug
-
-  // Partes enteras y fracc. por lane
-  logic [15:0] sx_int_lane [0:3];
-  logic [7:0]  ax_q_lane   [0:3];
-
-  // Y entero y fracc. (fila)
-  logic [15:0] sy_int_row;
-  logic [7:0]  ay_q_row;
-
-  assign sy_int_row = sy_fix_row[23:8];
-  assign ay_q_row   = sy_fix_row[7:0];
-
-  // Coordenadas fuente base y fracciones clampadas
+  // Partes enteras y fracc. por lane (fuente base/fracción)
   logic [15:0] xi_base_lane [0:3];
   logic [15:0] yi_base_row;
   logic [7:0]  fx_q_lane    [0:3];
@@ -263,19 +222,13 @@ module bilinear_simd4 #(
     S_INIT        = 5'd1,
     S_ROW_INIT    = 5'd2,
     S_PIXEL_SETUP = 5'd3,
-    S_READ00_A    = 5'd4,
-    S_READ00_D    = 5'd5,
-    S_READ10_A    = 5'd6,
-    S_READ10_D    = 5'd7,
-    S_READ01_A    = 5'd8,
-    S_READ01_D    = 5'd9,
-    S_READ11_A    = 5'd10,
-    S_READ11_D    = 5'd11,
-    S_MUL         = 5'd12,
-    S_WRITE       = 5'd13,
-    S_STEP_WAIT   = 5'd14,
-    S_ADVANCE     = 5'd15,
-    S_DONE        = 5'd16
+    S_READ_A      = 5'd4,
+    S_READ_D      = 5'd5,
+    S_MUL         = 5'd6,
+    S_WRITE       = 5'd7,
+    S_STEP_WAIT   = 5'd8,
+    S_ADVANCE     = 5'd9,
+    S_DONE        = 5'd10
   } state_t;
 
   state_t state, state_n;
@@ -302,6 +255,13 @@ module bilinear_simd4 #(
   integer n_wr;
   integer n_pix;
 
+  // Partes enteras/fracción de sy_fix_row
+  logic [15:0] sy_int_row;
+  logic [7:0]  ay_q_row;
+
+  assign sy_int_row = sy_fix_row[23:8];
+  assign ay_q_row   = sy_fix_row[7:0];
+
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
       state       <= S_IDLE;
@@ -320,22 +280,15 @@ module bilinear_simd4 #(
       groups_per_row<= 16'd0;
 
       sy_fix_row    <= 24'd0;
-      sy_fix_tmp32  <= 32'd0;
+      sx_fix_group  <= 24'd0;
+      sx_loc        <= 24'd0;
 
       yi_base_row   <= 16'd0;
       fy_q_row      <= 8'd0;
       yi_tmp        <= 16'd0;
       fy_tmp        <= 8'd0;
 
-      sx_fix_group  <= 24'd0;
-
       for (i = 0; i < 4; i = i + 1) begin
-        sx_fix_lane[i]       <= 24'd0;
-        sx_fix_loc[i]        <= 24'd0;
-        sx_fix_tmp32_lane[i] <= 32'd0;
-
-        sx_int_lane[i]   <= 16'd0;
-        ax_q_lane[i]     <= 8'd0;
         xi_base_lane[i]  <= 16'd0;
         fx_q_lane[i]     <= 8'd0;
         xi_tmp_lane[i]   <= 16'd0;
@@ -421,8 +374,6 @@ module bilinear_simd4 #(
           group_x     <= 16'd0;
 
           sy_fix_row  <= 24'd0;  // fila 0
-          sy_fix_tmp32<= 32'd0;
-
           sx_fix_group<= 24'd0;  // grupo 0
         end
 
@@ -452,96 +403,80 @@ module bilinear_simd4 #(
             ox_lane[i]     <= ox_tmp_lane[i];
 
             case (i)
-              0: sx_fix_loc[i] = sx_fix_group;
-              1: sx_fix_loc[i] = sx_fix_group + inv_step_q168;
-              2: sx_fix_loc[i] = sx_fix_group + (inv_step_q168 << 1);
-              3: sx_fix_loc[i] = sx_fix_group + inv_step_q168 + (inv_step_q168 << 1);
-              default: sx_fix_loc[i] = sx_fix_group;
+              0: sx_loc = sx_fix_group;
+              1: sx_loc = sx_fix_group + inv_step_q168;
+              2: sx_loc = sx_fix_group + (inv_step_q168 << 1);
+              3: sx_loc = sx_fix_group + inv_step_q168 + (inv_step_q168 << 1);
+              default: sx_loc = sx_fix_group;
             endcase
 
-            sx_fix_lane[i] <= sx_fix_loc[i];
-
-            xi_tmp_lane[i] = sx_fix_loc[i][23:8];
-            fx_tmp_lane[i] = sx_fix_loc[i][7:0];
+            xi_tmp_lane[i] = sx_loc[23:8];
+            fx_tmp_lane[i] = sx_loc[7:0];
 
             if (xi_tmp_lane[i] >= i_in_w - 16'd1) begin
               xi_tmp_lane[i] = i_in_w - 16'd2;
               fx_tmp_lane[i] = 8'hFF;
             end
 
-            sx_int_lane[i]  <= xi_tmp_lane[i];
-            ax_q_lane[i]    <= fx_tmp_lane[i];
             fx_q_lane[i]    <= fx_tmp_lane[i];
             xi_base_lane[i] <= xi_tmp_lane[i];
           end
         end
 
-        // ------------------ READ00 ------------------------
-        S_READ00_A: begin
-          in_raddr_lane0_0 <= linaddr(xi_base_lane[0], yi_base_row, i_in_w);
-          in_raddr_lane1_0 <= linaddr(xi_base_lane[1], yi_base_row, i_in_w);
-          in_raddr_lane2_0 <= linaddr(xi_base_lane[2], yi_base_row, i_in_w);
-          in_raddr_lane3_0 <= linaddr(xi_base_lane[3], yi_base_row, i_in_w);
+        // ------------------ READ (direcciones) ------------
+        S_READ_A: begin
+          // Lane 0
+          in_raddr_lane0_0 <= linaddr(xi_base_lane[0],           yi_base_row,         i_in_w);
+          in_raddr_lane0_1 <= linaddr(xi_base_lane[0] + 16'd1,   yi_base_row,         i_in_w);
+          in_raddr_lane0_2 <= linaddr(xi_base_lane[0],           yi_base_row + 16'd1, i_in_w);
+          in_raddr_lane0_3 <= linaddr(xi_base_lane[0] + 16'd1,   yi_base_row + 16'd1, i_in_w);
+
+          // Lane 1
+          in_raddr_lane1_0 <= linaddr(xi_base_lane[1],           yi_base_row,         i_in_w);
+          in_raddr_lane1_1 <= linaddr(xi_base_lane[1] + 16'd1,   yi_base_row,         i_in_w);
+          in_raddr_lane1_2 <= linaddr(xi_base_lane[1],           yi_base_row + 16'd1, i_in_w);
+          in_raddr_lane1_3 <= linaddr(xi_base_lane[1] + 16'd1,   yi_base_row + 16'd1, i_in_w);
+
+          // Lane 2
+          in_raddr_lane2_0 <= linaddr(xi_base_lane[2],           yi_base_row,         i_in_w);
+          in_raddr_lane2_1 <= linaddr(xi_base_lane[2] + 16'd1,   yi_base_row,         i_in_w);
+          in_raddr_lane2_2 <= linaddr(xi_base_lane[2],           yi_base_row + 16'd1, i_in_w);
+          in_raddr_lane2_3 <= linaddr(xi_base_lane[2] + 16'd1,   yi_base_row + 16'd1, i_in_w);
+
+          // Lane 3
+          in_raddr_lane3_0 <= linaddr(xi_base_lane[3],           yi_base_row,         i_in_w);
+          in_raddr_lane3_1 <= linaddr(xi_base_lane[3] + 16'd1,   yi_base_row,         i_in_w);
+          in_raddr_lane3_2 <= linaddr(xi_base_lane[3],           yi_base_row + 16'd1, i_in_w);
+          in_raddr_lane3_3 <= linaddr(xi_base_lane[3] + 16'd1,   yi_base_row + 16'd1, i_in_w);
         end
 
-        S_READ00_D: begin
+        // ------------------ READ (datos) ------------------
+        S_READ_D: begin
+          // Lane 0
           I00[0] <= in_rdata_lane0_0;
-          I00[1] <= in_rdata_lane1_0;
-          I00[2] <= in_rdata_lane2_0;
-          I00[3] <= in_rdata_lane3_0;
-
-          o_mem_rd_count <= o_mem_rd_count + 32'd4;
-        end
-
-        // ------------------ READ10 ------------------------
-        S_READ10_A: begin
-          in_raddr_lane0_1 <= linaddr(xi_base_lane[0] + 16'd1, yi_base_row, i_in_w);
-          in_raddr_lane1_1 <= linaddr(xi_base_lane[1] + 16'd1, yi_base_row, i_in_w);
-          in_raddr_lane2_1 <= linaddr(xi_base_lane[2] + 16'd1, yi_base_row, i_in_w);
-          in_raddr_lane3_1 <= linaddr(xi_base_lane[3] + 16'd1, yi_base_row, i_in_w);
-        end
-
-        S_READ10_D: begin
           I10[0] <= in_rdata_lane0_1;
-          I10[1] <= in_rdata_lane1_1;
-          I10[2] <= in_rdata_lane2_1;
-          I10[3] <= in_rdata_lane3_1;
-
-          o_mem_rd_count <= o_mem_rd_count + 32'd4;
-        end
-
-        // ------------------ READ01 ------------------------
-        S_READ01_A: begin
-          in_raddr_lane0_2 <= linaddr(xi_base_lane[0], yi_base_row + 16'd1, i_in_w);
-          in_raddr_lane1_2 <= linaddr(xi_base_lane[1], yi_base_row + 16'd1, i_in_w);
-          in_raddr_lane2_2 <= linaddr(xi_base_lane[2], yi_base_row + 16'd1, i_in_w);
-          in_raddr_lane3_2 <= linaddr(xi_base_lane[3], yi_base_row + 16'd1, i_in_w);
-        end
-
-        S_READ01_D: begin
           I01[0] <= in_rdata_lane0_2;
-          I01[1] <= in_rdata_lane1_2;
-          I01[2] <= in_rdata_lane2_2;
-          I01[3] <= in_rdata_lane3_2;
-
-          o_mem_rd_count <= o_mem_rd_count + 32'd4;
-        end
-
-        // ------------------ READ11 ------------------------
-        S_READ11_A: begin
-          in_raddr_lane0_3 <= linaddr(xi_base_lane[0] + 16'd1, yi_base_row + 16'd1, i_in_w);
-          in_raddr_lane1_3 <= linaddr(xi_base_lane[1] + 16'd1, yi_base_row + 16'd1, i_in_w);
-          in_raddr_lane2_3 <= linaddr(xi_base_lane[2] + 16'd1, yi_base_row + 16'd1, i_in_w);
-          in_raddr_lane3_3 <= linaddr(xi_base_lane[3] + 16'd1, yi_base_row + 16'd1, i_in_w);
-        end
-
-        S_READ11_D: begin
           I11[0] <= in_rdata_lane0_3;
+
+          // Lane 1
+          I00[1] <= in_rdata_lane1_0;
+          I10[1] <= in_rdata_lane1_1;
+          I01[1] <= in_rdata_lane1_2;
           I11[1] <= in_rdata_lane1_3;
+
+          // Lane 2
+          I00[2] <= in_rdata_lane2_0;
+          I10[2] <= in_rdata_lane2_1;
+          I01[2] <= in_rdata_lane2_2;
           I11[2] <= in_rdata_lane2_3;
+
+          // Lane 3
+          I00[3] <= in_rdata_lane3_0;
+          I10[3] <= in_rdata_lane3_1;
+          I01[3] <= in_rdata_lane3_2;
           I11[3] <= in_rdata_lane3_3;
 
-          o_mem_rd_count <= o_mem_rd_count + 32'd4;
+          o_mem_rd_count <= o_mem_rd_count + 32'd16;
         end
 
         // ------------------ MUL ---------------------------
@@ -597,7 +532,7 @@ module bilinear_simd4 #(
 
         // ------------------ STEP_WAIT ---------------------
         S_STEP_WAIT: begin
-          // avance controlado por i_step_pulse en state_n
+          // Avance controlado por i_step_pulse en state_n
         end
 
         // ------------------ ADVANCE -----------------------
@@ -632,20 +567,13 @@ module bilinear_simd4 #(
     state_n = state;
 
     unique case (state)
-      S_IDLE:       if (start) state_n = S_INIT;
-      S_INIT:       state_n = S_ROW_INIT;
-      S_ROW_INIT:   state_n = S_PIXEL_SETUP;
-      S_PIXEL_SETUP:state_n = S_READ00_A;
-
-      S_READ00_A:   state_n = S_READ00_D;
-      S_READ00_D:   state_n = S_READ10_A;
-      S_READ10_A:   state_n = S_READ10_D;
-      S_READ10_D:   state_n = S_READ01_A;
-      S_READ01_A:   state_n = S_READ01_D;
-      S_READ01_D:   state_n = S_READ11_A;
-      S_READ11_A:   state_n = S_READ11_D;
-      S_READ11_D:   state_n = S_MUL;
-      S_MUL:        state_n = S_WRITE;
+      S_IDLE:        if (start) state_n = S_INIT;
+      S_INIT:        state_n = S_ROW_INIT;
+      S_ROW_INIT:    state_n = S_PIXEL_SETUP;
+      S_PIXEL_SETUP: state_n = S_READ_A;
+      S_READ_A:      state_n = S_READ_D;
+      S_READ_D:      state_n = S_MUL;
+      S_MUL:         state_n = S_WRITE;
 
       S_WRITE: begin
         if (i_step_en) begin

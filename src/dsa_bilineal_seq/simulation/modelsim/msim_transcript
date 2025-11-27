@@ -12,59 +12,59 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:45:29 on Nov 24,2025
+# Start time: 01:19:16 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv 
 # -- Compiling module bilinear_simd4
 # 
 # Top level modules:
 # 	bilinear_simd4
-# End time: 01:45:29 on Nov 24,2025, Elapsed time: 0:00:00
+# End time: 01:19:16 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:45:29 on Nov 24,2025
+# Start time: 01:19:16 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv 
 # -- Compiling module onchip_mem_dp
 # 
 # Top level modules:
 # 	onchip_mem_dp
-# End time: 01:45:29 on Nov 24,2025, Elapsed time: 0:00:00
+# End time: 01:19:16 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:45:29 on Nov 24,2025
+# Start time: 01:19:16 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv 
 # -- Compiling module bilinear_seq
 # 
 # Top level modules:
 # 	bilinear_seq
-# End time: 01:45:29 on Nov 24,2025, Elapsed time: 0:00:00
+# End time: 01:19:17 on Nov 26,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:45:29 on Nov 24,2025
+# Start time: 01:19:17 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv 
 # -- Compiling module top_dsa_seq
 # 
 # Top level modules:
 # 	top_dsa_seq
-# End time: 01:45:29 on Nov 24,2025, Elapsed time: 0:00:00
+# End time: 01:19:17 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:45:29 on Nov 24,2025
+# Start time: 01:19:17 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv 
 # -- Compiling module tb_bilinear_seq
 # 
 # Top level modules:
 # 	tb_bilinear_seq
-# End time: 01:45:29 on Nov 24,2025, Elapsed time: 0:00:00
+# End time: 01:19:17 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_bilinear_seq
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_bilinear_seq 
-# Start time: 01:45:29 on Nov 24,2025
+# Start time: 01:19:17 on Nov 26,2025
 # Loading sv_std.std
 # Loading work.tb_bilinear_seq
 # Loading work.top_dsa_seq
@@ -78,8 +78,14 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# [TB] Forzando in_w_cfg=10, in_h_cfg=10, scale_q88_cfg=205 (Q8.8)
-# [TB] Cargando imagen de entrada desde 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_in_10x10.hex' en mem_in...
+# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
+# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
+# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
+# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
+# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
+# [onchip_mem_dp] INIT_EN=0, inicializando memoria a 0x00.
+# [TB] Forzando in_w_cfg=16, in_h_cfg=16, scale_q88_cfg=205 (Q8.8)
+# [TB] Cargando imagen de entrada desde 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex' en mem_in...
 # [TB] mem_in[0] = 0xdc
 # [TB] mem_in[1] = 0xdc
 # [TB] mem_in[2] = 0xdc
@@ -92,10 +98,10 @@
 # [TB] mem_in[9] = 0xdc
 # [TB] mem_in[10] = 0xdc
 # [TB] mem_in[11] = 0xdc
-# [TB] mem_in[12] = 0x2a
-# [TB] mem_in[13] = 0x38
-# [TB] mem_in[14] = 0x46
-# [TB] mem_in[15] = 0x55
+# [TB] mem_in[12] = 0xdc
+# [TB] mem_in[13] = 0xdc
+# [TB] mem_in[14] = 0xdc
+# [TB] mem_in[15] = 0xdc
 # 
 # [TB][ANTES_SEQ] Dump inicial de bancos de entrada (primeros 16 elementos):
 # [TB][ANTES_SEQ] mem_in [0]  = 0xdc
@@ -110,10 +116,10 @@
 # [TB][ANTES_SEQ] mem_in [9]  = 0xdc
 # [TB][ANTES_SEQ] mem_in [10]  = 0xdc
 # [TB][ANTES_SEQ] mem_in [11]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [12]  = 0x2a
-# [TB][ANTES_SEQ] mem_in [13]  = 0x38
-# [TB][ANTES_SEQ] mem_in [14]  = 0x46
-# [TB][ANTES_SEQ] mem_in [15]  = 0x55
+# [TB][ANTES_SEQ] mem_in [12]  = 0xdc
+# [TB][ANTES_SEQ] mem_in [13]  = 0xdc
+# [TB][ANTES_SEQ] mem_in [14]  = 0xdc
+# [TB][ANTES_SEQ] mem_in [15]  = 0xdc
 # [TB][ANTES_SEQ] mem_in1[0] = 0xdc
 # [TB][ANTES_SEQ] mem_in1[1] = 0xdc
 # [TB][ANTES_SEQ] mem_in1[2] = 0xdc
@@ -126,10 +132,10 @@
 # [TB][ANTES_SEQ] mem_in1[9] = 0xdc
 # [TB][ANTES_SEQ] mem_in1[10] = 0xdc
 # [TB][ANTES_SEQ] mem_in1[11] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[12] = 0x2a
-# [TB][ANTES_SEQ] mem_in1[13] = 0x38
-# [TB][ANTES_SEQ] mem_in1[14] = 0x46
-# [TB][ANTES_SEQ] mem_in1[15] = 0x55
+# [TB][ANTES_SEQ] mem_in1[12] = 0xdc
+# [TB][ANTES_SEQ] mem_in1[13] = 0xdc
+# [TB][ANTES_SEQ] mem_in1[14] = 0xdc
+# [TB][ANTES_SEQ] mem_in1[15] = 0xdc
 # [TB][ANTES_SEQ] mem_in2[0] = 0xdc
 # [TB][ANTES_SEQ] mem_in2[1] = 0xdc
 # [TB][ANTES_SEQ] mem_in2[2] = 0xdc
@@ -142,10 +148,10 @@
 # [TB][ANTES_SEQ] mem_in2[9] = 0xdc
 # [TB][ANTES_SEQ] mem_in2[10] = 0xdc
 # [TB][ANTES_SEQ] mem_in2[11] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[12] = 0x2a
-# [TB][ANTES_SEQ] mem_in2[13] = 0x38
-# [TB][ANTES_SEQ] mem_in2[14] = 0x46
-# [TB][ANTES_SEQ] mem_in2[15] = 0x55
+# [TB][ANTES_SEQ] mem_in2[12] = 0xdc
+# [TB][ANTES_SEQ] mem_in2[13] = 0xdc
+# [TB][ANTES_SEQ] mem_in2[14] = 0xdc
+# [TB][ANTES_SEQ] mem_in2[15] = 0xdc
 # [TB][ANTES_SEQ] mem_in3[0] = 0xdc
 # [TB][ANTES_SEQ] mem_in3[1] = 0xdc
 # [TB][ANTES_SEQ] mem_in3[2] = 0xdc
@@ -158,73 +164,73 @@
 # [TB][ANTES_SEQ] mem_in3[9] = 0xdc
 # [TB][ANTES_SEQ] mem_in3[10] = 0xdc
 # [TB][ANTES_SEQ] mem_in3[11] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[12] = 0x2a
-# [TB][ANTES_SEQ] mem_in3[13] = 0x38
-# [TB][ANTES_SEQ] mem_in3[14] = 0x46
-# [TB][ANTES_SEQ] mem_in3[15] = 0x55
+# [TB][ANTES_SEQ] mem_in3[12] = 0xdc
+# [TB][ANTES_SEQ] mem_in3[13] = 0xdc
+# [TB][ANTES_SEQ] mem_in3[14] = 0xdc
+# [TB][ANTES_SEQ] mem_in3[15] = 0xdc
 # 
-# [TB] ===== INICIO CORRIDA 1: SECUENCIAL (10x10) ===== t=82110000
+# [TB] ===== INICIO CORRIDA 1: SECUENCIAL (16x16) ===== t=82110000
 # 
 # [TB][SEQ] Forzando start_pulse_sw en t=82110000
-# [SEQ][RUN=1][t=82330000] WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_fix=0.0 sy_fix=0.0 | xi=0 yi=0 fx_q=0 fy_q=0 | addr00=0 addr10=1 addr01=10 addr11=11 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=82330000 ox=0 oy=0 out_w=8 | exp_addr=0 out_waddr=0
-# [SEQ][MEMCHK]  t=82330000 addr00=0 I00=220 mem_in=220 | addr10=1 I10=220 mem_in=220 | addr01=10 I01=220 mem_in=220 | addr11=11 I11=220 mem_in=220
-# [SEQ][RUN=1][t=82490000] WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_fix=1.63 sy_fix=0.0 | xi=1 yi=0 fx_q=63 fy_q=0 | addr00=1 addr10=2 addr01=11 addr11=12 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=82490000 ox=1 oy=0 out_w=8 | exp_addr=1 out_waddr=1
-# [SEQ][MEMCHK]  t=82490000 addr00=1 I00=220 mem_in=220 | addr10=2 I10=220 mem_in=220 | addr01=11 I01=220 mem_in=220 | addr11=12 I11=220 mem_in=42
-# [SEQ][RUN=1][t=82650000] WRITE ox=2 oy=0 addr=2 pix=0x82 | sx_fix=2.126 sy_fix=0.0 | xi=2 yi=0 fx_q=126 fy_q=0 | addr00=2 addr10=3 addr01=12 addr11=13 | I00=42 I10=220 I01=220 I11=42
-# [SEQ][ADDRCHK] t=82650000 ox=2 oy=0 out_w=8 | exp_addr=2 out_waddr=2
-# [SEQ][MEMCHK]  t=82650000 addr00=2 I00=42 mem_in=220 | addr10=3 I10=220 mem_in=220 | addr01=12 I01=220 mem_in=42 | addr11=13 I11=42 mem_in=56
-# [SEQ][RUN=1][t=82810000] WRITE ox=3 oy=0 addr=3 pix=0xb1 | sx_fix=3.189 sy_fix=0.0 | xi=3 yi=0 fx_q=189 fy_q=0 | addr00=3 addr10=4 addr01=13 addr11=14 | I00=56 I10=220 I01=220 I11=56
-# [SEQ][ADDRCHK] t=82810000 ox=3 oy=0 out_w=8 | exp_addr=3 out_waddr=3
-# [SEQ][MEMCHK]  t=82810000 addr00=3 I00=56 mem_in=220 | addr10=4 I10=220 mem_in=220 | addr01=13 I01=220 mem_in=56 | addr11=14 I11=56 mem_in=70
-# [SEQ][RUN=1][t=82970000] WRITE ox=4 oy=0 addr=4 pix=0xda | sx_fix=4.252 sy_fix=0.0 | xi=4 yi=0 fx_q=252 fy_q=0 | addr00=4 addr10=5 addr01=14 addr11=15 | I00=70 I10=220 I01=220 I11=70
-# [SEQ][ADDRCHK] t=82970000 ox=4 oy=0 out_w=8 | exp_addr=4 out_waddr=4
-# [SEQ][MEMCHK]  t=82970000 addr00=4 I00=70 mem_in=220 | addr10=5 I10=220 mem_in=220 | addr01=14 I01=220 mem_in=70 | addr11=15 I11=70 mem_in=85
-# [SEQ][RUN=1][t=83130000] WRITE ox=5 oy=0 addr=5 pix=0x74 | sx_fix=6.59 sy_fix=0.0 | xi=6 yi=0 fx_q=59 fy_q=0 | addr00=6 addr10=7 addr01=16 addr11=17 | I00=85 I10=220 I01=220 I11=99
-# [SEQ][ADDRCHK] t=83130000 ox=5 oy=0 out_w=8 | exp_addr=5 out_waddr=5
-# [SEQ][MEMCHK]  t=83130000 addr00=6 I00=85 mem_in=220 | addr10=7 I10=220 mem_in=220 | addr01=16 I01=220 mem_in=99 | addr11=17 I11=99 mem_in=113
-# [SEQ][RUN=1][t=83290000] WRITE ox=6 oy=0 addr=6 pix=0xa4 | sx_fix=7.122 sy_fix=0.0 | xi=7 yi=0 fx_q=122 fy_q=0 | addr00=7 addr10=8 addr01=17 addr11=18 | I00=113 I10=220 I01=220 I11=113
-# [SEQ][ADDRCHK] t=83290000 ox=6 oy=0 out_w=8 | exp_addr=6 out_waddr=6
-# [SEQ][MEMCHK]  t=83290000 addr00=7 I00=113 mem_in=220 | addr10=8 I10=220 mem_in=220 | addr01=17 I01=220 mem_in=113 | addr11=18 I11=113 mem_in=220
-# [SEQ][RUN=1][t=83450000] WRITE ox=7 oy=0 addr=7 pix=0xdc | sx_fix=8.185 sy_fix=0.0 | xi=8 yi=0 fx_q=185 fy_q=0 | addr00=8 addr10=9 addr01=18 addr11=19 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=83450000 ox=7 oy=0 out_w=8 | exp_addr=7 out_waddr=7
-# [SEQ][MEMCHK]  t=83450000 addr00=8 I00=220 mem_in=220 | addr10=9 I10=220 mem_in=220 | addr01=18 I01=220 mem_in=220 | addr11=19 I11=220 mem_in=220
-# [SEQ][RUN=1][t=83630000] WRITE ox=0 oy=1 addr=8 pix=0xdc | sx_fix=0.0 sy_fix=1.63 | xi=0 yi=1 fx_q=0 fy_q=63 | addr00=10 addr10=11 addr01=20 addr11=21 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=83630000 ox=0 oy=1 out_w=8 | exp_addr=8 out_waddr=8
-# [SEQ][MEMCHK]  t=83630000 addr00=10 I00=220 mem_in=220 | addr10=11 I10=220 mem_in=220 | addr01=20 I01=220 mem_in=220 | addr11=21 I11=220 mem_in=42
-# [SEQ][RUN=1][t=83790000] WRITE ox=1 oy=1 addr=9 pix=0x4b | sx_fix=1.63 sy_fix=1.63 | xi=1 yi=1 fx_q=63 fy_q=63 | addr00=11 addr10=12 addr01=21 addr11=22 | I00=42 I10=220 I01=42 I11=42
-# [SEQ][ADDRCHK] t=83790000 ox=1 oy=1 out_w=8 | exp_addr=9 out_waddr=9
-# [SEQ][MEMCHK]  t=83790000 addr00=11 I00=42 mem_in=220 | addr10=12 I10=220 mem_in=42 | addr01=21 I01=42 mem_in=42 | addr11=22 I11=42 mem_in=220
-# [SEQ][RUN=1][t=83950000] WRITE ox=2 oy=1 addr=10 pix=0x85 | sx_fix=2.126 sy_fix=1.63 | xi=2 yi=1 fx_q=126 fy_q=63 | addr00=12 addr10=13 addr01=22 addr11=23 | I00=220 I10=42 I01=56 I11=220
-# [SEQ][ADDRCHK] t=83950000 ox=2 oy=1 out_w=8 | exp_addr=10 out_waddr=10
-# [SEQ][MEMCHK]  t=83950000 addr00=12 I00=220 mem_in=42 | addr10=13 I10=42 mem_in=56 | addr01=22 I01=56 mem_in=220 | addr11=23 I11=220 mem_in=70
-# [SEQ][RUN=1][t=84110000] WRITE ox=3 oy=1 addr=11 pix=0x3e | sx_fix=3.189 sy_fix=1.63 | xi=3 yi=1 fx_q=189 fy_q=63 | addr00=13 addr10=14 addr01=23 addr11=24 | I00=70 I10=56 I01=70 I11=70
-# [SEQ][ADDRCHK] t=84110000 ox=3 oy=1 out_w=8 | exp_addr=11 out_waddr=11
-# [SEQ][MEMCHK]  t=84110000 addr00=13 I00=70 mem_in=56 | addr10=14 I10=56 mem_in=70 | addr01=23 I01=70 mem_in=70 | addr11=24 I11=70 mem_in=85
-# [SEQ][RUN=1][t=84270000] WRITE ox=4 oy=1 addr=12 pix=0x4a | sx_fix=4.252 sy_fix=1.63 | xi=4 yi=1 fx_q=252 fy_q=63 | addr00=14 addr10=15 addr01=24 addr11=25 | I00=85 I10=70 I01=85 I11=85
-# [SEQ][ADDRCHK] t=84270000 ox=4 oy=1 out_w=8 | exp_addr=12 out_waddr=12
-# [SEQ][MEMCHK]  t=84270000 addr00=14 I00=85 mem_in=70 | addr10=15 I10=70 mem_in=85 | addr01=24 I01=85 mem_in=85 | addr11=25 I11=85 mem_in=99
-# [SEQ][RUN=1][t=84430000] WRITE ox=5 oy=1 addr=13 pix=0x66 | sx_fix=6.59 sy_fix=1.63 | xi=6 yi=1 fx_q=59 fy_q=63 | addr00=16 addr10=17 addr01=26 addr11=27 | I00=99 I10=99 I01=113 I11=113
-# [SEQ][ADDRCHK] t=84430000 ox=5 oy=1 out_w=8 | exp_addr=13 out_waddr=13
-# [SEQ][MEMCHK]  t=84430000 addr00=16 I00=99 mem_in=99 | addr10=17 I10=99 mem_in=113 | addr01=26 I01=113 mem_in=113 | addr11=27 I11=113 mem_in=220
-# [SEQ][RUN=1][t=84590000] WRITE ox=6 oy=1 addr=14 pix=0xb6 | sx_fix=7.122 sy_fix=1.63 | xi=7 yi=1 fx_q=122 fy_q=63 | addr00=17 addr10=18 addr01=27 addr11=28 | I00=220 I10=113 I01=220 I11=220
-# [SEQ][ADDRCHK] t=84590000 ox=6 oy=1 out_w=8 | exp_addr=14 out_waddr=14
-# [SEQ][MEMCHK]  t=84590000 addr00=17 I00=220 mem_in=113 | addr10=18 I10=113 mem_in=220 | addr01=27 I01=220 mem_in=220 | addr11=28 I11=220 mem_in=141
-# [SEQ][RUN=1][t=84750000] WRITE ox=7 oy=1 addr=15 pix=0xbd | sx_fix=8.185 sy_fix=1.63 | xi=8 yi=1 fx_q=185 fy_q=63 | addr00=18 addr10=19 addr01=28 addr11=29 | I00=141 I10=220 I01=220 I11=141
-# [SEQ][ADDRCHK] t=84750000 ox=7 oy=1 out_w=8 | exp_addr=15 out_waddr=15
-# [SEQ][MEMCHK]  t=84750000 addr00=18 I00=141 mem_in=220 | addr10=19 I10=220 mem_in=220 | addr01=28 I01=220 mem_in=141 | addr11=29 I11=141 mem_in=220
-# [TB][SEQ] DONE detectado en t=92550000
+# [SEQ][RUN=1][t=82330000] WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_fix=0.0 sy_fix=0.0 | xi=0 yi=0 fx_q=0 fy_q=0 | addr00=0 addr10=1 addr01=16 addr11=17 | I00=220 I10=220 I01=220 I11=220
+# [SEQ][ADDRCHK] t=82330000 ox=0 oy=0 out_w=12 | exp_addr=0 out_waddr=0
+# [SEQ][MEMCHK]  t=82330000 addr00=0 I00=220 mem_in=220 | addr10=1 I10=220 mem_in=220 | addr01=16 I01=220 mem_in=220 | addr11=17 I11=220 mem_in=220
+# [SEQ][RUN=1][t=82490000] WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_fix=1.63 sy_fix=0.0 | xi=1 yi=0 fx_q=63 fy_q=0 | addr00=1 addr10=2 addr01=17 addr11=18 | I00=220 I10=220 I01=220 I11=220
+# [SEQ][ADDRCHK] t=82490000 ox=1 oy=0 out_w=12 | exp_addr=1 out_waddr=1
+# [SEQ][MEMCHK]  t=82490000 addr00=1 I00=220 mem_in=220 | addr10=2 I10=220 mem_in=220 | addr01=17 I01=220 mem_in=220 | addr11=18 I11=220 mem_in=25
+# [SEQ][RUN=1][t=82650000] WRITE ox=2 oy=0 addr=2 pix=0x79 | sx_fix=2.126 sy_fix=0.0 | xi=2 yi=0 fx_q=126 fy_q=0 | addr00=2 addr10=3 addr01=18 addr11=19 | I00=25 I10=220 I01=220 I11=25
+# [SEQ][ADDRCHK] t=82650000 ox=2 oy=0 out_w=12 | exp_addr=2 out_waddr=2
+# [SEQ][MEMCHK]  t=82650000 addr00=2 I00=25 mem_in=220 | addr10=3 I10=220 mem_in=220 | addr01=18 I01=220 mem_in=25 | addr11=19 I11=25 mem_in=34
+# [SEQ][RUN=1][t=82810000] WRITE ox=3 oy=0 addr=3 pix=0xab | sx_fix=3.189 sy_fix=0.0 | xi=3 yi=0 fx_q=189 fy_q=0 | addr00=3 addr10=4 addr01=19 addr11=20 | I00=34 I10=220 I01=220 I11=34
+# [SEQ][ADDRCHK] t=82810000 ox=3 oy=0 out_w=12 | exp_addr=3 out_waddr=3
+# [SEQ][MEMCHK]  t=82810000 addr00=3 I00=34 mem_in=220 | addr10=4 I10=220 mem_in=220 | addr01=19 I01=220 mem_in=34 | addr11=20 I11=34 mem_in=42
+# [SEQ][RUN=1][t=82970000] WRITE ox=4 oy=0 addr=4 pix=0xd9 | sx_fix=4.252 sy_fix=0.0 | xi=4 yi=0 fx_q=252 fy_q=0 | addr00=4 addr10=5 addr01=20 addr11=21 | I00=42 I10=220 I01=220 I11=42
+# [SEQ][ADDRCHK] t=82970000 ox=4 oy=0 out_w=12 | exp_addr=4 out_waddr=4
+# [SEQ][MEMCHK]  t=82970000 addr00=4 I00=42 mem_in=220 | addr10=5 I10=220 mem_in=220 | addr01=20 I01=220 mem_in=42 | addr11=21 I11=42 mem_in=51
+# [SEQ][RUN=1][t=83130000] WRITE ox=5 oy=0 addr=5 pix=0x5a | sx_fix=6.59 sy_fix=0.0 | xi=6 yi=0 fx_q=59 fy_q=0 | addr00=6 addr10=7 addr01=22 addr11=23 | I00=51 I10=220 I01=220 I11=59
+# [SEQ][ADDRCHK] t=83130000 ox=5 oy=0 out_w=12 | exp_addr=5 out_waddr=5
+# [SEQ][MEMCHK]  t=83130000 addr00=6 I00=51 mem_in=220 | addr10=7 I10=220 mem_in=220 | addr01=22 I01=220 mem_in=59 | addr11=23 I11=59 mem_in=68
+# [SEQ][RUN=1][t=83290000] WRITE ox=6 oy=0 addr=6 pix=0x8c | sx_fix=7.122 sy_fix=0.0 | xi=7 yi=0 fx_q=122 fy_q=0 | addr00=7 addr10=8 addr01=23 addr11=24 | I00=68 I10=220 I01=220 I11=68
+# [SEQ][ADDRCHK] t=83290000 ox=6 oy=0 out_w=12 | exp_addr=6 out_waddr=6
+# [SEQ][MEMCHK]  t=83290000 addr00=7 I00=68 mem_in=220 | addr10=8 I10=220 mem_in=220 | addr01=23 I01=220 mem_in=68 | addr11=24 I11=68 mem_in=76
+# [SEQ][RUN=1][t=83450000] WRITE ox=7 oy=0 addr=7 pix=0xb4 | sx_fix=8.185 sy_fix=0.0 | xi=8 yi=0 fx_q=185 fy_q=0 | addr00=8 addr10=9 addr01=24 addr11=25 | I00=76 I10=220 I01=220 I11=76
+# [SEQ][ADDRCHK] t=83450000 ox=7 oy=0 out_w=12 | exp_addr=7 out_waddr=7
+# [SEQ][MEMCHK]  t=83450000 addr00=8 I00=76 mem_in=220 | addr10=9 I10=220 mem_in=220 | addr01=24 I01=220 mem_in=76 | addr11=25 I11=76 mem_in=85
+# [SEQ][RUN=1][t=83610000] WRITE ox=8 oy=0 addr=8 pix=0xd8 | sx_fix=9.248 sy_fix=0.0 | xi=9 yi=0 fx_q=248 fy_q=0 | addr00=9 addr10=10 addr01=25 addr11=26 | I00=85 I10=220 I01=220 I11=85
+# [SEQ][ADDRCHK] t=83610000 ox=8 oy=0 out_w=12 | exp_addr=8 out_waddr=8
+# [SEQ][MEMCHK]  t=83610000 addr00=9 I00=85 mem_in=220 | addr10=10 I10=220 mem_in=220 | addr01=25 I01=220 mem_in=85 | addr11=26 I11=85 mem_in=93
+# [SEQ][RUN=1][t=83770000] WRITE ox=9 oy=0 addr=9 pix=0x78 | sx_fix=11.55 sy_fix=0.0 | xi=11 yi=0 fx_q=55 fy_q=0 | addr00=11 addr10=12 addr01=27 addr11=28 | I00=93 I10=220 I01=220 I11=102
+# [SEQ][ADDRCHK] t=83770000 ox=9 oy=0 out_w=12 | exp_addr=9 out_waddr=9
+# [SEQ][MEMCHK]  t=83770000 addr00=11 I00=93 mem_in=220 | addr10=12 I10=220 mem_in=220 | addr01=27 I01=220 mem_in=102 | addr11=28 I11=102 mem_in=110
+# [SEQ][RUN=1][t=83930000] WRITE ox=10 oy=0 addr=10 pix=0xa1 | sx_fix=12.118 sy_fix=0.0 | xi=12 yi=0 fx_q=118 fy_q=0 | addr00=12 addr10=13 addr01=28 addr11=29 | I00=110 I10=220 I01=220 I11=110
+# [SEQ][ADDRCHK] t=83930000 ox=10 oy=0 out_w=12 | exp_addr=10 out_waddr=10
+# [SEQ][MEMCHK]  t=83930000 addr00=12 I00=110 mem_in=220 | addr10=13 I10=220 mem_in=220 | addr01=28 I01=220 mem_in=110 | addr11=29 I11=110 mem_in=119
+# [SEQ][RUN=1][t=84090000] WRITE ox=11 oy=0 addr=11 pix=0xbe | sx_fix=13.181 sy_fix=0.0 | xi=13 yi=0 fx_q=181 fy_q=0 | addr00=13 addr10=14 addr01=29 addr11=30 | I00=119 I10=220 I01=220 I11=119
+# [SEQ][ADDRCHK] t=84090000 ox=11 oy=0 out_w=12 | exp_addr=11 out_waddr=11
+# [SEQ][MEMCHK]  t=84090000 addr00=13 I00=119 mem_in=220 | addr10=14 I10=220 mem_in=220 | addr01=29 I01=220 mem_in=119 | addr11=30 I11=119 mem_in=220
+# [SEQ][RUN=1][t=84270000] WRITE ox=0 oy=1 addr=12 pix=0xdc | sx_fix=0.0 sy_fix=1.63 | xi=0 yi=1 fx_q=0 fy_q=63 | addr00=16 addr10=17 addr01=32 addr11=33 | I00=220 I10=220 I01=220 I11=220
+# [SEQ][ADDRCHK] t=84270000 ox=0 oy=1 out_w=12 | exp_addr=12 out_waddr=12
+# [SEQ][MEMCHK]  t=84270000 addr00=16 I00=220 mem_in=220 | addr10=17 I10=220 mem_in=220 | addr01=32 I01=220 mem_in=220 | addr11=33 I11=220 mem_in=25
+# [SEQ][RUN=1][t=84430000] WRITE ox=1 oy=1 addr=13 pix=0x3d | sx_fix=1.63 sy_fix=1.63 | xi=1 yi=1 fx_q=63 fy_q=63 | addr00=17 addr10=18 addr01=33 addr11=34 | I00=25 I10=220 I01=25 I11=25
+# [SEQ][ADDRCHK] t=84430000 ox=1 oy=1 out_w=12 | exp_addr=13 out_waddr=13
+# [SEQ][MEMCHK]  t=84430000 addr00=17 I00=25 mem_in=220 | addr10=18 I10=220 mem_in=25 | addr01=33 I01=25 mem_in=25 | addr11=34 I11=25 mem_in=220
+# [SEQ][RUN=1][t=84590000] WRITE ox=2 oy=1 addr=14 pix=0x7c | sx_fix=2.126 sy_fix=1.63 | xi=2 yi=1 fx_q=126 fy_q=63 | addr00=18 addr10=19 addr01=34 addr11=35 | I00=220 I10=25 I01=34 I11=220
+# [SEQ][ADDRCHK] t=84590000 ox=2 oy=1 out_w=12 | exp_addr=14 out_waddr=14
+# [SEQ][MEMCHK]  t=84590000 addr00=18 I00=220 mem_in=25 | addr10=19 I10=25 mem_in=34 | addr01=34 I01=34 mem_in=220 | addr11=35 I11=220 mem_in=42
+# [SEQ][RUN=1][t=84750000] WRITE ox=3 oy=1 addr=15 pix=0x26 | sx_fix=3.189 sy_fix=1.63 | xi=3 yi=1 fx_q=189 fy_q=63 | addr00=19 addr10=20 addr01=35 addr11=36 | I00=42 I10=34 I01=42 I11=42
+# [SEQ][ADDRCHK] t=84750000 ox=3 oy=1 out_w=12 | exp_addr=15 out_waddr=15
+# [SEQ][MEMCHK]  t=84750000 addr00=19 I00=42 mem_in=34 | addr10=20 I10=34 mem_in=42 | addr01=35 I01=42 mem_in=42 | addr11=36 I11=42 mem_in=51
+# [TB][SEQ] DONE detectado en t=105430000
 # [TB][SEQ] mode_simd_eff = 0 (0=SEQ,1=SIMD4)
-# [TB][SEQ] out_w = 8, out_h = 8
-# [TB][SEQ] perf: flops=704 mem_rd=256 mem_wr=64
-# [TB] Volcando mem_out (8x8) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_seq.hex'
+# [TB][SEQ] out_w = 12, out_h = 12
+# [TB][SEQ] perf: flops=1584 mem_rd=576 mem_wr=144
+# [TB] Volcando mem_out (12x12) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_seq.hex'
 # [TB] Dump completado.
 # [TB][SEQ] Golden sequence almacenada en golden_seq[0..4095]
 # 
-# [TB] ===== RESETEANDO PARA CORRIDA 2: SIMD4 (10x10) ===== t=92550000
+# [TB] ===== RESETEANDO PARA CORRIDA 2: SIMD4 (16x16) ===== t=105430000
 # 
-# [TB] (Corrida 2) Forzando in_w_cfg=10, in_h_cfg=10, scale_q88_cfg=205 (Q8.8)
+# [TB] (Corrida 2) Forzando in_w_cfg=16, in_h_cfg=16, scale_q88_cfg=205 (Q8.8)
 # 
 # [TB][ANTES_SIMD] Dump inicial de bancos de entrada (primeros 16 elementos):
 # [TB][ANTES_SIMD] mem_in [0]  = 0xdc
@@ -239,10 +245,10 @@
 # [TB][ANTES_SIMD] mem_in [9]  = 0xdc
 # [TB][ANTES_SIMD] mem_in [10]  = 0xdc
 # [TB][ANTES_SIMD] mem_in [11]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [12]  = 0x2a
-# [TB][ANTES_SIMD] mem_in [13]  = 0x38
-# [TB][ANTES_SIMD] mem_in [14]  = 0x46
-# [TB][ANTES_SIMD] mem_in [15]  = 0x55
+# [TB][ANTES_SIMD] mem_in [12]  = 0xdc
+# [TB][ANTES_SIMD] mem_in [13]  = 0xdc
+# [TB][ANTES_SIMD] mem_in [14]  = 0xdc
+# [TB][ANTES_SIMD] mem_in [15]  = 0xdc
 # [TB][ANTES_SIMD] mem_in1[0] = 0xdc
 # [TB][ANTES_SIMD] mem_in1[1] = 0xdc
 # [TB][ANTES_SIMD] mem_in1[2] = 0xdc
@@ -255,10 +261,10 @@
 # [TB][ANTES_SIMD] mem_in1[9] = 0xdc
 # [TB][ANTES_SIMD] mem_in1[10] = 0xdc
 # [TB][ANTES_SIMD] mem_in1[11] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[12] = 0x2a
-# [TB][ANTES_SIMD] mem_in1[13] = 0x38
-# [TB][ANTES_SIMD] mem_in1[14] = 0x46
-# [TB][ANTES_SIMD] mem_in1[15] = 0x55
+# [TB][ANTES_SIMD] mem_in1[12] = 0xdc
+# [TB][ANTES_SIMD] mem_in1[13] = 0xdc
+# [TB][ANTES_SIMD] mem_in1[14] = 0xdc
+# [TB][ANTES_SIMD] mem_in1[15] = 0xdc
 # [TB][ANTES_SIMD] mem_in2[0] = 0xdc
 # [TB][ANTES_SIMD] mem_in2[1] = 0xdc
 # [TB][ANTES_SIMD] mem_in2[2] = 0xdc
@@ -271,10 +277,10 @@
 # [TB][ANTES_SIMD] mem_in2[9] = 0xdc
 # [TB][ANTES_SIMD] mem_in2[10] = 0xdc
 # [TB][ANTES_SIMD] mem_in2[11] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[12] = 0x2a
-# [TB][ANTES_SIMD] mem_in2[13] = 0x38
-# [TB][ANTES_SIMD] mem_in2[14] = 0x46
-# [TB][ANTES_SIMD] mem_in2[15] = 0x55
+# [TB][ANTES_SIMD] mem_in2[12] = 0xdc
+# [TB][ANTES_SIMD] mem_in2[13] = 0xdc
+# [TB][ANTES_SIMD] mem_in2[14] = 0xdc
+# [TB][ANTES_SIMD] mem_in2[15] = 0xdc
 # [TB][ANTES_SIMD] mem_in3[0] = 0xdc
 # [TB][ANTES_SIMD] mem_in3[1] = 0xdc
 # [TB][ANTES_SIMD] mem_in3[2] = 0xdc
@@ -287,190 +293,270 @@
 # [TB][ANTES_SIMD] mem_in3[9] = 0xdc
 # [TB][ANTES_SIMD] mem_in3[10] = 0xdc
 # [TB][ANTES_SIMD] mem_in3[11] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[12] = 0x2a
-# [TB][ANTES_SIMD] mem_in3[13] = 0x38
-# [TB][ANTES_SIMD] mem_in3[14] = 0x46
-# [TB][ANTES_SIMD] mem_in3[15] = 0x55
+# [TB][ANTES_SIMD] mem_in3[12] = 0xdc
+# [TB][ANTES_SIMD] mem_in3[13] = 0xdc
+# [TB][ANTES_SIMD] mem_in3[14] = 0xdc
+# [TB][ANTES_SIMD] mem_in3[15] = 0xdc
 # 
-# [TB] ===== INICIO CORRIDA 2: SIMD4 (10x10) ===== t=174650000
+# [TB] ===== INICIO CORRIDA 2: SIMD4 (16x16) ===== t=187530000
 # 
-# [TB][SIMD4] Forzando start_pulse_sw en t=174650000
-# [SIMD][RUN=2][t=174950000] L0 WRITE addr=0 pix=0xdc
-# [SIMD][RUN=2][t=174950000] L1 WRITE addr=1 pix=0xdc
-# [SIMD][RUN=2][t=174950000] L2 WRITE addr=2 pix=0xdc
-# [SIMD][RUN=2][t=174950000] L3 WRITE addr=3 pix=0xdc
-# [SIMD] L0 WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_int=0 ax_q=0 sy_int=0 ay_q=0 xi=0 yi=0 fx_q=0 fy_q=0 | addr00=0 addr10=1 addr01=10 addr11=11 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L0 ADDRCHK t=174950000 ox=0 oy=0 out_w=8 | exp_addr=0 out_waddr=0 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=174950000 addr00=0 I00=220 mem_in=220 | addr10=1 I10=220 mem_in=220 | addr01=10 I01=220 mem_in=220 | addr11=11 I11=220 mem_in=220
-# [SIMD] L1 WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_int=1 ax_q=63 sy_int=0 ay_q=0 xi=1 yi=0 fx_q=63 fy_q=0 | addr00=1 addr10=2 addr01=11 addr11=12 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L1 ADDRCHK t=174950000 ox=1 oy=0 out_w=8 | exp_addr=1 out_waddr=1 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=174950000 addr00=1 I00=220 mem_in=220 | addr10=2 I10=220 mem_in=220 | addr01=11 I01=220 mem_in=220 | addr11=12 I11=220 mem_in=42
-# [SIMD] L2 WRITE ox=2 oy=0 addr=2 pix=0xdc | sx_int=2 ax_q=126 sy_int=0 ay_q=0 xi=2 yi=0 fx_q=126 fy_q=0 | addr00=2 addr10=3 addr01=12 addr11=13 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L2 ADDRCHK t=174950000 ox=2 oy=0 out_w=8 | exp_addr=2 out_waddr=2 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=174950000 addr00=2 I00=220 mem_in=220 | addr10=3 I10=220 mem_in=220 | addr01=12 I01=220 mem_in=42 | addr11=13 I11=220 mem_in=56
-# [SIMD] L3 WRITE ox=3 oy=0 addr=3 pix=0xdc | sx_int=3 ax_q=189 sy_int=0 ay_q=0 xi=3 yi=0 fx_q=189 fy_q=0 | addr00=3 addr10=4 addr01=13 addr11=14 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L3 ADDRCHK t=174950000 ox=3 oy=0 out_w=8 | exp_addr=3 out_waddr=3 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=174950000 addr00=3 I00=220 mem_in=220 | addr10=4 I10=220 mem_in=220 | addr01=13 I01=220 mem_in=56 | addr11=14 I11=220 mem_in=70
-# [SIMD][RUN=2][t=175190000] L0 WRITE addr=4 pix=0xdc
-# [SIMD][RUN=2][t=175190000] L1 WRITE addr=5 pix=0xdc
-# [SIMD][RUN=2][t=175190000] L2 WRITE addr=6 pix=0xdc
-# [SIMD][RUN=2][t=175190000] L3 WRITE addr=7 pix=0xdc
-# [SIMD] L0 WRITE ox=4 oy=0 addr=4 pix=0xdc | sx_int=4 ax_q=252 sy_int=0 ay_q=0 xi=4 yi=0 fx_q=252 fy_q=0 | addr00=4 addr10=5 addr01=14 addr11=15 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L0 ADDRCHK t=175190000 ox=4 oy=0 out_w=8 | exp_addr=4 out_waddr=4 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=175190000 addr00=4 I00=220 mem_in=220 | addr10=5 I10=220 mem_in=220 | addr01=14 I01=220 mem_in=70 | addr11=15 I11=220 mem_in=85
-# [SIMD] L1 WRITE ox=5 oy=0 addr=5 pix=0xdc | sx_int=6 ax_q=59 sy_int=0 ay_q=0 xi=6 yi=0 fx_q=59 fy_q=0 | addr00=6 addr10=7 addr01=16 addr11=17 | I00=220 I10=220 I01=220 I11=42
-# [SIMD] L1 ADDRCHK t=175190000 ox=5 oy=0 out_w=8 | exp_addr=5 out_waddr=5 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=175190000 addr00=6 I00=220 mem_in=220 | addr10=7 I10=220 mem_in=220 | addr01=16 I01=220 mem_in=99 | addr11=17 I11=42 mem_in=113
-# [SIMD] L2 WRITE ox=6 oy=0 addr=6 pix=0xdc | sx_int=7 ax_q=122 sy_int=0 ay_q=0 xi=7 yi=0 fx_q=122 fy_q=0 | addr00=7 addr10=8 addr01=17 addr11=18 | I00=220 I10=220 I01=42 I11=56
-# [SIMD] L2 ADDRCHK t=175190000 ox=6 oy=0 out_w=8 | exp_addr=6 out_waddr=6 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=175190000 addr00=7 I00=220 mem_in=220 | addr10=8 I10=220 mem_in=220 | addr01=17 I01=42 mem_in=113 | addr11=18 I11=56 mem_in=220
-# [SIMD] L3 WRITE ox=7 oy=0 addr=7 pix=0xdc | sx_int=8 ax_q=185 sy_int=0 ay_q=0 xi=8 yi=0 fx_q=185 fy_q=0 | addr00=8 addr10=9 addr01=18 addr11=19 | I00=220 I10=220 I01=56 I11=70
-# [SIMD] L3 ADDRCHK t=175190000 ox=7 oy=0 out_w=8 | exp_addr=7 out_waddr=7 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=175190000 addr00=8 I00=220 mem_in=220 | addr10=9 I10=220 mem_in=220 | addr01=18 I01=56 mem_in=220 | addr11=19 I11=70 mem_in=220
-# [SIMD][RUN=2][t=175450000] L0 WRITE addr=8 pix=0xb7
-# [SIMD][RUN=2][t=175450000] L1 WRITE addr=9 pix=0xbf
-# [SIMD][RUN=2][t=175450000] L2 WRITE addr=10 pix=0xcf
-# [SIMD][RUN=2][t=175450000] L3 WRITE addr=11 pix=0xdc
-# [SIMD] L0 WRITE ox=0 oy=1 addr=8 pix=0xb7 | sx_int=0 ax_q=0 sy_int=1 ay_q=63 xi=0 yi=1 fx_q=0 fy_q=63 | addr00=10 addr10=11 addr01=20 addr11=21 | I00=220 I10=220 I01=70 I11=85
-# [SIMD] L0 ADDRCHK t=175450000 ox=0 oy=1 out_w=8 | exp_addr=8 out_waddr=8 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=175450000 addr00=10 I00=220 mem_in=220 | addr10=11 I10=220 mem_in=220 | addr01=20 I01=70 mem_in=220 | addr11=21 I11=85 mem_in=42
-# [SIMD] L1 WRITE ox=1 oy=1 addr=9 pix=0xbf | sx_int=1 ax_q=63 sy_int=1 ay_q=63 xi=1 yi=1 fx_q=63 fy_q=63 | addr00=11 addr10=12 addr01=21 addr11=22 | I00=220 I10=220 I01=99 I11=113
-# [SIMD] L1 ADDRCHK t=175450000 ox=1 oy=1 out_w=8 | exp_addr=9 out_waddr=9 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=175450000 addr00=11 I00=220 mem_in=220 | addr10=12 I10=220 mem_in=42 | addr01=21 I01=99 mem_in=42 | addr11=22 I11=113 mem_in=220
-# [SIMD] L2 WRITE ox=2 oy=1 addr=10 pix=0xcf | sx_int=2 ax_q=126 sy_int=1 ay_q=63 xi=2 yi=1 fx_q=126 fy_q=63 | addr00=12 addr10=13 addr01=22 addr11=23 | I00=220 I10=220 I01=113 I11=220
-# [SIMD] L2 ADDRCHK t=175450000 ox=2 oy=1 out_w=8 | exp_addr=10 out_waddr=10 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=175450000 addr00=12 I00=220 mem_in=42 | addr10=13 I10=220 mem_in=56 | addr01=22 I01=113 mem_in=220 | addr11=23 I11=220 mem_in=70
-# [SIMD] L3 WRITE ox=3 oy=1 addr=11 pix=0xdc | sx_int=3 ax_q=189 sy_int=1 ay_q=63 xi=3 yi=1 fx_q=189 fy_q=63 | addr00=13 addr10=14 addr01=23 addr11=24 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L3 ADDRCHK t=175450000 ox=3 oy=1 out_w=8 | exp_addr=11 out_waddr=11 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=175450000 addr00=13 I00=220 mem_in=56 | addr10=14 I10=220 mem_in=70 | addr01=23 I01=220 mem_in=70 | addr11=24 I11=220 mem_in=85
-# [SIMD][RUN=2][t=175690000] L0 WRITE addr=12 pix=0xb1
-# [SIMD][RUN=2][t=175690000] L1 WRITE addr=13 pix=0x9b
-# [SIMD][RUN=2][t=175690000] L2 WRITE addr=14 pix=0x49
-# [SIMD][RUN=2][t=175690000] L3 WRITE addr=15 pix=0x46
-# [SIMD] L0 WRITE ox=4 oy=1 addr=12 pix=0xb1 | sx_int=4 ax_q=252 sy_int=1 ay_q=63 xi=4 yi=1 fx_q=252 fy_q=63 | addr00=14 addr10=15 addr01=24 addr11=25 | I00=220 I10=220 I01=220 I11=42
-# [SIMD] L0 ADDRCHK t=175690000 ox=4 oy=1 out_w=8 | exp_addr=12 out_waddr=12 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=175690000 addr00=14 I00=220 mem_in=70 | addr10=15 I10=220 mem_in=85 | addr01=24 I01=220 mem_in=85 | addr11=25 I11=42 mem_in=99
-# [SIMD] L1 WRITE ox=5 oy=1 addr=13 pix=0x9b | sx_int=6 ax_q=59 sy_int=1 ay_q=63 xi=6 yi=1 fx_q=59 fy_q=63 | addr00=16 addr10=17 addr01=26 addr11=27 | I00=220 I10=42 I01=42 I11=220
-# [SIMD] L1 ADDRCHK t=175690000 ox=5 oy=1 out_w=8 | exp_addr=13 out_waddr=13 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=175690000 addr00=16 I00=220 mem_in=99 | addr10=17 I10=42 mem_in=113 | addr01=26 I01=42 mem_in=113 | addr11=27 I11=220 mem_in=220
-# [SIMD] L2 WRITE ox=6 oy=1 addr=14 pix=0x49 | sx_int=7 ax_q=122 sy_int=1 ay_q=63 xi=7 yi=1 fx_q=122 fy_q=63 | addr00=17 addr10=18 addr01=27 addr11=28 | I00=42 I10=56 I01=220 I11=70
-# [SIMD] L2 ADDRCHK t=175690000 ox=6 oy=1 out_w=8 | exp_addr=14 out_waddr=14 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=175690000 addr00=17 I00=42 mem_in=113 | addr10=18 I10=56 mem_in=220 | addr01=27 I01=220 mem_in=220 | addr11=28 I11=70 mem_in=141
-# [SIMD] L3 WRITE ox=7 oy=1 addr=15 pix=0x46 | sx_int=8 ax_q=185 sy_int=1 ay_q=63 xi=8 yi=1 fx_q=185 fy_q=63 | addr00=18 addr10=19 addr01=28 addr11=29 | I00=56 I10=70 I01=70 I11=85
-# [SIMD] L3 ADDRCHK t=175690000 ox=7 oy=1 out_w=8 | exp_addr=15 out_waddr=15 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=175690000 addr00=18 I00=56 mem_in=220 | addr10=19 I10=70 mem_in=220 | addr01=28 I01=70 mem_in=141 | addr11=29 I11=85 mem_in=220
-# [SIMD][RUN=2][t=175950000] L0 WRITE addr=16 pix=0x4d
-# [SIMD][RUN=2][t=175950000] L1 WRITE addr=17 pix=0x79
-# [SIMD][RUN=2][t=175950000] L2 WRITE addr=18 pix=0xad
-# [SIMD][RUN=2][t=175950000] L3 WRITE addr=19 pix=0xd2
-# [SIMD][RUN=2][t=176190000] L0 WRITE addr=20 pix=0x34
-# [SIMD][RUN=2][t=176190000] L1 WRITE addr=21 pix=0x47
-# [SIMD][RUN=2][t=176190000] L2 WRITE addr=22 pix=0x91
-# [SIMD][RUN=2][t=176190000] L3 WRITE addr=23 pix=0x6a
-# [SIMD][RUN=2][t=176450000] L0 WRITE addr=24 pix=0x5f
-# [SIMD][RUN=2][t=176450000] L1 WRITE addr=25 pix=0xb9
-# [SIMD][RUN=2][t=176450000] L2 WRITE addr=26 pix=0x9d
-# [SIMD][RUN=2][t=176450000] L3 WRITE addr=27 pix=0xca
-# [SIMD][RUN=2][t=176690000] L0 WRITE addr=28 pix=0x45
-# [SIMD][RUN=2][t=176690000] L1 WRITE addr=29 pix=0x46
-# [SIMD][RUN=2][t=176690000] L2 WRITE addr=30 pix=0x69
-# [SIMD][RUN=2][t=176690000] L3 WRITE addr=31 pix=0xac
-# [SIMD][RUN=2][t=176950000] L0 WRITE addr=32 pix=0xda
-# [SIMD][RUN=2][t=176950000] L1 WRITE addr=33 pix=0x91
-# [SIMD][RUN=2][t=176950000] L2 WRITE addr=34 pix=0xa2
-# [SIMD][RUN=2][t=176950000] L3 WRITE addr=35 pix=0xcf
-# [SIMD][RUN=2][t=177190000] L0 WRITE addr=36 pix=0x57
-# [SIMD][RUN=2][t=177190000] L1 WRITE addr=37 pix=0x58
-# [SIMD][RUN=2][t=177190000] L2 WRITE addr=38 pix=0x69
-# [SIMD][RUN=2][t=177190000] L3 WRITE addr=39 pix=0xbe
-# [SIMD][RUN=2][t=177450000] L0 WRITE addr=40 pix=0xdc
-# [SIMD][RUN=2][t=177450000] L1 WRITE addr=41 pix=0x94
-# [SIMD][RUN=2][t=177450000] L2 WRITE addr=42 pix=0xa6
-# [SIMD][RUN=2][t=177450000] L3 WRITE addr=43 pix=0xd0
-# [SIMD][RUN=2][t=177690000] L0 WRITE addr=44 pix=0x68
-# [SIMD][RUN=2][t=177690000] L1 WRITE addr=45 pix=0x6e
-# [SIMD][RUN=2][t=177690000] L2 WRITE addr=46 pix=0xa8
-# [SIMD][RUN=2][t=177690000] L3 WRITE addr=47 pix=0xa0
-# [SIMD][RUN=2][t=177950000] L0 WRITE addr=48 pix=0x94
-# [SIMD][RUN=2][t=177950000] L1 WRITE addr=49 pix=0xca
-# [SIMD][RUN=2][t=177950000] L2 WRITE addr=50 pix=0xcb
-# [SIMD][RUN=2][t=177950000] L3 WRITE addr=51 pix=0xda
-# [SIMD][RUN=2][t=178190000] L0 WRITE addr=52 pix=0xa5
-# [SIMD][RUN=2][t=178190000] L1 WRITE addr=53 pix=0xa8
-# [SIMD][RUN=2][t=178190000] L2 WRITE addr=54 pix=0xa6
-# [SIMD][RUN=2][t=178190000] L3 WRITE addr=55 pix=0x9e
-# [SIMD][RUN=2][t=178450000] L0 WRITE addr=56 pix=0xa6
-# [SIMD][RUN=2][t=178450000] L1 WRITE addr=57 pix=0xc7
-# [SIMD][RUN=2][t=178450000] L2 WRITE addr=58 pix=0xda
-# [SIMD][RUN=2][t=178450000] L3 WRITE addr=59 pix=0xe8
-# [SIMD][RUN=2][t=178690000] L0 WRITE addr=60 pix=0xdc
-# [SIMD][RUN=2][t=178690000] L1 WRITE addr=61 pix=0xd7
-# [SIMD][RUN=2][t=178690000] L2 WRITE addr=62 pix=0xc8
-# [SIMD][RUN=2][t=178690000] L3 WRITE addr=63 pix=0xcd
-# [TB][SIMD4] DONE detectado en t=178690000
+# [TB][SIMD4] Forzando start_pulse_sw en t=187530000
+# [SIMD][RUN=2][t=187710000] L0 WRITE addr=0 pix=0xdc
+# [SIMD][RUN=2][t=187710000] L1 WRITE addr=1 pix=0xdc
+# [SIMD][RUN=2][t=187710000] L2 WRITE addr=2 pix=0xdc
+# [SIMD][RUN=2][t=187710000] L3 WRITE addr=3 pix=0xdc
+# [SIMD] L0 WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_int=0 ax_q=0 sy_int=0 ay_q=0 xi=0 yi=0 fx_q=0 fy_q=0 | addr00=0 addr10=1 addr01=16 addr11=17 | I00=220 I10=220 I01=220 I11=220
+# [SIMD] L0 ADDRCHK t=187710000 ox=0 oy=0 out_w=12 | exp_addr=0 out_waddr=0 | valid_lane=1
+# [SIMD] L0 MEMCHK  t=187710000 addr00=0 I00=220 mem_in=220 | addr10=1 I10=220 mem_in=220 | addr01=16 I01=220 mem_in=220 | addr11=17 I11=220 mem_in=220
+# [SIMD] L1 WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_int=1 ax_q=63 sy_int=0 ay_q=0 xi=1 yi=0 fx_q=63 fy_q=0 | addr00=1 addr10=2 addr01=17 addr11=18 | I00=220 I10=220 I01=220 I11=220
+# [SIMD] L1 ADDRCHK t=187710000 ox=1 oy=0 out_w=12 | exp_addr=1 out_waddr=1 | valid_lane=1
+# [SIMD] L1 MEMCHK  t=187710000 addr00=1 I00=220 mem_in=220 | addr10=2 I10=220 mem_in=220 | addr01=17 I01=220 mem_in=220 | addr11=18 I11=220 mem_in=25
+# [SIMD] L2 WRITE ox=2 oy=0 addr=2 pix=0xdc | sx_int=2 ax_q=126 sy_int=0 ay_q=0 xi=2 yi=0 fx_q=126 fy_q=0 | addr00=2 addr10=3 addr01=18 addr11=19 | I00=220 I10=220 I01=220 I11=220
+# [SIMD] L2 ADDRCHK t=187710000 ox=2 oy=0 out_w=12 | exp_addr=2 out_waddr=2 | valid_lane=1
+# [SIMD] L2 MEMCHK  t=187710000 addr00=2 I00=220 mem_in=220 | addr10=3 I10=220 mem_in=220 | addr01=18 I01=220 mem_in=25 | addr11=19 I11=220 mem_in=34
+# [SIMD] L3 WRITE ox=3 oy=0 addr=3 pix=0xdc | sx_int=3 ax_q=189 sy_int=0 ay_q=0 xi=3 yi=0 fx_q=189 fy_q=0 | addr00=3 addr10=4 addr01=19 addr11=20 | I00=220 I10=220 I01=220 I11=220
+# [SIMD] L3 ADDRCHK t=187710000 ox=3 oy=0 out_w=12 | exp_addr=3 out_waddr=3 | valid_lane=1
+# [SIMD] L3 MEMCHK  t=187710000 addr00=3 I00=220 mem_in=220 | addr10=4 I10=220 mem_in=220 | addr01=19 I01=220 mem_in=34 | addr11=20 I11=220 mem_in=42
+# [SIMD][RUN=2][t=187830000] L0 WRITE addr=4 pix=0xdc
+# [SIMD][RUN=2][t=187830000] L1 WRITE addr=5 pix=0xdc
+# [SIMD][RUN=2][t=187830000] L2 WRITE addr=6 pix=0xdc
+# [SIMD][RUN=2][t=187830000] L3 WRITE addr=7 pix=0xdc
+# [SIMD] L0 WRITE ox=4 oy=0 addr=4 pix=0xdc | sx_int=4 ax_q=252 sy_int=0 ay_q=0 xi=4 yi=0 fx_q=252 fy_q=0 | addr00=4 addr10=5 addr01=20 addr11=21 | I00=220 I10=220 I01=220 I11=220
+# [SIMD] L0 ADDRCHK t=187830000 ox=4 oy=0 out_w=12 | exp_addr=4 out_waddr=4 | valid_lane=1
+# [SIMD] L0 MEMCHK  t=187830000 addr00=4 I00=220 mem_in=220 | addr10=5 I10=220 mem_in=220 | addr01=20 I01=220 mem_in=42 | addr11=21 I11=220 mem_in=51
+# [SIMD] L1 WRITE ox=5 oy=0 addr=5 pix=0xdc | sx_int=6 ax_q=59 sy_int=0 ay_q=0 xi=6 yi=0 fx_q=59 fy_q=0 | addr00=6 addr10=7 addr01=22 addr11=23 | I00=220 I10=220 I01=220 I11=25
+# [SIMD] L1 ADDRCHK t=187830000 ox=5 oy=0 out_w=12 | exp_addr=5 out_waddr=5 | valid_lane=1
+# [SIMD] L1 MEMCHK  t=187830000 addr00=6 I00=220 mem_in=220 | addr10=7 I10=220 mem_in=220 | addr01=22 I01=220 mem_in=59 | addr11=23 I11=25 mem_in=68
+# [SIMD] L2 WRITE ox=6 oy=0 addr=6 pix=0xdc | sx_int=7 ax_q=122 sy_int=0 ay_q=0 xi=7 yi=0 fx_q=122 fy_q=0 | addr00=7 addr10=8 addr01=23 addr11=24 | I00=220 I10=220 I01=25 I11=34
+# [SIMD] L2 ADDRCHK t=187830000 ox=6 oy=0 out_w=12 | exp_addr=6 out_waddr=6 | valid_lane=1
+# [SIMD] L2 MEMCHK  t=187830000 addr00=7 I00=220 mem_in=220 | addr10=8 I10=220 mem_in=220 | addr01=23 I01=25 mem_in=68 | addr11=24 I11=34 mem_in=76
+# [SIMD] L3 WRITE ox=7 oy=0 addr=7 pix=0xdc | sx_int=8 ax_q=185 sy_int=0 ay_q=0 xi=8 yi=0 fx_q=185 fy_q=0 | addr00=8 addr10=9 addr01=24 addr11=25 | I00=220 I10=220 I01=34 I11=42
+# [SIMD] L3 ADDRCHK t=187830000 ox=7 oy=0 out_w=12 | exp_addr=7 out_waddr=7 | valid_lane=1
+# [SIMD] L3 MEMCHK  t=187830000 addr00=8 I00=220 mem_in=220 | addr10=9 I10=220 mem_in=220 | addr01=24 I01=34 mem_in=76 | addr11=25 I11=42 mem_in=85
+# [SIMD][RUN=2][t=187950000] L0 WRITE addr=8 pix=0xdc
+# [SIMD][RUN=2][t=187950000] L1 WRITE addr=9 pix=0xdc
+# [SIMD][RUN=2][t=187950000] L2 WRITE addr=10 pix=0xdc
+# [SIMD][RUN=2][t=187950000] L3 WRITE addr=11 pix=0xdc
+# [SIMD] L0 WRITE ox=8 oy=0 addr=8 pix=0xdc | sx_int=9 ax_q=248 sy_int=0 ay_q=0 xi=9 yi=0 fx_q=248 fy_q=0 | addr00=9 addr10=10 addr01=25 addr11=26 | I00=220 I10=220 I01=42 I11=51
+# [SIMD] L0 ADDRCHK t=187950000 ox=8 oy=0 out_w=12 | exp_addr=8 out_waddr=8 | valid_lane=1
+# [SIMD] L0 MEMCHK  t=187950000 addr00=9 I00=220 mem_in=220 | addr10=10 I10=220 mem_in=220 | addr01=25 I01=42 mem_in=85 | addr11=26 I11=51 mem_in=93
+# [SIMD] L1 WRITE ox=9 oy=0 addr=9 pix=0xdc | sx_int=11 ax_q=55 sy_int=0 ay_q=0 xi=11 yi=0 fx_q=55 fy_q=0 | addr00=11 addr10=12 addr01=27 addr11=28 | I00=220 I10=220 I01=59 I11=68
+# [SIMD] L1 ADDRCHK t=187950000 ox=9 oy=0 out_w=12 | exp_addr=9 out_waddr=9 | valid_lane=1
+# [SIMD] L1 MEMCHK  t=187950000 addr00=11 I00=220 mem_in=220 | addr10=12 I10=220 mem_in=220 | addr01=27 I01=59 mem_in=102 | addr11=28 I11=68 mem_in=110
+# [SIMD] L2 WRITE ox=10 oy=0 addr=10 pix=0xdc | sx_int=12 ax_q=118 sy_int=0 ay_q=0 xi=12 yi=0 fx_q=118 fy_q=0 | addr00=12 addr10=13 addr01=28 addr11=29 | I00=220 I10=220 I01=68 I11=76
+# [SIMD] L2 ADDRCHK t=187950000 ox=10 oy=0 out_w=12 | exp_addr=10 out_waddr=10 | valid_lane=1
+# [SIMD] L2 MEMCHK  t=187950000 addr00=12 I00=220 mem_in=220 | addr10=13 I10=220 mem_in=220 | addr01=28 I01=68 mem_in=110 | addr11=29 I11=76 mem_in=119
+# [SIMD] L3 WRITE ox=11 oy=0 addr=11 pix=0xdc | sx_int=13 ax_q=181 sy_int=0 ay_q=0 xi=13 yi=0 fx_q=181 fy_q=0 | addr00=13 addr10=14 addr01=29 addr11=30 | I00=220 I10=220 I01=76 I11=85
+# [SIMD] L3 ADDRCHK t=187950000 ox=11 oy=0 out_w=12 | exp_addr=11 out_waddr=11 | valid_lane=1
+# [SIMD] L3 MEMCHK  t=187950000 addr00=13 I00=220 mem_in=220 | addr10=14 I10=220 mem_in=220 | addr01=29 I01=76 mem_in=119 | addr11=30 I11=85 mem_in=220
+# [SIMD][RUN=2][t=188090000] L0 WRITE addr=12 pix=0xbb
+# [SIMD][RUN=2][t=188090000] L1 WRITE addr=13 pix=0xbf
+# [SIMD][RUN=2][t=188090000] L2 WRITE addr=14 pix=0xc2
+# [SIMD][RUN=2][t=188090000] L3 WRITE addr=15 pix=0xd5
+# [SIMD] L0 WRITE ox=0 oy=1 addr=12 pix=0xbb | sx_int=0 ax_q=0 sy_int=1 ay_q=63 xi=0 yi=1 fx_q=0 fy_q=63 | addr00=16 addr10=17 addr01=32 addr11=33 | I00=220 I10=220 I01=85 I11=93
+# [SIMD] L0 ADDRCHK t=188090000 ox=0 oy=1 out_w=12 | exp_addr=12 out_waddr=12 | valid_lane=1
+# [SIMD] L0 MEMCHK  t=188090000 addr00=16 I00=220 mem_in=220 | addr10=17 I10=220 mem_in=220 | addr01=32 I01=85 mem_in=220 | addr11=33 I11=93 mem_in=25
+# [SIMD] L1 WRITE ox=1 oy=1 addr=13 pix=0xbf | sx_int=1 ax_q=63 sy_int=1 ay_q=63 xi=1 yi=1 fx_q=63 fy_q=63 | addr00=17 addr10=18 addr01=33 addr11=34 | I00=220 I10=220 I01=102 I11=110
+# [SIMD] L1 ADDRCHK t=188090000 ox=1 oy=1 out_w=12 | exp_addr=13 out_waddr=13 | valid_lane=1
+# [SIMD] L1 MEMCHK  t=188090000 addr00=17 I00=220 mem_in=220 | addr10=18 I10=220 mem_in=25 | addr01=33 I01=102 mem_in=25 | addr11=34 I11=110 mem_in=220
+# [SIMD] L2 WRITE ox=2 oy=1 addr=14 pix=0xc2 | sx_int=2 ax_q=126 sy_int=1 ay_q=63 xi=2 yi=1 fx_q=126 fy_q=63 | addr00=18 addr10=19 addr01=34 addr11=35 | I00=220 I10=220 I01=110 I11=119
+# [SIMD] L2 ADDRCHK t=188090000 ox=2 oy=1 out_w=12 | exp_addr=14 out_waddr=14 | valid_lane=1
+# [SIMD] L2 MEMCHK  t=188090000 addr00=18 I00=220 mem_in=25 | addr10=19 I10=220 mem_in=34 | addr01=34 I01=110 mem_in=220 | addr11=35 I11=119 mem_in=42
+# [SIMD] L3 WRITE ox=3 oy=1 addr=15 pix=0xd5 | sx_int=3 ax_q=189 sy_int=1 ay_q=63 xi=3 yi=1 fx_q=189 fy_q=63 | addr00=19 addr10=20 addr01=35 addr11=36 | I00=220 I10=220 I01=119 I11=220
+# [SIMD] L3 ADDRCHK t=188090000 ox=3 oy=1 out_w=12 | exp_addr=15 out_waddr=15 | valid_lane=1
+# [SIMD] L3 MEMCHK  t=188090000 addr00=19 I00=220 mem_in=34 | addr10=20 I10=220 mem_in=42 | addr01=35 I01=119 mem_in=42 | addr11=36 I11=220 mem_in=51
+# [SIMD][RUN=2][t=188210000] L0 WRITE addr=16 pix=0xad
+# [SIMD][RUN=2][t=188210000] L1 WRITE addr=17 pix=0x95
+# [SIMD][RUN=2][t=188210000] L2 WRITE addr=18 pix=0x37
+# [SIMD][RUN=2][t=188210000] L3 WRITE addr=19 pix=0x2a
+# [SIMD][RUN=2][t=188330000] L0 WRITE addr=20 pix=0x35
+# [SIMD][RUN=2][t=188330000] L1 WRITE addr=21 pix=0x3f
+# [SIMD][RUN=2][t=188330000] L2 WRITE addr=22 pix=0x4a
+# [SIMD][RUN=2][t=188330000] L3 WRITE addr=23 pix=0x54
+# [SIMD][RUN=2][t=188470000] L0 WRITE addr=24 pix=0x59
+# [SIMD][RUN=2][t=188470000] L1 WRITE addr=25 pix=0x6c
+# [SIMD][RUN=2][t=188470000] L2 WRITE addr=26 pix=0x8d
+# [SIMD][RUN=2][t=188470000] L3 WRITE addr=27 pix=0xb0
+# [SIMD][RUN=2][t=188590000] L0 WRITE addr=28 pix=0x20
+# [SIMD][RUN=2][t=188590000] L1 WRITE addr=29 pix=0x35
+# [SIMD][RUN=2][t=188590000] L2 WRITE addr=30 pix=0x83
+# [SIMD][RUN=2][t=188590000] L3 WRITE addr=31 pix=0x4c
+# [SIMD][RUN=2][t=188710000] L0 WRITE addr=32 pix=0x3f
+# [SIMD][RUN=2][t=188710000] L1 WRITE addr=33 pix=0x4a
+# [SIMD][RUN=2][t=188710000] L2 WRITE addr=34 pix=0x54
+# [SIMD][RUN=2][t=188710000] L3 WRITE addr=35 pix=0x5f
+# [SIMD][RUN=2][t=188850000] L0 WRITE addr=36 pix=0x64
+# [SIMD][RUN=2][t=188850000] L1 WRITE addr=37 pix=0x88
+# [SIMD][RUN=2][t=188850000] L2 WRITE addr=38 pix=0xb0
+# [SIMD][RUN=2][t=188850000] L3 WRITE addr=39 pix=0x92
+# [SIMD][RUN=2][t=188970000] L0 WRITE addr=40 pix=0x2b
+# [SIMD][RUN=2][t=188970000] L1 WRITE addr=41 pix=0x2a
+# [SIMD][RUN=2][t=188970000] L2 WRITE addr=42 pix=0x4a
+# [SIMD][RUN=2][t=188970000] L3 WRITE addr=43 pix=0x9d
+# [SIMD][RUN=2][t=189090000] L0 WRITE addr=44 pix=0x4d
+# [SIMD][RUN=2][t=189090000] L1 WRITE addr=45 pix=0x54
+# [SIMD][RUN=2][t=189090000] L2 WRITE addr=46 pix=0x5f
+# [SIMD][RUN=2][t=189090000] L3 WRITE addr=47 pix=0x69
+# [SIMD][RUN=2][t=189230000] L0 WRITE addr=48 pix=0x6e
+# [SIMD][RUN=2][t=189230000] L1 WRITE addr=49 pix=0xc6
+# [SIMD][RUN=2][t=189230000] L2 WRITE addr=50 pix=0x8d
+# [SIMD][RUN=2][t=189230000] L3 WRITE addr=51 pix=0x97
+# [SIMD][RUN=2][t=189350000] L0 WRITE addr=52 pix=0x36
+# [SIMD][RUN=2][t=189350000] L1 WRITE addr=53 pix=0x35
+# [SIMD][RUN=2][t=189350000] L2 WRITE addr=54 pix=0x3f
+# [SIMD][RUN=2][t=189350000] L3 WRITE addr=55 pix=0x4b
+# [SIMD][RUN=2][t=189470000] L0 WRITE addr=56 pix=0xd5
+# [SIMD][RUN=2][t=189470000] L1 WRITE addr=57 pix=0x5f
+# [SIMD][RUN=2][t=189470000] L2 WRITE addr=58 pix=0x6a
+# [SIMD][RUN=2][t=189470000] L3 WRITE addr=59 pix=0x74
+# [SIMD][RUN=2][t=189610000] L0 WRITE addr=60 pix=0x70
+# [SIMD][RUN=2][t=189610000] L1 WRITE addr=61 pix=0xb9
+# [SIMD][RUN=2][t=189610000] L2 WRITE addr=62 pix=0x8e
+# [SIMD][RUN=2][t=189610000] L3 WRITE addr=63 pix=0x99
+# [SIMD][RUN=2][t=189730000] L0 WRITE addr=64 pix=0x40
+# [SIMD][RUN=2][t=189730000] L1 WRITE addr=65 pix=0x3f
+# [SIMD][RUN=2][t=189730000] L2 WRITE addr=66 pix=0x4a
+# [SIMD][RUN=2][t=189730000] L3 WRITE addr=67 pix=0x54
+# [SIMD][RUN=2][t=189850000] L0 WRITE addr=68 pix=0x5f
+# [SIMD][RUN=2][t=189850000] L1 WRITE addr=69 pix=0xb6
+# [SIMD][RUN=2][t=189850000] L2 WRITE addr=70 pix=0x8b
+# [SIMD][RUN=2][t=189850000] L3 WRITE addr=71 pix=0xb8
+# [SIMD][RUN=2][t=189990000] L0 WRITE addr=72 pix=0xb4
+# [SIMD][RUN=2][t=189990000] L1 WRITE addr=73 pix=0x96
+# [SIMD][RUN=2][t=189990000] L2 WRITE addr=74 pix=0xa1
+# [SIMD][RUN=2][t=189990000] L3 WRITE addr=75 pix=0xac
+# [SIMD][RUN=2][t=190110000] L0 WRITE addr=76 pix=0x4a
+# [SIMD][RUN=2][t=190110000] L1 WRITE addr=77 pix=0x4a
+# [SIMD][RUN=2][t=190110000] L2 WRITE addr=78 pix=0x54
+# [SIMD][RUN=2][t=190110000] L3 WRITE addr=79 pix=0x5f
+# [SIMD][RUN=2][t=190230000] L0 WRITE addr=80 pix=0x6a
+# [SIMD][RUN=2][t=190230000] L1 WRITE addr=81 pix=0x89
+# [SIMD][RUN=2][t=190230000] L2 WRITE addr=82 pix=0xdc
+# [SIMD][RUN=2][t=190230000] L3 WRITE addr=83 pix=0xa3
+# [SIMD][RUN=2][t=190370000] L0 WRITE addr=84 pix=0x8e
+# [SIMD][RUN=2][t=190370000] L1 WRITE addr=85 pix=0xa1
+# [SIMD][RUN=2][t=190370000] L2 WRITE addr=86 pix=0xac
+# [SIMD][RUN=2][t=190370000] L3 WRITE addr=87 pix=0xb6
+# [SIMD][RUN=2][t=190490000] L0 WRITE addr=88 pix=0x55
+# [SIMD][RUN=2][t=190490000] L1 WRITE addr=89 pix=0x54
+# [SIMD][RUN=2][t=190490000] L2 WRITE addr=90 pix=0x5f
+# [SIMD][RUN=2][t=190490000] L3 WRITE addr=91 pix=0x69
+# [SIMD][RUN=2][t=190610000] L0 WRITE addr=92 pix=0x74
+# [SIMD][RUN=2][t=190610000] L1 WRITE addr=93 pix=0xb9
+# [SIMD][RUN=2][t=190610000] L2 WRITE addr=94 pix=0xa2
+# [SIMD][RUN=2][t=190610000] L3 WRITE addr=95 pix=0xbd
+# [SIMD][RUN=2][t=190750000] L0 WRITE addr=96 pix=0xda
+# [SIMD][RUN=2][t=190750000] L1 WRITE addr=97 pix=0xac
+# [SIMD][RUN=2][t=190750000] L2 WRITE addr=98 pix=0xb6
+# [SIMD][RUN=2][t=190750000] L3 WRITE addr=99 pix=0xc1
+# [SIMD][RUN=2][t=190870000] L0 WRITE addr=100 pix=0x5f
+# [SIMD][RUN=2][t=190870000] L1 WRITE addr=101 pix=0x5f
+# [SIMD][RUN=2][t=190870000] L2 WRITE addr=102 pix=0x6a
+# [SIMD][RUN=2][t=190870000] L3 WRITE addr=103 pix=0x74
+# [SIMD][RUN=2][t=190990000] L0 WRITE addr=104 pix=0xd6
+# [SIMD][RUN=2][t=190990000] L1 WRITE addr=105 pix=0x8c
+# [SIMD][RUN=2][t=190990000] L2 WRITE addr=106 pix=0x94
+# [SIMD][RUN=2][t=190990000] L3 WRITE addr=107 pix=0xa0
+# [SIMD][RUN=2][t=191130000] L0 WRITE addr=108 pix=0xcf
+# [SIMD][RUN=2][t=191130000] L1 WRITE addr=109 pix=0xae
+# [SIMD][RUN=2][t=191130000] L2 WRITE addr=110 pix=0xb8
+# [SIMD][RUN=2][t=191130000] L3 WRITE addr=111 pix=0xc3
+# [SIMD][RUN=2][t=191250000] L0 WRITE addr=112 pix=0x6a
+# [SIMD][RUN=2][t=191250000] L1 WRITE addr=113 pix=0x6a
+# [SIMD][RUN=2][t=191250000] L2 WRITE addr=114 pix=0x7e
+# [SIMD][RUN=2][t=191250000] L3 WRITE addr=115 pix=0xb9
+# [SIMD][RUN=2][t=191370000] L0 WRITE addr=116 pix=0x8c
+# [SIMD][RUN=2][t=191370000] L1 WRITE addr=117 pix=0x94
+# [SIMD][RUN=2][t=191370000] L2 WRITE addr=118 pix=0x9f
+# [SIMD][RUN=2][t=191370000] L3 WRITE addr=119 pix=0xa9
+# [SIMD][RUN=2][t=191510000] L0 WRITE addr=120 pix=0xae
+# [SIMD][RUN=2][t=191510000] L1 WRITE addr=121 pix=0xd0
+# [SIMD][RUN=2][t=191510000] L2 WRITE addr=122 pix=0xcf
+# [SIMD][RUN=2][t=191510000] L3 WRITE addr=123 pix=0xd6
+# [SIMD][RUN=2][t=191630000] L0 WRITE addr=124 pix=0x74
+# [SIMD][RUN=2][t=191630000] L1 WRITE addr=125 pix=0x7e
+# [SIMD][RUN=2][t=191630000] L2 WRITE addr=126 pix=0xad
+# [SIMD][RUN=2][t=191630000] L3 WRITE addr=127 pix=0x97
+# [SIMD][RUN=2][t=191750000] L0 WRITE addr=128 pix=0x94
+# [SIMD][RUN=2][t=191750000] L1 WRITE addr=129 pix=0x9f
+# [SIMD][RUN=2][t=191750000] L2 WRITE addr=130 pix=0xa9
+# [SIMD][RUN=2][t=191750000] L3 WRITE addr=131 pix=0xb4
+# [SIMD][RUN=2][t=191890000] L0 WRITE addr=132 pix=0xb8
+# [SIMD][RUN=2][t=191890000] L1 WRITE addr=133 pix=0xcd
+# [SIMD][RUN=2][t=191890000] L2 WRITE addr=134 pix=0xd8
+# [SIMD][RUN=2][t=191890000] L3 WRITE addr=135 pix=0xe0
+# [SIMD][RUN=2][t=192010000] L0 WRITE addr=136 pix=0xbf
+# [SIMD][RUN=2][t=192010000] L1 WRITE addr=137 pix=0xb8
+# [SIMD][RUN=2][t=192010000] L2 WRITE addr=138 pix=0x98
+# [SIMD][RUN=2][t=192010000] L3 WRITE addr=139 pix=0x94
+# [SIMD][RUN=2][t=192130000] L0 WRITE addr=140 pix=0x9e
+# [SIMD][RUN=2][t=192130000] L1 WRITE addr=141 pix=0xa9
+# [SIMD][RUN=2][t=192130000] L2 WRITE addr=142 pix=0xb4
+# [SIMD][RUN=2][t=192130000] L3 WRITE addr=143 pix=0xbe
+# [TB][SIMD4] DONE detectado en t=192130000
 # [TB][SIMD4] mode_simd_eff = 1 (0=SEQ,1=SIMD4)1
-# [TB][SIMD4] out_w = 8, out_h = 8
-# [TB][SIMD4] perf: flops=704 mem_rd=256 mem_wr=64
-# [TB] Volcando mem_out (8x8) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_simd.hex'
+# [TB][SIMD4] out_w = 12, out_h = 12
+# [TB][SIMD4] perf: flops=1584 mem_rd=576 mem_wr=144
+# [TB] Volcando mem_out (12x12) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_simd.hex'
 # [TB] Dump completado.
 # 
-# [TB][CMP] Comparando golden_seq (SEQ) vs mem_out (SIMD4) en 64 píxeles...
-# [CMP][1] addr=2 SEQ=0x82 SIMD=0xdc
-# [CMP][2] addr=3 SEQ=0xb1 SIMD=0xdc
-# [CMP][3] addr=4 SEQ=0xda SIMD=0xdc
-# [CMP][4] addr=5 SEQ=0x74 SIMD=0xdc
-# [CMP][5] addr=6 SEQ=0xa4 SIMD=0xdc
-# [CMP][6] addr=8 SEQ=0xdc SIMD=0xb7
-# [CMP][7] addr=9 SEQ=0x4b SIMD=0xbf
-# [CMP][8] addr=10 SEQ=0x85 SIMD=0xcf
-# [CMP][9] addr=11 SEQ=0x3e SIMD=0xdc
-# [CMP][10] addr=12 SEQ=0x4a SIMD=0xb1
-# [CMP][11] addr=13 SEQ=0x66 SIMD=0x9b
-# [CMP][12] addr=14 SEQ=0xb6 SIMD=0x49
-# [CMP][13] addr=15 SEQ=0xbd SIMD=0x46
-# [CMP][14] addr=16 SEQ=0x84 SIMD=0x4d
-# [CMP][15] addr=17 SEQ=0x73 SIMD=0x79
-# [CMP][16] addr=18 SEQ=0x6b SIMD=0xad
-# [CMP][17] addr=19 SEQ=0x92 SIMD=0xd2
-# [CMP][18] addr=20 SEQ=0x5c SIMD=0x34
-# [CMP][19] addr=21 SEQ=0xa6 SIMD=0x47
-# [CMP][20] addr=22 SEQ=0xa0 SIMD=0x91
-# [CMP][21] addr=23 SEQ=0x9f SIMD=0x6a
-# [CMP][22] addr=24 SEQ=0x63 SIMD=0x5f
-# [CMP][23] addr=25 SEQ=0x45 SIMD=0xb9
-# [CMP][24] addr=26 SEQ=0x86 SIMD=0x9d
-# [CMP][25] addr=27 SEQ=0x7a SIMD=0xca
-# [CMP][26] addr=28 SEQ=0xbc SIMD=0x45
-# [CMP][27] addr=29 SEQ=0xa2 SIMD=0x46
-# [CMP][28] addr=30 SEQ=0x99 SIMD=0x69
-# [CMP][29] addr=31 SEQ=0xb1 SIMD=0xac
-# [CMP][30] addr=32 SEQ=0x48 SIMD=0xda
-# [CMP][31] addr=33 SEQ=0x55 SIMD=0x91
-# [CMP][32] addr=34 SEQ=0x63 SIMD=0xa2
-# [CMP][33] addr=35 SEQ=0x8c SIMD=0xcf
-# [CMP][34] addr=36 SEQ=0xdc SIMD=0x57
-# [CMP][35] addr=37 SEQ=0x9c SIMD=0x58
-# [CMP][36] addr=38 SEQ=0xaa SIMD=0x69
-# [CMP][37] addr=39 SEQ=0xc2 SIMD=0xbe
-# [CMP][38] addr=40 SEQ=0xc0 SIMD=0xdc
-# [CMP][39] addr=41 SEQ=0x6e SIMD=0x94
-# [CMP][40] addr=42 SEQ=0xb3 SIMD=0xa6
-# [CMP][41] addr=43 SEQ=0xba SIMD=0xd0
-# [CMP][42] addr=44 SEQ=0x90 SIMD=0x68
-# [CMP][43] addr=45 SEQ=0xb6 SIMD=0x6e
-# [CMP][44] addr=46 SEQ=0xcc SIMD=0xa8
-# [CMP][45] addr=47 SEQ=0xcd SIMD=0xa0
-# [CMP][46] addr=48 SEQ=0xac SIMD=0x94
-# [CMP][47] addr=49 SEQ=0xce SIMD=0xca
-# [CMP][48] addr=50 SEQ=0xa1 SIMD=0xcb
-# [CMP][49] addr=51 SEQ=0x96 SIMD=0xda
-# [CMP][50] addr=52 SEQ=0xa2 SIMD=0xa5
+# [TB][CMP] Comparando golden_seq (SEQ) vs mem_out (SIMD4) en 144 píxeles...
+# [CMP][1] addr=2 SEQ=0x79 SIMD=0xdc
+# [CMP][2] addr=3 SEQ=0xab SIMD=0xdc
+# [CMP][3] addr=4 SEQ=0xd9 SIMD=0xdc
+# [CMP][4] addr=5 SEQ=0x5a SIMD=0xdc
+# [CMP][5] addr=6 SEQ=0x8c SIMD=0xdc
+# [CMP][6] addr=7 SEQ=0xb4 SIMD=0xdc
+# [CMP][7] addr=8 SEQ=0xd8 SIMD=0xdc
+# [CMP][8] addr=9 SEQ=0x78 SIMD=0xdc
+# [CMP][9] addr=10 SEQ=0xa1 SIMD=0xdc
+# [CMP][10] addr=11 SEQ=0xbe SIMD=0xdc
+# [CMP][11] addr=12 SEQ=0xdc SIMD=0xbb
+# [CMP][12] addr=13 SEQ=0x3d SIMD=0xbf
+# [CMP][13] addr=14 SEQ=0x7c SIMD=0xc2
+# [CMP][14] addr=15 SEQ=0x26 SIMD=0xd5
+# [CMP][15] addr=16 SEQ=0x2c SIMD=0xad
+# [CMP][16] addr=17 SEQ=0x3d SIMD=0x95
+# [CMP][17] addr=18 SEQ=0x49 SIMD=0x37
+# [CMP][18] addr=19 SEQ=0x50 SIMD=0x2a
+# [CMP][19] addr=20 SEQ=0x57 SIMD=0x35
+# [CMP][20] addr=21 SEQ=0x68 SIMD=0x3f
+# [CMP][21] addr=22 SEQ=0x74 SIMD=0x4a
+# [CMP][22] addr=23 SEQ=0xa6 SIMD=0x54
+# [CMP][23] addr=24 SEQ=0x51 SIMD=0x59
+# [CMP][24] addr=25 SEQ=0x66 SIMD=0x6c
+# [CMP][25] addr=26 SEQ=0x56 SIMD=0x8d
+# [CMP][26] addr=27 SEQ=0x83 SIMD=0xb0
+# [CMP][27] addr=28 SEQ=0x37 SIMD=0x20
+# [CMP][28] addr=29 SEQ=0x48 SIMD=0x35
+# [CMP][29] addr=30 SEQ=0x53 SIMD=0x83
+# [CMP][30] addr=31 SEQ=0x5a SIMD=0x4c
+# [CMP][31] addr=32 SEQ=0x62 SIMD=0x3f
+# [CMP][32] addr=33 SEQ=0x72 SIMD=0x4a
+# [CMP][33] addr=34 SEQ=0xc4 SIMD=0x54
+# [CMP][34] addr=35 SEQ=0xa6 SIMD=0x5f
+# [CMP][35] addr=36 SEQ=0x3f SIMD=0x64
+# [CMP][36] addr=37 SEQ=0x29 SIMD=0x88
+# [CMP][37] addr=38 SEQ=0x71 SIMD=0xb0
+# [CMP][38] addr=39 SEQ=0x5a SIMD=0x92
+# [CMP][39] addr=40 SEQ=0xb1 SIMD=0x2b
+# [CMP][40] addr=41 SEQ=0x53 SIMD=0x2a
+# [CMP][41] addr=42 SEQ=0x5c SIMD=0x4a
+# [CMP][42] addr=43 SEQ=0x64 SIMD=0x9d
+# [CMP][43] addr=44 SEQ=0x6c SIMD=0x4d
+# [CMP][44] addr=45 SEQ=0xc2 SIMD=0x54
+# [CMP][45] addr=46 SEQ=0x92 SIMD=0x5f
+# [CMP][46] addr=47 SEQ=0x8f SIMD=0x69
+# [CMP][47] addr=48 SEQ=0x2c SIMD=0x6e
+# [CMP][48] addr=49 SEQ=0x33 SIMD=0xc6
+# [CMP][49] addr=50 SEQ=0x3b SIMD=0x8d
+# [CMP][50] addr=51 SEQ=0x6b SIMD=0x97
 # [CMP] Alcanzado límite de mismatches a mostrar (50).
-# [CMP] Total mismatches=50 (de 64 píxeles revisados).
+# [CMP] Total mismatches=50 (de 144 píxeles revisados).
 # [TB] Simulación terminada correctamente.
-# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(344)
-#    Time: 178690 ns  Iteration: 2  Instance: /tb_bilinear_seq
+# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(388)
+#    Time: 192130 ns  Iteration: 2  Instance: /tb_bilinear_seq
 # 1
-# Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 344
-# End time: 01:47:36 on Nov 24,2025, Elapsed time: 0:02:07
+# Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 388
+# End time: 01:36:07 on Nov 26,2025, Elapsed time: 0:16:50
 # Errors: 0, Warnings: 0

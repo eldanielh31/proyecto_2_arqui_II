@@ -5,12 +5,11 @@
 //   - Ejecuta primero el núcleo SECUENCIAL (mode_simd_sw = 0).
 //   - Luego hace reset y ejecuta el núcleo SIMD4 (mode_simd_sw = 1).
 //   - Genera clock, reset y pulso de start (forzando start_pulse_sw interno).
-//   - Carga la imagen de entrada 10x10 en mem_in desde un archivo HEX.
+//   - Carga la imagen de entrada IN_W_CFG x IN_H_CFG en mem_in desde un archivo HEX.
 //   - Copia esa misma imagen a mem_in1, mem_in2, mem_in3 (bancos SIMD).
 //   - Espera a 'done' y vuelca mem_out a archivos HEX (seq y simd).
 //   - Compara mem_out de SEQ vs mem_out de SIMD4 (golden vs DUT SIMD).
-//   - Logs configurables por parámetros (para no inundar la consola).
-//     * Ahora: monitores detallados ACTIVOS pero solo para addr<16.
+//   - Monitores de debug para SEQ y SIMD, limitados a las primeras direcciones.
 // ============================================================================
 
 module tb_bilinear_seq;
@@ -18,10 +17,16 @@ module tb_bilinear_seq;
   // --------------------------------------------------------------------------
   // Parámetros
   // --------------------------------------------------------------------------
-  localparam int    AW           = 12;          // Debe coincidir con top_dsa_seq
-  localparam int    MEM_DEPTH    = (1 << AW);
-  localparam time   T_CLK_PS     = 20_000;      // 20 ns -> 50 MHz
-  localparam string IN_HEX_FILE  = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_in_10x10.hex";
+  localparam int    AW             = 12;          // Debe coincidir con top_dsa_seq
+  localparam int    MEM_DEPTH      = (1 << AW);
+  localparam time   T_CLK_PS       = 20_000;      // 20 ns -> 50 MHz
+
+  // Configuración de imagen / escala
+  localparam int    IN_W_CFG       = 16;          // ancho de la imagen de entrada
+  localparam int    IN_H_CFG       = 16;          // alto de la imagen de entrada
+  localparam int    SCALE_Q88_CFG  = 16'd205;     // factor Q8.8 (~0.8); ajustar si se desea
+
+  localparam string IN_HEX_FILE    = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex";
 
   // Flags de debug
   localparam bit DBG_SEQ_MONITOR      = 1'b1;   // Monitores detallados del núcleo secuencial
@@ -59,6 +64,39 @@ module tb_bilinear_seq;
   // Buffer golden para salida SECUENCIAL
   // --------------------------------------------------------------------------
   logic [7:0] golden_seq [0:MEM_DEPTH-1];
+
+  // --------------------------------------------------------------------------
+  // Variables auxiliares para monitores (declaradas a nivel de módulo
+  // para evitar errores de sintaxis en ModelSim 10.5).
+  // --------------------------------------------------------------------------
+  // SECUENCIAL
+  integer seq_addr00, seq_addr10, seq_addr01, seq_addr11;
+  integer seq_exp_addr;
+  integer seq_mem00, seq_mem10, seq_mem01, seq_mem11;
+
+  // SIMD Lane 0
+  integer l0_addr00, l0_addr10, l0_addr01, l0_addr11;
+  integer l0_exp_addr;
+  integer l0_mem00, l0_mem10, l0_mem01, l0_mem11;
+  integer l0_valid_lane;
+
+  // SIMD Lane 1
+  integer l1_addr00, l1_addr10, l1_addr01, l1_addr11;
+  integer l1_exp_addr;
+  integer l1_mem00, l1_mem10, l1_mem01, l1_mem11;
+  integer l1_valid_lane;
+
+  // SIMD Lane 2
+  integer l2_addr00, l2_addr10, l2_addr01, l2_addr11;
+  integer l2_exp_addr;
+  integer l2_mem00, l2_mem10, l2_mem01, l2_mem11;
+  integer l2_valid_lane;
+
+  // SIMD Lane 3
+  integer l3_addr00, l3_addr10, l3_addr01, l3_addr11;
+  integer l3_exp_addr;
+  integer l3_mem00, l3_mem10, l3_mem01, l3_mem11;
+  integer l3_valid_lane;
 
   // --------------------------------------------------------------------------
   // DUT
@@ -191,11 +229,12 @@ module tb_bilinear_seq;
     @(negedge dut.clear_active);
     repeat (5) @(posedge clk_50);
 
-    // Forzar parámetros 10x10, escala 205 Q8.8
-    force dut.in_w_cfg      = 16'd10;
-    force dut.in_h_cfg      = 16'd10;
-    force dut.scale_q88_cfg = 16'd205;
-    $display("[TB] Forzando in_w_cfg=10, in_h_cfg=10, scale_q88_cfg=205 (Q8.8)");
+    // Forzar parámetros IN_W_CFG x IN_H_CFG, escala SCALE_Q88_CFG Q8.8
+    force dut.in_w_cfg      = IN_W_CFG;
+    force dut.in_h_cfg      = IN_H_CFG;
+    force dut.scale_q88_cfg = SCALE_Q88_CFG;
+    $display("[TB] Forzando in_w_cfg=%0d, in_h_cfg=%0d, scale_q88_cfg=%0d (Q8.8)",
+             IN_W_CFG, IN_H_CFG, SCALE_Q88_CFG);
 
     // Cargar imagen de entrada en mem_in
     fd_check = $fopen(IN_HEX_FILE, "r");
@@ -225,7 +264,8 @@ module tb_bilinear_seq;
     run_id       = 1;
     mode_simd_sw = 1'b0;
 
-    $display("\n[TB] ===== INICIO CORRIDA 1: SECUENCIAL (10x10) ===== t=%0t\n", $time);
+    $display("\n[TB] ===== INICIO CORRIDA 1: SECUENCIAL (%0dx%0d) ===== t=%0t\n",
+             IN_W_CFG, IN_H_CFG, $time);
 
     $display("[TB][SEQ] Forzando start_pulse_sw en t=%0t", $time);
     force dut.start_pulse_sw = 1'b1;
@@ -262,7 +302,8 @@ module tb_bilinear_seq;
     // ======================================================
     // Reset entre corridas
     // ======================================================
-    $display("\n[TB] ===== RESETEANDO PARA CORRIDA 2: SIMD4 (10x10) ===== t=%0t\n", $time);
+    $display("\n[TB] ===== RESETEANDO PARA CORRIDA 2: SIMD4 (%0dx%0d) ===== t=%0t\n",
+             IN_W_CFG, IN_H_CFG, $time);
 
     rst_n = 1'b0;
     #100_000;
@@ -271,10 +312,12 @@ module tb_bilinear_seq;
     @(negedge dut.clear_active);
     repeat (5) @(posedge clk_50);
 
-    force dut.in_w_cfg      = 16'd10;
-    force dut.in_h_cfg      = 16'd10;
-    force dut.scale_q88_cfg = 16'd205;
-    $display("[TB] (Corrida 2) Forzando in_w_cfg=10, in_h_cfg=10, scale_q88_cfg=205 (Q8.8)");
+    // Forzar de nuevo parámetros de imagen/escala
+    force dut.in_w_cfg      = IN_W_CFG;
+    force dut.in_h_cfg      = IN_H_CFG;
+    force dut.scale_q88_cfg = SCALE_Q88_CFG;
+    $display("[TB] (Corrida 2) Forzando in_w_cfg=%0d, in_h_cfg=%0d, scale_q88_cfg=%0d (Q8.8)",
+             IN_W_CFG, IN_H_CFG, SCALE_Q88_CFG);
 
     dump_input_banks("ANTES_SIMD", 16);
 
@@ -284,7 +327,8 @@ module tb_bilinear_seq;
     run_id       = 2;
     mode_simd_sw = 1'b1;
 
-    $display("\n[TB] ===== INICIO CORRIDA 2: SIMD4 (10x10) ===== t=%0t\n", $time);
+    $display("\n[TB] ===== INICIO CORRIDA 2: SIMD4 (%0dx%0d) ===== t=%0t\n",
+             IN_W_CFG, IN_H_CFG, $time);
 
     $display("[TB][SIMD4] Forzando start_pulse_sw en t=%0t", $time);
     force dut.start_pulse_sw = 1'b1;
@@ -369,30 +413,26 @@ module tb_bilinear_seq;
         dut.u_core_seq.out_we &&
         (dut.u_core_seq.out_waddr < 16)) begin
 
-      int addr00, addr10, addr01, addr11;
-      int exp_addr_seq;
-      int mem00, mem10, mem01, mem11;
+      seq_addr00 = linaddr_tb(dut.u_core_seq.xi_base,
+                              dut.u_core_seq.yi_base,
+                              dut.in_w);
+      seq_addr10 = linaddr_tb(dut.u_core_seq.xi_base + 1,
+                              dut.u_core_seq.yi_base,
+                              dut.in_w);
+      seq_addr01 = linaddr_tb(dut.u_core_seq.xi_base,
+                              dut.u_core_seq.yi_base + 1,
+                              dut.in_w);
+      seq_addr11 = linaddr_tb(dut.u_core_seq.xi_base + 1,
+                              dut.u_core_seq.yi_base + 1,
+                              dut.in_w);
 
-      addr00 = linaddr_tb(dut.u_core_seq.xi_base,
-                          dut.u_core_seq.yi_base,
-                          dut.in_w);
-      addr10 = linaddr_tb(dut.u_core_seq.xi_base + 1,
-                          dut.u_core_seq.yi_base,
-                          dut.in_w);
-      addr01 = linaddr_tb(dut.u_core_seq.xi_base,
-                          dut.u_core_seq.yi_base + 1,
-                          dut.in_w);
-      addr11 = linaddr_tb(dut.u_core_seq.xi_base + 1,
-                          dut.u_core_seq.yi_base + 1,
-                          dut.in_w);
-
-      exp_addr_seq = dut.u_core_seq.oy_cur * dut.out_w_s_seq +
+      seq_exp_addr = dut.u_core_seq.oy_cur * dut.out_w_s_seq +
                      dut.u_core_seq.ox_cur;
 
-      mem00 = dut.mem_in.mem[addr00];
-      mem10 = dut.mem_in.mem[addr10];
-      mem01 = dut.mem_in.mem[addr01];
-      mem11 = dut.mem_in.mem[addr11];
+      seq_mem00 = dut.mem_in.mem[seq_addr00];
+      seq_mem10 = dut.mem_in.mem[seq_addr10];
+      seq_mem01 = dut.mem_in.mem[seq_addr01];
+      seq_mem11 = dut.mem_in.mem[seq_addr11];
 
       $display("[SEQ][RUN=%0d][t=%0t] WRITE ox=%0d oy=%0d addr=%0d pix=0x%02h | sx_fix=%0d.%0d sy_fix=%0d.%0d | xi=%0d yi=%0d fx_q=%0d fy_q=%0d | addr00=%0d addr10=%0d addr01=%0d addr11=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
         run_id,
@@ -407,7 +447,7 @@ module tb_bilinear_seq;
         dut.u_core_seq.yi_base,
         dut.u_core_seq.fx_q,
         dut.u_core_seq.fy_q,
-        addr00, addr10, addr01, addr11,
+        seq_addr00, seq_addr10, seq_addr01, seq_addr11,
         dut.u_core_seq.I00,
         dut.u_core_seq.I10,
         dut.u_core_seq.I01,
@@ -419,16 +459,16 @@ module tb_bilinear_seq;
         dut.u_core_seq.ox_cur,
         dut.u_core_seq.oy_cur,
         dut.out_w_s_seq,
-        exp_addr_seq,
+        seq_exp_addr,
         dut.u_core_seq.out_waddr
       );
 
       $display("[SEQ][MEMCHK]  t=%0t addr00=%0d I00=%0d mem_in=%0d | addr10=%0d I10=%0d mem_in=%0d | addr01=%0d I01=%0d mem_in=%0d | addr11=%0d I11=%0d mem_in=%0d",
         $time,
-        addr00, dut.u_core_seq.I00, mem00,
-        addr10, dut.u_core_seq.I10, mem10,
-        addr01, dut.u_core_seq.I01, mem01,
-        addr11, dut.u_core_seq.I11, mem11
+        seq_addr00, dut.u_core_seq.I00, seq_mem00,
+        seq_addr10, dut.u_core_seq.I10, seq_mem10,
+        seq_addr01, dut.u_core_seq.I01, seq_mem01,
+        seq_addr11, dut.u_core_seq.I11, seq_mem11
       );
     end
   end
@@ -464,273 +504,254 @@ module tb_bilinear_seq;
       if (DBG_SIMD_DETAILED) begin
         // -------- Lane 0 --------
         if (dut.u_core_simd4.out_we0 && (dut.u_core_simd4.out_waddr0 < 16)) begin
-          int addr00_l0, addr10_l0, addr01_l0, addr11_l0;
-          int exp_addr_l0;
-          bit valid_lane0;
-          int mem00_l0, mem10_l0, mem01_l0, mem11_l0;
-
-          addr00_l0 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0],
+          l0_addr00 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0],
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr10_l0 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0] + 1,
+          l0_addr10 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0] + 1,
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr01_l0 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0],
+          l0_addr01 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0],
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
-          addr11_l0 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0] + 1,
+          l0_addr11 = linaddr_tb(dut.u_core_simd4.xi_base_lane[0] + 1,
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
 
-          exp_addr_l0 = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
-                        dut.u_core_simd4.ox_lane[0];
-          valid_lane0 = (dut.u_core_simd4.ox_lane[0] < dut.out_w_s_simd);
+          l0_exp_addr  = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
+                         dut.u_core_simd4.ox_lane[0];
+          l0_valid_lane = (dut.u_core_simd4.ox_lane[0] < dut.out_w_s_simd) ? 1 : 0;
 
-          mem00_l0 = dut.mem_in.mem[addr00_l0];
-          mem10_l0 = dut.mem_in.mem[addr10_l0];
-          mem01_l0 = dut.mem_in.mem[addr01_l0];
-          mem11_l0 = dut.mem_in.mem[addr11_l0];
+          l0_mem00 = dut.mem_in.mem[l0_addr00];
+          l0_mem10 = dut.mem_in.mem[l0_addr10];
+          l0_mem01 = dut.mem_in.mem[l0_addr01];
+          l0_mem11 = dut.mem_in.mem[l0_addr11];
 
           $display("[SIMD] L0 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d | addr00=%0d addr10=%0d addr01=%0d addr11=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
             dut.u_core_simd4.ox_lane[0],
             dut.u_core_simd4.oy_cur,
             dut.u_core_simd4.out_waddr0,
             dut.u_core_simd4.out_wdata0,
-            dut.u_core_simd4.sx_int_lane[0],
-            dut.u_core_simd4.ax_q_lane[0],
+            // Log geométrico aproximado: se usa xi_base y fx_q como "sx_int / ax_q"
+            dut.u_core_simd4.xi_base_lane[0],
+            dut.u_core_simd4.fx_q_lane[0],
             dut.u_core_simd4.sy_int_row,
             dut.u_core_simd4.ay_q_row,
             dut.u_core_simd4.xi_base_lane[0],
             dut.u_core_simd4.yi_base_row,
             dut.u_core_simd4.fx_q_lane[0],
             dut.u_core_simd4.fy_q_row,
-            addr00_l0, addr10_l0, addr01_l0, addr11_l0,
+            l0_addr00, l0_addr10, l0_addr01, l0_addr11,
             dut.u_core_simd4.I00[0],
             dut.u_core_simd4.I10[0],
             dut.u_core_simd4.I01[0],
             dut.u_core_simd4.I11[0]
           );
 
-          $display("[SIMD] L0 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0b",
+          $display("[SIMD] L0 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0d",
             $time,
             dut.u_core_simd4.ox_lane[0],
             dut.u_core_simd4.oy_cur,
             dut.out_w_s_simd,
-            exp_addr_l0,
+            l0_exp_addr,
             dut.u_core_simd4.out_waddr0,
-            valid_lane0
+            l0_valid_lane
           );
 
           $display("[SIMD] L0 MEMCHK  t=%0t addr00=%0d I00=%0d mem_in=%0d | addr10=%0d I10=%0d mem_in=%0d | addr01=%0d I01=%0d mem_in=%0d | addr11=%0d I11=%0d mem_in=%0d",
             $time,
-            addr00_l0, dut.u_core_simd4.I00[0], mem00_l0,
-            addr10_l0, dut.u_core_simd4.I10[0], mem10_l0,
-            addr01_l0, dut.u_core_simd4.I01[0], mem01_l0,
-            addr11_l0, dut.u_core_simd4.I11[0], mem11_l0
+            l0_addr00, dut.u_core_simd4.I00[0], l0_mem00,
+            l0_addr10, dut.u_core_simd4.I10[0], l0_mem10,
+            l0_addr01, dut.u_core_simd4.I01[0], l0_mem01,
+            l0_addr11, dut.u_core_simd4.I11[0], l0_mem11
           );
         end
 
         // -------- Lane 1 --------
         if (dut.u_core_simd4.out_we1 && (dut.u_core_simd4.out_waddr1 < 16)) begin
-          int addr00_l1, addr10_l1, addr01_l1, addr11_l1;
-          int exp_addr_l1;
-          bit valid_lane1;
-          int mem00_l1, mem10_l1, mem01_l1, mem11_l1;
-
-          addr00_l1 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1],
+          l1_addr00 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1],
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr10_l1 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1] + 1,
+          l1_addr10 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1] + 1,
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr01_l1 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1],
+          l1_addr01 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1],
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
-          addr11_l1 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1] + 1,
+          l1_addr11 = linaddr_tb(dut.u_core_simd4.xi_base_lane[1] + 1,
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
 
-          exp_addr_l1 = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
-                        dut.u_core_simd4.ox_lane[1];
-          valid_lane1 = (dut.u_core_simd4.ox_lane[1] < dut.out_w_s_simd);
+          l1_exp_addr  = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
+                         dut.u_core_simd4.ox_lane[1];
+          l1_valid_lane = (dut.u_core_simd4.ox_lane[1] < dut.out_w_s_simd) ? 1 : 0;
 
-          mem00_l1 = dut.mem_in1.mem[addr00_l1];
-          mem10_l1 = dut.mem_in1.mem[addr10_l1];
-          mem01_l1 = dut.mem_in1.mem[addr01_l1];
-          mem11_l1 = dut.mem_in1.mem[addr11_l1];
+          l1_mem00 = dut.mem_in1.mem[l1_addr00];
+          l1_mem10 = dut.mem_in1.mem[l1_addr10];
+          l1_mem01 = dut.mem_in1.mem[l1_addr01];
+          l1_mem11 = dut.mem_in1.mem[l1_addr11];
 
           $display("[SIMD] L1 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d | addr00=%0d addr10=%0d addr01=%0d addr11=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
             dut.u_core_simd4.ox_lane[1],
             dut.u_core_simd4.oy_cur,
             dut.u_core_simd4.out_waddr1,
             dut.u_core_simd4.out_wdata1,
-            dut.u_core_simd4.sx_int_lane[1],
-            dut.u_core_simd4.ax_q_lane[1],
+            dut.u_core_simd4.xi_base_lane[1],
+            dut.u_core_simd4.fx_q_lane[1],
             dut.u_core_simd4.sy_int_row,
             dut.u_core_simd4.ay_q_row,
             dut.u_core_simd4.xi_base_lane[1],
             dut.u_core_simd4.yi_base_row,
             dut.u_core_simd4.fx_q_lane[1],
             dut.u_core_simd4.fy_q_row,
-            addr00_l1, addr10_l1, addr01_l1, addr11_l1,
+            l1_addr00, l1_addr10, l1_addr01, l1_addr11,
             dut.u_core_simd4.I00[1],
             dut.u_core_simd4.I10[1],
             dut.u_core_simd4.I01[1],
             dut.u_core_simd4.I11[1]
           );
 
-          $display("[SIMD] L1 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0b",
+          $display("[SIMD] L1 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0d",
             $time,
             dut.u_core_simd4.ox_lane[1],
             dut.u_core_simd4.oy_cur,
             dut.out_w_s_simd,
-            exp_addr_l1,
+            l1_exp_addr,
             dut.u_core_simd4.out_waddr1,
-            valid_lane1
+            l1_valid_lane
           );
 
           $display("[SIMD] L1 MEMCHK  t=%0t addr00=%0d I00=%0d mem_in=%0d | addr10=%0d I10=%0d mem_in=%0d | addr01=%0d I01=%0d mem_in=%0d | addr11=%0d I11=%0d mem_in=%0d",
             $time,
-            addr00_l1, dut.u_core_simd4.I00[1], mem00_l1,
-            addr10_l1, dut.u_core_simd4.I10[1], mem10_l1,
-            addr01_l1, dut.u_core_simd4.I01[1], mem01_l1,
-            addr11_l1, dut.u_core_simd4.I11[1], mem11_l1
+            l1_addr00, dut.u_core_simd4.I00[1], l1_mem00,
+            l1_addr10, dut.u_core_simd4.I10[1], l1_mem10,
+            l1_addr01, dut.u_core_simd4.I01[1], l1_mem01,
+            l1_addr11, dut.u_core_simd4.I11[1], l1_mem11
           );
         end
 
         // -------- Lane 2 --------
         if (dut.u_core_simd4.out_we2 && (dut.u_core_simd4.out_waddr2 < 16)) begin
-          int addr00_l2, addr10_l2, addr01_l2, addr11_l2;
-          int exp_addr_l2;
-          bit valid_lane2;
-          int mem00_l2, mem10_l2, mem01_l2, mem11_l2;
-
-          addr00_l2 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2],
+          l2_addr00 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2],
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr10_l2 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2] + 1,
+          l2_addr10 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2] + 1,
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr01_l2 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2],
+          l2_addr01 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2],
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
-          addr11_l2 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2] + 1,
+          l2_addr11 = linaddr_tb(dut.u_core_simd4.xi_base_lane[2] + 1,
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
 
-          exp_addr_l2 = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
-                        dut.u_core_simd4.ox_lane[2];
-          valid_lane2 = (dut.u_core_simd4.ox_lane[2] < dut.out_w_s_simd);
+          l2_exp_addr  = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
+                         dut.u_core_simd4.ox_lane[2];
+          l2_valid_lane = (dut.u_core_simd4.ox_lane[2] < dut.out_w_s_simd) ? 1 : 0;
 
-          mem00_l2 = dut.mem_in2.mem[addr00_l2];
-          mem10_l2 = dut.mem_in2.mem[addr10_l2];
-          mem01_l2 = dut.mem_in2.mem[addr01_l2];
-          mem11_l2 = dut.mem_in2.mem[addr11_l2];
+          l2_mem00 = dut.mem_in2.mem[l2_addr00];
+          l2_mem10 = dut.mem_in2.mem[l2_addr10];
+          l2_mem01 = dut.mem_in2.mem[l2_addr01];
+          l2_mem11 = dut.mem_in2.mem[l2_addr11];
 
           $display("[SIMD] L2 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d | addr00=%0d addr10=%0d addr01=%0d addr11=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
             dut.u_core_simd4.ox_lane[2],
             dut.u_core_simd4.oy_cur,
             dut.u_core_simd4.out_waddr2,
             dut.u_core_simd4.out_wdata2,
-            dut.u_core_simd4.sx_int_lane[2],
-            dut.u_core_simd4.ax_q_lane[2],
+            dut.u_core_simd4.xi_base_lane[2],
+            dut.u_core_simd4.fx_q_lane[2],
             dut.u_core_simd4.sy_int_row,
             dut.u_core_simd4.ay_q_row,
             dut.u_core_simd4.xi_base_lane[2],
             dut.u_core_simd4.yi_base_row,
             dut.u_core_simd4.fx_q_lane[2],
             dut.u_core_simd4.fy_q_row,
-            addr00_l2, addr10_l2, addr01_l2, addr11_l2,
+            l2_addr00, l2_addr10, l2_addr01, l2_addr11,
             dut.u_core_simd4.I00[2],
             dut.u_core_simd4.I10[2],
             dut.u_core_simd4.I01[2],
             dut.u_core_simd4.I11[2]
           );
 
-          $display("[SIMD] L2 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0b",
+          $display("[SIMD] L2 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0d",
             $time,
             dut.u_core_simd4.ox_lane[2],
             dut.u_core_simd4.oy_cur,
             dut.out_w_s_simd,
-            exp_addr_l2,
+            l2_exp_addr,
             dut.u_core_simd4.out_waddr2,
-            valid_lane2
+            l2_valid_lane
           );
 
           $display("[SIMD] L2 MEMCHK  t=%0t addr00=%0d I00=%0d mem_in=%0d | addr10=%0d I10=%0d mem_in=%0d | addr01=%0d I01=%0d mem_in=%0d | addr11=%0d I11=%0d mem_in=%0d",
             $time,
-            addr00_l2, dut.u_core_simd4.I00[2], mem00_l2,
-            addr10_l2, dut.u_core_simd4.I10[2], mem10_l2,
-            addr01_l2, dut.u_core_simd4.I01[2], mem01_l2,
-            addr11_l2, dut.u_core_simd4.I11[2], mem11_l2
+            l2_addr00, dut.u_core_simd4.I00[2], l2_mem00,
+            l2_addr10, dut.u_core_simd4.I10[2], l2_mem10,
+            l2_addr01, dut.u_core_simd4.I01[2], l2_mem01,
+            l2_addr11, dut.u_core_simd4.I11[2], l2_mem11
           );
         end
 
         // -------- Lane 3 --------
         if (dut.u_core_simd4.out_we3 && (dut.u_core_simd4.out_waddr3 < 16)) begin
-          int addr00_l3, addr10_l3, addr01_l3, addr11_l3;
-          int exp_addr_l3;
-          bit valid_lane3;
-          int mem00_l3, mem10_l3, mem01_l3, mem11_l3;
-
-          addr00_l3 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3],
+          l3_addr00 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3],
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr10_l3 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3] + 1,
+          l3_addr10 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3] + 1,
                                  dut.u_core_simd4.yi_base_row,
                                  dut.in_w);
-          addr01_l3 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3],
+          l3_addr01 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3],
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
-          addr11_l3 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3] + 1,
+          l3_addr11 = linaddr_tb(dut.u_core_simd4.xi_base_lane[3] + 1,
                                  dut.u_core_simd4.yi_base_row + 1,
                                  dut.in_w);
 
-          exp_addr_l3 = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
-                        dut.u_core_simd4.ox_lane[3];
-          valid_lane3 = (dut.u_core_simd4.ox_lane[3] < dut.out_w_s_simd);
+          l3_exp_addr  = dut.u_core_simd4.oy_cur * dut.out_w_s_simd +
+                         dut.u_core_simd4.ox_lane[3];
+          l3_valid_lane = (dut.u_core_simd4.ox_lane[3] < dut.out_w_s_simd) ? 1 : 0;
 
-          mem00_l3 = dut.mem_in3.mem[addr00_l3];
-          mem10_l3 = dut.mem_in3.mem[addr10_l3];
-          mem01_l3 = dut.mem_in3.mem[addr01_l3];
-          mem11_l3 = dut.mem_in3.mem[addr11_l3];
+          l3_mem00 = dut.mem_in3.mem[l3_addr00];
+          l3_mem10 = dut.mem_in3.mem[l3_addr10];
+          l3_mem01 = dut.mem_in3.mem[l3_addr01];
+          l3_mem11 = dut.mem_in3.mem[l3_addr11];
 
           $display("[SIMD] L3 WRITE ox=%0d oy=%0d addr=%0d pix=0x%0h | sx_int=%0d ax_q=%0d sy_int=%0d ay_q=%0d xi=%0d yi=%0d fx_q=%0d fy_q=%0d | addr00=%0d addr10=%0d addr01=%0d addr11=%0d | I00=%0d I10=%0d I01=%0d I11=%0d",
             dut.u_core_simd4.ox_lane[3],
             dut.u_core_simd4.oy_cur,
             dut.u_core_simd4.out_waddr3,
             dut.u_core_simd4.out_wdata3,
-            dut.u_core_simd4.sx_int_lane[3],
-            dut.u_core_simd4.ax_q_lane[3],
+            dut.u_core_simd4.xi_base_lane[3],
+            dut.u_core_simd4.fx_q_lane[3],
             dut.u_core_simd4.sy_int_row,
             dut.u_core_simd4.ay_q_row,
             dut.u_core_simd4.xi_base_lane[3],
             dut.u_core_simd4.yi_base_row,
             dut.u_core_simd4.fx_q_lane[3],
             dut.u_core_simd4.fy_q_row,
-            addr00_l3, addr10_l3, addr01_l3, addr11_l3,
+            l3_addr00, l3_addr10, l3_addr01, l3_addr11,
             dut.u_core_simd4.I00[3],
             dut.u_core_simd4.I10[3],
             dut.u_core_simd4.I01[3],
             dut.u_core_simd4.I11[3]
           );
 
-          $display("[SIMD] L3 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0b",
+          $display("[SIMD] L3 ADDRCHK t=%0t ox=%0d oy=%0d out_w=%0d | exp_addr=%0d out_waddr=%0d | valid_lane=%0d",
             $time,
             dut.u_core_simd4.ox_lane[3],
             dut.u_core_simd4.oy_cur,
             dut.out_w_s_simd,
-            exp_addr_l3,
+            l3_exp_addr,
             dut.u_core_simd4.out_waddr3,
-            valid_lane3
+            l3_valid_lane
           );
 
           $display("[SIMD] L3 MEMCHK  t=%0t addr00=%0d I00=%0d mem_in=%0d | addr10=%0d I10=%0d mem_in=%0d | addr01=%0d I01=%0d mem_in=%0d | addr11=%0d I11=%0d mem_in=%0d",
             $time,
-            addr00_l3, dut.u_core_simd4.I00[3], mem00_l3,
-            addr10_l3, dut.u_core_simd4.I10[3], mem10_l3,
-            addr01_l3, dut.u_core_simd4.I01[3], mem01_l3,
-            addr11_l3, dut.u_core_simd4.I11[3], mem11_l3
+            l3_addr00, dut.u_core_simd4.I00[3], l3_mem00,
+            l3_addr10, dut.u_core_simd4.I10[3], l3_mem10,
+            l3_addr01, dut.u_core_simd4.I01[3], l3_mem01,
+            l3_addr11, dut.u_core_simd4.I11[3], l3_mem11
           );
         end
       end
