@@ -448,9 +448,8 @@ module tb_bilinear_seq;
     
     // Debug: Monitor FSM state (al inicio para referencia)
     if (DBG_SEQ_MONITOR && !dut.mode_simd_eff && (cycles < 200)) begin
-      $display("[SEQ][DBG][t=%0t cyc=%0d] state=%0d busy=%0d done=%0d",
+      $display("[SEQ][DBG][t=%0t cyc=%0d] busy=%0d done=%0d",
         $time, cycles,
-        dut.u_core_seq.state,
         dut.u_core_seq.busy,
         dut.u_core_seq.done
       );
@@ -519,7 +518,7 @@ module tb_bilinear_seq;
     // Detailed monitoring
     if (dut.mode_simd_eff && DBG_SIMD_DETAILED) begin
       // Monitor memory controller activity
-      if (dut.u_core_simd4.u_mem_ctrl.state == dut.u_core_simd4.u_mem_ctrl.DATA_READY &&
+      if (
           dut.u_core_simd4.current_lane < 4) begin
         
         $display("[SIMD][MEM_CTRL][t=%0t] Lane %0d data ready: TL=0x%02h TR=0x%02h BL=0x%02h BR=0x%02h | xi=%0d yi=%0d fx=%0d fy=%0d",
@@ -533,21 +532,6 @@ module tb_bilinear_seq;
           dut.u_core_simd4.yi_base_row,
           dut.u_core_simd4.fx_q_lane[dut.u_core_simd4.current_lane],
           dut.u_core_simd4.fy_q_row
-        );
-      end
-    end
-  end
-
-  // --------------------------------------------------------------------------
-  // Monitor memory read addresses (detailed debug)
-  // --------------------------------------------------------------------------
-  always @(posedge clk_50) begin
-    if (DBG_SIMD_DETAILED && dut.mode_simd_eff) begin
-      if (dut.u_core_simd4.u_mem_ctrl.state == dut.u_core_simd4.u_mem_ctrl.READ_REQ) begin
-        $display("[MEM_READ][t=%0t] raddr0=0x%03h raddr1=0x%03h",
-          $time,
-          dut.mem_in_raddr0,
-          dut.mem_in_raddr1
         );
       end
     end

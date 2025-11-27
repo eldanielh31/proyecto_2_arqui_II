@@ -69,6 +69,7 @@ set_global_assignment -name EDA_TEST_BENCH_FILE tb_bilinear_seq.sv -section_id t
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_location_assignment PIN_AD10 -to mode_simd_sw
 set_location_assignment PIN_Y19 -to led_simd_mode
+set_global_assignment -name SYSTEMVERILOG_FILE line_buffer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE wide_onchip_mem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE bilinear_simd4_wide.sv
 set_global_assignment -name SYSTEMVERILOG_FILE bilinear_seq_wide.sv
