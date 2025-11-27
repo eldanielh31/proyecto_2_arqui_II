@@ -10,67 +10,89 @@
 # Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/wide_onchip_mem.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:19:16 on Nov 26,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4.sv 
-# -- Compiling module bilinear_simd4
+# Start time: 21:13:57 on Nov 26,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/wide_onchip_mem.sv 
+# -- Compiling module wide_onchip_mem
 # 
 # Top level modules:
-# 	bilinear_simd4
-# End time: 01:19:16 on Nov 26,2025, Elapsed time: 0:00:00
+# 	wide_onchip_mem
+# End time: 21:13:57 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4_wide.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:19:16 on Nov 26,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/onchip_mem_dp.sv 
-# -- Compiling module onchip_mem_dp
+# Start time: 21:13:57 on Nov 26,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4_wide.sv 
+# -- Compiling module bilinear_simd4_wide
 # 
 # Top level modules:
-# 	onchip_mem_dp
-# End time: 01:19:16 on Nov 26,2025, Elapsed time: 0:00:00
+# 	bilinear_simd4_wide
+# End time: 21:13:57 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv}
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq_wide.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:19:16 on Nov 26,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq.sv 
-# -- Compiling module bilinear_seq
+# Start time: 21:13:57 on Nov 26,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq_wide.sv 
+# -- Compiling module bilinear_seq_wide
 # 
 # Top level modules:
-# 	bilinear_seq
-# End time: 01:19:17 on Nov 26,2025, Elapsed time: 0:00:01
+# 	bilinear_seq_wide
+# End time: 21:13:57 on Nov 26,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/mem_read_controller.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:13:57 on Nov 26,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/mem_read_controller.sv 
+# -- Compiling module mem_read_controller
+# 
+# Top level modules:
+# 	mem_read_controller
+# End time: 21:13:57 on Nov 26,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_arith.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:13:57 on Nov 26,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_arith.sv 
+# -- Compiling module bilinear_arith
+# 
+# Top level modules:
+# 	bilinear_arith
+# End time: 21:13:57 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:19:17 on Nov 26,2025
+# Start time: 21:13:58 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv 
 # -- Compiling module top_dsa_seq
 # 
 # Top level modules:
 # 	top_dsa_seq
-# End time: 01:19:17 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 21:13:58 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:19:17 on Nov 26,2025
+# Start time: 21:13:58 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv 
 # -- Compiling module tb_bilinear_seq
 # 
 # Top level modules:
 # 	tb_bilinear_seq
-# End time: 01:19:17 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 21:13:58 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_bilinear_seq
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_bilinear_seq 
-# Start time: 01:19:17 on Nov 26,2025
+# Start time: 21:13:58 on Nov 26,2025
 # Loading sv_std.std
 # Loading work.tb_bilinear_seq
 # Loading work.top_dsa_seq
-# Loading work.onchip_mem_dp
-# Loading work.bilinear_seq
-# Loading work.bilinear_simd4
+# Loading work.wide_onchip_mem
+# Loading work.bilinear_seq_wide
+# Loading work.mem_read_controller
+# Loading work.bilinear_arith
+# Loading work.bilinear_simd4_wide
 # 
 # add wave *
 # view structure
@@ -78,485 +100,1411 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
-# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
-# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
-# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
-# [onchip_mem_dp] INIT_EN=1, pero MEM_INIT_FILE no está definido. Inicializando a 0x00.
-# [onchip_mem_dp] INIT_EN=0, inicializando memoria a 0x00.
-# [TB] Forzando in_w_cfg=16, in_h_cfg=16, scale_q88_cfg=205 (Q8.8)
-# [TB] Cargando imagen de entrada desde 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex' en mem_in...
-# [TB] mem_in[0] = 0xdc
-# [TB] mem_in[1] = 0xdc
-# [TB] mem_in[2] = 0xdc
-# [TB] mem_in[3] = 0xdc
-# [TB] mem_in[4] = 0xdc
-# [TB] mem_in[5] = 0xdc
-# [TB] mem_in[6] = 0xdc
-# [TB] mem_in[7] = 0xdc
-# [TB] mem_in[8] = 0xdc
-# [TB] mem_in[9] = 0xdc
-# [TB] mem_in[10] = 0xdc
-# [TB] mem_in[11] = 0xdc
-# [TB] mem_in[12] = 0xdc
-# [TB] mem_in[13] = 0xdc
-# [TB] mem_in[14] = 0xdc
-# [TB] mem_in[15] = 0xdc
+# [wide_onchip_mem] No init file, clearing to 0x00000000.
+# [SEQ][DBG][t=10000 cyc=0] state=0 busy=0 done=0
+# [SEQ][DBG][t=30000 cyc=1] state=0 busy=0 done=0
+# [SEQ][DBG][t=50000 cyc=2] state=0 busy=0 done=0
+# [SEQ][DBG][t=70000 cyc=3] state=0 busy=0 done=0
+# [SEQ][DBG][t=90000 cyc=4] state=0 busy=0 done=0
+# [SEQ][DBG][t=110000 cyc=5] state=0 busy=0 done=0
+# [SEQ][DBG][t=130000 cyc=6] state=0 busy=0 done=0
+# [SEQ][DBG][t=150000 cyc=7] state=0 busy=0 done=0
+# [SEQ][DBG][t=170000 cyc=8] state=0 busy=0 done=0
+# [SEQ][DBG][t=190000 cyc=9] state=0 busy=0 done=0
+# [SEQ][DBG][t=210000 cyc=10] state=0 busy=0 done=0
+# [SEQ][DBG][t=230000 cyc=11] state=0 busy=0 done=0
+# [SEQ][DBG][t=250000 cyc=12] state=0 busy=0 done=0
+# [SEQ][DBG][t=270000 cyc=13] state=0 busy=0 done=0
+# [SEQ][DBG][t=290000 cyc=14] state=0 busy=0 done=0
+# [SEQ][DBG][t=310000 cyc=15] state=0 busy=0 done=0
+# [SEQ][DBG][t=330000 cyc=16] state=0 busy=0 done=0
+# [SEQ][DBG][t=350000 cyc=17] state=0 busy=0 done=0
+# [SEQ][DBG][t=370000 cyc=18] state=0 busy=0 done=0
+# [SEQ][DBG][t=390000 cyc=19] state=0 busy=0 done=0
+# [SEQ][DBG][t=410000 cyc=20] state=0 busy=0 done=0
+# [SEQ][DBG][t=430000 cyc=21] state=0 busy=0 done=0
+# [SEQ][DBG][t=450000 cyc=22] state=0 busy=0 done=0
+# [SEQ][DBG][t=470000 cyc=23] state=0 busy=0 done=0
+# [SEQ][DBG][t=490000 cyc=24] state=0 busy=0 done=0
+# [SEQ][DBG][t=510000 cyc=25] state=0 busy=0 done=0
+# [SEQ][DBG][t=530000 cyc=26] state=0 busy=0 done=0
+# [SEQ][DBG][t=550000 cyc=27] state=0 busy=0 done=0
+# [SEQ][DBG][t=570000 cyc=28] state=0 busy=0 done=0
+# [SEQ][DBG][t=590000 cyc=29] state=0 busy=0 done=0
+# [SEQ][DBG][t=610000 cyc=30] state=0 busy=0 done=0
+# [SEQ][DBG][t=630000 cyc=31] state=0 busy=0 done=0
+# [SEQ][DBG][t=650000 cyc=32] state=0 busy=0 done=0
+# [SEQ][DBG][t=670000 cyc=33] state=0 busy=0 done=0
+# [SEQ][DBG][t=690000 cyc=34] state=0 busy=0 done=0
+# [SEQ][DBG][t=710000 cyc=35] state=0 busy=0 done=0
+# [SEQ][DBG][t=730000 cyc=36] state=0 busy=0 done=0
+# [SEQ][DBG][t=750000 cyc=37] state=0 busy=0 done=0
+# [SEQ][DBG][t=770000 cyc=38] state=0 busy=0 done=0
+# [SEQ][DBG][t=790000 cyc=39] state=0 busy=0 done=0
+# [SEQ][DBG][t=810000 cyc=40] state=0 busy=0 done=0
+# [SEQ][DBG][t=830000 cyc=41] state=0 busy=0 done=0
+# [SEQ][DBG][t=850000 cyc=42] state=0 busy=0 done=0
+# [SEQ][DBG][t=870000 cyc=43] state=0 busy=0 done=0
+# [SEQ][DBG][t=890000 cyc=44] state=0 busy=0 done=0
+# [SEQ][DBG][t=910000 cyc=45] state=0 busy=0 done=0
+# [SEQ][DBG][t=930000 cyc=46] state=0 busy=0 done=0
+# [SEQ][DBG][t=950000 cyc=47] state=0 busy=0 done=0
+# [SEQ][DBG][t=970000 cyc=48] state=0 busy=0 done=0
+# [SEQ][DBG][t=990000 cyc=49] state=0 busy=0 done=0
+# [SEQ][DBG][t=1010000 cyc=50] state=0 busy=0 done=0
+# [SEQ][DBG][t=1030000 cyc=51] state=0 busy=0 done=0
+# [SEQ][DBG][t=1050000 cyc=52] state=0 busy=0 done=0
+# [SEQ][DBG][t=1070000 cyc=53] state=0 busy=0 done=0
+# [SEQ][DBG][t=1090000 cyc=54] state=0 busy=0 done=0
+# [SEQ][DBG][t=1110000 cyc=55] state=0 busy=0 done=0
+# [SEQ][DBG][t=1130000 cyc=56] state=0 busy=0 done=0
+# [SEQ][DBG][t=1150000 cyc=57] state=0 busy=0 done=0
+# [SEQ][DBG][t=1170000 cyc=58] state=0 busy=0 done=0
+# [SEQ][DBG][t=1190000 cyc=59] state=0 busy=0 done=0
+# [SEQ][DBG][t=1210000 cyc=60] state=0 busy=0 done=0
+# [SEQ][DBG][t=1230000 cyc=61] state=0 busy=0 done=0
+# [SEQ][DBG][t=1250000 cyc=62] state=0 busy=0 done=0
+# [SEQ][DBG][t=1270000 cyc=63] state=0 busy=0 done=0
+# [SEQ][DBG][t=1290000 cyc=64] state=0 busy=0 done=0
+# [SEQ][DBG][t=1310000 cyc=65] state=0 busy=0 done=0
+# [SEQ][DBG][t=1330000 cyc=66] state=0 busy=0 done=0
+# [SEQ][DBG][t=1350000 cyc=67] state=0 busy=0 done=0
+# [SEQ][DBG][t=1370000 cyc=68] state=0 busy=0 done=0
+# [SEQ][DBG][t=1390000 cyc=69] state=0 busy=0 done=0
+# [SEQ][DBG][t=1410000 cyc=70] state=0 busy=0 done=0
+# [SEQ][DBG][t=1430000 cyc=71] state=0 busy=0 done=0
+# [SEQ][DBG][t=1450000 cyc=72] state=0 busy=0 done=0
+# [SEQ][DBG][t=1470000 cyc=73] state=0 busy=0 done=0
+# [SEQ][DBG][t=1490000 cyc=74] state=0 busy=0 done=0
+# [SEQ][DBG][t=1510000 cyc=75] state=0 busy=0 done=0
+# [SEQ][DBG][t=1530000 cyc=76] state=0 busy=0 done=0
+# [SEQ][DBG][t=1550000 cyc=77] state=0 busy=0 done=0
+# [SEQ][DBG][t=1570000 cyc=78] state=0 busy=0 done=0
+# [SEQ][DBG][t=1590000 cyc=79] state=0 busy=0 done=0
+# [SEQ][DBG][t=1610000 cyc=80] state=0 busy=0 done=0
+# [SEQ][DBG][t=1630000 cyc=81] state=0 busy=0 done=0
+# [SEQ][DBG][t=1650000 cyc=82] state=0 busy=0 done=0
+# [SEQ][DBG][t=1670000 cyc=83] state=0 busy=0 done=0
+# [SEQ][DBG][t=1690000 cyc=84] state=0 busy=0 done=0
+# [SEQ][DBG][t=1710000 cyc=85] state=0 busy=0 done=0
+# [SEQ][DBG][t=1730000 cyc=86] state=0 busy=0 done=0
+# [SEQ][DBG][t=1750000 cyc=87] state=0 busy=0 done=0
+# [SEQ][DBG][t=1770000 cyc=88] state=0 busy=0 done=0
+# [SEQ][DBG][t=1790000 cyc=89] state=0 busy=0 done=0
+# [SEQ][DBG][t=1810000 cyc=90] state=0 busy=0 done=0
+# [SEQ][DBG][t=1830000 cyc=91] state=0 busy=0 done=0
+# [SEQ][DBG][t=1850000 cyc=92] state=0 busy=0 done=0
+# [SEQ][DBG][t=1870000 cyc=93] state=0 busy=0 done=0
+# [SEQ][DBG][t=1890000 cyc=94] state=0 busy=0 done=0
+# [SEQ][DBG][t=1910000 cyc=95] state=0 busy=0 done=0
+# [SEQ][DBG][t=1930000 cyc=96] state=0 busy=0 done=0
+# [SEQ][DBG][t=1950000 cyc=97] state=0 busy=0 done=0
+# [SEQ][DBG][t=1970000 cyc=98] state=0 busy=0 done=0
+# [SEQ][DBG][t=1990000 cyc=99] state=0 busy=0 done=0
+# [SEQ][DBG][t=2010000 cyc=100] state=0 busy=0 done=0
+# [SEQ][DBG][t=2030000 cyc=101] state=0 busy=0 done=0
+# [SEQ][DBG][t=2050000 cyc=102] state=0 busy=0 done=0
+# [SEQ][DBG][t=2070000 cyc=103] state=0 busy=0 done=0
+# [SEQ][DBG][t=2090000 cyc=104] state=0 busy=0 done=0
+# [SEQ][DBG][t=2110000 cyc=105] state=0 busy=0 done=0
+# [SEQ][DBG][t=2130000 cyc=106] state=0 busy=0 done=0
+# [SEQ][DBG][t=2150000 cyc=107] state=0 busy=0 done=0
+# [SEQ][DBG][t=2170000 cyc=108] state=0 busy=0 done=0
+# [SEQ][DBG][t=2190000 cyc=109] state=0 busy=0 done=0
+# [SEQ][DBG][t=2210000 cyc=110] state=0 busy=0 done=0
+# [SEQ][DBG][t=2230000 cyc=111] state=0 busy=0 done=0
+# [SEQ][DBG][t=2250000 cyc=112] state=0 busy=0 done=0
+# [SEQ][DBG][t=2270000 cyc=113] state=0 busy=0 done=0
+# [SEQ][DBG][t=2290000 cyc=114] state=0 busy=0 done=0
+# [SEQ][DBG][t=2310000 cyc=115] state=0 busy=0 done=0
+# [SEQ][DBG][t=2330000 cyc=116] state=0 busy=0 done=0
+# [SEQ][DBG][t=2350000 cyc=117] state=0 busy=0 done=0
+# [SEQ][DBG][t=2370000 cyc=118] state=0 busy=0 done=0
+# [SEQ][DBG][t=2390000 cyc=119] state=0 busy=0 done=0
+# [SEQ][DBG][t=2410000 cyc=120] state=0 busy=0 done=0
+# [SEQ][DBG][t=2430000 cyc=121] state=0 busy=0 done=0
+# [SEQ][DBG][t=2450000 cyc=122] state=0 busy=0 done=0
+# [SEQ][DBG][t=2470000 cyc=123] state=0 busy=0 done=0
+# [SEQ][DBG][t=2490000 cyc=124] state=0 busy=0 done=0
+# [SEQ][DBG][t=2510000 cyc=125] state=0 busy=0 done=0
+# [SEQ][DBG][t=2530000 cyc=126] state=0 busy=0 done=0
+# [SEQ][DBG][t=2550000 cyc=127] state=0 busy=0 done=0
+# [SEQ][DBG][t=2570000 cyc=128] state=0 busy=0 done=0
+# [SEQ][DBG][t=2590000 cyc=129] state=0 busy=0 done=0
+# [SEQ][DBG][t=2610000 cyc=130] state=0 busy=0 done=0
+# [SEQ][DBG][t=2630000 cyc=131] state=0 busy=0 done=0
+# [SEQ][DBG][t=2650000 cyc=132] state=0 busy=0 done=0
+# [SEQ][DBG][t=2670000 cyc=133] state=0 busy=0 done=0
+# [SEQ][DBG][t=2690000 cyc=134] state=0 busy=0 done=0
+# [SEQ][DBG][t=2710000 cyc=135] state=0 busy=0 done=0
+# [SEQ][DBG][t=2730000 cyc=136] state=0 busy=0 done=0
+# [SEQ][DBG][t=2750000 cyc=137] state=0 busy=0 done=0
+# [SEQ][DBG][t=2770000 cyc=138] state=0 busy=0 done=0
+# [SEQ][DBG][t=2790000 cyc=139] state=0 busy=0 done=0
+# [SEQ][DBG][t=2810000 cyc=140] state=0 busy=0 done=0
+# [SEQ][DBG][t=2830000 cyc=141] state=0 busy=0 done=0
+# [SEQ][DBG][t=2850000 cyc=142] state=0 busy=0 done=0
+# [SEQ][DBG][t=2870000 cyc=143] state=0 busy=0 done=0
+# [SEQ][DBG][t=2890000 cyc=144] state=0 busy=0 done=0
+# [SEQ][DBG][t=2910000 cyc=145] state=0 busy=0 done=0
+# [SEQ][DBG][t=2930000 cyc=146] state=0 busy=0 done=0
+# [SEQ][DBG][t=2950000 cyc=147] state=0 busy=0 done=0
+# [SEQ][DBG][t=2970000 cyc=148] state=0 busy=0 done=0
+# [SEQ][DBG][t=2990000 cyc=149] state=0 busy=0 done=0
+# [SEQ][DBG][t=3010000 cyc=150] state=0 busy=0 done=0
+# [SEQ][DBG][t=3030000 cyc=151] state=0 busy=0 done=0
+# [SEQ][DBG][t=3050000 cyc=152] state=0 busy=0 done=0
+# [SEQ][DBG][t=3070000 cyc=153] state=0 busy=0 done=0
+# [SEQ][DBG][t=3090000 cyc=154] state=0 busy=0 done=0
+# [SEQ][DBG][t=3110000 cyc=155] state=0 busy=0 done=0
+# [SEQ][DBG][t=3130000 cyc=156] state=0 busy=0 done=0
+# [SEQ][DBG][t=3150000 cyc=157] state=0 busy=0 done=0
+# [SEQ][DBG][t=3170000 cyc=158] state=0 busy=0 done=0
+# [SEQ][DBG][t=3190000 cyc=159] state=0 busy=0 done=0
+# [SEQ][DBG][t=3210000 cyc=160] state=0 busy=0 done=0
+# [SEQ][DBG][t=3230000 cyc=161] state=0 busy=0 done=0
+# [SEQ][DBG][t=3250000 cyc=162] state=0 busy=0 done=0
+# [SEQ][DBG][t=3270000 cyc=163] state=0 busy=0 done=0
+# [SEQ][DBG][t=3290000 cyc=164] state=0 busy=0 done=0
+# [SEQ][DBG][t=3310000 cyc=165] state=0 busy=0 done=0
+# [SEQ][DBG][t=3330000 cyc=166] state=0 busy=0 done=0
+# [SEQ][DBG][t=3350000 cyc=167] state=0 busy=0 done=0
+# [SEQ][DBG][t=3370000 cyc=168] state=0 busy=0 done=0
+# [SEQ][DBG][t=3390000 cyc=169] state=0 busy=0 done=0
+# [SEQ][DBG][t=3410000 cyc=170] state=0 busy=0 done=0
+# [SEQ][DBG][t=3430000 cyc=171] state=0 busy=0 done=0
+# [SEQ][DBG][t=3450000 cyc=172] state=0 busy=0 done=0
+# [SEQ][DBG][t=3470000 cyc=173] state=0 busy=0 done=0
+# [SEQ][DBG][t=3490000 cyc=174] state=0 busy=0 done=0
+# [SEQ][DBG][t=3510000 cyc=175] state=0 busy=0 done=0
+# [SEQ][DBG][t=3530000 cyc=176] state=0 busy=0 done=0
+# [SEQ][DBG][t=3550000 cyc=177] state=0 busy=0 done=0
+# [SEQ][DBG][t=3570000 cyc=178] state=0 busy=0 done=0
+# [SEQ][DBG][t=3590000 cyc=179] state=0 busy=0 done=0
+# [SEQ][DBG][t=3610000 cyc=180] state=0 busy=0 done=0
+# [SEQ][DBG][t=3630000 cyc=181] state=0 busy=0 done=0
+# [SEQ][DBG][t=3650000 cyc=182] state=0 busy=0 done=0
+# [SEQ][DBG][t=3670000 cyc=183] state=0 busy=0 done=0
+# [SEQ][DBG][t=3690000 cyc=184] state=0 busy=0 done=0
+# [SEQ][DBG][t=3710000 cyc=185] state=0 busy=0 done=0
+# [SEQ][DBG][t=3730000 cyc=186] state=0 busy=0 done=0
+# [SEQ][DBG][t=3750000 cyc=187] state=0 busy=0 done=0
+# [SEQ][DBG][t=3770000 cyc=188] state=0 busy=0 done=0
+# [SEQ][DBG][t=3790000 cyc=189] state=0 busy=0 done=0
+# [SEQ][DBG][t=3810000 cyc=190] state=0 busy=0 done=0
+# [SEQ][DBG][t=3830000 cyc=191] state=0 busy=0 done=0
+# [SEQ][DBG][t=3850000 cyc=192] state=0 busy=0 done=0
+# [SEQ][DBG][t=3870000 cyc=193] state=0 busy=0 done=0
+# [SEQ][DBG][t=3890000 cyc=194] state=0 busy=0 done=0
+# [SEQ][DBG][t=3910000 cyc=195] state=0 busy=0 done=0
+# [SEQ][DBG][t=3930000 cyc=196] state=0 busy=0 done=0
+# [SEQ][DBG][t=3950000 cyc=197] state=0 busy=0 done=0
+# [SEQ][DBG][t=3970000 cyc=198] state=0 busy=0 done=0
+# [SEQ][DBG][t=3990000 cyc=199] state=0 busy=0 done=0
+# [TB] Cargando imagen desde 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex'...
+# [TB] Imagen cargada. Primeros 4 words (16 bytes):
+# [TB] mem_in[0] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
+# [TB] mem_in[1] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
+# [TB] mem_in[2] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
+# [TB] mem_in[3] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
 # 
-# [TB][ANTES_SEQ] Dump inicial de bancos de entrada (primeros 16 elementos):
-# [TB][ANTES_SEQ] mem_in [0]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [1]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [2]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [3]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [4]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [5]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [6]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [7]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [8]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [9]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [10]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [11]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [12]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [13]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [14]  = 0xdc
-# [TB][ANTES_SEQ] mem_in [15]  = 0xdc
-# [TB][ANTES_SEQ] mem_in1[0] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[1] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[2] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[3] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[4] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[5] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[6] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[7] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[8] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[9] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[10] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[11] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[12] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[13] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[14] = 0xdc
-# [TB][ANTES_SEQ] mem_in1[15] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[0] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[1] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[2] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[3] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[4] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[5] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[6] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[7] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[8] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[9] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[10] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[11] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[12] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[13] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[14] = 0xdc
-# [TB][ANTES_SEQ] mem_in2[15] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[0] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[1] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[2] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[3] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[4] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[5] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[6] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[7] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[8] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[9] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[10] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[11] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[12] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[13] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[14] = 0xdc
-# [TB][ANTES_SEQ] mem_in3[15] = 0xdc
+# [TB][INICIAL] Dump de memoria de entrada (primeros 4 words):
+# [TB][INICIAL] mem_in[0] = 0xdcdcdcdc
+# [TB][INICIAL] mem_in[1] = 0xdcdcdcdc
+# [TB][INICIAL] mem_in[2] = 0xdcdcdcdc
+# [TB][INICIAL] mem_in[3] = 0xdcdcdcdc
 # 
-# [TB] ===== INICIO CORRIDA 1: SECUENCIAL (16x16) ===== t=82110000
+# [TB] ===== INICIO CORRIDA 1: SECUENCIAL (16x16) ===== t=20670000
 # 
-# [TB][SEQ] Forzando start_pulse_sw en t=82110000
-# [SEQ][RUN=1][t=82330000] WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_fix=0.0 sy_fix=0.0 | xi=0 yi=0 fx_q=0 fy_q=0 | addr00=0 addr10=1 addr01=16 addr11=17 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=82330000 ox=0 oy=0 out_w=12 | exp_addr=0 out_waddr=0
-# [SEQ][MEMCHK]  t=82330000 addr00=0 I00=220 mem_in=220 | addr10=1 I10=220 mem_in=220 | addr01=16 I01=220 mem_in=220 | addr11=17 I11=220 mem_in=220
-# [SEQ][RUN=1][t=82490000] WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_fix=1.63 sy_fix=0.0 | xi=1 yi=0 fx_q=63 fy_q=0 | addr00=1 addr10=2 addr01=17 addr11=18 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=82490000 ox=1 oy=0 out_w=12 | exp_addr=1 out_waddr=1
-# [SEQ][MEMCHK]  t=82490000 addr00=1 I00=220 mem_in=220 | addr10=2 I10=220 mem_in=220 | addr01=17 I01=220 mem_in=220 | addr11=18 I11=220 mem_in=25
-# [SEQ][RUN=1][t=82650000] WRITE ox=2 oy=0 addr=2 pix=0x79 | sx_fix=2.126 sy_fix=0.0 | xi=2 yi=0 fx_q=126 fy_q=0 | addr00=2 addr10=3 addr01=18 addr11=19 | I00=25 I10=220 I01=220 I11=25
-# [SEQ][ADDRCHK] t=82650000 ox=2 oy=0 out_w=12 | exp_addr=2 out_waddr=2
-# [SEQ][MEMCHK]  t=82650000 addr00=2 I00=25 mem_in=220 | addr10=3 I10=220 mem_in=220 | addr01=18 I01=220 mem_in=25 | addr11=19 I11=25 mem_in=34
-# [SEQ][RUN=1][t=82810000] WRITE ox=3 oy=0 addr=3 pix=0xab | sx_fix=3.189 sy_fix=0.0 | xi=3 yi=0 fx_q=189 fy_q=0 | addr00=3 addr10=4 addr01=19 addr11=20 | I00=34 I10=220 I01=220 I11=34
-# [SEQ][ADDRCHK] t=82810000 ox=3 oy=0 out_w=12 | exp_addr=3 out_waddr=3
-# [SEQ][MEMCHK]  t=82810000 addr00=3 I00=34 mem_in=220 | addr10=4 I10=220 mem_in=220 | addr01=19 I01=220 mem_in=34 | addr11=20 I11=34 mem_in=42
-# [SEQ][RUN=1][t=82970000] WRITE ox=4 oy=0 addr=4 pix=0xd9 | sx_fix=4.252 sy_fix=0.0 | xi=4 yi=0 fx_q=252 fy_q=0 | addr00=4 addr10=5 addr01=20 addr11=21 | I00=42 I10=220 I01=220 I11=42
-# [SEQ][ADDRCHK] t=82970000 ox=4 oy=0 out_w=12 | exp_addr=4 out_waddr=4
-# [SEQ][MEMCHK]  t=82970000 addr00=4 I00=42 mem_in=220 | addr10=5 I10=220 mem_in=220 | addr01=20 I01=220 mem_in=42 | addr11=21 I11=42 mem_in=51
-# [SEQ][RUN=1][t=83130000] WRITE ox=5 oy=0 addr=5 pix=0x5a | sx_fix=6.59 sy_fix=0.0 | xi=6 yi=0 fx_q=59 fy_q=0 | addr00=6 addr10=7 addr01=22 addr11=23 | I00=51 I10=220 I01=220 I11=59
-# [SEQ][ADDRCHK] t=83130000 ox=5 oy=0 out_w=12 | exp_addr=5 out_waddr=5
-# [SEQ][MEMCHK]  t=83130000 addr00=6 I00=51 mem_in=220 | addr10=7 I10=220 mem_in=220 | addr01=22 I01=220 mem_in=59 | addr11=23 I11=59 mem_in=68
-# [SEQ][RUN=1][t=83290000] WRITE ox=6 oy=0 addr=6 pix=0x8c | sx_fix=7.122 sy_fix=0.0 | xi=7 yi=0 fx_q=122 fy_q=0 | addr00=7 addr10=8 addr01=23 addr11=24 | I00=68 I10=220 I01=220 I11=68
-# [SEQ][ADDRCHK] t=83290000 ox=6 oy=0 out_w=12 | exp_addr=6 out_waddr=6
-# [SEQ][MEMCHK]  t=83290000 addr00=7 I00=68 mem_in=220 | addr10=8 I10=220 mem_in=220 | addr01=23 I01=220 mem_in=68 | addr11=24 I11=68 mem_in=76
-# [SEQ][RUN=1][t=83450000] WRITE ox=7 oy=0 addr=7 pix=0xb4 | sx_fix=8.185 sy_fix=0.0 | xi=8 yi=0 fx_q=185 fy_q=0 | addr00=8 addr10=9 addr01=24 addr11=25 | I00=76 I10=220 I01=220 I11=76
-# [SEQ][ADDRCHK] t=83450000 ox=7 oy=0 out_w=12 | exp_addr=7 out_waddr=7
-# [SEQ][MEMCHK]  t=83450000 addr00=8 I00=76 mem_in=220 | addr10=9 I10=220 mem_in=220 | addr01=24 I01=220 mem_in=76 | addr11=25 I11=76 mem_in=85
-# [SEQ][RUN=1][t=83610000] WRITE ox=8 oy=0 addr=8 pix=0xd8 | sx_fix=9.248 sy_fix=0.0 | xi=9 yi=0 fx_q=248 fy_q=0 | addr00=9 addr10=10 addr01=25 addr11=26 | I00=85 I10=220 I01=220 I11=85
-# [SEQ][ADDRCHK] t=83610000 ox=8 oy=0 out_w=12 | exp_addr=8 out_waddr=8
-# [SEQ][MEMCHK]  t=83610000 addr00=9 I00=85 mem_in=220 | addr10=10 I10=220 mem_in=220 | addr01=25 I01=220 mem_in=85 | addr11=26 I11=85 mem_in=93
-# [SEQ][RUN=1][t=83770000] WRITE ox=9 oy=0 addr=9 pix=0x78 | sx_fix=11.55 sy_fix=0.0 | xi=11 yi=0 fx_q=55 fy_q=0 | addr00=11 addr10=12 addr01=27 addr11=28 | I00=93 I10=220 I01=220 I11=102
-# [SEQ][ADDRCHK] t=83770000 ox=9 oy=0 out_w=12 | exp_addr=9 out_waddr=9
-# [SEQ][MEMCHK]  t=83770000 addr00=11 I00=93 mem_in=220 | addr10=12 I10=220 mem_in=220 | addr01=27 I01=220 mem_in=102 | addr11=28 I11=102 mem_in=110
-# [SEQ][RUN=1][t=83930000] WRITE ox=10 oy=0 addr=10 pix=0xa1 | sx_fix=12.118 sy_fix=0.0 | xi=12 yi=0 fx_q=118 fy_q=0 | addr00=12 addr10=13 addr01=28 addr11=29 | I00=110 I10=220 I01=220 I11=110
-# [SEQ][ADDRCHK] t=83930000 ox=10 oy=0 out_w=12 | exp_addr=10 out_waddr=10
-# [SEQ][MEMCHK]  t=83930000 addr00=12 I00=110 mem_in=220 | addr10=13 I10=220 mem_in=220 | addr01=28 I01=220 mem_in=110 | addr11=29 I11=110 mem_in=119
-# [SEQ][RUN=1][t=84090000] WRITE ox=11 oy=0 addr=11 pix=0xbe | sx_fix=13.181 sy_fix=0.0 | xi=13 yi=0 fx_q=181 fy_q=0 | addr00=13 addr10=14 addr01=29 addr11=30 | I00=119 I10=220 I01=220 I11=119
-# [SEQ][ADDRCHK] t=84090000 ox=11 oy=0 out_w=12 | exp_addr=11 out_waddr=11
-# [SEQ][MEMCHK]  t=84090000 addr00=13 I00=119 mem_in=220 | addr10=14 I10=220 mem_in=220 | addr01=29 I01=220 mem_in=119 | addr11=30 I11=119 mem_in=220
-# [SEQ][RUN=1][t=84270000] WRITE ox=0 oy=1 addr=12 pix=0xdc | sx_fix=0.0 sy_fix=1.63 | xi=0 yi=1 fx_q=0 fy_q=63 | addr00=16 addr10=17 addr01=32 addr11=33 | I00=220 I10=220 I01=220 I11=220
-# [SEQ][ADDRCHK] t=84270000 ox=0 oy=1 out_w=12 | exp_addr=12 out_waddr=12
-# [SEQ][MEMCHK]  t=84270000 addr00=16 I00=220 mem_in=220 | addr10=17 I10=220 mem_in=220 | addr01=32 I01=220 mem_in=220 | addr11=33 I11=220 mem_in=25
-# [SEQ][RUN=1][t=84430000] WRITE ox=1 oy=1 addr=13 pix=0x3d | sx_fix=1.63 sy_fix=1.63 | xi=1 yi=1 fx_q=63 fy_q=63 | addr00=17 addr10=18 addr01=33 addr11=34 | I00=25 I10=220 I01=25 I11=25
-# [SEQ][ADDRCHK] t=84430000 ox=1 oy=1 out_w=12 | exp_addr=13 out_waddr=13
-# [SEQ][MEMCHK]  t=84430000 addr00=17 I00=25 mem_in=220 | addr10=18 I10=220 mem_in=25 | addr01=33 I01=25 mem_in=25 | addr11=34 I11=25 mem_in=220
-# [SEQ][RUN=1][t=84590000] WRITE ox=2 oy=1 addr=14 pix=0x7c | sx_fix=2.126 sy_fix=1.63 | xi=2 yi=1 fx_q=126 fy_q=63 | addr00=18 addr10=19 addr01=34 addr11=35 | I00=220 I10=25 I01=34 I11=220
-# [SEQ][ADDRCHK] t=84590000 ox=2 oy=1 out_w=12 | exp_addr=14 out_waddr=14
-# [SEQ][MEMCHK]  t=84590000 addr00=18 I00=220 mem_in=25 | addr10=19 I10=25 mem_in=34 | addr01=34 I01=34 mem_in=220 | addr11=35 I11=220 mem_in=42
-# [SEQ][RUN=1][t=84750000] WRITE ox=3 oy=1 addr=15 pix=0x26 | sx_fix=3.189 sy_fix=1.63 | xi=3 yi=1 fx_q=189 fy_q=63 | addr00=19 addr10=20 addr01=35 addr11=36 | I00=42 I10=34 I01=42 I11=42
-# [SEQ][ADDRCHK] t=84750000 ox=3 oy=1 out_w=12 | exp_addr=15 out_waddr=15
-# [SEQ][MEMCHK]  t=84750000 addr00=19 I00=42 mem_in=34 | addr10=20 I10=34 mem_in=42 | addr01=35 I01=42 mem_in=42 | addr11=36 I11=42 mem_in=51
-# [TB][SEQ] DONE detectado en t=105430000
-# [TB][SEQ] mode_simd_eff = 0 (0=SEQ,1=SIMD4)
+# [SEQ][MEM][t=20870000] ox=0 oy=0 xi=0 yi=0 fx=0 fy=0 TL=0xdc TR=0xdc BL=0xdc BR=0xdc
+# [SEQ][MEM][t=20890000] ox=0 oy=0 xi=0 yi=0 fx=0 fy=0 TL=0xdc TR=0xdc BL=0xdc BR=0xdc
+# [SEQ][RUN=1][t=21010000] WRITE addr=0 pix=0xdc | ox=0 oy=0 | sx_int=0 sy_int=0 ax=0 ay=0 | xi=0 yi=0 fx=0 fy=0
+# [SEQ][MEM][t=21150000] ox=1 oy=0 xi=1 yi=0 fx=63 fy=0 TL=0xdc TR=0xdc BL=0x2a BR=0x33
+# [SEQ][MEM][t=21170000] ox=1 oy=0 xi=1 yi=0 fx=63 fy=0 TL=0xdc TR=0xdc BL=0x2a BR=0x33
+# [SEQ][RUN=1][t=21290000] WRITE addr=1 pix=0xdc | ox=1 oy=0 | sx_int=1 sy_int=0 ax=63 ay=0 | xi=1 yi=0 fx=63 fy=0
+# [SEQ][MEM][t=21430000] ox=2 oy=0 xi=2 yi=0 fx=126 fy=0 TL=0xdc TR=0xdc BL=0x33 BR=0x3b
+# [SEQ][MEM][t=21450000] ox=2 oy=0 xi=2 yi=0 fx=126 fy=0 TL=0xdc TR=0xdc BL=0x33 BR=0x3b
+# [SEQ][RUN=1][t=21570000] WRITE addr=2 pix=0xdc | ox=2 oy=0 | sx_int=2 sy_int=0 ax=126 ay=0 | xi=2 yi=0 fx=126 fy=0
+# [SEQ][MEM][t=21730000] ox=3 oy=0 xi=3 yi=0 fx=189 fy=0 TL=0xdc TR=0xdc BL=0x3b BR=0xdc
+# [SEQ][MEM][t=21750000] ox=3 oy=0 xi=3 yi=0 fx=189 fy=0 TL=0xdc TR=0xdc BL=0x3b BR=0xdc
+# [SEQ][RUN=1][t=21870000] WRITE addr=3 pix=0xdc | ox=3 oy=0 | sx_int=3 sy_int=0 ax=189 ay=0 | xi=3 yi=0 fx=189 fy=0
+# [SEQ][MEM][t=22010000] ox=4 oy=0 xi=4 yi=0 fx=252 fy=0 TL=0xdc TR=0xdc BL=0xdc BR=0x4c
+# [SEQ][MEM][t=22030000] ox=4 oy=0 xi=4 yi=0 fx=252 fy=0 TL=0xdc TR=0xdc BL=0xdc BR=0x4c
+# [SEQ][RUN=1][t=22150000] WRITE addr=4 pix=0xdc | ox=4 oy=0 | sx_int=4 sy_int=0 ax=252 ay=0 | xi=4 yi=0 fx=252 fy=0
+# [SEQ][MEM][t=22290000] ox=5 oy=0 xi=6 yi=0 fx=59 fy=0 TL=0xdc TR=0xdc BL=0x55 BR=0x5d
+# [SEQ][MEM][t=22310000] ox=5 oy=0 xi=6 yi=0 fx=59 fy=0 TL=0xdc TR=0xdc BL=0x55 BR=0x5d
+# [SEQ][RUN=1][t=22430000] WRITE addr=5 pix=0xdc | ox=5 oy=0 | sx_int=6 sy_int=0 ax=59 ay=0 | xi=6 yi=0 fx=59 fy=0
+# [SEQ][MEM][t=22590000] ox=6 oy=0 xi=7 yi=0 fx=122 fy=0 TL=0xdc TR=0xdc BL=0x5d BR=0xdc
+# [SEQ][MEM][t=22610000] ox=6 oy=0 xi=7 yi=0 fx=122 fy=0 TL=0xdc TR=0xdc BL=0x5d BR=0xdc
+# [SEQ][RUN=1][t=22730000] WRITE addr=6 pix=0xdc | ox=6 oy=0 | sx_int=7 sy_int=0 ax=122 ay=0 | xi=7 yi=0 fx=122 fy=0
+# [SEQ][MEM][t=22870000] ox=7 oy=0 xi=8 yi=0 fx=185 fy=0 TL=0xdc TR=0xdc BL=0x66 BR=0x6e
+# [SEQ][MEM][t=22890000] ox=7 oy=0 xi=8 yi=0 fx=185 fy=0 TL=0xdc TR=0xdc BL=0x66 BR=0x6e
+# [SEQ][RUN=1][t=23010000] WRITE addr=7 pix=0xdc | ox=7 oy=0 | sx_int=8 sy_int=0 ax=185 ay=0 | xi=8 yi=0 fx=185 fy=0
+# [SEQ][MEM][t=23150000] ox=8 oy=0 xi=9 yi=0 fx=248 fy=0 TL=0xdc TR=0xdc BL=0x6e BR=0x77
+# [SEQ][MEM][t=23170000] ox=8 oy=0 xi=9 yi=0 fx=248 fy=0 TL=0xdc TR=0xdc BL=0x6e BR=0x77
+# [SEQ][RUN=1][t=23290000] WRITE addr=8 pix=0xdc | ox=8 oy=0 | sx_int=9 sy_int=0 ax=248 ay=0 | xi=9 yi=0 fx=248 fy=0
+# [SEQ][MEM][t=23450000] ox=9 oy=0 xi=11 yi=0 fx=55 fy=0 TL=0xdc TR=0xdc BL=0xdc BR=0x66
+# [SEQ][MEM][t=23470000] ox=9 oy=0 xi=11 yi=0 fx=55 fy=0 TL=0xdc TR=0xdc BL=0xdc BR=0x66
+# [SEQ][RUN=1][t=23590000] WRITE addr=9 pix=0xdc | ox=9 oy=0 | sx_int=11 sy_int=0 ax=55 ay=0 | xi=11 yi=0 fx=55 fy=0
+# [SEQ][MEM][t=23730000] ox=10 oy=0 xi=12 yi=0 fx=118 fy=0 TL=0xdc TR=0xdc BL=0x88 BR=0x90
+# [SEQ][MEM][t=23750000] ox=10 oy=0 xi=12 yi=0 fx=118 fy=0 TL=0xdc TR=0xdc BL=0x88 BR=0x90
+# [SEQ][RUN=1][t=23870000] WRITE addr=10 pix=0xdc | ox=10 oy=0 | sx_int=12 sy_int=0 ax=118 ay=0 | xi=12 yi=0 fx=118 fy=0
+# [SEQ][MEM][t=24010000] ox=11 oy=0 xi=13 yi=0 fx=181 fy=0 TL=0xdc TR=0xdc BL=0x90 BR=0x99
+# [SEQ][MEM][t=24030000] ox=11 oy=0 xi=13 yi=0 fx=181 fy=0 TL=0xdc TR=0xdc BL=0x90 BR=0x99
+# [SEQ][RUN=1][t=24150000] WRITE addr=11 pix=0xdc | ox=11 oy=0 | sx_int=13 sy_int=0 ax=181 ay=0 | xi=13 yi=0 fx=181 fy=0
+# [SEQ][MEM][t=24310000] ox=0 oy=1 xi=0 yi=1 fx=0 fy=63 TL=0xdc TR=0xdc BL=0x88 BR=0x90
+# [SEQ][MEM][t=24330000] ox=0 oy=1 xi=0 yi=1 fx=0 fy=63 TL=0xdc TR=0xdc BL=0x88 BR=0x90
+# [SEQ][RUN=1][t=24450000] WRITE addr=12 pix=0xc7 | ox=0 oy=1 | sx_int=0 sy_int=1 ax=0 ay=63 | xi=0 yi=1 fx=0 fy=63
+# [SEQ][MEM][t=24590000] ox=1 oy=1 xi=1 yi=1 fx=63 fy=63 TL=0x2a TR=0x33 BL=0x4c BR=0x55
+# [SEQ][MEM][t=24610000] ox=1 oy=1 xi=1 yi=1 fx=63 fy=63 TL=0x2a TR=0x33 BL=0x4c BR=0x55
+# [SEQ][RUN=1][t=24730000] WRITE addr=13 pix=0x35 | ox=1 oy=1 | sx_int=1 sy_int=1 ax=63 ay=63 | xi=1 yi=1 fx=63 fy=63
+# [SEQ][MEM][t=24870000] ox=2 oy=1 xi=2 yi=1 fx=126 fy=63 TL=0x33 TR=0x3b BL=0x55 BR=0x5d
+# [SEQ][MEM][t=24890000] ox=2 oy=1 xi=2 yi=1 fx=126 fy=63 TL=0x33 TR=0x3b BL=0x55 BR=0x5d
+# [SEQ][RUN=1][t=25010000] WRITE addr=14 pix=0x3f | ox=2 oy=1 | sx_int=2 sy_int=1 ax=126 ay=63 | xi=2 yi=1 fx=126 fy=63
+# [SEQ][MEM][t=25170000] ox=3 oy=1 xi=3 yi=1 fx=189 fy=63 TL=0x3b TR=0xdc BL=0x5d BR=0xdc
+# [SEQ][MEM][t=25190000] ox=3 oy=1 xi=3 yi=1 fx=189 fy=63 TL=0x3b TR=0xdc BL=0x5d BR=0xdc
+# [SEQ][RUN=1][t=25310000] WRITE addr=15 pix=0xb4 | ox=3 oy=1 | sx_int=3 sy_int=1 ax=189 ay=63 | xi=3 yi=1 fx=189 fy=63
+# [SEQ][MEM][t=25450000] ox=4 oy=1 xi=4 yi=1 fx=252 fy=63 TL=0xdc TR=0x4c BL=0x66 BR=0x6e
+# [SEQ][MEM][t=25470000] ox=4 oy=1 xi=4 yi=1 fx=252 fy=63 TL=0xdc TR=0x4c BL=0x66 BR=0x6e
+# [SEQ][RUN=1][t=25590000] WRITE addr=16 pix=0x56 | ox=4 oy=1 | sx_int=4 sy_int=1 ax=252 ay=63 | xi=4 yi=1 fx=252 fy=63
+# [SEQ][MEM][t=25730000] ox=5 oy=1 xi=6 yi=1 fx=59 fy=63 TL=0x55 TR=0x5d BL=0x77 BR=0xdc
+# [SEQ][MEM][t=25750000] ox=5 oy=1 xi=6 yi=1 fx=59 fy=63 TL=0x55 TR=0x5d BL=0x77 BR=0xdc
+# [SEQ][RUN=1][t=25870000] WRITE addr=17 pix=0x64 | ox=5 oy=1 | sx_int=6 sy_int=1 ax=59 ay=63 | xi=6 yi=1 fx=59 fy=63
+# [SEQ][MEM][t=26030000] ox=6 oy=1 xi=7 yi=1 fx=122 fy=63 TL=0x5d TR=0xdc BL=0xdc BR=0x66
+# [SEQ][MEM][t=26050000] ox=6 oy=1 xi=7 yi=1 fx=122 fy=63 TL=0x5d TR=0xdc BL=0xdc BR=0x66
+# [SEQ][RUN=1][t=26170000] WRITE addr=18 pix=0x9c | ox=6 oy=1 | sx_int=7 sy_int=1 ax=122 ay=63 | xi=7 yi=1 fx=122 fy=63
+# [SEQ][MEM][t=26310000] ox=7 oy=1 xi=8 yi=1 fx=185 fy=63 TL=0x66 TR=0x6e BL=0xdc BR=0x90
+# [SEQ][MEM][t=26330000] ox=7 oy=1 xi=8 yi=1 fx=185 fy=63 TL=0x66 TR=0x6e BL=0xdc BR=0x90
+# [SEQ][RUN=1][t=26450000] WRITE addr=19 pix=0x7a | ox=7 oy=1 | sx_int=8 sy_int=1 ax=185 ay=63 | xi=8 yi=1 fx=185 fy=63
+# [SEQ][MEM][t=26590000] ox=8 oy=1 xi=9 yi=1 fx=248 fy=63 TL=0x6e TR=0x77 BL=0x90 BR=0x99
+# [SEQ][MEM][t=26610000] ox=8 oy=1 xi=9 yi=1 fx=248 fy=63 TL=0x6e TR=0x77 BL=0x90 BR=0x99
+# [SEQ][RUN=1][t=26730000] WRITE addr=20 pix=0x7f | ox=8 oy=1 | sx_int=9 sy_int=1 ax=248 ay=63 | xi=9 yi=1 fx=248 fy=63
+# [SEQ][MEM][t=26890000] ox=9 oy=1 xi=11 yi=1 fx=55 fy=63 TL=0xdc TR=0x66 BL=0xa1 BR=0xdc
+# [SEQ][MEM][t=26910000] ox=9 oy=1 xi=11 yi=1 fx=55 fy=63 TL=0xdc TR=0x66 BL=0xa1 BR=0xdc
+# [SEQ][RUN=1][t=27030000] WRITE addr=21 pix=0xbd | ox=9 oy=1 | sx_int=11 sy_int=1 ax=55 ay=63 | xi=11 yi=1 fx=55 fy=63
+# [SEQ][MEM][t=27170000] ox=10 oy=1 xi=12 yi=1 fx=118 fy=63 TL=0x88 TR=0x90 BL=0xaa BR=0xb2
+# [SEQ][MEM][t=27190000] ox=10 oy=1 xi=12 yi=1 fx=118 fy=63 TL=0x88 TR=0x90 BL=0xaa BR=0xb2
+# [SEQ][RUN=1][t=27310000] WRITE addr=22 pix=0x94 | ox=10 oy=1 | sx_int=12 sy_int=1 ax=118 ay=63 | xi=12 yi=1 fx=118 fy=63
+# [SEQ][MEM][t=27450000] ox=11 oy=1 xi=13 yi=1 fx=181 fy=63 TL=0x90 TR=0x99 BL=0xb2 BR=0xbb
+# [SEQ][MEM][t=27470000] ox=11 oy=1 xi=13 yi=1 fx=181 fy=63 TL=0x90 TR=0x99 BL=0xb2 BR=0xbb
+# [SEQ][RUN=1][t=27590000] WRITE addr=23 pix=0x9f | ox=11 oy=1 | sx_int=13 sy_int=1 ax=181 ay=63 | xi=13 yi=1 fx=181 fy=63
+# [SEQ][MEM][t=27750000] ox=0 oy=2 xi=0 yi=2 fx=0 fy=126 TL=0x88 TR=0x90 BL=0xaa BR=0xb2
+# [SEQ][MEM][t=27770000] ox=0 oy=2 xi=0 yi=2 fx=0 fy=126 TL=0x88 TR=0x90 BL=0xaa BR=0xb2
+# [SEQ][RUN=1][t=27890000] WRITE addr=24 pix=0x99 | ox=0 oy=2 | sx_int=0 sy_int=2 ax=0 ay=126 | xi=0 yi=2 fx=0 fy=126
+# [SEQ][MEM][t=28030000] ox=1 oy=2 xi=1 yi=2 fx=63 fy=126 TL=0x4c TR=0x55 BL=0x6e BR=0x77
+# [SEQ][MEM][t=28050000] ox=1 oy=2 xi=1 yi=2 fx=63 fy=126 TL=0x4c TR=0x55 BL=0x6e BR=0x77
+# [SEQ][RUN=1][t=28170000] WRITE addr=25 pix=0x5f | ox=1 oy=2 | sx_int=1 sy_int=2 ax=63 ay=126 | xi=1 yi=2 fx=63 fy=126
+# [SEQ][MEM][t=28310000] ox=2 oy=2 xi=2 yi=2 fx=126 fy=126 TL=0x55 TR=0x5d BL=0x77 BR=0xdc
+# [SEQ][MEM][t=28330000] ox=2 oy=2 xi=2 yi=2 fx=126 fy=126 TL=0x55 TR=0x5d BL=0x77 BR=0xdc
+# [SEQ][RUN=1][t=28450000] WRITE addr=26 pix=0x80 | ox=2 oy=2 | sx_int=2 sy_int=2 ax=126 ay=126 | xi=2 yi=2 fx=126 fy=126
+# [SEQ][MEM][t=28610000] ox=3 oy=2 xi=3 yi=2 fx=189 fy=126 TL=0x5d TR=0xdc BL=0xdc BR=0xdc
+# [SEQ][MEM][t=28630000] ox=3 oy=2 xi=3 yi=2 fx=189 fy=126 TL=0x5d TR=0xdc BL=0xdc BR=0xdc
+# [SEQ][RUN=1][t=28750000] WRITE addr=27 pix=0xcb | ox=3 oy=2 | sx_int=3 sy_int=2 ax=189 ay=126 | xi=3 yi=2 fx=189 fy=126
+# [SEQ][MEM][t=28890000] ox=4 oy=2 xi=4 yi=2 fx=252 fy=126 TL=0x66 TR=0x6e BL=0x88 BR=0x90
+# [SEQ][MEM][t=28910000] ox=4 oy=2 xi=4 yi=2 fx=252 fy=126 TL=0x66 TR=0x6e BL=0x88 BR=0x90
+# [SEQ][RUN=1][t=29030000] WRITE addr=28 pix=0x7f | ox=4 oy=2 | sx_int=4 sy_int=2 ax=252 ay=126 | xi=4 yi=2 fx=252 fy=126
+# [SEQ][MEM][t=29170000] ox=5 oy=2 xi=6 yi=2 fx=59 fy=126 TL=0x77 TR=0xdc BL=0x99 BR=0xa1
+# [SEQ][MEM][t=29190000] ox=5 oy=2 xi=6 yi=2 fx=59 fy=126 TL=0x77 TR=0xdc BL=0x99 BR=0xa1
+# [SEQ][RUN=1][t=29310000] WRITE addr=29 pix=0x94 | ox=5 oy=2 | sx_int=6 sy_int=2 ax=59 ay=126 | xi=6 yi=2 fx=59 fy=126
+# [SEQ][MEM][t=29470000] ox=6 oy=2 xi=7 yi=2 fx=122 fy=126 TL=0xdc TR=0x66 BL=0xa1 BR=0x88
+# [SEQ][MEM][t=29490000] ox=6 oy=2 xi=7 yi=2 fx=122 fy=126 TL=0xdc TR=0x66 BL=0xa1 BR=0x88
+# [SEQ][RUN=1][t=29610000] WRITE addr=30 pix=0x9d | ox=6 oy=2 | sx_int=7 sy_int=2 ax=122 ay=126 | xi=7 yi=2 fx=122 fy=126
+# [SEQ][MEM][t=29750000] ox=7 oy=2 xi=8 yi=2 fx=185 fy=126 TL=0xdc TR=0x90 BL=0xaa BR=0xb2
+# [SEQ][MEM][t=29770000] ox=7 oy=2 xi=8 yi=2 fx=185 fy=126 TL=0xdc TR=0x90 BL=0xaa BR=0xb2
+# [SEQ][RUN=1][t=29890000] WRITE addr=31 pix=0xaa | ox=7 oy=2 | sx_int=8 sy_int=2 ax=185 ay=126 | xi=8 yi=2 fx=185 fy=126
+# [SEQ][MEM][t=30030000] ox=8 oy=2 xi=9 yi=2 fx=248 fy=126 TL=0x90 TR=0x99 BL=0xb2 BR=0xbb
+# [SEQ][MEM][t=30050000] ox=8 oy=2 xi=9 yi=2 fx=248 fy=126 TL=0x90 TR=0x99 BL=0xb2 BR=0xbb
+# [SEQ][RUN=1][t=30170000] WRITE addr=32 pix=0xa9 | ox=8 oy=2 | sx_int=9 sy_int=2 ax=248 ay=126 | xi=9 yi=2 fx=248 fy=126
+# [SEQ][MEM][t=30330000] ox=9 oy=2 xi=11 yi=2 fx=55 fy=126 TL=0xa1 TR=0xdc BL=0xc3 BR=0xaa
+# [SEQ][MEM][t=30350000] ox=9 oy=2 xi=11 yi=2 fx=55 fy=126 TL=0xa1 TR=0xdc BL=0xc3 BR=0xaa
+# [SEQ][RUN=1][t=30470000] WRITE addr=33 pix=0xb6 | ox=9 oy=2 | sx_int=11 sy_int=2 ax=55 ay=126 | xi=11 yi=2 fx=55 fy=126
+# [SEQ][MEM][t=30610000] ox=10 oy=2 xi=12 yi=2 fx=118 fy=126 TL=0xaa TR=0xb2 BL=0xdc BR=0xd4
+# [SEQ][MEM][t=30630000] ox=10 oy=2 xi=12 yi=2 fx=118 fy=126 TL=0xaa TR=0xb2 BL=0xdc BR=0xd4
+# [SEQ][RUN=1][t=30750000] WRITE addr=34 pix=0xc3 | ox=10 oy=2 | sx_int=12 sy_int=2 ax=118 ay=126 | xi=12 yi=2 fx=118 fy=126
+# [SEQ][MEM][t=30890000] ox=11 oy=2 xi=13 yi=2 fx=181 fy=126 TL=0xb2 TR=0xbb BL=0xd4 BR=0xdd
+# [SEQ][MEM][t=30910000] ox=11 oy=2 xi=13 yi=2 fx=181 fy=126 TL=0xb2 TR=0xbb BL=0xd4 BR=0xdd
+# [SEQ][RUN=1][t=31030000] WRITE addr=35 pix=0xc9 | ox=11 oy=2 | sx_int=13 sy_int=2 ax=181 ay=126 | xi=13 yi=2 fx=181 fy=126
+# [SEQ][MEM][t=31190000] ox=0 oy=3 xi=0 yi=3 fx=0 fy=189 TL=0xaa TR=0xb2 BL=0xdc BR=0xd4
+# [SEQ][MEM][t=31210000] ox=0 oy=3 xi=0 yi=3 fx=0 fy=189 TL=0xaa TR=0xb2 BL=0xdc BR=0xd4
+# [SEQ][RUN=1][t=31330000] WRITE addr=36 pix=0xcf | ox=0 oy=3 | sx_int=0 sy_int=3 ax=0 ay=189 | xi=0 yi=3 fx=0 fy=189
+# [SEQ][MEM][t=31470000] ox=1 oy=3 xi=1 yi=3 fx=63 fy=189 TL=0x6e TR=0x77 BL=0x00 BR=0x00
+# [SEQ][MEM][t=31490000] ox=1 oy=3 xi=1 yi=3 fx=63 fy=189 TL=0x6e TR=0x77 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=31610000] WRITE addr=37 pix=0x1d | ox=1 oy=3 | sx_int=1 sy_int=3 ax=63 ay=189 | xi=1 yi=3 fx=63 fy=189
+# [SEQ][MEM][t=31750000] ox=2 oy=3 xi=2 yi=3 fx=126 fy=189 TL=0x77 TR=0xdc BL=0x00 BR=0x00
+# [SEQ][MEM][t=31770000] ox=2 oy=3 xi=2 yi=3 fx=126 fy=189 TL=0x77 TR=0xdc BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=31890000] WRITE addr=38 pix=0x2c | ox=2 oy=3 | sx_int=2 sy_int=3 ax=126 ay=189 | xi=2 yi=3 fx=126 fy=189
+# [SEQ][MEM][t=32050000] ox=3 oy=3 xi=3 yi=3 fx=189 fy=189 TL=0xdc TR=0xdc BL=0x00 BR=0x00
+# [SEQ][MEM][t=32070000] ox=3 oy=3 xi=3 yi=3 fx=189 fy=189 TL=0xdc TR=0xdc BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=32190000] WRITE addr=39 pix=0x3a | ox=3 oy=3 | sx_int=3 sy_int=3 ax=189 ay=189 | xi=3 yi=3 fx=189 fy=189
+# [SEQ][MEM][t=32330000] ox=4 oy=3 xi=4 yi=3 fx=252 fy=189 TL=0x88 TR=0x90 BL=0x00 BR=0x00
+# [SEQ][MEM][t=32350000] ox=4 oy=3 xi=4 yi=3 fx=252 fy=189 TL=0x88 TR=0x90 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=32470000] WRITE addr=40 pix=0x26 | ox=4 oy=3 | sx_int=4 sy_int=3 ax=252 ay=189 | xi=4 yi=3 fx=252 fy=189
+# [SEQ][MEM][t=32610000] ox=5 oy=3 xi=6 yi=3 fx=59 fy=189 TL=0x99 TR=0xa1 BL=0x00 BR=0x00
+# [SEQ][MEM][t=32630000] ox=5 oy=3 xi=6 yi=3 fx=59 fy=189 TL=0x99 TR=0xa1 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=32750000] WRITE addr=41 pix=0x29 | ox=5 oy=3 | sx_int=6 sy_int=3 ax=59 ay=189 | xi=6 yi=3 fx=59 fy=189
+# [SEQ][MEM][t=32910000] ox=6 oy=3 xi=7 yi=3 fx=122 fy=189 TL=0xa1 TR=0x88 BL=0x00 BR=0x00
+# [SEQ][MEM][t=32930000] ox=6 oy=3 xi=7 yi=3 fx=122 fy=189 TL=0xa1 TR=0x88 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=33050000] WRITE addr=42 pix=0x27 | ox=6 oy=3 | sx_int=7 sy_int=3 ax=122 ay=189 | xi=7 yi=3 fx=122 fy=189
+# [SEQ][MEM][t=33190000] ox=7 oy=3 xi=8 yi=3 fx=185 fy=189 TL=0xaa TR=0xb2 BL=0x00 BR=0x00
+# [SEQ][MEM][t=33210000] ox=7 oy=3 xi=8 yi=3 fx=185 fy=189 TL=0xaa TR=0xb2 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=33330000] WRITE addr=43 pix=0x2e | ox=7 oy=3 | sx_int=8 sy_int=3 ax=185 ay=189 | xi=8 yi=3 fx=185 fy=189
+# [SEQ][MEM][t=33470000] ox=8 oy=3 xi=9 yi=3 fx=248 fy=189 TL=0xb2 TR=0xbb BL=0x00 BR=0x00
+# [SEQ][MEM][t=33490000] ox=8 oy=3 xi=9 yi=3 fx=248 fy=189 TL=0xb2 TR=0xbb BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=33610000] WRITE addr=44 pix=0x31 | ox=8 oy=3 | sx_int=9 sy_int=3 ax=248 ay=189 | xi=9 yi=3 fx=248 fy=189
+# [SEQ][MEM][t=33770000] ox=9 oy=3 xi=11 yi=3 fx=55 fy=189 TL=0xc3 TR=0xaa BL=0x00 BR=0x00
+# [SEQ][MEM][t=33790000] ox=9 oy=3 xi=11 yi=3 fx=55 fy=189 TL=0xc3 TR=0xaa BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=33910000] WRITE addr=45 pix=0x32 | ox=9 oy=3 | sx_int=11 sy_int=3 ax=55 ay=189 | xi=11 yi=3 fx=55 fy=189
+# [SEQ][MEM][t=34050000] ox=10 oy=3 xi=12 yi=3 fx=118 fy=189 TL=0xdc TR=0xd4 BL=0x00 BR=0x00
+# [SEQ][MEM][t=34070000] ox=10 oy=3 xi=12 yi=3 fx=118 fy=189 TL=0xdc TR=0xd4 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=34190000] WRITE addr=46 pix=0x39 | ox=10 oy=3 | sx_int=12 sy_int=3 ax=118 ay=189 | xi=12 yi=3 fx=118 fy=189
+# [SEQ][MEM][t=34330000] ox=11 oy=3 xi=13 yi=3 fx=181 fy=189 TL=0xd4 TR=0xdd BL=0x00 BR=0x00
+# [SEQ][MEM][t=34350000] ox=11 oy=3 xi=13 yi=3 fx=181 fy=189 TL=0xd4 TR=0xdd BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=34470000] WRITE addr=47 pix=0x39 | ox=11 oy=3 | sx_int=13 sy_int=3 ax=181 ay=189 | xi=13 yi=3 fx=181 fy=189
+# [SEQ][MEM][t=34630000] ox=0 oy=4 xi=0 yi=4 fx=0 fy=252 TL=0xdc TR=0xd4 BL=0x00 BR=0x00
+# [SEQ][MEM][t=34650000] ox=0 oy=4 xi=0 yi=4 fx=0 fy=252 TL=0xdc TR=0xd4 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=34770000] WRITE addr=48 pix=0x03 | ox=0 oy=4 | sx_int=0 sy_int=4 ax=0 ay=252 | xi=0 yi=4 fx=0 fy=252
+# [SEQ][MEM][t=34910000] ox=1 oy=4 xi=1 yi=4 fx=63 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=34930000] ox=1 oy=4 xi=1 yi=4 fx=63 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=35050000] WRITE addr=49 pix=0x00 | ox=1 oy=4 | sx_int=1 sy_int=4 ax=63 ay=252 | xi=1 yi=4 fx=63 fy=252
+# [SEQ][MEM][t=35190000] ox=2 oy=4 xi=2 yi=4 fx=126 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=35210000] ox=2 oy=4 xi=2 yi=4 fx=126 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=35330000] WRITE addr=50 pix=0x00 | ox=2 oy=4 | sx_int=2 sy_int=4 ax=126 ay=252 | xi=2 yi=4 fx=126 fy=252
+# [SEQ][MEM][t=35490000] ox=3 oy=4 xi=3 yi=4 fx=189 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=35510000] ox=3 oy=4 xi=3 yi=4 fx=189 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=35630000] WRITE addr=51 pix=0x00 | ox=3 oy=4 | sx_int=3 sy_int=4 ax=189 ay=252 | xi=3 yi=4 fx=189 fy=252
+# [SEQ][MEM][t=35770000] ox=4 oy=4 xi=4 yi=4 fx=252 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=35790000] ox=4 oy=4 xi=4 yi=4 fx=252 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=35910000] WRITE addr=52 pix=0x00 | ox=4 oy=4 | sx_int=4 sy_int=4 ax=252 ay=252 | xi=4 yi=4 fx=252 fy=252
+# [SEQ][MEM][t=36050000] ox=5 oy=4 xi=6 yi=4 fx=59 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=36070000] ox=5 oy=4 xi=6 yi=4 fx=59 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=36190000] WRITE addr=53 pix=0x00 | ox=5 oy=4 | sx_int=6 sy_int=4 ax=59 ay=252 | xi=6 yi=4 fx=59 fy=252
+# [SEQ][MEM][t=36350000] ox=6 oy=4 xi=7 yi=4 fx=122 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=36370000] ox=6 oy=4 xi=7 yi=4 fx=122 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=36490000] WRITE addr=54 pix=0x00 | ox=6 oy=4 | sx_int=7 sy_int=4 ax=122 ay=252 | xi=7 yi=4 fx=122 fy=252
+# [SEQ][MEM][t=36630000] ox=7 oy=4 xi=8 yi=4 fx=185 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=36650000] ox=7 oy=4 xi=8 yi=4 fx=185 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=36770000] WRITE addr=55 pix=0x00 | ox=7 oy=4 | sx_int=8 sy_int=4 ax=185 ay=252 | xi=8 yi=4 fx=185 fy=252
+# [SEQ][MEM][t=36910000] ox=8 oy=4 xi=9 yi=4 fx=248 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=36930000] ox=8 oy=4 xi=9 yi=4 fx=248 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=37050000] WRITE addr=56 pix=0x00 | ox=8 oy=4 | sx_int=9 sy_int=4 ax=248 ay=252 | xi=9 yi=4 fx=248 fy=252
+# [SEQ][MEM][t=37210000] ox=9 oy=4 xi=11 yi=4 fx=55 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=37230000] ox=9 oy=4 xi=11 yi=4 fx=55 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=37350000] WRITE addr=57 pix=0x00 | ox=9 oy=4 | sx_int=11 sy_int=4 ax=55 ay=252 | xi=11 yi=4 fx=55 fy=252
+# [SEQ][MEM][t=37490000] ox=10 oy=4 xi=12 yi=4 fx=118 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=37510000] ox=10 oy=4 xi=12 yi=4 fx=118 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=37630000] WRITE addr=58 pix=0x00 | ox=10 oy=4 | sx_int=12 sy_int=4 ax=118 ay=252 | xi=12 yi=4 fx=118 fy=252
+# [SEQ][MEM][t=37770000] ox=11 oy=4 xi=13 yi=4 fx=181 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=37790000] ox=11 oy=4 xi=13 yi=4 fx=181 fy=252 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=37910000] WRITE addr=59 pix=0x00 | ox=11 oy=4 | sx_int=13 sy_int=4 ax=181 ay=252 | xi=13 yi=4 fx=181 fy=252
+# [SEQ][MEM][t=38070000] ox=0 oy=5 xi=0 yi=6 fx=0 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=38090000] ox=0 oy=5 xi=0 yi=6 fx=0 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=38210000] WRITE addr=60 pix=0x00 | ox=0 oy=5 | sx_int=0 sy_int=6 ax=0 ay=59 | xi=0 yi=6 fx=0 fy=59
+# [SEQ][MEM][t=38350000] ox=1 oy=5 xi=1 yi=6 fx=63 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=38370000] ox=1 oy=5 xi=1 yi=6 fx=63 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=38490000] WRITE addr=61 pix=0x00 | ox=1 oy=5 | sx_int=1 sy_int=6 ax=63 ay=59 | xi=1 yi=6 fx=63 fy=59
+# [SEQ][MEM][t=38630000] ox=2 oy=5 xi=2 yi=6 fx=126 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=38650000] ox=2 oy=5 xi=2 yi=6 fx=126 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=38770000] WRITE addr=62 pix=0x00 | ox=2 oy=5 | sx_int=2 sy_int=6 ax=126 ay=59 | xi=2 yi=6 fx=126 fy=59
+# [SEQ][MEM][t=38930000] ox=3 oy=5 xi=3 yi=6 fx=189 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=38950000] ox=3 oy=5 xi=3 yi=6 fx=189 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=39070000] WRITE addr=63 pix=0x00 | ox=3 oy=5 | sx_int=3 sy_int=6 ax=189 ay=59 | xi=3 yi=6 fx=189 fy=59
+# [SEQ][MEM][t=39210000] ox=4 oy=5 xi=4 yi=6 fx=252 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=39230000] ox=4 oy=5 xi=4 yi=6 fx=252 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=39350000] WRITE addr=64 pix=0x00 | ox=4 oy=5 | sx_int=4 sy_int=6 ax=252 ay=59 | xi=4 yi=6 fx=252 fy=59
+# [SEQ][MEM][t=39490000] ox=5 oy=5 xi=6 yi=6 fx=59 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=39510000] ox=5 oy=5 xi=6 yi=6 fx=59 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=39630000] WRITE addr=65 pix=0x00 | ox=5 oy=5 | sx_int=6 sy_int=6 ax=59 ay=59 | xi=6 yi=6 fx=59 fy=59
+# [SEQ][MEM][t=39790000] ox=6 oy=5 xi=7 yi=6 fx=122 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=39810000] ox=6 oy=5 xi=7 yi=6 fx=122 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=39930000] WRITE addr=66 pix=0x00 | ox=6 oy=5 | sx_int=7 sy_int=6 ax=122 ay=59 | xi=7 yi=6 fx=122 fy=59
+# [SEQ][MEM][t=40070000] ox=7 oy=5 xi=8 yi=6 fx=185 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=40090000] ox=7 oy=5 xi=8 yi=6 fx=185 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=40210000] WRITE addr=67 pix=0x00 | ox=7 oy=5 | sx_int=8 sy_int=6 ax=185 ay=59 | xi=8 yi=6 fx=185 fy=59
+# [SEQ][MEM][t=40350000] ox=8 oy=5 xi=9 yi=6 fx=248 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=40370000] ox=8 oy=5 xi=9 yi=6 fx=248 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=40490000] WRITE addr=68 pix=0x00 | ox=8 oy=5 | sx_int=9 sy_int=6 ax=248 ay=59 | xi=9 yi=6 fx=248 fy=59
+# [SEQ][MEM][t=40650000] ox=9 oy=5 xi=11 yi=6 fx=55 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=40670000] ox=9 oy=5 xi=11 yi=6 fx=55 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=40790000] WRITE addr=69 pix=0x00 | ox=9 oy=5 | sx_int=11 sy_int=6 ax=55 ay=59 | xi=11 yi=6 fx=55 fy=59
+# [SEQ][MEM][t=40930000] ox=10 oy=5 xi=12 yi=6 fx=118 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=40950000] ox=10 oy=5 xi=12 yi=6 fx=118 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=41070000] WRITE addr=70 pix=0x00 | ox=10 oy=5 | sx_int=12 sy_int=6 ax=118 ay=59 | xi=12 yi=6 fx=118 fy=59
+# [SEQ][MEM][t=41210000] ox=11 oy=5 xi=13 yi=6 fx=181 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=41230000] ox=11 oy=5 xi=13 yi=6 fx=181 fy=59 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=41350000] WRITE addr=71 pix=0x00 | ox=11 oy=5 | sx_int=13 sy_int=6 ax=181 ay=59 | xi=13 yi=6 fx=181 fy=59
+# [SEQ][MEM][t=41510000] ox=0 oy=6 xi=0 yi=7 fx=0 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=41530000] ox=0 oy=6 xi=0 yi=7 fx=0 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=41650000] WRITE addr=72 pix=0x00 | ox=0 oy=6 | sx_int=0 sy_int=7 ax=0 ay=122 | xi=0 yi=7 fx=0 fy=122
+# [SEQ][MEM][t=41790000] ox=1 oy=6 xi=1 yi=7 fx=63 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=41810000] ox=1 oy=6 xi=1 yi=7 fx=63 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=41930000] WRITE addr=73 pix=0x00 | ox=1 oy=6 | sx_int=1 sy_int=7 ax=63 ay=122 | xi=1 yi=7 fx=63 fy=122
+# [SEQ][MEM][t=42070000] ox=2 oy=6 xi=2 yi=7 fx=126 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=42090000] ox=2 oy=6 xi=2 yi=7 fx=126 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=42210000] WRITE addr=74 pix=0x00 | ox=2 oy=6 | sx_int=2 sy_int=7 ax=126 ay=122 | xi=2 yi=7 fx=126 fy=122
+# [SEQ][MEM][t=42370000] ox=3 oy=6 xi=3 yi=7 fx=189 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=42390000] ox=3 oy=6 xi=3 yi=7 fx=189 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=42510000] WRITE addr=75 pix=0x00 | ox=3 oy=6 | sx_int=3 sy_int=7 ax=189 ay=122 | xi=3 yi=7 fx=189 fy=122
+# [SEQ][MEM][t=42650000] ox=4 oy=6 xi=4 yi=7 fx=252 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=42670000] ox=4 oy=6 xi=4 yi=7 fx=252 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=42790000] WRITE addr=76 pix=0x00 | ox=4 oy=6 | sx_int=4 sy_int=7 ax=252 ay=122 | xi=4 yi=7 fx=252 fy=122
+# [SEQ][MEM][t=42930000] ox=5 oy=6 xi=6 yi=7 fx=59 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=42950000] ox=5 oy=6 xi=6 yi=7 fx=59 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=43070000] WRITE addr=77 pix=0x00 | ox=5 oy=6 | sx_int=6 sy_int=7 ax=59 ay=122 | xi=6 yi=7 fx=59 fy=122
+# [SEQ][MEM][t=43230000] ox=6 oy=6 xi=7 yi=7 fx=122 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=43250000] ox=6 oy=6 xi=7 yi=7 fx=122 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=43370000] WRITE addr=78 pix=0x00 | ox=6 oy=6 | sx_int=7 sy_int=7 ax=122 ay=122 | xi=7 yi=7 fx=122 fy=122
+# [SEQ][MEM][t=43510000] ox=7 oy=6 xi=8 yi=7 fx=185 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=43530000] ox=7 oy=6 xi=8 yi=7 fx=185 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=43650000] WRITE addr=79 pix=0x00 | ox=7 oy=6 | sx_int=8 sy_int=7 ax=185 ay=122 | xi=8 yi=7 fx=185 fy=122
+# [SEQ][MEM][t=43790000] ox=8 oy=6 xi=9 yi=7 fx=248 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=43810000] ox=8 oy=6 xi=9 yi=7 fx=248 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=43930000] WRITE addr=80 pix=0x00 | ox=8 oy=6 | sx_int=9 sy_int=7 ax=248 ay=122 | xi=9 yi=7 fx=248 fy=122
+# [SEQ][MEM][t=44090000] ox=9 oy=6 xi=11 yi=7 fx=55 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=44110000] ox=9 oy=6 xi=11 yi=7 fx=55 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=44230000] WRITE addr=81 pix=0x00 | ox=9 oy=6 | sx_int=11 sy_int=7 ax=55 ay=122 | xi=11 yi=7 fx=55 fy=122
+# [SEQ][MEM][t=44370000] ox=10 oy=6 xi=12 yi=7 fx=118 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=44390000] ox=10 oy=6 xi=12 yi=7 fx=118 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=44510000] WRITE addr=82 pix=0x00 | ox=10 oy=6 | sx_int=12 sy_int=7 ax=118 ay=122 | xi=12 yi=7 fx=118 fy=122
+# [SEQ][MEM][t=44650000] ox=11 oy=6 xi=13 yi=7 fx=181 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=44670000] ox=11 oy=6 xi=13 yi=7 fx=181 fy=122 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=44790000] WRITE addr=83 pix=0x00 | ox=11 oy=6 | sx_int=13 sy_int=7 ax=181 ay=122 | xi=13 yi=7 fx=181 fy=122
+# [SEQ][MEM][t=44950000] ox=0 oy=7 xi=0 yi=8 fx=0 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=44970000] ox=0 oy=7 xi=0 yi=8 fx=0 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=45090000] WRITE addr=84 pix=0x00 | ox=0 oy=7 | sx_int=0 sy_int=8 ax=0 ay=185 | xi=0 yi=8 fx=0 fy=185
+# [SEQ][MEM][t=45230000] ox=1 oy=7 xi=1 yi=8 fx=63 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=45250000] ox=1 oy=7 xi=1 yi=8 fx=63 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=45370000] WRITE addr=85 pix=0x00 | ox=1 oy=7 | sx_int=1 sy_int=8 ax=63 ay=185 | xi=1 yi=8 fx=63 fy=185
+# [SEQ][MEM][t=45510000] ox=2 oy=7 xi=2 yi=8 fx=126 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=45530000] ox=2 oy=7 xi=2 yi=8 fx=126 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=45650000] WRITE addr=86 pix=0x00 | ox=2 oy=7 | sx_int=2 sy_int=8 ax=126 ay=185 | xi=2 yi=8 fx=126 fy=185
+# [SEQ][MEM][t=45810000] ox=3 oy=7 xi=3 yi=8 fx=189 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=45830000] ox=3 oy=7 xi=3 yi=8 fx=189 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=45950000] WRITE addr=87 pix=0x00 | ox=3 oy=7 | sx_int=3 sy_int=8 ax=189 ay=185 | xi=3 yi=8 fx=189 fy=185
+# [SEQ][MEM][t=46090000] ox=4 oy=7 xi=4 yi=8 fx=252 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=46110000] ox=4 oy=7 xi=4 yi=8 fx=252 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=46230000] WRITE addr=88 pix=0x00 | ox=4 oy=7 | sx_int=4 sy_int=8 ax=252 ay=185 | xi=4 yi=8 fx=252 fy=185
+# [SEQ][MEM][t=46370000] ox=5 oy=7 xi=6 yi=8 fx=59 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=46390000] ox=5 oy=7 xi=6 yi=8 fx=59 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=46510000] WRITE addr=89 pix=0x00 | ox=5 oy=7 | sx_int=6 sy_int=8 ax=59 ay=185 | xi=6 yi=8 fx=59 fy=185
+# [SEQ][MEM][t=46670000] ox=6 oy=7 xi=7 yi=8 fx=122 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=46690000] ox=6 oy=7 xi=7 yi=8 fx=122 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=46810000] WRITE addr=90 pix=0x00 | ox=6 oy=7 | sx_int=7 sy_int=8 ax=122 ay=185 | xi=7 yi=8 fx=122 fy=185
+# [SEQ][MEM][t=46950000] ox=7 oy=7 xi=8 yi=8 fx=185 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=46970000] ox=7 oy=7 xi=8 yi=8 fx=185 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=47090000] WRITE addr=91 pix=0x00 | ox=7 oy=7 | sx_int=8 sy_int=8 ax=185 ay=185 | xi=8 yi=8 fx=185 fy=185
+# [SEQ][MEM][t=47230000] ox=8 oy=7 xi=9 yi=8 fx=248 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=47250000] ox=8 oy=7 xi=9 yi=8 fx=248 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=47370000] WRITE addr=92 pix=0x00 | ox=8 oy=7 | sx_int=9 sy_int=8 ax=248 ay=185 | xi=9 yi=8 fx=248 fy=185
+# [SEQ][MEM][t=47530000] ox=9 oy=7 xi=11 yi=8 fx=55 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=47550000] ox=9 oy=7 xi=11 yi=8 fx=55 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=47670000] WRITE addr=93 pix=0x00 | ox=9 oy=7 | sx_int=11 sy_int=8 ax=55 ay=185 | xi=11 yi=8 fx=55 fy=185
+# [SEQ][MEM][t=47810000] ox=10 oy=7 xi=12 yi=8 fx=118 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=47830000] ox=10 oy=7 xi=12 yi=8 fx=118 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=47950000] WRITE addr=94 pix=0x00 | ox=10 oy=7 | sx_int=12 sy_int=8 ax=118 ay=185 | xi=12 yi=8 fx=118 fy=185
+# [SEQ][MEM][t=48090000] ox=11 oy=7 xi=13 yi=8 fx=181 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=48110000] ox=11 oy=7 xi=13 yi=8 fx=181 fy=185 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=48230000] WRITE addr=95 pix=0x00 | ox=11 oy=7 | sx_int=13 sy_int=8 ax=181 ay=185 | xi=13 yi=8 fx=181 fy=185
+# [SEQ][MEM][t=48390000] ox=0 oy=8 xi=0 yi=9 fx=0 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=48410000] ox=0 oy=8 xi=0 yi=9 fx=0 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=48530000] WRITE addr=96 pix=0x00 | ox=0 oy=8 | sx_int=0 sy_int=9 ax=0 ay=248 | xi=0 yi=9 fx=0 fy=248
+# [SEQ][MEM][t=48670000] ox=1 oy=8 xi=1 yi=9 fx=63 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=48690000] ox=1 oy=8 xi=1 yi=9 fx=63 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=48810000] WRITE addr=97 pix=0x00 | ox=1 oy=8 | sx_int=1 sy_int=9 ax=63 ay=248 | xi=1 yi=9 fx=63 fy=248
+# [SEQ][MEM][t=48950000] ox=2 oy=8 xi=2 yi=9 fx=126 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=48970000] ox=2 oy=8 xi=2 yi=9 fx=126 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=49090000] WRITE addr=98 pix=0x00 | ox=2 oy=8 | sx_int=2 sy_int=9 ax=126 ay=248 | xi=2 yi=9 fx=126 fy=248
+# [SEQ][MEM][t=49250000] ox=3 oy=8 xi=3 yi=9 fx=189 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=49270000] ox=3 oy=8 xi=3 yi=9 fx=189 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=49390000] WRITE addr=99 pix=0x00 | ox=3 oy=8 | sx_int=3 sy_int=9 ax=189 ay=248 | xi=3 yi=9 fx=189 fy=248
+# [SEQ][MEM][t=49530000] ox=4 oy=8 xi=4 yi=9 fx=252 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=49550000] ox=4 oy=8 xi=4 yi=9 fx=252 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=49670000] WRITE addr=100 pix=0x00 | ox=4 oy=8 | sx_int=4 sy_int=9 ax=252 ay=248 | xi=4 yi=9 fx=252 fy=248
+# [SEQ][MEM][t=49810000] ox=5 oy=8 xi=6 yi=9 fx=59 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=49830000] ox=5 oy=8 xi=6 yi=9 fx=59 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=49950000] WRITE addr=101 pix=0x00 | ox=5 oy=8 | sx_int=6 sy_int=9 ax=59 ay=248 | xi=6 yi=9 fx=59 fy=248
+# [SEQ][MEM][t=50110000] ox=6 oy=8 xi=7 yi=9 fx=122 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=50130000] ox=6 oy=8 xi=7 yi=9 fx=122 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=50250000] WRITE addr=102 pix=0x00 | ox=6 oy=8 | sx_int=7 sy_int=9 ax=122 ay=248 | xi=7 yi=9 fx=122 fy=248
+# [SEQ][MEM][t=50390000] ox=7 oy=8 xi=8 yi=9 fx=185 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=50410000] ox=7 oy=8 xi=8 yi=9 fx=185 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=50530000] WRITE addr=103 pix=0x00 | ox=7 oy=8 | sx_int=8 sy_int=9 ax=185 ay=248 | xi=8 yi=9 fx=185 fy=248
+# [SEQ][MEM][t=50670000] ox=8 oy=8 xi=9 yi=9 fx=248 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=50690000] ox=8 oy=8 xi=9 yi=9 fx=248 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=50810000] WRITE addr=104 pix=0x00 | ox=8 oy=8 | sx_int=9 sy_int=9 ax=248 ay=248 | xi=9 yi=9 fx=248 fy=248
+# [SEQ][MEM][t=50970000] ox=9 oy=8 xi=11 yi=9 fx=55 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=50990000] ox=9 oy=8 xi=11 yi=9 fx=55 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=51110000] WRITE addr=105 pix=0x00 | ox=9 oy=8 | sx_int=11 sy_int=9 ax=55 ay=248 | xi=11 yi=9 fx=55 fy=248
+# [SEQ][MEM][t=51250000] ox=10 oy=8 xi=12 yi=9 fx=118 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=51270000] ox=10 oy=8 xi=12 yi=9 fx=118 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=51390000] WRITE addr=106 pix=0x00 | ox=10 oy=8 | sx_int=12 sy_int=9 ax=118 ay=248 | xi=12 yi=9 fx=118 fy=248
+# [SEQ][MEM][t=51530000] ox=11 oy=8 xi=13 yi=9 fx=181 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=51550000] ox=11 oy=8 xi=13 yi=9 fx=181 fy=248 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=51670000] WRITE addr=107 pix=0x00 | ox=11 oy=8 | sx_int=13 sy_int=9 ax=181 ay=248 | xi=13 yi=9 fx=181 fy=248
+# [SEQ][MEM][t=51830000] ox=0 oy=9 xi=0 yi=11 fx=0 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=51850000] ox=0 oy=9 xi=0 yi=11 fx=0 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=51970000] WRITE addr=108 pix=0x00 | ox=0 oy=9 | sx_int=0 sy_int=11 ax=0 ay=55 | xi=0 yi=11 fx=0 fy=55
+# [SEQ][MEM][t=52110000] ox=1 oy=9 xi=1 yi=11 fx=63 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=52130000] ox=1 oy=9 xi=1 yi=11 fx=63 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=52250000] WRITE addr=109 pix=0x00 | ox=1 oy=9 | sx_int=1 sy_int=11 ax=63 ay=55 | xi=1 yi=11 fx=63 fy=55
+# [SEQ][MEM][t=52390000] ox=2 oy=9 xi=2 yi=11 fx=126 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=52410000] ox=2 oy=9 xi=2 yi=11 fx=126 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=52530000] WRITE addr=110 pix=0x00 | ox=2 oy=9 | sx_int=2 sy_int=11 ax=126 ay=55 | xi=2 yi=11 fx=126 fy=55
+# [SEQ][MEM][t=52690000] ox=3 oy=9 xi=3 yi=11 fx=189 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=52710000] ox=3 oy=9 xi=3 yi=11 fx=189 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=52830000] WRITE addr=111 pix=0x00 | ox=3 oy=9 | sx_int=3 sy_int=11 ax=189 ay=55 | xi=3 yi=11 fx=189 fy=55
+# [SEQ][MEM][t=52970000] ox=4 oy=9 xi=4 yi=11 fx=252 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=52990000] ox=4 oy=9 xi=4 yi=11 fx=252 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=53110000] WRITE addr=112 pix=0x00 | ox=4 oy=9 | sx_int=4 sy_int=11 ax=252 ay=55 | xi=4 yi=11 fx=252 fy=55
+# [SEQ][MEM][t=53250000] ox=5 oy=9 xi=6 yi=11 fx=59 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=53270000] ox=5 oy=9 xi=6 yi=11 fx=59 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=53390000] WRITE addr=113 pix=0x00 | ox=5 oy=9 | sx_int=6 sy_int=11 ax=59 ay=55 | xi=6 yi=11 fx=59 fy=55
+# [SEQ][MEM][t=53550000] ox=6 oy=9 xi=7 yi=11 fx=122 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=53570000] ox=6 oy=9 xi=7 yi=11 fx=122 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=53690000] WRITE addr=114 pix=0x00 | ox=6 oy=9 | sx_int=7 sy_int=11 ax=122 ay=55 | xi=7 yi=11 fx=122 fy=55
+# [SEQ][MEM][t=53830000] ox=7 oy=9 xi=8 yi=11 fx=185 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=53850000] ox=7 oy=9 xi=8 yi=11 fx=185 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=53970000] WRITE addr=115 pix=0x00 | ox=7 oy=9 | sx_int=8 sy_int=11 ax=185 ay=55 | xi=8 yi=11 fx=185 fy=55
+# [SEQ][MEM][t=54110000] ox=8 oy=9 xi=9 yi=11 fx=248 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=54130000] ox=8 oy=9 xi=9 yi=11 fx=248 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=54250000] WRITE addr=116 pix=0x00 | ox=8 oy=9 | sx_int=9 sy_int=11 ax=248 ay=55 | xi=9 yi=11 fx=248 fy=55
+# [SEQ][MEM][t=54410000] ox=9 oy=9 xi=11 yi=11 fx=55 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=54430000] ox=9 oy=9 xi=11 yi=11 fx=55 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=54550000] WRITE addr=117 pix=0x00 | ox=9 oy=9 | sx_int=11 sy_int=11 ax=55 ay=55 | xi=11 yi=11 fx=55 fy=55
+# [SEQ][MEM][t=54690000] ox=10 oy=9 xi=12 yi=11 fx=118 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=54710000] ox=10 oy=9 xi=12 yi=11 fx=118 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=54830000] WRITE addr=118 pix=0x00 | ox=10 oy=9 | sx_int=12 sy_int=11 ax=118 ay=55 | xi=12 yi=11 fx=118 fy=55
+# [SEQ][MEM][t=54970000] ox=11 oy=9 xi=13 yi=11 fx=181 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=54990000] ox=11 oy=9 xi=13 yi=11 fx=181 fy=55 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=55110000] WRITE addr=119 pix=0x00 | ox=11 oy=9 | sx_int=13 sy_int=11 ax=181 ay=55 | xi=13 yi=11 fx=181 fy=55
+# [SEQ][MEM][t=55270000] ox=0 oy=10 xi=0 yi=12 fx=0 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=55290000] ox=0 oy=10 xi=0 yi=12 fx=0 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=55410000] WRITE addr=120 pix=0x00 | ox=0 oy=10 | sx_int=0 sy_int=12 ax=0 ay=118 | xi=0 yi=12 fx=0 fy=118
+# [SEQ][MEM][t=55550000] ox=1 oy=10 xi=1 yi=12 fx=63 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=55570000] ox=1 oy=10 xi=1 yi=12 fx=63 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=55690000] WRITE addr=121 pix=0x00 | ox=1 oy=10 | sx_int=1 sy_int=12 ax=63 ay=118 | xi=1 yi=12 fx=63 fy=118
+# [SEQ][MEM][t=55830000] ox=2 oy=10 xi=2 yi=12 fx=126 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=55850000] ox=2 oy=10 xi=2 yi=12 fx=126 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=55970000] WRITE addr=122 pix=0x00 | ox=2 oy=10 | sx_int=2 sy_int=12 ax=126 ay=118 | xi=2 yi=12 fx=126 fy=118
+# [SEQ][MEM][t=56130000] ox=3 oy=10 xi=3 yi=12 fx=189 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=56150000] ox=3 oy=10 xi=3 yi=12 fx=189 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=56270000] WRITE addr=123 pix=0x00 | ox=3 oy=10 | sx_int=3 sy_int=12 ax=189 ay=118 | xi=3 yi=12 fx=189 fy=118
+# [SEQ][MEM][t=56410000] ox=4 oy=10 xi=4 yi=12 fx=252 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=56430000] ox=4 oy=10 xi=4 yi=12 fx=252 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=56550000] WRITE addr=124 pix=0x00 | ox=4 oy=10 | sx_int=4 sy_int=12 ax=252 ay=118 | xi=4 yi=12 fx=252 fy=118
+# [SEQ][MEM][t=56690000] ox=5 oy=10 xi=6 yi=12 fx=59 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=56710000] ox=5 oy=10 xi=6 yi=12 fx=59 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=56830000] WRITE addr=125 pix=0x00 | ox=5 oy=10 | sx_int=6 sy_int=12 ax=59 ay=118 | xi=6 yi=12 fx=59 fy=118
+# [SEQ][MEM][t=56990000] ox=6 oy=10 xi=7 yi=12 fx=122 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=57010000] ox=6 oy=10 xi=7 yi=12 fx=122 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=57130000] WRITE addr=126 pix=0x00 | ox=6 oy=10 | sx_int=7 sy_int=12 ax=122 ay=118 | xi=7 yi=12 fx=122 fy=118
+# [SEQ][MEM][t=57270000] ox=7 oy=10 xi=8 yi=12 fx=185 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=57290000] ox=7 oy=10 xi=8 yi=12 fx=185 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=57410000] WRITE addr=127 pix=0x00 | ox=7 oy=10 | sx_int=8 sy_int=12 ax=185 ay=118 | xi=8 yi=12 fx=185 fy=118
+# [SEQ][MEM][t=57550000] ox=8 oy=10 xi=9 yi=12 fx=248 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=57570000] ox=8 oy=10 xi=9 yi=12 fx=248 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=57690000] WRITE addr=128 pix=0x00 | ox=8 oy=10 | sx_int=9 sy_int=12 ax=248 ay=118 | xi=9 yi=12 fx=248 fy=118
+# [SEQ][MEM][t=57850000] ox=9 oy=10 xi=11 yi=12 fx=55 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=57870000] ox=9 oy=10 xi=11 yi=12 fx=55 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=57990000] WRITE addr=129 pix=0x00 | ox=9 oy=10 | sx_int=11 sy_int=12 ax=55 ay=118 | xi=11 yi=12 fx=55 fy=118
+# [SEQ][MEM][t=58130000] ox=10 oy=10 xi=12 yi=12 fx=118 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=58150000] ox=10 oy=10 xi=12 yi=12 fx=118 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=58270000] WRITE addr=130 pix=0x00 | ox=10 oy=10 | sx_int=12 sy_int=12 ax=118 ay=118 | xi=12 yi=12 fx=118 fy=118
+# [SEQ][MEM][t=58410000] ox=11 oy=10 xi=13 yi=12 fx=181 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=58430000] ox=11 oy=10 xi=13 yi=12 fx=181 fy=118 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=58550000] WRITE addr=131 pix=0x00 | ox=11 oy=10 | sx_int=13 sy_int=12 ax=181 ay=118 | xi=13 yi=12 fx=181 fy=118
+# [SEQ][MEM][t=58710000] ox=0 oy=11 xi=0 yi=13 fx=0 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=58730000] ox=0 oy=11 xi=0 yi=13 fx=0 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=58850000] WRITE addr=132 pix=0x00 | ox=0 oy=11 | sx_int=0 sy_int=13 ax=0 ay=181 | xi=0 yi=13 fx=0 fy=181
+# [SEQ][MEM][t=58990000] ox=1 oy=11 xi=1 yi=13 fx=63 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=59010000] ox=1 oy=11 xi=1 yi=13 fx=63 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=59130000] WRITE addr=133 pix=0x00 | ox=1 oy=11 | sx_int=1 sy_int=13 ax=63 ay=181 | xi=1 yi=13 fx=63 fy=181
+# [SEQ][MEM][t=59270000] ox=2 oy=11 xi=2 yi=13 fx=126 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=59290000] ox=2 oy=11 xi=2 yi=13 fx=126 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=59410000] WRITE addr=134 pix=0x00 | ox=2 oy=11 | sx_int=2 sy_int=13 ax=126 ay=181 | xi=2 yi=13 fx=126 fy=181
+# [SEQ][MEM][t=59570000] ox=3 oy=11 xi=3 yi=13 fx=189 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=59590000] ox=3 oy=11 xi=3 yi=13 fx=189 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=59710000] WRITE addr=135 pix=0x00 | ox=3 oy=11 | sx_int=3 sy_int=13 ax=189 ay=181 | xi=3 yi=13 fx=189 fy=181
+# [SEQ][MEM][t=59850000] ox=4 oy=11 xi=4 yi=13 fx=252 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=59870000] ox=4 oy=11 xi=4 yi=13 fx=252 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=59990000] WRITE addr=136 pix=0x00 | ox=4 oy=11 | sx_int=4 sy_int=13 ax=252 ay=181 | xi=4 yi=13 fx=252 fy=181
+# [SEQ][MEM][t=60130000] ox=5 oy=11 xi=6 yi=13 fx=59 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=60150000] ox=5 oy=11 xi=6 yi=13 fx=59 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=60270000] WRITE addr=137 pix=0x00 | ox=5 oy=11 | sx_int=6 sy_int=13 ax=59 ay=181 | xi=6 yi=13 fx=59 fy=181
+# [SEQ][MEM][t=60430000] ox=6 oy=11 xi=7 yi=13 fx=122 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=60450000] ox=6 oy=11 xi=7 yi=13 fx=122 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=60570000] WRITE addr=138 pix=0x00 | ox=6 oy=11 | sx_int=7 sy_int=13 ax=122 ay=181 | xi=7 yi=13 fx=122 fy=181
+# [SEQ][MEM][t=60710000] ox=7 oy=11 xi=8 yi=13 fx=185 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=60730000] ox=7 oy=11 xi=8 yi=13 fx=185 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=60850000] WRITE addr=139 pix=0x00 | ox=7 oy=11 | sx_int=8 sy_int=13 ax=185 ay=181 | xi=8 yi=13 fx=185 fy=181
+# [SEQ][MEM][t=60990000] ox=8 oy=11 xi=9 yi=13 fx=248 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=61010000] ox=8 oy=11 xi=9 yi=13 fx=248 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=61130000] WRITE addr=140 pix=0x00 | ox=8 oy=11 | sx_int=9 sy_int=13 ax=248 ay=181 | xi=9 yi=13 fx=248 fy=181
+# [SEQ][MEM][t=61290000] ox=9 oy=11 xi=11 yi=13 fx=55 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=61310000] ox=9 oy=11 xi=11 yi=13 fx=55 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=61430000] WRITE addr=141 pix=0x00 | ox=9 oy=11 | sx_int=11 sy_int=13 ax=55 ay=181 | xi=11 yi=13 fx=55 fy=181
+# [SEQ][MEM][t=61570000] ox=10 oy=11 xi=12 yi=13 fx=118 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=61590000] ox=10 oy=11 xi=12 yi=13 fx=118 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=61710000] WRITE addr=142 pix=0x00 | ox=10 oy=11 | sx_int=12 sy_int=13 ax=118 ay=181 | xi=12 yi=13 fx=118 fy=181
+# [SEQ][MEM][t=61850000] ox=11 oy=11 xi=13 yi=13 fx=181 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][MEM][t=61870000] ox=11 oy=11 xi=13 yi=13 fx=181 fy=181 TL=0x00 TR=0x00 BL=0x00 BR=0x00
+# [SEQ][RUN=1][t=61990000] WRITE addr=143 pix=0x00 | ox=11 oy=11 | sx_int=13 sy_int=13 ax=181 ay=181 | xi=13 yi=13 fx=181 fy=181
+# [TB][SEQ] DONE detectado en t=61990000
 # [TB][SEQ] out_w = 12, out_h = 12
 # [TB][SEQ] perf: flops=1584 mem_rd=576 mem_wr=144
-# [TB] Volcando mem_out (12x12) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_seq.hex'
+# [TB] Volcando mem_out (12x12) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_seq_wide.hex'
 # [TB] Dump completado.
-# [TB][SEQ] Golden sequence almacenada en golden_seq[0..4095]
+# [TB][SEQ] Golden sequence guardada (144 pixels)
 # 
-# [TB] ===== RESETEANDO PARA CORRIDA 2: SIMD4 (16x16) ===== t=105430000
+# [TB] ===== RESETEANDO PARA CORRIDA 2: SIMD4 ===== t=61990000
 # 
-# [TB] (Corrida 2) Forzando in_w_cfg=16, in_h_cfg=16, scale_q88_cfg=205 (Q8.8)
+# [TB] Cargando imagen desde 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex'...
+# [TB] Imagen cargada. Primeros 4 words (16 bytes):
+# [TB] mem_in[0] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
+# [TB] mem_in[1] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
+# [TB] mem_in[2] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
+# [TB] mem_in[3] = 0xdcdcdcdc [px0=dc px1=dc px2=dc px3=dc]
 # 
-# [TB][ANTES_SIMD] Dump inicial de bancos de entrada (primeros 16 elementos):
-# [TB][ANTES_SIMD] mem_in [0]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [1]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [2]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [3]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [4]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [5]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [6]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [7]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [8]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [9]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [10]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [11]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [12]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [13]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [14]  = 0xdc
-# [TB][ANTES_SIMD] mem_in [15]  = 0xdc
-# [TB][ANTES_SIMD] mem_in1[0] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[1] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[2] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[3] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[4] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[5] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[6] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[7] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[8] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[9] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[10] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[11] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[12] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[13] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[14] = 0xdc
-# [TB][ANTES_SIMD] mem_in1[15] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[0] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[1] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[2] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[3] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[4] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[5] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[6] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[7] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[8] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[9] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[10] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[11] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[12] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[13] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[14] = 0xdc
-# [TB][ANTES_SIMD] mem_in2[15] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[0] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[1] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[2] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[3] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[4] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[5] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[6] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[7] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[8] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[9] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[10] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[11] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[12] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[13] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[14] = 0xdc
-# [TB][ANTES_SIMD] mem_in3[15] = 0xdc
+# [TB][ANTES_SIMD] Dump de memoria de entrada (primeros 4 words):
+# [TB][ANTES_SIMD] mem_in[0] = 0xdcdcdcdc
+# [TB][ANTES_SIMD] mem_in[1] = 0xdcdcdcdc
+# [TB][ANTES_SIMD] mem_in[2] = 0xdcdcdcdc
+# [TB][ANTES_SIMD] mem_in[3] = 0xdcdcdcdc
 # 
-# [TB] ===== INICIO CORRIDA 2: SIMD4 (16x16) ===== t=187530000
+# [TB] ===== INICIO CORRIDA 2: SIMD4 (16x16) ===== t=82650000
 # 
-# [TB][SIMD4] Forzando start_pulse_sw en t=187530000
-# [SIMD][RUN=2][t=187710000] L0 WRITE addr=0 pix=0xdc
-# [SIMD][RUN=2][t=187710000] L1 WRITE addr=1 pix=0xdc
-# [SIMD][RUN=2][t=187710000] L2 WRITE addr=2 pix=0xdc
-# [SIMD][RUN=2][t=187710000] L3 WRITE addr=3 pix=0xdc
-# [SIMD] L0 WRITE ox=0 oy=0 addr=0 pix=0xdc | sx_int=0 ax_q=0 sy_int=0 ay_q=0 xi=0 yi=0 fx_q=0 fy_q=0 | addr00=0 addr10=1 addr01=16 addr11=17 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L0 ADDRCHK t=187710000 ox=0 oy=0 out_w=12 | exp_addr=0 out_waddr=0 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=187710000 addr00=0 I00=220 mem_in=220 | addr10=1 I10=220 mem_in=220 | addr01=16 I01=220 mem_in=220 | addr11=17 I11=220 mem_in=220
-# [SIMD] L1 WRITE ox=1 oy=0 addr=1 pix=0xdc | sx_int=1 ax_q=63 sy_int=0 ay_q=0 xi=1 yi=0 fx_q=63 fy_q=0 | addr00=1 addr10=2 addr01=17 addr11=18 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L1 ADDRCHK t=187710000 ox=1 oy=0 out_w=12 | exp_addr=1 out_waddr=1 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=187710000 addr00=1 I00=220 mem_in=220 | addr10=2 I10=220 mem_in=220 | addr01=17 I01=220 mem_in=220 | addr11=18 I11=220 mem_in=25
-# [SIMD] L2 WRITE ox=2 oy=0 addr=2 pix=0xdc | sx_int=2 ax_q=126 sy_int=0 ay_q=0 xi=2 yi=0 fx_q=126 fy_q=0 | addr00=2 addr10=3 addr01=18 addr11=19 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L2 ADDRCHK t=187710000 ox=2 oy=0 out_w=12 | exp_addr=2 out_waddr=2 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=187710000 addr00=2 I00=220 mem_in=220 | addr10=3 I10=220 mem_in=220 | addr01=18 I01=220 mem_in=25 | addr11=19 I11=220 mem_in=34
-# [SIMD] L3 WRITE ox=3 oy=0 addr=3 pix=0xdc | sx_int=3 ax_q=189 sy_int=0 ay_q=0 xi=3 yi=0 fx_q=189 fy_q=0 | addr00=3 addr10=4 addr01=19 addr11=20 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L3 ADDRCHK t=187710000 ox=3 oy=0 out_w=12 | exp_addr=3 out_waddr=3 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=187710000 addr00=3 I00=220 mem_in=220 | addr10=4 I10=220 mem_in=220 | addr01=19 I01=220 mem_in=34 | addr11=20 I11=220 mem_in=42
-# [SIMD][RUN=2][t=187830000] L0 WRITE addr=4 pix=0xdc
-# [SIMD][RUN=2][t=187830000] L1 WRITE addr=5 pix=0xdc
-# [SIMD][RUN=2][t=187830000] L2 WRITE addr=6 pix=0xdc
-# [SIMD][RUN=2][t=187830000] L3 WRITE addr=7 pix=0xdc
-# [SIMD] L0 WRITE ox=4 oy=0 addr=4 pix=0xdc | sx_int=4 ax_q=252 sy_int=0 ay_q=0 xi=4 yi=0 fx_q=252 fy_q=0 | addr00=4 addr10=5 addr01=20 addr11=21 | I00=220 I10=220 I01=220 I11=220
-# [SIMD] L0 ADDRCHK t=187830000 ox=4 oy=0 out_w=12 | exp_addr=4 out_waddr=4 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=187830000 addr00=4 I00=220 mem_in=220 | addr10=5 I10=220 mem_in=220 | addr01=20 I01=220 mem_in=42 | addr11=21 I11=220 mem_in=51
-# [SIMD] L1 WRITE ox=5 oy=0 addr=5 pix=0xdc | sx_int=6 ax_q=59 sy_int=0 ay_q=0 xi=6 yi=0 fx_q=59 fy_q=0 | addr00=6 addr10=7 addr01=22 addr11=23 | I00=220 I10=220 I01=220 I11=25
-# [SIMD] L1 ADDRCHK t=187830000 ox=5 oy=0 out_w=12 | exp_addr=5 out_waddr=5 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=187830000 addr00=6 I00=220 mem_in=220 | addr10=7 I10=220 mem_in=220 | addr01=22 I01=220 mem_in=59 | addr11=23 I11=25 mem_in=68
-# [SIMD] L2 WRITE ox=6 oy=0 addr=6 pix=0xdc | sx_int=7 ax_q=122 sy_int=0 ay_q=0 xi=7 yi=0 fx_q=122 fy_q=0 | addr00=7 addr10=8 addr01=23 addr11=24 | I00=220 I10=220 I01=25 I11=34
-# [SIMD] L2 ADDRCHK t=187830000 ox=6 oy=0 out_w=12 | exp_addr=6 out_waddr=6 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=187830000 addr00=7 I00=220 mem_in=220 | addr10=8 I10=220 mem_in=220 | addr01=23 I01=25 mem_in=68 | addr11=24 I11=34 mem_in=76
-# [SIMD] L3 WRITE ox=7 oy=0 addr=7 pix=0xdc | sx_int=8 ax_q=185 sy_int=0 ay_q=0 xi=8 yi=0 fx_q=185 fy_q=0 | addr00=8 addr10=9 addr01=24 addr11=25 | I00=220 I10=220 I01=34 I11=42
-# [SIMD] L3 ADDRCHK t=187830000 ox=7 oy=0 out_w=12 | exp_addr=7 out_waddr=7 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=187830000 addr00=8 I00=220 mem_in=220 | addr10=9 I10=220 mem_in=220 | addr01=24 I01=34 mem_in=76 | addr11=25 I11=42 mem_in=85
-# [SIMD][RUN=2][t=187950000] L0 WRITE addr=8 pix=0xdc
-# [SIMD][RUN=2][t=187950000] L1 WRITE addr=9 pix=0xdc
-# [SIMD][RUN=2][t=187950000] L2 WRITE addr=10 pix=0xdc
-# [SIMD][RUN=2][t=187950000] L3 WRITE addr=11 pix=0xdc
-# [SIMD] L0 WRITE ox=8 oy=0 addr=8 pix=0xdc | sx_int=9 ax_q=248 sy_int=0 ay_q=0 xi=9 yi=0 fx_q=248 fy_q=0 | addr00=9 addr10=10 addr01=25 addr11=26 | I00=220 I10=220 I01=42 I11=51
-# [SIMD] L0 ADDRCHK t=187950000 ox=8 oy=0 out_w=12 | exp_addr=8 out_waddr=8 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=187950000 addr00=9 I00=220 mem_in=220 | addr10=10 I10=220 mem_in=220 | addr01=25 I01=42 mem_in=85 | addr11=26 I11=51 mem_in=93
-# [SIMD] L1 WRITE ox=9 oy=0 addr=9 pix=0xdc | sx_int=11 ax_q=55 sy_int=0 ay_q=0 xi=11 yi=0 fx_q=55 fy_q=0 | addr00=11 addr10=12 addr01=27 addr11=28 | I00=220 I10=220 I01=59 I11=68
-# [SIMD] L1 ADDRCHK t=187950000 ox=9 oy=0 out_w=12 | exp_addr=9 out_waddr=9 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=187950000 addr00=11 I00=220 mem_in=220 | addr10=12 I10=220 mem_in=220 | addr01=27 I01=59 mem_in=102 | addr11=28 I11=68 mem_in=110
-# [SIMD] L2 WRITE ox=10 oy=0 addr=10 pix=0xdc | sx_int=12 ax_q=118 sy_int=0 ay_q=0 xi=12 yi=0 fx_q=118 fy_q=0 | addr00=12 addr10=13 addr01=28 addr11=29 | I00=220 I10=220 I01=68 I11=76
-# [SIMD] L2 ADDRCHK t=187950000 ox=10 oy=0 out_w=12 | exp_addr=10 out_waddr=10 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=187950000 addr00=12 I00=220 mem_in=220 | addr10=13 I10=220 mem_in=220 | addr01=28 I01=68 mem_in=110 | addr11=29 I11=76 mem_in=119
-# [SIMD] L3 WRITE ox=11 oy=0 addr=11 pix=0xdc | sx_int=13 ax_q=181 sy_int=0 ay_q=0 xi=13 yi=0 fx_q=181 fy_q=0 | addr00=13 addr10=14 addr01=29 addr11=30 | I00=220 I10=220 I01=76 I11=85
-# [SIMD] L3 ADDRCHK t=187950000 ox=11 oy=0 out_w=12 | exp_addr=11 out_waddr=11 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=187950000 addr00=13 I00=220 mem_in=220 | addr10=14 I10=220 mem_in=220 | addr01=29 I01=76 mem_in=119 | addr11=30 I11=85 mem_in=220
-# [SIMD][RUN=2][t=188090000] L0 WRITE addr=12 pix=0xbb
-# [SIMD][RUN=2][t=188090000] L1 WRITE addr=13 pix=0xbf
-# [SIMD][RUN=2][t=188090000] L2 WRITE addr=14 pix=0xc2
-# [SIMD][RUN=2][t=188090000] L3 WRITE addr=15 pix=0xd5
-# [SIMD] L0 WRITE ox=0 oy=1 addr=12 pix=0xbb | sx_int=0 ax_q=0 sy_int=1 ay_q=63 xi=0 yi=1 fx_q=0 fy_q=63 | addr00=16 addr10=17 addr01=32 addr11=33 | I00=220 I10=220 I01=85 I11=93
-# [SIMD] L0 ADDRCHK t=188090000 ox=0 oy=1 out_w=12 | exp_addr=12 out_waddr=12 | valid_lane=1
-# [SIMD] L0 MEMCHK  t=188090000 addr00=16 I00=220 mem_in=220 | addr10=17 I10=220 mem_in=220 | addr01=32 I01=85 mem_in=220 | addr11=33 I11=93 mem_in=25
-# [SIMD] L1 WRITE ox=1 oy=1 addr=13 pix=0xbf | sx_int=1 ax_q=63 sy_int=1 ay_q=63 xi=1 yi=1 fx_q=63 fy_q=63 | addr00=17 addr10=18 addr01=33 addr11=34 | I00=220 I10=220 I01=102 I11=110
-# [SIMD] L1 ADDRCHK t=188090000 ox=1 oy=1 out_w=12 | exp_addr=13 out_waddr=13 | valid_lane=1
-# [SIMD] L1 MEMCHK  t=188090000 addr00=17 I00=220 mem_in=220 | addr10=18 I10=220 mem_in=25 | addr01=33 I01=102 mem_in=25 | addr11=34 I11=110 mem_in=220
-# [SIMD] L2 WRITE ox=2 oy=1 addr=14 pix=0xc2 | sx_int=2 ax_q=126 sy_int=1 ay_q=63 xi=2 yi=1 fx_q=126 fy_q=63 | addr00=18 addr10=19 addr01=34 addr11=35 | I00=220 I10=220 I01=110 I11=119
-# [SIMD] L2 ADDRCHK t=188090000 ox=2 oy=1 out_w=12 | exp_addr=14 out_waddr=14 | valid_lane=1
-# [SIMD] L2 MEMCHK  t=188090000 addr00=18 I00=220 mem_in=25 | addr10=19 I10=220 mem_in=34 | addr01=34 I01=110 mem_in=220 | addr11=35 I11=119 mem_in=42
-# [SIMD] L3 WRITE ox=3 oy=1 addr=15 pix=0xd5 | sx_int=3 ax_q=189 sy_int=1 ay_q=63 xi=3 yi=1 fx_q=189 fy_q=63 | addr00=19 addr10=20 addr01=35 addr11=36 | I00=220 I10=220 I01=119 I11=220
-# [SIMD] L3 ADDRCHK t=188090000 ox=3 oy=1 out_w=12 | exp_addr=15 out_waddr=15 | valid_lane=1
-# [SIMD] L3 MEMCHK  t=188090000 addr00=19 I00=220 mem_in=34 | addr10=20 I10=220 mem_in=42 | addr01=35 I01=119 mem_in=42 | addr11=36 I11=220 mem_in=51
-# [SIMD][RUN=2][t=188210000] L0 WRITE addr=16 pix=0xad
-# [SIMD][RUN=2][t=188210000] L1 WRITE addr=17 pix=0x95
-# [SIMD][RUN=2][t=188210000] L2 WRITE addr=18 pix=0x37
-# [SIMD][RUN=2][t=188210000] L3 WRITE addr=19 pix=0x2a
-# [SIMD][RUN=2][t=188330000] L0 WRITE addr=20 pix=0x35
-# [SIMD][RUN=2][t=188330000] L1 WRITE addr=21 pix=0x3f
-# [SIMD][RUN=2][t=188330000] L2 WRITE addr=22 pix=0x4a
-# [SIMD][RUN=2][t=188330000] L3 WRITE addr=23 pix=0x54
-# [SIMD][RUN=2][t=188470000] L0 WRITE addr=24 pix=0x59
-# [SIMD][RUN=2][t=188470000] L1 WRITE addr=25 pix=0x6c
-# [SIMD][RUN=2][t=188470000] L2 WRITE addr=26 pix=0x8d
-# [SIMD][RUN=2][t=188470000] L3 WRITE addr=27 pix=0xb0
-# [SIMD][RUN=2][t=188590000] L0 WRITE addr=28 pix=0x20
-# [SIMD][RUN=2][t=188590000] L1 WRITE addr=29 pix=0x35
-# [SIMD][RUN=2][t=188590000] L2 WRITE addr=30 pix=0x83
-# [SIMD][RUN=2][t=188590000] L3 WRITE addr=31 pix=0x4c
-# [SIMD][RUN=2][t=188710000] L0 WRITE addr=32 pix=0x3f
-# [SIMD][RUN=2][t=188710000] L1 WRITE addr=33 pix=0x4a
-# [SIMD][RUN=2][t=188710000] L2 WRITE addr=34 pix=0x54
-# [SIMD][RUN=2][t=188710000] L3 WRITE addr=35 pix=0x5f
-# [SIMD][RUN=2][t=188850000] L0 WRITE addr=36 pix=0x64
-# [SIMD][RUN=2][t=188850000] L1 WRITE addr=37 pix=0x88
-# [SIMD][RUN=2][t=188850000] L2 WRITE addr=38 pix=0xb0
-# [SIMD][RUN=2][t=188850000] L3 WRITE addr=39 pix=0x92
-# [SIMD][RUN=2][t=188970000] L0 WRITE addr=40 pix=0x2b
-# [SIMD][RUN=2][t=188970000] L1 WRITE addr=41 pix=0x2a
-# [SIMD][RUN=2][t=188970000] L2 WRITE addr=42 pix=0x4a
-# [SIMD][RUN=2][t=188970000] L3 WRITE addr=43 pix=0x9d
-# [SIMD][RUN=2][t=189090000] L0 WRITE addr=44 pix=0x4d
-# [SIMD][RUN=2][t=189090000] L1 WRITE addr=45 pix=0x54
-# [SIMD][RUN=2][t=189090000] L2 WRITE addr=46 pix=0x5f
-# [SIMD][RUN=2][t=189090000] L3 WRITE addr=47 pix=0x69
-# [SIMD][RUN=2][t=189230000] L0 WRITE addr=48 pix=0x6e
-# [SIMD][RUN=2][t=189230000] L1 WRITE addr=49 pix=0xc6
-# [SIMD][RUN=2][t=189230000] L2 WRITE addr=50 pix=0x8d
-# [SIMD][RUN=2][t=189230000] L3 WRITE addr=51 pix=0x97
-# [SIMD][RUN=2][t=189350000] L0 WRITE addr=52 pix=0x36
-# [SIMD][RUN=2][t=189350000] L1 WRITE addr=53 pix=0x35
-# [SIMD][RUN=2][t=189350000] L2 WRITE addr=54 pix=0x3f
-# [SIMD][RUN=2][t=189350000] L3 WRITE addr=55 pix=0x4b
-# [SIMD][RUN=2][t=189470000] L0 WRITE addr=56 pix=0xd5
-# [SIMD][RUN=2][t=189470000] L1 WRITE addr=57 pix=0x5f
-# [SIMD][RUN=2][t=189470000] L2 WRITE addr=58 pix=0x6a
-# [SIMD][RUN=2][t=189470000] L3 WRITE addr=59 pix=0x74
-# [SIMD][RUN=2][t=189610000] L0 WRITE addr=60 pix=0x70
-# [SIMD][RUN=2][t=189610000] L1 WRITE addr=61 pix=0xb9
-# [SIMD][RUN=2][t=189610000] L2 WRITE addr=62 pix=0x8e
-# [SIMD][RUN=2][t=189610000] L3 WRITE addr=63 pix=0x99
-# [SIMD][RUN=2][t=189730000] L0 WRITE addr=64 pix=0x40
-# [SIMD][RUN=2][t=189730000] L1 WRITE addr=65 pix=0x3f
-# [SIMD][RUN=2][t=189730000] L2 WRITE addr=66 pix=0x4a
-# [SIMD][RUN=2][t=189730000] L3 WRITE addr=67 pix=0x54
-# [SIMD][RUN=2][t=189850000] L0 WRITE addr=68 pix=0x5f
-# [SIMD][RUN=2][t=189850000] L1 WRITE addr=69 pix=0xb6
-# [SIMD][RUN=2][t=189850000] L2 WRITE addr=70 pix=0x8b
-# [SIMD][RUN=2][t=189850000] L3 WRITE addr=71 pix=0xb8
-# [SIMD][RUN=2][t=189990000] L0 WRITE addr=72 pix=0xb4
-# [SIMD][RUN=2][t=189990000] L1 WRITE addr=73 pix=0x96
-# [SIMD][RUN=2][t=189990000] L2 WRITE addr=74 pix=0xa1
-# [SIMD][RUN=2][t=189990000] L3 WRITE addr=75 pix=0xac
-# [SIMD][RUN=2][t=190110000] L0 WRITE addr=76 pix=0x4a
-# [SIMD][RUN=2][t=190110000] L1 WRITE addr=77 pix=0x4a
-# [SIMD][RUN=2][t=190110000] L2 WRITE addr=78 pix=0x54
-# [SIMD][RUN=2][t=190110000] L3 WRITE addr=79 pix=0x5f
-# [SIMD][RUN=2][t=190230000] L0 WRITE addr=80 pix=0x6a
-# [SIMD][RUN=2][t=190230000] L1 WRITE addr=81 pix=0x89
-# [SIMD][RUN=2][t=190230000] L2 WRITE addr=82 pix=0xdc
-# [SIMD][RUN=2][t=190230000] L3 WRITE addr=83 pix=0xa3
-# [SIMD][RUN=2][t=190370000] L0 WRITE addr=84 pix=0x8e
-# [SIMD][RUN=2][t=190370000] L1 WRITE addr=85 pix=0xa1
-# [SIMD][RUN=2][t=190370000] L2 WRITE addr=86 pix=0xac
-# [SIMD][RUN=2][t=190370000] L3 WRITE addr=87 pix=0xb6
-# [SIMD][RUN=2][t=190490000] L0 WRITE addr=88 pix=0x55
-# [SIMD][RUN=2][t=190490000] L1 WRITE addr=89 pix=0x54
-# [SIMD][RUN=2][t=190490000] L2 WRITE addr=90 pix=0x5f
-# [SIMD][RUN=2][t=190490000] L3 WRITE addr=91 pix=0x69
-# [SIMD][RUN=2][t=190610000] L0 WRITE addr=92 pix=0x74
-# [SIMD][RUN=2][t=190610000] L1 WRITE addr=93 pix=0xb9
-# [SIMD][RUN=2][t=190610000] L2 WRITE addr=94 pix=0xa2
-# [SIMD][RUN=2][t=190610000] L3 WRITE addr=95 pix=0xbd
-# [SIMD][RUN=2][t=190750000] L0 WRITE addr=96 pix=0xda
-# [SIMD][RUN=2][t=190750000] L1 WRITE addr=97 pix=0xac
-# [SIMD][RUN=2][t=190750000] L2 WRITE addr=98 pix=0xb6
-# [SIMD][RUN=2][t=190750000] L3 WRITE addr=99 pix=0xc1
-# [SIMD][RUN=2][t=190870000] L0 WRITE addr=100 pix=0x5f
-# [SIMD][RUN=2][t=190870000] L1 WRITE addr=101 pix=0x5f
-# [SIMD][RUN=2][t=190870000] L2 WRITE addr=102 pix=0x6a
-# [SIMD][RUN=2][t=190870000] L3 WRITE addr=103 pix=0x74
-# [SIMD][RUN=2][t=190990000] L0 WRITE addr=104 pix=0xd6
-# [SIMD][RUN=2][t=190990000] L1 WRITE addr=105 pix=0x8c
-# [SIMD][RUN=2][t=190990000] L2 WRITE addr=106 pix=0x94
-# [SIMD][RUN=2][t=190990000] L3 WRITE addr=107 pix=0xa0
-# [SIMD][RUN=2][t=191130000] L0 WRITE addr=108 pix=0xcf
-# [SIMD][RUN=2][t=191130000] L1 WRITE addr=109 pix=0xae
-# [SIMD][RUN=2][t=191130000] L2 WRITE addr=110 pix=0xb8
-# [SIMD][RUN=2][t=191130000] L3 WRITE addr=111 pix=0xc3
-# [SIMD][RUN=2][t=191250000] L0 WRITE addr=112 pix=0x6a
-# [SIMD][RUN=2][t=191250000] L1 WRITE addr=113 pix=0x6a
-# [SIMD][RUN=2][t=191250000] L2 WRITE addr=114 pix=0x7e
-# [SIMD][RUN=2][t=191250000] L3 WRITE addr=115 pix=0xb9
-# [SIMD][RUN=2][t=191370000] L0 WRITE addr=116 pix=0x8c
-# [SIMD][RUN=2][t=191370000] L1 WRITE addr=117 pix=0x94
-# [SIMD][RUN=2][t=191370000] L2 WRITE addr=118 pix=0x9f
-# [SIMD][RUN=2][t=191370000] L3 WRITE addr=119 pix=0xa9
-# [SIMD][RUN=2][t=191510000] L0 WRITE addr=120 pix=0xae
-# [SIMD][RUN=2][t=191510000] L1 WRITE addr=121 pix=0xd0
-# [SIMD][RUN=2][t=191510000] L2 WRITE addr=122 pix=0xcf
-# [SIMD][RUN=2][t=191510000] L3 WRITE addr=123 pix=0xd6
-# [SIMD][RUN=2][t=191630000] L0 WRITE addr=124 pix=0x74
-# [SIMD][RUN=2][t=191630000] L1 WRITE addr=125 pix=0x7e
-# [SIMD][RUN=2][t=191630000] L2 WRITE addr=126 pix=0xad
-# [SIMD][RUN=2][t=191630000] L3 WRITE addr=127 pix=0x97
-# [SIMD][RUN=2][t=191750000] L0 WRITE addr=128 pix=0x94
-# [SIMD][RUN=2][t=191750000] L1 WRITE addr=129 pix=0x9f
-# [SIMD][RUN=2][t=191750000] L2 WRITE addr=130 pix=0xa9
-# [SIMD][RUN=2][t=191750000] L3 WRITE addr=131 pix=0xb4
-# [SIMD][RUN=2][t=191890000] L0 WRITE addr=132 pix=0xb8
-# [SIMD][RUN=2][t=191890000] L1 WRITE addr=133 pix=0xcd
-# [SIMD][RUN=2][t=191890000] L2 WRITE addr=134 pix=0xd8
-# [SIMD][RUN=2][t=191890000] L3 WRITE addr=135 pix=0xe0
-# [SIMD][RUN=2][t=192010000] L0 WRITE addr=136 pix=0xbf
-# [SIMD][RUN=2][t=192010000] L1 WRITE addr=137 pix=0xb8
-# [SIMD][RUN=2][t=192010000] L2 WRITE addr=138 pix=0x98
-# [SIMD][RUN=2][t=192010000] L3 WRITE addr=139 pix=0x94
-# [SIMD][RUN=2][t=192130000] L0 WRITE addr=140 pix=0x9e
-# [SIMD][RUN=2][t=192130000] L1 WRITE addr=141 pix=0xa9
-# [SIMD][RUN=2][t=192130000] L2 WRITE addr=142 pix=0xb4
-# [SIMD][RUN=2][t=192130000] L3 WRITE addr=143 pix=0xbe
-# [TB][SIMD4] DONE detectado en t=192130000
-# [TB][SIMD4] mode_simd_eff = 1 (0=SEQ,1=SIMD4)1
+# [MEM_READ][t=82790000] raddr0=0x000 raddr1=0x000
+# [SIMD][MEM_CTRL][t=82850000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0xdc | xi=0 yi=0 fx=0 fy=0
+# [SIMD][MEM_CTRL][t=82870000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0xdc | xi=0 yi=0 fx=0 fy=0
+# [SIMD][MEM_CTRL][t=82890000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0xdc | xi=1 yi=0 fx=63 fy=0
+# [MEM_READ][t=82930000] raddr0=0x000 raddr1=0x010
+# [SIMD][MEM_CTRL][t=82990000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0x2a BR=0x33 | xi=1 yi=0 fx=63 fy=0
+# [SIMD][MEM_CTRL][t=83010000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0x2a BR=0x33 | xi=1 yi=0 fx=63 fy=0
+# [SIMD][MEM_CTRL][t=83030000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x2a BR=0x33 | xi=2 yi=0 fx=126 fy=0
+# [MEM_READ][t=83070000] raddr0=0x000 raddr1=0x010
+# [SIMD][MEM_CTRL][t=83130000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x33 BR=0x3b | xi=2 yi=0 fx=126 fy=0
+# [SIMD][MEM_CTRL][t=83150000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x33 BR=0x3b | xi=2 yi=0 fx=126 fy=0
+# [SIMD][MEM_CTRL][t=83170000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x33 BR=0x3b | xi=3 yi=0 fx=189 fy=0
+# [MEM_READ][t=83210000] raddr0=0x000 raddr1=0x010
+# [SIMD][MEM_CTRL][t=83290000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x3b BR=0xdc | xi=3 yi=0 fx=189 fy=0
+# [SIMD][MEM_CTRL][t=83310000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x3b BR=0xdc | xi=3 yi=0 fx=189 fy=0
+# [SIMD][MEM_CTRL][t=83330000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x3b BR=0xdc | xi=0 yi=0 fx=0 fy=0
+# [SIMD][RUN=2][t=83370000] L0 WRITE addr=0 pix=0xdc ox=0 oy=0 xi=0 yi=0 fx=0 fy=0
+# [SIMD][RUN=2][t=83370000] L1 WRITE addr=1 pix=0xdc ox=1 oy=0 xi=1 yi=0 fx=63 fy=0
+# [SIMD][RUN=2][t=83370000] L2 WRITE addr=2 pix=0xdc ox=2 oy=0 xi=2 yi=0 fx=126 fy=0
+# [SIMD][RUN=2][t=83370000] L3 WRITE addr=3 pix=0xdc ox=3 oy=0 xi=3 yi=0 fx=189 fy=0
+# [MEM_READ][t=83450000] raddr0=0x001 raddr1=0x011
+# [SIMD][MEM_CTRL][t=83510000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0x4c | xi=4 yi=0 fx=252 fy=0
+# [SIMD][MEM_CTRL][t=83530000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0x4c | xi=4 yi=0 fx=252 fy=0
+# [SIMD][MEM_CTRL][t=83550000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0x4c | xi=6 yi=0 fx=59 fy=0
+# [MEM_READ][t=83590000] raddr0=0x001 raddr1=0x011
+# [SIMD][MEM_CTRL][t=83650000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0x55 BR=0x5d | xi=6 yi=0 fx=59 fy=0
+# [SIMD][MEM_CTRL][t=83670000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0x55 BR=0x5d | xi=6 yi=0 fx=59 fy=0
+# [SIMD][MEM_CTRL][t=83690000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x55 BR=0x5d | xi=7 yi=0 fx=122 fy=0
+# [MEM_READ][t=83730000] raddr0=0x001 raddr1=0x011
+# [SIMD][MEM_CTRL][t=83810000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x5d BR=0xdc | xi=7 yi=0 fx=122 fy=0
+# [SIMD][MEM_CTRL][t=83830000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x5d BR=0xdc | xi=7 yi=0 fx=122 fy=0
+# [SIMD][MEM_CTRL][t=83850000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x5d BR=0xdc | xi=8 yi=0 fx=185 fy=0
+# [MEM_READ][t=83890000] raddr0=0x002 raddr1=0x012
+# [SIMD][MEM_CTRL][t=83950000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x66 BR=0x6e | xi=8 yi=0 fx=185 fy=0
+# [SIMD][MEM_CTRL][t=83970000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x66 BR=0x6e | xi=8 yi=0 fx=185 fy=0
+# [SIMD][MEM_CTRL][t=83990000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x66 BR=0x6e | xi=4 yi=0 fx=252 fy=0
+# [SIMD][RUN=2][t=84030000] L0 WRITE addr=4 pix=0xdc ox=4 oy=0 xi=4 yi=0 fx=252 fy=0
+# [SIMD][RUN=2][t=84030000] L1 WRITE addr=5 pix=0xdc ox=5 oy=0 xi=6 yi=0 fx=59 fy=0
+# [SIMD][RUN=2][t=84030000] L2 WRITE addr=6 pix=0xdc ox=6 oy=0 xi=7 yi=0 fx=122 fy=0
+# [SIMD][RUN=2][t=84030000] L3 WRITE addr=7 pix=0xdc ox=7 oy=0 xi=8 yi=0 fx=185 fy=0
+# [MEM_READ][t=84110000] raddr0=0x002 raddr1=0x012
+# [SIMD][MEM_CTRL][t=84170000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x6e BR=0x77 | xi=9 yi=0 fx=248 fy=0
+# [SIMD][MEM_CTRL][t=84190000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x6e BR=0x77 | xi=9 yi=0 fx=248 fy=0
+# [SIMD][MEM_CTRL][t=84210000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0x6e BR=0x77 | xi=11 yi=0 fx=55 fy=0
+# [MEM_READ][t=84250000] raddr0=0x002 raddr1=0x012
+# [SIMD][MEM_CTRL][t=84330000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0x66 | xi=11 yi=0 fx=55 fy=0
+# [SIMD][MEM_CTRL][t=84350000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0x66 | xi=11 yi=0 fx=55 fy=0
+# [SIMD][MEM_CTRL][t=84370000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0xdc BR=0x66 | xi=12 yi=0 fx=118 fy=0
+# [MEM_READ][t=84410000] raddr0=0x003 raddr1=0x013
+# [SIMD][MEM_CTRL][t=84470000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x88 BR=0x90 | xi=12 yi=0 fx=118 fy=0
+# [SIMD][MEM_CTRL][t=84490000] Lane 2 data ready: TL=0xdc TR=0xdc BL=0x88 BR=0x90 | xi=12 yi=0 fx=118 fy=0
+# [SIMD][MEM_CTRL][t=84510000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x88 BR=0x90 | xi=13 yi=0 fx=181 fy=0
+# [MEM_READ][t=84550000] raddr0=0x003 raddr1=0x013
+# [SIMD][MEM_CTRL][t=84610000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x90 BR=0x99 | xi=13 yi=0 fx=181 fy=0
+# [SIMD][MEM_CTRL][t=84630000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x90 BR=0x99 | xi=13 yi=0 fx=181 fy=0
+# [SIMD][MEM_CTRL][t=84650000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x90 BR=0x99 | xi=9 yi=0 fx=248 fy=0
+# [SIMD][RUN=2][t=84690000] L0 WRITE addr=8 pix=0xdc ox=8 oy=0 xi=9 yi=0 fx=248 fy=0
+# [SIMD][RUN=2][t=84690000] L1 WRITE addr=9 pix=0xdc ox=9 oy=0 xi=11 yi=0 fx=55 fy=0
+# [SIMD][RUN=2][t=84690000] L2 WRITE addr=10 pix=0xdc ox=10 oy=0 xi=12 yi=0 fx=118 fy=0
+# [SIMD][RUN=2][t=84690000] L3 WRITE addr=11 pix=0xdc ox=11 oy=0 xi=13 yi=0 fx=181 fy=0
+# [MEM_READ][t=84790000] raddr0=0x003 raddr1=0x013
+# [SIMD][MEM_CTRL][t=84850000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x88 BR=0x90 | xi=0 yi=1 fx=0 fy=63
+# [SIMD][MEM_CTRL][t=84870000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x88 BR=0x90 | xi=0 yi=1 fx=0 fy=63
+# [SIMD][MEM_CTRL][t=84890000] Lane 1 data ready: TL=0xdc TR=0xdc BL=0x88 BR=0x90 | xi=1 yi=1 fx=63 fy=63
+# [MEM_READ][t=84930000] raddr0=0x010 raddr1=0x020
+# [SIMD][MEM_CTRL][t=84990000] Lane 1 data ready: TL=0x2a TR=0x33 BL=0x4c BR=0x55 | xi=1 yi=1 fx=63 fy=63
+# [SIMD][MEM_CTRL][t=85010000] Lane 1 data ready: TL=0x2a TR=0x33 BL=0x4c BR=0x55 | xi=1 yi=1 fx=63 fy=63
+# [SIMD][MEM_CTRL][t=85030000] Lane 2 data ready: TL=0x2a TR=0x33 BL=0x4c BR=0x55 | xi=2 yi=1 fx=126 fy=63
+# [MEM_READ][t=85070000] raddr0=0x010 raddr1=0x020
+# [SIMD][MEM_CTRL][t=85130000] Lane 2 data ready: TL=0x33 TR=0x3b BL=0x55 BR=0x5d | xi=2 yi=1 fx=126 fy=63
+# [SIMD][MEM_CTRL][t=85150000] Lane 2 data ready: TL=0x33 TR=0x3b BL=0x55 BR=0x5d | xi=2 yi=1 fx=126 fy=63
+# [SIMD][MEM_CTRL][t=85170000] Lane 3 data ready: TL=0x33 TR=0x3b BL=0x55 BR=0x5d | xi=3 yi=1 fx=189 fy=63
+# [MEM_READ][t=85210000] raddr0=0x010 raddr1=0x020
+# [SIMD][MEM_CTRL][t=85290000] Lane 3 data ready: TL=0x3b TR=0xdc BL=0x5d BR=0xdc | xi=3 yi=1 fx=189 fy=63
+# [SIMD][MEM_CTRL][t=85310000] Lane 3 data ready: TL=0x3b TR=0xdc BL=0x5d BR=0xdc | xi=3 yi=1 fx=189 fy=63
+# [SIMD][MEM_CTRL][t=85330000] Lane 0 data ready: TL=0x3b TR=0xdc BL=0x5d BR=0xdc | xi=0 yi=1 fx=0 fy=63
+# [SIMD][RUN=2][t=85370000] L0 WRITE addr=12 pix=0xc7 ox=0 oy=1 xi=0 yi=1 fx=0 fy=63
+# [SIMD][RUN=2][t=85370000] L1 WRITE addr=13 pix=0x35 ox=1 oy=1 xi=1 yi=1 fx=63 fy=63
+# [SIMD][RUN=2][t=85370000] L2 WRITE addr=14 pix=0x3f ox=2 oy=1 xi=2 yi=1 fx=126 fy=63
+# [SIMD][RUN=2][t=85370000] L3 WRITE addr=15 pix=0xb4 ox=3 oy=1 xi=3 yi=1 fx=189 fy=63
+# [MEM_READ][t=85450000] raddr0=0x011 raddr1=0x021
+# [SIMD][MEM_CTRL][t=85510000] Lane 0 data ready: TL=0xdc TR=0x4c BL=0x66 BR=0x6e | xi=4 yi=1 fx=252 fy=63
+# [SIMD][MEM_CTRL][t=85530000] Lane 0 data ready: TL=0xdc TR=0x4c BL=0x66 BR=0x6e | xi=4 yi=1 fx=252 fy=63
+# [SIMD][MEM_CTRL][t=85550000] Lane 1 data ready: TL=0xdc TR=0x4c BL=0x66 BR=0x6e | xi=6 yi=1 fx=59 fy=63
+# [MEM_READ][t=85590000] raddr0=0x011 raddr1=0x021
+# [SIMD][MEM_CTRL][t=85650000] Lane 1 data ready: TL=0x55 TR=0x5d BL=0x77 BR=0xdc | xi=6 yi=1 fx=59 fy=63
+# [SIMD][MEM_CTRL][t=85670000] Lane 1 data ready: TL=0x55 TR=0x5d BL=0x77 BR=0xdc | xi=6 yi=1 fx=59 fy=63
+# [SIMD][MEM_CTRL][t=85690000] Lane 2 data ready: TL=0x55 TR=0x5d BL=0x77 BR=0xdc | xi=7 yi=1 fx=122 fy=63
+# [MEM_READ][t=85730000] raddr0=0x011 raddr1=0x021
+# [SIMD][MEM_CTRL][t=85810000] Lane 2 data ready: TL=0x5d TR=0xdc BL=0xdc BR=0x66 | xi=7 yi=1 fx=122 fy=63
+# [SIMD][MEM_CTRL][t=85830000] Lane 2 data ready: TL=0x5d TR=0xdc BL=0xdc BR=0x66 | xi=7 yi=1 fx=122 fy=63
+# [SIMD][MEM_CTRL][t=85850000] Lane 3 data ready: TL=0x5d TR=0xdc BL=0xdc BR=0x66 | xi=8 yi=1 fx=185 fy=63
+# [MEM_READ][t=85890000] raddr0=0x012 raddr1=0x022
+# [SIMD][MEM_CTRL][t=85950000] Lane 3 data ready: TL=0x66 TR=0x6e BL=0xdc BR=0x90 | xi=8 yi=1 fx=185 fy=63
+# [SIMD][MEM_CTRL][t=85970000] Lane 3 data ready: TL=0x66 TR=0x6e BL=0xdc BR=0x90 | xi=8 yi=1 fx=185 fy=63
+# [SIMD][MEM_CTRL][t=85990000] Lane 0 data ready: TL=0x66 TR=0x6e BL=0xdc BR=0x90 | xi=4 yi=1 fx=252 fy=63
+# [SIMD][RUN=2][t=86030000] L0 WRITE addr=16 pix=0x56 ox=4 oy=1 xi=4 yi=1 fx=252 fy=63
+# [SIMD][RUN=2][t=86030000] L1 WRITE addr=17 pix=0x64 ox=5 oy=1 xi=6 yi=1 fx=59 fy=63
+# [SIMD][RUN=2][t=86030000] L2 WRITE addr=18 pix=0x9c ox=6 oy=1 xi=7 yi=1 fx=122 fy=63
+# [SIMD][RUN=2][t=86030000] L3 WRITE addr=19 pix=0x7a ox=7 oy=1 xi=8 yi=1 fx=185 fy=63
+# [MEM_READ][t=86110000] raddr0=0x012 raddr1=0x022
+# [SIMD][MEM_CTRL][t=86170000] Lane 0 data ready: TL=0x6e TR=0x77 BL=0x90 BR=0x99 | xi=9 yi=1 fx=248 fy=63
+# [SIMD][MEM_CTRL][t=86190000] Lane 0 data ready: TL=0x6e TR=0x77 BL=0x90 BR=0x99 | xi=9 yi=1 fx=248 fy=63
+# [SIMD][MEM_CTRL][t=86210000] Lane 1 data ready: TL=0x6e TR=0x77 BL=0x90 BR=0x99 | xi=11 yi=1 fx=55 fy=63
+# [MEM_READ][t=86250000] raddr0=0x012 raddr1=0x022
+# [SIMD][MEM_CTRL][t=86330000] Lane 1 data ready: TL=0xdc TR=0x66 BL=0xa1 BR=0xdc | xi=11 yi=1 fx=55 fy=63
+# [SIMD][MEM_CTRL][t=86350000] Lane 1 data ready: TL=0xdc TR=0x66 BL=0xa1 BR=0xdc | xi=11 yi=1 fx=55 fy=63
+# [SIMD][MEM_CTRL][t=86370000] Lane 2 data ready: TL=0xdc TR=0x66 BL=0xa1 BR=0xdc | xi=12 yi=1 fx=118 fy=63
+# [MEM_READ][t=86410000] raddr0=0x013 raddr1=0x023
+# [SIMD][MEM_CTRL][t=86470000] Lane 2 data ready: TL=0x88 TR=0x90 BL=0xaa BR=0xb2 | xi=12 yi=1 fx=118 fy=63
+# [SIMD][MEM_CTRL][t=86490000] Lane 2 data ready: TL=0x88 TR=0x90 BL=0xaa BR=0xb2 | xi=12 yi=1 fx=118 fy=63
+# [SIMD][MEM_CTRL][t=86510000] Lane 3 data ready: TL=0x88 TR=0x90 BL=0xaa BR=0xb2 | xi=13 yi=1 fx=181 fy=63
+# [MEM_READ][t=86550000] raddr0=0x013 raddr1=0x023
+# [SIMD][MEM_CTRL][t=86610000] Lane 3 data ready: TL=0x90 TR=0x99 BL=0xb2 BR=0xbb | xi=13 yi=1 fx=181 fy=63
+# [SIMD][MEM_CTRL][t=86630000] Lane 3 data ready: TL=0x90 TR=0x99 BL=0xb2 BR=0xbb | xi=13 yi=1 fx=181 fy=63
+# [SIMD][MEM_CTRL][t=86650000] Lane 0 data ready: TL=0x90 TR=0x99 BL=0xb2 BR=0xbb | xi=9 yi=1 fx=248 fy=63
+# [SIMD][RUN=2][t=86690000] L0 WRITE addr=20 pix=0x7f ox=8 oy=1 xi=9 yi=1 fx=248 fy=63
+# [SIMD][RUN=2][t=86690000] L1 WRITE addr=21 pix=0xbd ox=9 oy=1 xi=11 yi=1 fx=55 fy=63
+# [SIMD][RUN=2][t=86690000] L2 WRITE addr=22 pix=0x94 ox=10 oy=1 xi=12 yi=1 fx=118 fy=63
+# [SIMD][RUN=2][t=86690000] L3 WRITE addr=23 pix=0x9f ox=11 oy=1 xi=13 yi=1 fx=181 fy=63
+# [MEM_READ][t=86790000] raddr0=0x013 raddr1=0x023
+# [SIMD][MEM_CTRL][t=86850000] Lane 0 data ready: TL=0x88 TR=0x90 BL=0xaa BR=0xb2 | xi=0 yi=2 fx=0 fy=126
+# [SIMD][MEM_CTRL][t=86870000] Lane 0 data ready: TL=0x88 TR=0x90 BL=0xaa BR=0xb2 | xi=0 yi=2 fx=0 fy=126
+# [SIMD][MEM_CTRL][t=86890000] Lane 1 data ready: TL=0x88 TR=0x90 BL=0xaa BR=0xb2 | xi=1 yi=2 fx=63 fy=126
+# [MEM_READ][t=86930000] raddr0=0x020 raddr1=0x030
+# [SIMD][MEM_CTRL][t=86990000] Lane 1 data ready: TL=0x4c TR=0x55 BL=0x6e BR=0x77 | xi=1 yi=2 fx=63 fy=126
+# [SIMD][MEM_CTRL][t=87010000] Lane 1 data ready: TL=0x4c TR=0x55 BL=0x6e BR=0x77 | xi=1 yi=2 fx=63 fy=126
+# [SIMD][MEM_CTRL][t=87030000] Lane 2 data ready: TL=0x4c TR=0x55 BL=0x6e BR=0x77 | xi=2 yi=2 fx=126 fy=126
+# [MEM_READ][t=87070000] raddr0=0x020 raddr1=0x030
+# [SIMD][MEM_CTRL][t=87130000] Lane 2 data ready: TL=0x55 TR=0x5d BL=0x77 BR=0xdc | xi=2 yi=2 fx=126 fy=126
+# [SIMD][MEM_CTRL][t=87150000] Lane 2 data ready: TL=0x55 TR=0x5d BL=0x77 BR=0xdc | xi=2 yi=2 fx=126 fy=126
+# [SIMD][MEM_CTRL][t=87170000] Lane 3 data ready: TL=0x55 TR=0x5d BL=0x77 BR=0xdc | xi=3 yi=2 fx=189 fy=126
+# [MEM_READ][t=87210000] raddr0=0x020 raddr1=0x030
+# [SIMD][MEM_CTRL][t=87290000] Lane 3 data ready: TL=0x5d TR=0xdc BL=0xdc BR=0xdc | xi=3 yi=2 fx=189 fy=126
+# [SIMD][MEM_CTRL][t=87310000] Lane 3 data ready: TL=0x5d TR=0xdc BL=0xdc BR=0xdc | xi=3 yi=2 fx=189 fy=126
+# [SIMD][MEM_CTRL][t=87330000] Lane 0 data ready: TL=0x5d TR=0xdc BL=0xdc BR=0xdc | xi=0 yi=2 fx=0 fy=126
+# [SIMD][RUN=2][t=87370000] L0 WRITE addr=24 pix=0x99 ox=0 oy=2 xi=0 yi=2 fx=0 fy=126
+# [SIMD][RUN=2][t=87370000] L1 WRITE addr=25 pix=0x5f ox=1 oy=2 xi=1 yi=2 fx=63 fy=126
+# [SIMD][RUN=2][t=87370000] L2 WRITE addr=26 pix=0x80 ox=2 oy=2 xi=2 yi=2 fx=126 fy=126
+# [SIMD][RUN=2][t=87370000] L3 WRITE addr=27 pix=0xcb ox=3 oy=2 xi=3 yi=2 fx=189 fy=126
+# [MEM_READ][t=87450000] raddr0=0x021 raddr1=0x031
+# [SIMD][MEM_CTRL][t=87510000] Lane 0 data ready: TL=0x66 TR=0x6e BL=0x88 BR=0x90 | xi=4 yi=2 fx=252 fy=126
+# [SIMD][MEM_CTRL][t=87530000] Lane 0 data ready: TL=0x66 TR=0x6e BL=0x88 BR=0x90 | xi=4 yi=2 fx=252 fy=126
+# [SIMD][MEM_CTRL][t=87550000] Lane 1 data ready: TL=0x66 TR=0x6e BL=0x88 BR=0x90 | xi=6 yi=2 fx=59 fy=126
+# [MEM_READ][t=87590000] raddr0=0x021 raddr1=0x031
+# [SIMD][MEM_CTRL][t=87650000] Lane 1 data ready: TL=0x77 TR=0xdc BL=0x99 BR=0xa1 | xi=6 yi=2 fx=59 fy=126
+# [SIMD][MEM_CTRL][t=87670000] Lane 1 data ready: TL=0x77 TR=0xdc BL=0x99 BR=0xa1 | xi=6 yi=2 fx=59 fy=126
+# [SIMD][MEM_CTRL][t=87690000] Lane 2 data ready: TL=0x77 TR=0xdc BL=0x99 BR=0xa1 | xi=7 yi=2 fx=122 fy=126
+# [MEM_READ][t=87730000] raddr0=0x021 raddr1=0x031
+# [SIMD][MEM_CTRL][t=87810000] Lane 2 data ready: TL=0xdc TR=0x66 BL=0xa1 BR=0x88 | xi=7 yi=2 fx=122 fy=126
+# [SIMD][MEM_CTRL][t=87830000] Lane 2 data ready: TL=0xdc TR=0x66 BL=0xa1 BR=0x88 | xi=7 yi=2 fx=122 fy=126
+# [SIMD][MEM_CTRL][t=87850000] Lane 3 data ready: TL=0xdc TR=0x66 BL=0xa1 BR=0x88 | xi=8 yi=2 fx=185 fy=126
+# [MEM_READ][t=87890000] raddr0=0x022 raddr1=0x032
+# [SIMD][MEM_CTRL][t=87950000] Lane 3 data ready: TL=0xdc TR=0x90 BL=0xaa BR=0xb2 | xi=8 yi=2 fx=185 fy=126
+# [SIMD][MEM_CTRL][t=87970000] Lane 3 data ready: TL=0xdc TR=0x90 BL=0xaa BR=0xb2 | xi=8 yi=2 fx=185 fy=126
+# [SIMD][MEM_CTRL][t=87990000] Lane 0 data ready: TL=0xdc TR=0x90 BL=0xaa BR=0xb2 | xi=4 yi=2 fx=252 fy=126
+# [SIMD][RUN=2][t=88030000] L0 WRITE addr=28 pix=0x7f ox=4 oy=2 xi=4 yi=2 fx=252 fy=126
+# [SIMD][RUN=2][t=88030000] L1 WRITE addr=29 pix=0x94 ox=5 oy=2 xi=6 yi=2 fx=59 fy=126
+# [SIMD][RUN=2][t=88030000] L2 WRITE addr=30 pix=0x9d ox=6 oy=2 xi=7 yi=2 fx=122 fy=126
+# [SIMD][RUN=2][t=88030000] L3 WRITE addr=31 pix=0xaa ox=7 oy=2 xi=8 yi=2 fx=185 fy=126
+# [MEM_READ][t=88110000] raddr0=0x022 raddr1=0x032
+# [SIMD][MEM_CTRL][t=88170000] Lane 0 data ready: TL=0x90 TR=0x99 BL=0xb2 BR=0xbb | xi=9 yi=2 fx=248 fy=126
+# [SIMD][MEM_CTRL][t=88190000] Lane 0 data ready: TL=0x90 TR=0x99 BL=0xb2 BR=0xbb | xi=9 yi=2 fx=248 fy=126
+# [SIMD][MEM_CTRL][t=88210000] Lane 1 data ready: TL=0x90 TR=0x99 BL=0xb2 BR=0xbb | xi=11 yi=2 fx=55 fy=126
+# [MEM_READ][t=88250000] raddr0=0x022 raddr1=0x032
+# [SIMD][MEM_CTRL][t=88330000] Lane 1 data ready: TL=0xa1 TR=0xdc BL=0xc3 BR=0xaa | xi=11 yi=2 fx=55 fy=126
+# [SIMD][MEM_CTRL][t=88350000] Lane 1 data ready: TL=0xa1 TR=0xdc BL=0xc3 BR=0xaa | xi=11 yi=2 fx=55 fy=126
+# [SIMD][MEM_CTRL][t=88370000] Lane 2 data ready: TL=0xa1 TR=0xdc BL=0xc3 BR=0xaa | xi=12 yi=2 fx=118 fy=126
+# [MEM_READ][t=88410000] raddr0=0x023 raddr1=0x033
+# [SIMD][MEM_CTRL][t=88470000] Lane 2 data ready: TL=0xaa TR=0xb2 BL=0xdc BR=0xd4 | xi=12 yi=2 fx=118 fy=126
+# [SIMD][MEM_CTRL][t=88490000] Lane 2 data ready: TL=0xaa TR=0xb2 BL=0xdc BR=0xd4 | xi=12 yi=2 fx=118 fy=126
+# [SIMD][MEM_CTRL][t=88510000] Lane 3 data ready: TL=0xaa TR=0xb2 BL=0xdc BR=0xd4 | xi=13 yi=2 fx=181 fy=126
+# [MEM_READ][t=88550000] raddr0=0x023 raddr1=0x033
+# [SIMD][MEM_CTRL][t=88610000] Lane 3 data ready: TL=0xb2 TR=0xbb BL=0xd4 BR=0xdd | xi=13 yi=2 fx=181 fy=126
+# [SIMD][MEM_CTRL][t=88630000] Lane 3 data ready: TL=0xb2 TR=0xbb BL=0xd4 BR=0xdd | xi=13 yi=2 fx=181 fy=126
+# [SIMD][MEM_CTRL][t=88650000] Lane 0 data ready: TL=0xb2 TR=0xbb BL=0xd4 BR=0xdd | xi=9 yi=2 fx=248 fy=126
+# [SIMD][RUN=2][t=88690000] L0 WRITE addr=32 pix=0xa9 ox=8 oy=2 xi=9 yi=2 fx=248 fy=126
+# [SIMD][RUN=2][t=88690000] L1 WRITE addr=33 pix=0xb6 ox=9 oy=2 xi=11 yi=2 fx=55 fy=126
+# [SIMD][RUN=2][t=88690000] L2 WRITE addr=34 pix=0xc3 ox=10 oy=2 xi=12 yi=2 fx=118 fy=126
+# [SIMD][RUN=2][t=88690000] L3 WRITE addr=35 pix=0xc9 ox=11 oy=2 xi=13 yi=2 fx=181 fy=126
+# [MEM_READ][t=88790000] raddr0=0x023 raddr1=0x033
+# [SIMD][MEM_CTRL][t=88850000] Lane 0 data ready: TL=0xaa TR=0xb2 BL=0xdc BR=0xd4 | xi=0 yi=3 fx=0 fy=189
+# [SIMD][MEM_CTRL][t=88870000] Lane 0 data ready: TL=0xaa TR=0xb2 BL=0xdc BR=0xd4 | xi=0 yi=3 fx=0 fy=189
+# [SIMD][MEM_CTRL][t=88890000] Lane 1 data ready: TL=0xaa TR=0xb2 BL=0xdc BR=0xd4 | xi=1 yi=3 fx=63 fy=189
+# [MEM_READ][t=88930000] raddr0=0x030 raddr1=0x040
+# [SIMD][MEM_CTRL][t=88990000] Lane 1 data ready: TL=0x6e TR=0x77 BL=0x00 BR=0x00 | xi=1 yi=3 fx=63 fy=189
+# [SIMD][MEM_CTRL][t=89010000] Lane 1 data ready: TL=0x6e TR=0x77 BL=0x00 BR=0x00 | xi=1 yi=3 fx=63 fy=189
+# [SIMD][MEM_CTRL][t=89030000] Lane 2 data ready: TL=0x6e TR=0x77 BL=0x00 BR=0x00 | xi=2 yi=3 fx=126 fy=189
+# [MEM_READ][t=89070000] raddr0=0x030 raddr1=0x040
+# [SIMD][MEM_CTRL][t=89130000] Lane 2 data ready: TL=0x77 TR=0xdc BL=0x00 BR=0x00 | xi=2 yi=3 fx=126 fy=189
+# [SIMD][MEM_CTRL][t=89150000] Lane 2 data ready: TL=0x77 TR=0xdc BL=0x00 BR=0x00 | xi=2 yi=3 fx=126 fy=189
+# [SIMD][MEM_CTRL][t=89170000] Lane 3 data ready: TL=0x77 TR=0xdc BL=0x00 BR=0x00 | xi=3 yi=3 fx=189 fy=189
+# [MEM_READ][t=89210000] raddr0=0x030 raddr1=0x040
+# [SIMD][MEM_CTRL][t=89290000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x00 BR=0x00 | xi=3 yi=3 fx=189 fy=189
+# [SIMD][MEM_CTRL][t=89310000] Lane 3 data ready: TL=0xdc TR=0xdc BL=0x00 BR=0x00 | xi=3 yi=3 fx=189 fy=189
+# [SIMD][MEM_CTRL][t=89330000] Lane 0 data ready: TL=0xdc TR=0xdc BL=0x00 BR=0x00 | xi=0 yi=3 fx=0 fy=189
+# [SIMD][RUN=2][t=89370000] L0 WRITE addr=36 pix=0xcf ox=0 oy=3 xi=0 yi=3 fx=0 fy=189
+# [SIMD][RUN=2][t=89370000] L1 WRITE addr=37 pix=0x1d ox=1 oy=3 xi=1 yi=3 fx=63 fy=189
+# [SIMD][RUN=2][t=89370000] L2 WRITE addr=38 pix=0x2c ox=2 oy=3 xi=2 yi=3 fx=126 fy=189
+# [SIMD][RUN=2][t=89370000] L3 WRITE addr=39 pix=0x3a ox=3 oy=3 xi=3 yi=3 fx=189 fy=189
+# [MEM_READ][t=89450000] raddr0=0x031 raddr1=0x041
+# [SIMD][MEM_CTRL][t=89510000] Lane 0 data ready: TL=0x88 TR=0x90 BL=0x00 BR=0x00 | xi=4 yi=3 fx=252 fy=189
+# [SIMD][MEM_CTRL][t=89530000] Lane 0 data ready: TL=0x88 TR=0x90 BL=0x00 BR=0x00 | xi=4 yi=3 fx=252 fy=189
+# [SIMD][MEM_CTRL][t=89550000] Lane 1 data ready: TL=0x88 TR=0x90 BL=0x00 BR=0x00 | xi=6 yi=3 fx=59 fy=189
+# [MEM_READ][t=89590000] raddr0=0x031 raddr1=0x041
+# [SIMD][MEM_CTRL][t=89650000] Lane 1 data ready: TL=0x99 TR=0xa1 BL=0x00 BR=0x00 | xi=6 yi=3 fx=59 fy=189
+# [SIMD][MEM_CTRL][t=89670000] Lane 1 data ready: TL=0x99 TR=0xa1 BL=0x00 BR=0x00 | xi=6 yi=3 fx=59 fy=189
+# [SIMD][MEM_CTRL][t=89690000] Lane 2 data ready: TL=0x99 TR=0xa1 BL=0x00 BR=0x00 | xi=7 yi=3 fx=122 fy=189
+# [MEM_READ][t=89730000] raddr0=0x031 raddr1=0x041
+# [SIMD][MEM_CTRL][t=89810000] Lane 2 data ready: TL=0xa1 TR=0x88 BL=0x00 BR=0x00 | xi=7 yi=3 fx=122 fy=189
+# [SIMD][MEM_CTRL][t=89830000] Lane 2 data ready: TL=0xa1 TR=0x88 BL=0x00 BR=0x00 | xi=7 yi=3 fx=122 fy=189
+# [SIMD][MEM_CTRL][t=89850000] Lane 3 data ready: TL=0xa1 TR=0x88 BL=0x00 BR=0x00 | xi=8 yi=3 fx=185 fy=189
+# [MEM_READ][t=89890000] raddr0=0x032 raddr1=0x042
+# [SIMD][MEM_CTRL][t=89950000] Lane 3 data ready: TL=0xaa TR=0xb2 BL=0x00 BR=0x00 | xi=8 yi=3 fx=185 fy=189
+# [SIMD][MEM_CTRL][t=89970000] Lane 3 data ready: TL=0xaa TR=0xb2 BL=0x00 BR=0x00 | xi=8 yi=3 fx=185 fy=189
+# [SIMD][MEM_CTRL][t=89990000] Lane 0 data ready: TL=0xaa TR=0xb2 BL=0x00 BR=0x00 | xi=4 yi=3 fx=252 fy=189
+# [SIMD][RUN=2][t=90030000] L0 WRITE addr=40 pix=0x26 ox=4 oy=3 xi=4 yi=3 fx=252 fy=189
+# [SIMD][RUN=2][t=90030000] L1 WRITE addr=41 pix=0x29 ox=5 oy=3 xi=6 yi=3 fx=59 fy=189
+# [SIMD][RUN=2][t=90030000] L2 WRITE addr=42 pix=0x27 ox=6 oy=3 xi=7 yi=3 fx=122 fy=189
+# [SIMD][RUN=2][t=90030000] L3 WRITE addr=43 pix=0x2e ox=7 oy=3 xi=8 yi=3 fx=185 fy=189
+# [MEM_READ][t=90110000] raddr0=0x032 raddr1=0x042
+# [SIMD][MEM_CTRL][t=90170000] Lane 0 data ready: TL=0xb2 TR=0xbb BL=0x00 BR=0x00 | xi=9 yi=3 fx=248 fy=189
+# [SIMD][MEM_CTRL][t=90190000] Lane 0 data ready: TL=0xb2 TR=0xbb BL=0x00 BR=0x00 | xi=9 yi=3 fx=248 fy=189
+# [SIMD][MEM_CTRL][t=90210000] Lane 1 data ready: TL=0xb2 TR=0xbb BL=0x00 BR=0x00 | xi=11 yi=3 fx=55 fy=189
+# [MEM_READ][t=90250000] raddr0=0x032 raddr1=0x042
+# [SIMD][MEM_CTRL][t=90330000] Lane 1 data ready: TL=0xc3 TR=0xaa BL=0x00 BR=0x00 | xi=11 yi=3 fx=55 fy=189
+# [SIMD][MEM_CTRL][t=90350000] Lane 1 data ready: TL=0xc3 TR=0xaa BL=0x00 BR=0x00 | xi=11 yi=3 fx=55 fy=189
+# [SIMD][MEM_CTRL][t=90370000] Lane 2 data ready: TL=0xc3 TR=0xaa BL=0x00 BR=0x00 | xi=12 yi=3 fx=118 fy=189
+# [MEM_READ][t=90410000] raddr0=0x033 raddr1=0x043
+# [SIMD][MEM_CTRL][t=90470000] Lane 2 data ready: TL=0xdc TR=0xd4 BL=0x00 BR=0x00 | xi=12 yi=3 fx=118 fy=189
+# [SIMD][MEM_CTRL][t=90490000] Lane 2 data ready: TL=0xdc TR=0xd4 BL=0x00 BR=0x00 | xi=12 yi=3 fx=118 fy=189
+# [SIMD][MEM_CTRL][t=90510000] Lane 3 data ready: TL=0xdc TR=0xd4 BL=0x00 BR=0x00 | xi=13 yi=3 fx=181 fy=189
+# [MEM_READ][t=90550000] raddr0=0x033 raddr1=0x043
+# [SIMD][MEM_CTRL][t=90610000] Lane 3 data ready: TL=0xd4 TR=0xdd BL=0x00 BR=0x00 | xi=13 yi=3 fx=181 fy=189
+# [SIMD][MEM_CTRL][t=90630000] Lane 3 data ready: TL=0xd4 TR=0xdd BL=0x00 BR=0x00 | xi=13 yi=3 fx=181 fy=189
+# [SIMD][MEM_CTRL][t=90650000] Lane 0 data ready: TL=0xd4 TR=0xdd BL=0x00 BR=0x00 | xi=9 yi=3 fx=248 fy=189
+# [SIMD][RUN=2][t=90690000] L0 WRITE addr=44 pix=0x31 ox=8 oy=3 xi=9 yi=3 fx=248 fy=189
+# [SIMD][RUN=2][t=90690000] L1 WRITE addr=45 pix=0x32 ox=9 oy=3 xi=11 yi=3 fx=55 fy=189
+# [SIMD][RUN=2][t=90690000] L2 WRITE addr=46 pix=0x39 ox=10 oy=3 xi=12 yi=3 fx=118 fy=189
+# [SIMD][RUN=2][t=90690000] L3 WRITE addr=47 pix=0x39 ox=11 oy=3 xi=13 yi=3 fx=181 fy=189
+# [MEM_READ][t=90790000] raddr0=0x033 raddr1=0x043
+# [SIMD][MEM_CTRL][t=90850000] Lane 0 data ready: TL=0xdc TR=0xd4 BL=0x00 BR=0x00 | xi=0 yi=4 fx=0 fy=252
+# [SIMD][MEM_CTRL][t=90870000] Lane 0 data ready: TL=0xdc TR=0xd4 BL=0x00 BR=0x00 | xi=0 yi=4 fx=0 fy=252
+# [SIMD][MEM_CTRL][t=90890000] Lane 1 data ready: TL=0xdc TR=0xd4 BL=0x00 BR=0x00 | xi=1 yi=4 fx=63 fy=252
+# [MEM_READ][t=90930000] raddr0=0x040 raddr1=0x050
+# [SIMD][MEM_CTRL][t=90990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=4 fx=63 fy=252
+# [SIMD][MEM_CTRL][t=91010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=4 fx=63 fy=252
+# [SIMD][MEM_CTRL][t=91030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=4 fx=126 fy=252
+# [MEM_READ][t=91070000] raddr0=0x040 raddr1=0x050
+# [SIMD][MEM_CTRL][t=91130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=4 fx=126 fy=252
+# [SIMD][MEM_CTRL][t=91150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=4 fx=126 fy=252
+# [SIMD][MEM_CTRL][t=91170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=4 fx=189 fy=252
+# [MEM_READ][t=91210000] raddr0=0x040 raddr1=0x050
+# [SIMD][MEM_CTRL][t=91290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=4 fx=189 fy=252
+# [SIMD][MEM_CTRL][t=91310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=4 fx=189 fy=252
+# [SIMD][MEM_CTRL][t=91330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=4 fx=0 fy=252
+# [SIMD][RUN=2][t=91370000] L0 WRITE addr=48 pix=0x03 ox=0 oy=4 xi=0 yi=4 fx=0 fy=252
+# [SIMD][RUN=2][t=91370000] L1 WRITE addr=49 pix=0x00 ox=1 oy=4 xi=1 yi=4 fx=63 fy=252
+# [SIMD][RUN=2][t=91370000] L2 WRITE addr=50 pix=0x00 ox=2 oy=4 xi=2 yi=4 fx=126 fy=252
+# [SIMD][RUN=2][t=91370000] L3 WRITE addr=51 pix=0x00 ox=3 oy=4 xi=3 yi=4 fx=189 fy=252
+# [MEM_READ][t=91450000] raddr0=0x041 raddr1=0x051
+# [SIMD][MEM_CTRL][t=91510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=4 fx=252 fy=252
+# [SIMD][MEM_CTRL][t=91530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=4 fx=252 fy=252
+# [SIMD][MEM_CTRL][t=91550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=4 fx=59 fy=252
+# [MEM_READ][t=91590000] raddr0=0x041 raddr1=0x051
+# [SIMD][MEM_CTRL][t=91650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=4 fx=59 fy=252
+# [SIMD][MEM_CTRL][t=91670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=4 fx=59 fy=252
+# [SIMD][MEM_CTRL][t=91690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=4 fx=122 fy=252
+# [MEM_READ][t=91730000] raddr0=0x041 raddr1=0x051
+# [SIMD][MEM_CTRL][t=91810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=4 fx=122 fy=252
+# [SIMD][MEM_CTRL][t=91830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=4 fx=122 fy=252
+# [SIMD][MEM_CTRL][t=91850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=4 fx=185 fy=252
+# [MEM_READ][t=91890000] raddr0=0x042 raddr1=0x052
+# [SIMD][MEM_CTRL][t=91950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=4 fx=185 fy=252
+# [SIMD][MEM_CTRL][t=91970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=4 fx=185 fy=252
+# [SIMD][MEM_CTRL][t=91990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=4 fx=252 fy=252
+# [SIMD][RUN=2][t=92030000] L0 WRITE addr=52 pix=0x00 ox=4 oy=4 xi=4 yi=4 fx=252 fy=252
+# [SIMD][RUN=2][t=92030000] L1 WRITE addr=53 pix=0x00 ox=5 oy=4 xi=6 yi=4 fx=59 fy=252
+# [SIMD][RUN=2][t=92030000] L2 WRITE addr=54 pix=0x00 ox=6 oy=4 xi=7 yi=4 fx=122 fy=252
+# [SIMD][RUN=2][t=92030000] L3 WRITE addr=55 pix=0x00 ox=7 oy=4 xi=8 yi=4 fx=185 fy=252
+# [MEM_READ][t=92110000] raddr0=0x042 raddr1=0x052
+# [SIMD][MEM_CTRL][t=92170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=4 fx=248 fy=252
+# [SIMD][MEM_CTRL][t=92190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=4 fx=248 fy=252
+# [SIMD][MEM_CTRL][t=92210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=4 fx=55 fy=252
+# [MEM_READ][t=92250000] raddr0=0x042 raddr1=0x052
+# [SIMD][MEM_CTRL][t=92330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=4 fx=55 fy=252
+# [SIMD][MEM_CTRL][t=92350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=4 fx=55 fy=252
+# [SIMD][MEM_CTRL][t=92370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=4 fx=118 fy=252
+# [MEM_READ][t=92410000] raddr0=0x043 raddr1=0x053
+# [SIMD][MEM_CTRL][t=92470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=4 fx=118 fy=252
+# [SIMD][MEM_CTRL][t=92490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=4 fx=118 fy=252
+# [SIMD][MEM_CTRL][t=92510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=4 fx=181 fy=252
+# [MEM_READ][t=92550000] raddr0=0x043 raddr1=0x053
+# [SIMD][MEM_CTRL][t=92610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=4 fx=181 fy=252
+# [SIMD][MEM_CTRL][t=92630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=4 fx=181 fy=252
+# [SIMD][MEM_CTRL][t=92650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=4 fx=248 fy=252
+# [SIMD][RUN=2][t=92690000] L0 WRITE addr=56 pix=0x00 ox=8 oy=4 xi=9 yi=4 fx=248 fy=252
+# [SIMD][RUN=2][t=92690000] L1 WRITE addr=57 pix=0x00 ox=9 oy=4 xi=11 yi=4 fx=55 fy=252
+# [SIMD][RUN=2][t=92690000] L2 WRITE addr=58 pix=0x00 ox=10 oy=4 xi=12 yi=4 fx=118 fy=252
+# [SIMD][RUN=2][t=92690000] L3 WRITE addr=59 pix=0x00 ox=11 oy=4 xi=13 yi=4 fx=181 fy=252
+# [MEM_READ][t=92790000] raddr0=0x043 raddr1=0x053
+# [SIMD][MEM_CTRL][t=92850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=6 fx=0 fy=59
+# [SIMD][MEM_CTRL][t=92870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=6 fx=0 fy=59
+# [SIMD][MEM_CTRL][t=92890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=6 fx=63 fy=59
+# [MEM_READ][t=92930000] raddr0=0x060 raddr1=0x070
+# [SIMD][MEM_CTRL][t=92990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=6 fx=63 fy=59
+# [SIMD][MEM_CTRL][t=93010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=6 fx=63 fy=59
+# [SIMD][MEM_CTRL][t=93030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=6 fx=126 fy=59
+# [MEM_READ][t=93070000] raddr0=0x060 raddr1=0x070
+# [SIMD][MEM_CTRL][t=93130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=6 fx=126 fy=59
+# [SIMD][MEM_CTRL][t=93150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=6 fx=126 fy=59
+# [SIMD][MEM_CTRL][t=93170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=6 fx=189 fy=59
+# [MEM_READ][t=93210000] raddr0=0x060 raddr1=0x070
+# [SIMD][MEM_CTRL][t=93290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=6 fx=189 fy=59
+# [SIMD][MEM_CTRL][t=93310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=6 fx=189 fy=59
+# [SIMD][MEM_CTRL][t=93330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=6 fx=0 fy=59
+# [SIMD][RUN=2][t=93370000] L0 WRITE addr=60 pix=0x00 ox=0 oy=5 xi=0 yi=6 fx=0 fy=59
+# [SIMD][RUN=2][t=93370000] L1 WRITE addr=61 pix=0x00 ox=1 oy=5 xi=1 yi=6 fx=63 fy=59
+# [SIMD][RUN=2][t=93370000] L2 WRITE addr=62 pix=0x00 ox=2 oy=5 xi=2 yi=6 fx=126 fy=59
+# [SIMD][RUN=2][t=93370000] L3 WRITE addr=63 pix=0x00 ox=3 oy=5 xi=3 yi=6 fx=189 fy=59
+# [MEM_READ][t=93450000] raddr0=0x061 raddr1=0x071
+# [SIMD][MEM_CTRL][t=93510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=6 fx=252 fy=59
+# [SIMD][MEM_CTRL][t=93530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=6 fx=252 fy=59
+# [SIMD][MEM_CTRL][t=93550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=6 fx=59 fy=59
+# [MEM_READ][t=93590000] raddr0=0x061 raddr1=0x071
+# [SIMD][MEM_CTRL][t=93650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=6 fx=59 fy=59
+# [SIMD][MEM_CTRL][t=93670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=6 fx=59 fy=59
+# [SIMD][MEM_CTRL][t=93690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=6 fx=122 fy=59
+# [MEM_READ][t=93730000] raddr0=0x061 raddr1=0x071
+# [SIMD][MEM_CTRL][t=93810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=6 fx=122 fy=59
+# [SIMD][MEM_CTRL][t=93830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=6 fx=122 fy=59
+# [SIMD][MEM_CTRL][t=93850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=6 fx=185 fy=59
+# [MEM_READ][t=93890000] raddr0=0x062 raddr1=0x072
+# [SIMD][MEM_CTRL][t=93950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=6 fx=185 fy=59
+# [SIMD][MEM_CTRL][t=93970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=6 fx=185 fy=59
+# [SIMD][MEM_CTRL][t=93990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=6 fx=252 fy=59
+# [SIMD][RUN=2][t=94030000] L0 WRITE addr=64 pix=0x00 ox=4 oy=5 xi=4 yi=6 fx=252 fy=59
+# [SIMD][RUN=2][t=94030000] L1 WRITE addr=65 pix=0x00 ox=5 oy=5 xi=6 yi=6 fx=59 fy=59
+# [SIMD][RUN=2][t=94030000] L2 WRITE addr=66 pix=0x00 ox=6 oy=5 xi=7 yi=6 fx=122 fy=59
+# [SIMD][RUN=2][t=94030000] L3 WRITE addr=67 pix=0x00 ox=7 oy=5 xi=8 yi=6 fx=185 fy=59
+# [MEM_READ][t=94110000] raddr0=0x062 raddr1=0x072
+# [SIMD][MEM_CTRL][t=94170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=6 fx=248 fy=59
+# [SIMD][MEM_CTRL][t=94190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=6 fx=248 fy=59
+# [SIMD][MEM_CTRL][t=94210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=6 fx=55 fy=59
+# [MEM_READ][t=94250000] raddr0=0x062 raddr1=0x072
+# [SIMD][MEM_CTRL][t=94330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=6 fx=55 fy=59
+# [SIMD][MEM_CTRL][t=94350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=6 fx=55 fy=59
+# [SIMD][MEM_CTRL][t=94370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=6 fx=118 fy=59
+# [MEM_READ][t=94410000] raddr0=0x063 raddr1=0x073
+# [SIMD][MEM_CTRL][t=94470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=6 fx=118 fy=59
+# [SIMD][MEM_CTRL][t=94490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=6 fx=118 fy=59
+# [SIMD][MEM_CTRL][t=94510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=6 fx=181 fy=59
+# [MEM_READ][t=94550000] raddr0=0x063 raddr1=0x073
+# [SIMD][MEM_CTRL][t=94610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=6 fx=181 fy=59
+# [SIMD][MEM_CTRL][t=94630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=6 fx=181 fy=59
+# [SIMD][MEM_CTRL][t=94650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=6 fx=248 fy=59
+# [SIMD][RUN=2][t=94690000] L0 WRITE addr=68 pix=0x00 ox=8 oy=5 xi=9 yi=6 fx=248 fy=59
+# [SIMD][RUN=2][t=94690000] L1 WRITE addr=69 pix=0x00 ox=9 oy=5 xi=11 yi=6 fx=55 fy=59
+# [SIMD][RUN=2][t=94690000] L2 WRITE addr=70 pix=0x00 ox=10 oy=5 xi=12 yi=6 fx=118 fy=59
+# [SIMD][RUN=2][t=94690000] L3 WRITE addr=71 pix=0x00 ox=11 oy=5 xi=13 yi=6 fx=181 fy=59
+# [MEM_READ][t=94790000] raddr0=0x063 raddr1=0x073
+# [SIMD][MEM_CTRL][t=94850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=7 fx=0 fy=122
+# [SIMD][MEM_CTRL][t=94870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=7 fx=0 fy=122
+# [SIMD][MEM_CTRL][t=94890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=7 fx=63 fy=122
+# [MEM_READ][t=94930000] raddr0=0x070 raddr1=0x080
+# [SIMD][MEM_CTRL][t=94990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=7 fx=63 fy=122
+# [SIMD][MEM_CTRL][t=95010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=7 fx=63 fy=122
+# [SIMD][MEM_CTRL][t=95030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=7 fx=126 fy=122
+# [MEM_READ][t=95070000] raddr0=0x070 raddr1=0x080
+# [SIMD][MEM_CTRL][t=95130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=7 fx=126 fy=122
+# [SIMD][MEM_CTRL][t=95150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=7 fx=126 fy=122
+# [SIMD][MEM_CTRL][t=95170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=7 fx=189 fy=122
+# [MEM_READ][t=95210000] raddr0=0x070 raddr1=0x080
+# [SIMD][MEM_CTRL][t=95290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=7 fx=189 fy=122
+# [SIMD][MEM_CTRL][t=95310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=7 fx=189 fy=122
+# [SIMD][MEM_CTRL][t=95330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=7 fx=0 fy=122
+# [SIMD][RUN=2][t=95370000] L0 WRITE addr=72 pix=0x00 ox=0 oy=6 xi=0 yi=7 fx=0 fy=122
+# [SIMD][RUN=2][t=95370000] L1 WRITE addr=73 pix=0x00 ox=1 oy=6 xi=1 yi=7 fx=63 fy=122
+# [SIMD][RUN=2][t=95370000] L2 WRITE addr=74 pix=0x00 ox=2 oy=6 xi=2 yi=7 fx=126 fy=122
+# [SIMD][RUN=2][t=95370000] L3 WRITE addr=75 pix=0x00 ox=3 oy=6 xi=3 yi=7 fx=189 fy=122
+# [MEM_READ][t=95450000] raddr0=0x071 raddr1=0x081
+# [SIMD][MEM_CTRL][t=95510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=7 fx=252 fy=122
+# [SIMD][MEM_CTRL][t=95530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=7 fx=252 fy=122
+# [SIMD][MEM_CTRL][t=95550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=7 fx=59 fy=122
+# [MEM_READ][t=95590000] raddr0=0x071 raddr1=0x081
+# [SIMD][MEM_CTRL][t=95650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=7 fx=59 fy=122
+# [SIMD][MEM_CTRL][t=95670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=7 fx=59 fy=122
+# [SIMD][MEM_CTRL][t=95690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=7 fx=122 fy=122
+# [MEM_READ][t=95730000] raddr0=0x071 raddr1=0x081
+# [SIMD][MEM_CTRL][t=95810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=7 fx=122 fy=122
+# [SIMD][MEM_CTRL][t=95830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=7 fx=122 fy=122
+# [SIMD][MEM_CTRL][t=95850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=7 fx=185 fy=122
+# [MEM_READ][t=95890000] raddr0=0x072 raddr1=0x082
+# [SIMD][MEM_CTRL][t=95950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=7 fx=185 fy=122
+# [SIMD][MEM_CTRL][t=95970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=7 fx=185 fy=122
+# [SIMD][MEM_CTRL][t=95990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=7 fx=252 fy=122
+# [SIMD][RUN=2][t=96030000] L0 WRITE addr=76 pix=0x00 ox=4 oy=6 xi=4 yi=7 fx=252 fy=122
+# [SIMD][RUN=2][t=96030000] L1 WRITE addr=77 pix=0x00 ox=5 oy=6 xi=6 yi=7 fx=59 fy=122
+# [SIMD][RUN=2][t=96030000] L2 WRITE addr=78 pix=0x00 ox=6 oy=6 xi=7 yi=7 fx=122 fy=122
+# [SIMD][RUN=2][t=96030000] L3 WRITE addr=79 pix=0x00 ox=7 oy=6 xi=8 yi=7 fx=185 fy=122
+# [MEM_READ][t=96110000] raddr0=0x072 raddr1=0x082
+# [SIMD][MEM_CTRL][t=96170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=7 fx=248 fy=122
+# [SIMD][MEM_CTRL][t=96190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=7 fx=248 fy=122
+# [SIMD][MEM_CTRL][t=96210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=7 fx=55 fy=122
+# [MEM_READ][t=96250000] raddr0=0x072 raddr1=0x082
+# [SIMD][MEM_CTRL][t=96330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=7 fx=55 fy=122
+# [SIMD][MEM_CTRL][t=96350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=7 fx=55 fy=122
+# [SIMD][MEM_CTRL][t=96370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=7 fx=118 fy=122
+# [MEM_READ][t=96410000] raddr0=0x073 raddr1=0x083
+# [SIMD][MEM_CTRL][t=96470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=7 fx=118 fy=122
+# [SIMD][MEM_CTRL][t=96490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=7 fx=118 fy=122
+# [SIMD][MEM_CTRL][t=96510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=7 fx=181 fy=122
+# [MEM_READ][t=96550000] raddr0=0x073 raddr1=0x083
+# [SIMD][MEM_CTRL][t=96610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=7 fx=181 fy=122
+# [SIMD][MEM_CTRL][t=96630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=7 fx=181 fy=122
+# [SIMD][MEM_CTRL][t=96650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=7 fx=248 fy=122
+# [SIMD][RUN=2][t=96690000] L0 WRITE addr=80 pix=0x00 ox=8 oy=6 xi=9 yi=7 fx=248 fy=122
+# [SIMD][RUN=2][t=96690000] L1 WRITE addr=81 pix=0x00 ox=9 oy=6 xi=11 yi=7 fx=55 fy=122
+# [SIMD][RUN=2][t=96690000] L2 WRITE addr=82 pix=0x00 ox=10 oy=6 xi=12 yi=7 fx=118 fy=122
+# [SIMD][RUN=2][t=96690000] L3 WRITE addr=83 pix=0x00 ox=11 oy=6 xi=13 yi=7 fx=181 fy=122
+# [MEM_READ][t=96790000] raddr0=0x073 raddr1=0x083
+# [SIMD][MEM_CTRL][t=96850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=8 fx=0 fy=185
+# [SIMD][MEM_CTRL][t=96870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=8 fx=0 fy=185
+# [SIMD][MEM_CTRL][t=96890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=8 fx=63 fy=185
+# [MEM_READ][t=96930000] raddr0=0x080 raddr1=0x090
+# [SIMD][MEM_CTRL][t=96990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=8 fx=63 fy=185
+# [SIMD][MEM_CTRL][t=97010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=8 fx=63 fy=185
+# [SIMD][MEM_CTRL][t=97030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=8 fx=126 fy=185
+# [MEM_READ][t=97070000] raddr0=0x080 raddr1=0x090
+# [SIMD][MEM_CTRL][t=97130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=8 fx=126 fy=185
+# [SIMD][MEM_CTRL][t=97150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=8 fx=126 fy=185
+# [SIMD][MEM_CTRL][t=97170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=8 fx=189 fy=185
+# [MEM_READ][t=97210000] raddr0=0x080 raddr1=0x090
+# [SIMD][MEM_CTRL][t=97290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=8 fx=189 fy=185
+# [SIMD][MEM_CTRL][t=97310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=8 fx=189 fy=185
+# [SIMD][MEM_CTRL][t=97330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=8 fx=0 fy=185
+# [SIMD][RUN=2][t=97370000] L0 WRITE addr=84 pix=0x00 ox=0 oy=7 xi=0 yi=8 fx=0 fy=185
+# [SIMD][RUN=2][t=97370000] L1 WRITE addr=85 pix=0x00 ox=1 oy=7 xi=1 yi=8 fx=63 fy=185
+# [SIMD][RUN=2][t=97370000] L2 WRITE addr=86 pix=0x00 ox=2 oy=7 xi=2 yi=8 fx=126 fy=185
+# [SIMD][RUN=2][t=97370000] L3 WRITE addr=87 pix=0x00 ox=3 oy=7 xi=3 yi=8 fx=189 fy=185
+# [MEM_READ][t=97450000] raddr0=0x081 raddr1=0x091
+# [SIMD][MEM_CTRL][t=97510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=8 fx=252 fy=185
+# [SIMD][MEM_CTRL][t=97530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=8 fx=252 fy=185
+# [SIMD][MEM_CTRL][t=97550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=8 fx=59 fy=185
+# [MEM_READ][t=97590000] raddr0=0x081 raddr1=0x091
+# [SIMD][MEM_CTRL][t=97650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=8 fx=59 fy=185
+# [SIMD][MEM_CTRL][t=97670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=8 fx=59 fy=185
+# [SIMD][MEM_CTRL][t=97690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=8 fx=122 fy=185
+# [MEM_READ][t=97730000] raddr0=0x081 raddr1=0x091
+# [SIMD][MEM_CTRL][t=97810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=8 fx=122 fy=185
+# [SIMD][MEM_CTRL][t=97830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=8 fx=122 fy=185
+# [SIMD][MEM_CTRL][t=97850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=8 fx=185 fy=185
+# [MEM_READ][t=97890000] raddr0=0x082 raddr1=0x092
+# [SIMD][MEM_CTRL][t=97950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=8 fx=185 fy=185
+# [SIMD][MEM_CTRL][t=97970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=8 fx=185 fy=185
+# [SIMD][MEM_CTRL][t=97990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=8 fx=252 fy=185
+# [SIMD][RUN=2][t=98030000] L0 WRITE addr=88 pix=0x00 ox=4 oy=7 xi=4 yi=8 fx=252 fy=185
+# [SIMD][RUN=2][t=98030000] L1 WRITE addr=89 pix=0x00 ox=5 oy=7 xi=6 yi=8 fx=59 fy=185
+# [SIMD][RUN=2][t=98030000] L2 WRITE addr=90 pix=0x00 ox=6 oy=7 xi=7 yi=8 fx=122 fy=185
+# [SIMD][RUN=2][t=98030000] L3 WRITE addr=91 pix=0x00 ox=7 oy=7 xi=8 yi=8 fx=185 fy=185
+# [MEM_READ][t=98110000] raddr0=0x082 raddr1=0x092
+# [SIMD][MEM_CTRL][t=98170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=8 fx=248 fy=185
+# [SIMD][MEM_CTRL][t=98190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=8 fx=248 fy=185
+# [SIMD][MEM_CTRL][t=98210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=8 fx=55 fy=185
+# [MEM_READ][t=98250000] raddr0=0x082 raddr1=0x092
+# [SIMD][MEM_CTRL][t=98330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=8 fx=55 fy=185
+# [SIMD][MEM_CTRL][t=98350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=8 fx=55 fy=185
+# [SIMD][MEM_CTRL][t=98370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=8 fx=118 fy=185
+# [MEM_READ][t=98410000] raddr0=0x083 raddr1=0x093
+# [SIMD][MEM_CTRL][t=98470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=8 fx=118 fy=185
+# [SIMD][MEM_CTRL][t=98490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=8 fx=118 fy=185
+# [SIMD][MEM_CTRL][t=98510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=8 fx=181 fy=185
+# [MEM_READ][t=98550000] raddr0=0x083 raddr1=0x093
+# [SIMD][MEM_CTRL][t=98610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=8 fx=181 fy=185
+# [SIMD][MEM_CTRL][t=98630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=8 fx=181 fy=185
+# [SIMD][MEM_CTRL][t=98650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=8 fx=248 fy=185
+# [SIMD][RUN=2][t=98690000] L0 WRITE addr=92 pix=0x00 ox=8 oy=7 xi=9 yi=8 fx=248 fy=185
+# [SIMD][RUN=2][t=98690000] L1 WRITE addr=93 pix=0x00 ox=9 oy=7 xi=11 yi=8 fx=55 fy=185
+# [SIMD][RUN=2][t=98690000] L2 WRITE addr=94 pix=0x00 ox=10 oy=7 xi=12 yi=8 fx=118 fy=185
+# [SIMD][RUN=2][t=98690000] L3 WRITE addr=95 pix=0x00 ox=11 oy=7 xi=13 yi=8 fx=181 fy=185
+# [MEM_READ][t=98790000] raddr0=0x083 raddr1=0x093
+# [SIMD][MEM_CTRL][t=98850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=9 fx=0 fy=248
+# [SIMD][MEM_CTRL][t=98870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=9 fx=0 fy=248
+# [SIMD][MEM_CTRL][t=98890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=9 fx=63 fy=248
+# [MEM_READ][t=98930000] raddr0=0x090 raddr1=0x0a0
+# [SIMD][MEM_CTRL][t=98990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=9 fx=63 fy=248
+# [SIMD][MEM_CTRL][t=99010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=9 fx=63 fy=248
+# [SIMD][MEM_CTRL][t=99030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=9 fx=126 fy=248
+# [MEM_READ][t=99070000] raddr0=0x090 raddr1=0x0a0
+# [SIMD][MEM_CTRL][t=99130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=9 fx=126 fy=248
+# [SIMD][MEM_CTRL][t=99150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=9 fx=126 fy=248
+# [SIMD][MEM_CTRL][t=99170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=9 fx=189 fy=248
+# [MEM_READ][t=99210000] raddr0=0x090 raddr1=0x0a0
+# [SIMD][MEM_CTRL][t=99290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=9 fx=189 fy=248
+# [SIMD][MEM_CTRL][t=99310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=9 fx=189 fy=248
+# [SIMD][MEM_CTRL][t=99330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=9 fx=0 fy=248
+# [SIMD][RUN=2][t=99370000] L0 WRITE addr=96 pix=0x00 ox=0 oy=8 xi=0 yi=9 fx=0 fy=248
+# [SIMD][RUN=2][t=99370000] L1 WRITE addr=97 pix=0x00 ox=1 oy=8 xi=1 yi=9 fx=63 fy=248
+# [SIMD][RUN=2][t=99370000] L2 WRITE addr=98 pix=0x00 ox=2 oy=8 xi=2 yi=9 fx=126 fy=248
+# [SIMD][RUN=2][t=99370000] L3 WRITE addr=99 pix=0x00 ox=3 oy=8 xi=3 yi=9 fx=189 fy=248
+# [MEM_READ][t=99450000] raddr0=0x091 raddr1=0x0a1
+# [SIMD][MEM_CTRL][t=99510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=9 fx=252 fy=248
+# [SIMD][MEM_CTRL][t=99530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=9 fx=252 fy=248
+# [SIMD][MEM_CTRL][t=99550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=9 fx=59 fy=248
+# [MEM_READ][t=99590000] raddr0=0x091 raddr1=0x0a1
+# [SIMD][MEM_CTRL][t=99650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=9 fx=59 fy=248
+# [SIMD][MEM_CTRL][t=99670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=9 fx=59 fy=248
+# [SIMD][MEM_CTRL][t=99690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=9 fx=122 fy=248
+# [MEM_READ][t=99730000] raddr0=0x091 raddr1=0x0a1
+# [SIMD][MEM_CTRL][t=99810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=9 fx=122 fy=248
+# [SIMD][MEM_CTRL][t=99830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=9 fx=122 fy=248
+# [SIMD][MEM_CTRL][t=99850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=9 fx=185 fy=248
+# [MEM_READ][t=99890000] raddr0=0x092 raddr1=0x0a2
+# [SIMD][MEM_CTRL][t=99950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=9 fx=185 fy=248
+# [SIMD][MEM_CTRL][t=99970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=9 fx=185 fy=248
+# [SIMD][MEM_CTRL][t=99990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=9 fx=252 fy=248
+# [SIMD][RUN=2][t=100030000] L0 WRITE addr=100 pix=0x00 ox=4 oy=8 xi=4 yi=9 fx=252 fy=248
+# [SIMD][RUN=2][t=100030000] L1 WRITE addr=101 pix=0x00 ox=5 oy=8 xi=6 yi=9 fx=59 fy=248
+# [SIMD][RUN=2][t=100030000] L2 WRITE addr=102 pix=0x00 ox=6 oy=8 xi=7 yi=9 fx=122 fy=248
+# [SIMD][RUN=2][t=100030000] L3 WRITE addr=103 pix=0x00 ox=7 oy=8 xi=8 yi=9 fx=185 fy=248
+# [MEM_READ][t=100110000] raddr0=0x092 raddr1=0x0a2
+# [SIMD][MEM_CTRL][t=100170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=9 fx=248 fy=248
+# [SIMD][MEM_CTRL][t=100190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=9 fx=248 fy=248
+# [SIMD][MEM_CTRL][t=100210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=9 fx=55 fy=248
+# [MEM_READ][t=100250000] raddr0=0x092 raddr1=0x0a2
+# [SIMD][MEM_CTRL][t=100330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=9 fx=55 fy=248
+# [SIMD][MEM_CTRL][t=100350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=9 fx=55 fy=248
+# [SIMD][MEM_CTRL][t=100370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=9 fx=118 fy=248
+# [MEM_READ][t=100410000] raddr0=0x093 raddr1=0x0a3
+# [SIMD][MEM_CTRL][t=100470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=9 fx=118 fy=248
+# [SIMD][MEM_CTRL][t=100490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=9 fx=118 fy=248
+# [SIMD][MEM_CTRL][t=100510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=9 fx=181 fy=248
+# [MEM_READ][t=100550000] raddr0=0x093 raddr1=0x0a3
+# [SIMD][MEM_CTRL][t=100610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=9 fx=181 fy=248
+# [SIMD][MEM_CTRL][t=100630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=9 fx=181 fy=248
+# [SIMD][MEM_CTRL][t=100650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=9 fx=248 fy=248
+# [SIMD][RUN=2][t=100690000] L0 WRITE addr=104 pix=0x00 ox=8 oy=8 xi=9 yi=9 fx=248 fy=248
+# [SIMD][RUN=2][t=100690000] L1 WRITE addr=105 pix=0x00 ox=9 oy=8 xi=11 yi=9 fx=55 fy=248
+# [SIMD][RUN=2][t=100690000] L2 WRITE addr=106 pix=0x00 ox=10 oy=8 xi=12 yi=9 fx=118 fy=248
+# [SIMD][RUN=2][t=100690000] L3 WRITE addr=107 pix=0x00 ox=11 oy=8 xi=13 yi=9 fx=181 fy=248
+# [MEM_READ][t=100790000] raddr0=0x093 raddr1=0x0a3
+# [SIMD][MEM_CTRL][t=100850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=11 fx=0 fy=55
+# [SIMD][MEM_CTRL][t=100870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=11 fx=0 fy=55
+# [SIMD][MEM_CTRL][t=100890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=11 fx=63 fy=55
+# [MEM_READ][t=100930000] raddr0=0x0b0 raddr1=0x0c0
+# [SIMD][MEM_CTRL][t=100990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=11 fx=63 fy=55
+# [SIMD][MEM_CTRL][t=101010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=11 fx=63 fy=55
+# [SIMD][MEM_CTRL][t=101030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=11 fx=126 fy=55
+# [MEM_READ][t=101070000] raddr0=0x0b0 raddr1=0x0c0
+# [SIMD][MEM_CTRL][t=101130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=11 fx=126 fy=55
+# [SIMD][MEM_CTRL][t=101150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=11 fx=126 fy=55
+# [SIMD][MEM_CTRL][t=101170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=11 fx=189 fy=55
+# [MEM_READ][t=101210000] raddr0=0x0b0 raddr1=0x0c0
+# [SIMD][MEM_CTRL][t=101290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=11 fx=189 fy=55
+# [SIMD][MEM_CTRL][t=101310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=11 fx=189 fy=55
+# [SIMD][MEM_CTRL][t=101330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=11 fx=0 fy=55
+# [SIMD][RUN=2][t=101370000] L0 WRITE addr=108 pix=0x00 ox=0 oy=9 xi=0 yi=11 fx=0 fy=55
+# [SIMD][RUN=2][t=101370000] L1 WRITE addr=109 pix=0x00 ox=1 oy=9 xi=1 yi=11 fx=63 fy=55
+# [SIMD][RUN=2][t=101370000] L2 WRITE addr=110 pix=0x00 ox=2 oy=9 xi=2 yi=11 fx=126 fy=55
+# [SIMD][RUN=2][t=101370000] L3 WRITE addr=111 pix=0x00 ox=3 oy=9 xi=3 yi=11 fx=189 fy=55
+# [MEM_READ][t=101450000] raddr0=0x0b1 raddr1=0x0c1
+# [SIMD][MEM_CTRL][t=101510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=11 fx=252 fy=55
+# [SIMD][MEM_CTRL][t=101530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=11 fx=252 fy=55
+# [SIMD][MEM_CTRL][t=101550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=11 fx=59 fy=55
+# [MEM_READ][t=101590000] raddr0=0x0b1 raddr1=0x0c1
+# [SIMD][MEM_CTRL][t=101650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=11 fx=59 fy=55
+# [SIMD][MEM_CTRL][t=101670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=11 fx=59 fy=55
+# [SIMD][MEM_CTRL][t=101690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=11 fx=122 fy=55
+# [MEM_READ][t=101730000] raddr0=0x0b1 raddr1=0x0c1
+# [SIMD][MEM_CTRL][t=101810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=11 fx=122 fy=55
+# [SIMD][MEM_CTRL][t=101830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=11 fx=122 fy=55
+# [SIMD][MEM_CTRL][t=101850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=11 fx=185 fy=55
+# [MEM_READ][t=101890000] raddr0=0x0b2 raddr1=0x0c2
+# [SIMD][MEM_CTRL][t=101950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=11 fx=185 fy=55
+# [SIMD][MEM_CTRL][t=101970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=11 fx=185 fy=55
+# [SIMD][MEM_CTRL][t=101990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=11 fx=252 fy=55
+# [SIMD][RUN=2][t=102030000] L0 WRITE addr=112 pix=0x00 ox=4 oy=9 xi=4 yi=11 fx=252 fy=55
+# [SIMD][RUN=2][t=102030000] L1 WRITE addr=113 pix=0x00 ox=5 oy=9 xi=6 yi=11 fx=59 fy=55
+# [SIMD][RUN=2][t=102030000] L2 WRITE addr=114 pix=0x00 ox=6 oy=9 xi=7 yi=11 fx=122 fy=55
+# [SIMD][RUN=2][t=102030000] L3 WRITE addr=115 pix=0x00 ox=7 oy=9 xi=8 yi=11 fx=185 fy=55
+# [MEM_READ][t=102110000] raddr0=0x0b2 raddr1=0x0c2
+# [SIMD][MEM_CTRL][t=102170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=11 fx=248 fy=55
+# [SIMD][MEM_CTRL][t=102190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=11 fx=248 fy=55
+# [SIMD][MEM_CTRL][t=102210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=11 fx=55 fy=55
+# [MEM_READ][t=102250000] raddr0=0x0b2 raddr1=0x0c2
+# [SIMD][MEM_CTRL][t=102330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=11 fx=55 fy=55
+# [SIMD][MEM_CTRL][t=102350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=11 fx=55 fy=55
+# [SIMD][MEM_CTRL][t=102370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=11 fx=118 fy=55
+# [MEM_READ][t=102410000] raddr0=0x0b3 raddr1=0x0c3
+# [SIMD][MEM_CTRL][t=102470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=11 fx=118 fy=55
+# [SIMD][MEM_CTRL][t=102490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=11 fx=118 fy=55
+# [SIMD][MEM_CTRL][t=102510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=11 fx=181 fy=55
+# [MEM_READ][t=102550000] raddr0=0x0b3 raddr1=0x0c3
+# [SIMD][MEM_CTRL][t=102610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=11 fx=181 fy=55
+# [SIMD][MEM_CTRL][t=102630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=11 fx=181 fy=55
+# [SIMD][MEM_CTRL][t=102650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=11 fx=248 fy=55
+# [SIMD][RUN=2][t=102690000] L0 WRITE addr=116 pix=0x00 ox=8 oy=9 xi=9 yi=11 fx=248 fy=55
+# [SIMD][RUN=2][t=102690000] L1 WRITE addr=117 pix=0x00 ox=9 oy=9 xi=11 yi=11 fx=55 fy=55
+# [SIMD][RUN=2][t=102690000] L2 WRITE addr=118 pix=0x00 ox=10 oy=9 xi=12 yi=11 fx=118 fy=55
+# [SIMD][RUN=2][t=102690000] L3 WRITE addr=119 pix=0x00 ox=11 oy=9 xi=13 yi=11 fx=181 fy=55
+# [MEM_READ][t=102790000] raddr0=0x0b3 raddr1=0x0c3
+# [SIMD][MEM_CTRL][t=102850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=12 fx=0 fy=118
+# [SIMD][MEM_CTRL][t=102870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=12 fx=0 fy=118
+# [SIMD][MEM_CTRL][t=102890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=12 fx=63 fy=118
+# [MEM_READ][t=102930000] raddr0=0x0c0 raddr1=0x0d0
+# [SIMD][MEM_CTRL][t=102990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=12 fx=63 fy=118
+# [SIMD][MEM_CTRL][t=103010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=12 fx=63 fy=118
+# [SIMD][MEM_CTRL][t=103030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=12 fx=126 fy=118
+# [MEM_READ][t=103070000] raddr0=0x0c0 raddr1=0x0d0
+# [SIMD][MEM_CTRL][t=103130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=12 fx=126 fy=118
+# [SIMD][MEM_CTRL][t=103150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=12 fx=126 fy=118
+# [SIMD][MEM_CTRL][t=103170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=12 fx=189 fy=118
+# [MEM_READ][t=103210000] raddr0=0x0c0 raddr1=0x0d0
+# [SIMD][MEM_CTRL][t=103290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=12 fx=189 fy=118
+# [SIMD][MEM_CTRL][t=103310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=12 fx=189 fy=118
+# [SIMD][MEM_CTRL][t=103330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=12 fx=0 fy=118
+# [SIMD][RUN=2][t=103370000] L0 WRITE addr=120 pix=0x00 ox=0 oy=10 xi=0 yi=12 fx=0 fy=118
+# [SIMD][RUN=2][t=103370000] L1 WRITE addr=121 pix=0x00 ox=1 oy=10 xi=1 yi=12 fx=63 fy=118
+# [SIMD][RUN=2][t=103370000] L2 WRITE addr=122 pix=0x00 ox=2 oy=10 xi=2 yi=12 fx=126 fy=118
+# [SIMD][RUN=2][t=103370000] L3 WRITE addr=123 pix=0x00 ox=3 oy=10 xi=3 yi=12 fx=189 fy=118
+# [MEM_READ][t=103450000] raddr0=0x0c1 raddr1=0x0d1
+# [SIMD][MEM_CTRL][t=103510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=12 fx=252 fy=118
+# [SIMD][MEM_CTRL][t=103530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=12 fx=252 fy=118
+# [SIMD][MEM_CTRL][t=103550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=12 fx=59 fy=118
+# [MEM_READ][t=103590000] raddr0=0x0c1 raddr1=0x0d1
+# [SIMD][MEM_CTRL][t=103650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=12 fx=59 fy=118
+# [SIMD][MEM_CTRL][t=103670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=12 fx=59 fy=118
+# [SIMD][MEM_CTRL][t=103690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=12 fx=122 fy=118
+# [MEM_READ][t=103730000] raddr0=0x0c1 raddr1=0x0d1
+# [SIMD][MEM_CTRL][t=103810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=12 fx=122 fy=118
+# [SIMD][MEM_CTRL][t=103830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=12 fx=122 fy=118
+# [SIMD][MEM_CTRL][t=103850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=12 fx=185 fy=118
+# [MEM_READ][t=103890000] raddr0=0x0c2 raddr1=0x0d2
+# [SIMD][MEM_CTRL][t=103950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=12 fx=185 fy=118
+# [SIMD][MEM_CTRL][t=103970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=12 fx=185 fy=118
+# [SIMD][MEM_CTRL][t=103990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=12 fx=252 fy=118
+# [SIMD][RUN=2][t=104030000] L0 WRITE addr=124 pix=0x00 ox=4 oy=10 xi=4 yi=12 fx=252 fy=118
+# [SIMD][RUN=2][t=104030000] L1 WRITE addr=125 pix=0x00 ox=5 oy=10 xi=6 yi=12 fx=59 fy=118
+# [SIMD][RUN=2][t=104030000] L2 WRITE addr=126 pix=0x00 ox=6 oy=10 xi=7 yi=12 fx=122 fy=118
+# [SIMD][RUN=2][t=104030000] L3 WRITE addr=127 pix=0x00 ox=7 oy=10 xi=8 yi=12 fx=185 fy=118
+# [MEM_READ][t=104110000] raddr0=0x0c2 raddr1=0x0d2
+# [SIMD][MEM_CTRL][t=104170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=12 fx=248 fy=118
+# [SIMD][MEM_CTRL][t=104190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=12 fx=248 fy=118
+# [SIMD][MEM_CTRL][t=104210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=12 fx=55 fy=118
+# [MEM_READ][t=104250000] raddr0=0x0c2 raddr1=0x0d2
+# [SIMD][MEM_CTRL][t=104330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=12 fx=55 fy=118
+# [SIMD][MEM_CTRL][t=104350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=12 fx=55 fy=118
+# [SIMD][MEM_CTRL][t=104370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=12 fx=118 fy=118
+# [MEM_READ][t=104410000] raddr0=0x0c3 raddr1=0x0d3
+# [SIMD][MEM_CTRL][t=104470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=12 fx=118 fy=118
+# [SIMD][MEM_CTRL][t=104490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=12 fx=118 fy=118
+# [SIMD][MEM_CTRL][t=104510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=12 fx=181 fy=118
+# [MEM_READ][t=104550000] raddr0=0x0c3 raddr1=0x0d3
+# [SIMD][MEM_CTRL][t=104610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=12 fx=181 fy=118
+# [SIMD][MEM_CTRL][t=104630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=12 fx=181 fy=118
+# [SIMD][MEM_CTRL][t=104650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=12 fx=248 fy=118
+# [SIMD][RUN=2][t=104690000] L0 WRITE addr=128 pix=0x00 ox=8 oy=10 xi=9 yi=12 fx=248 fy=118
+# [SIMD][RUN=2][t=104690000] L1 WRITE addr=129 pix=0x00 ox=9 oy=10 xi=11 yi=12 fx=55 fy=118
+# [SIMD][RUN=2][t=104690000] L2 WRITE addr=130 pix=0x00 ox=10 oy=10 xi=12 yi=12 fx=118 fy=118
+# [SIMD][RUN=2][t=104690000] L3 WRITE addr=131 pix=0x00 ox=11 oy=10 xi=13 yi=12 fx=181 fy=118
+# [MEM_READ][t=104790000] raddr0=0x0c3 raddr1=0x0d3
+# [SIMD][MEM_CTRL][t=104850000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=13 fx=0 fy=181
+# [SIMD][MEM_CTRL][t=104870000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=13 fx=0 fy=181
+# [SIMD][MEM_CTRL][t=104890000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=13 fx=63 fy=181
+# [MEM_READ][t=104930000] raddr0=0x0d0 raddr1=0x0e0
+# [SIMD][MEM_CTRL][t=104990000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=13 fx=63 fy=181
+# [SIMD][MEM_CTRL][t=105010000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=1 yi=13 fx=63 fy=181
+# [SIMD][MEM_CTRL][t=105030000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=13 fx=126 fy=181
+# [MEM_READ][t=105070000] raddr0=0x0d0 raddr1=0x0e0
+# [SIMD][MEM_CTRL][t=105130000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=13 fx=126 fy=181
+# [SIMD][MEM_CTRL][t=105150000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=2 yi=13 fx=126 fy=181
+# [SIMD][MEM_CTRL][t=105170000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=13 fx=189 fy=181
+# [MEM_READ][t=105210000] raddr0=0x0d0 raddr1=0x0e0
+# [SIMD][MEM_CTRL][t=105290000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=13 fx=189 fy=181
+# [SIMD][MEM_CTRL][t=105310000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=3 yi=13 fx=189 fy=181
+# [SIMD][MEM_CTRL][t=105330000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=0 yi=13 fx=0 fy=181
+# [SIMD][RUN=2][t=105370000] L0 WRITE addr=132 pix=0x00 ox=0 oy=11 xi=0 yi=13 fx=0 fy=181
+# [SIMD][RUN=2][t=105370000] L1 WRITE addr=133 pix=0x00 ox=1 oy=11 xi=1 yi=13 fx=63 fy=181
+# [SIMD][RUN=2][t=105370000] L2 WRITE addr=134 pix=0x00 ox=2 oy=11 xi=2 yi=13 fx=126 fy=181
+# [SIMD][RUN=2][t=105370000] L3 WRITE addr=135 pix=0x00 ox=3 oy=11 xi=3 yi=13 fx=189 fy=181
+# [MEM_READ][t=105450000] raddr0=0x0d1 raddr1=0x0e1
+# [SIMD][MEM_CTRL][t=105510000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=13 fx=252 fy=181
+# [SIMD][MEM_CTRL][t=105530000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=13 fx=252 fy=181
+# [SIMD][MEM_CTRL][t=105550000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=13 fx=59 fy=181
+# [MEM_READ][t=105590000] raddr0=0x0d1 raddr1=0x0e1
+# [SIMD][MEM_CTRL][t=105650000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=13 fx=59 fy=181
+# [SIMD][MEM_CTRL][t=105670000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=6 yi=13 fx=59 fy=181
+# [SIMD][MEM_CTRL][t=105690000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=13 fx=122 fy=181
+# [MEM_READ][t=105730000] raddr0=0x0d1 raddr1=0x0e1
+# [SIMD][MEM_CTRL][t=105810000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=13 fx=122 fy=181
+# [SIMD][MEM_CTRL][t=105830000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=7 yi=13 fx=122 fy=181
+# [SIMD][MEM_CTRL][t=105850000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=13 fx=185 fy=181
+# [MEM_READ][t=105890000] raddr0=0x0d2 raddr1=0x0e2
+# [SIMD][MEM_CTRL][t=105950000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=13 fx=185 fy=181
+# [SIMD][MEM_CTRL][t=105970000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=8 yi=13 fx=185 fy=181
+# [SIMD][MEM_CTRL][t=105990000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=4 yi=13 fx=252 fy=181
+# [SIMD][RUN=2][t=106030000] L0 WRITE addr=136 pix=0x00 ox=4 oy=11 xi=4 yi=13 fx=252 fy=181
+# [SIMD][RUN=2][t=106030000] L1 WRITE addr=137 pix=0x00 ox=5 oy=11 xi=6 yi=13 fx=59 fy=181
+# [SIMD][RUN=2][t=106030000] L2 WRITE addr=138 pix=0x00 ox=6 oy=11 xi=7 yi=13 fx=122 fy=181
+# [SIMD][RUN=2][t=106030000] L3 WRITE addr=139 pix=0x00 ox=7 oy=11 xi=8 yi=13 fx=185 fy=181
+# [MEM_READ][t=106110000] raddr0=0x0d2 raddr1=0x0e2
+# [SIMD][MEM_CTRL][t=106170000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=13 fx=248 fy=181
+# [SIMD][MEM_CTRL][t=106190000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=13 fx=248 fy=181
+# [SIMD][MEM_CTRL][t=106210000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=13 fx=55 fy=181
+# [MEM_READ][t=106250000] raddr0=0x0d2 raddr1=0x0e2
+# [SIMD][MEM_CTRL][t=106330000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=13 fx=55 fy=181
+# [SIMD][MEM_CTRL][t=106350000] Lane 1 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=11 yi=13 fx=55 fy=181
+# [SIMD][MEM_CTRL][t=106370000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=13 fx=118 fy=181
+# [MEM_READ][t=106410000] raddr0=0x0d3 raddr1=0x0e3
+# [SIMD][MEM_CTRL][t=106470000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=13 fx=118 fy=181
+# [SIMD][MEM_CTRL][t=106490000] Lane 2 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=12 yi=13 fx=118 fy=181
+# [SIMD][MEM_CTRL][t=106510000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=13 fx=181 fy=181
+# [MEM_READ][t=106550000] raddr0=0x0d3 raddr1=0x0e3
+# [SIMD][MEM_CTRL][t=106610000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=13 fx=181 fy=181
+# [SIMD][MEM_CTRL][t=106630000] Lane 3 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=13 yi=13 fx=181 fy=181
+# [SIMD][MEM_CTRL][t=106650000] Lane 0 data ready: TL=0x00 TR=0x00 BL=0x00 BR=0x00 | xi=9 yi=13 fx=248 fy=181
+# [SIMD][RUN=2][t=106690000] L0 WRITE addr=140 pix=0x00 ox=8 oy=11 xi=9 yi=13 fx=248 fy=181
+# [SIMD][RUN=2][t=106690000] L1 WRITE addr=141 pix=0x00 ox=9 oy=11 xi=11 yi=13 fx=55 fy=181
+# [SIMD][RUN=2][t=106690000] L2 WRITE addr=142 pix=0x00 ox=10 oy=11 xi=12 yi=13 fx=118 fy=181
+# [SIMD][RUN=2][t=106690000] L3 WRITE addr=143 pix=0x00 ox=11 oy=11 xi=13 yi=13 fx=181 fy=181
+# [TB][SIMD4] DONE detectado en t=106690000
 # [TB][SIMD4] out_w = 12, out_h = 12
 # [TB][SIMD4] perf: flops=1584 mem_rd=576 mem_wr=144
-# [TB] Volcando mem_out (12x12) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_simd.hex'
+# [TB] Volcando mem_out (12x12) a 'C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_simd_wide.hex'
 # [TB] Dump completado.
 # 
 # [TB][CMP] Comparando golden_seq (SEQ) vs mem_out (SIMD4) en 144 píxeles...
-# [CMP][1] addr=2 SEQ=0x79 SIMD=0xdc
-# [CMP][2] addr=3 SEQ=0xab SIMD=0xdc
-# [CMP][3] addr=4 SEQ=0xd9 SIMD=0xdc
-# [CMP][4] addr=5 SEQ=0x5a SIMD=0xdc
-# [CMP][5] addr=6 SEQ=0x8c SIMD=0xdc
-# [CMP][6] addr=7 SEQ=0xb4 SIMD=0xdc
-# [CMP][7] addr=8 SEQ=0xd8 SIMD=0xdc
-# [CMP][8] addr=9 SEQ=0x78 SIMD=0xdc
-# [CMP][9] addr=10 SEQ=0xa1 SIMD=0xdc
-# [CMP][10] addr=11 SEQ=0xbe SIMD=0xdc
-# [CMP][11] addr=12 SEQ=0xdc SIMD=0xbb
-# [CMP][12] addr=13 SEQ=0x3d SIMD=0xbf
-# [CMP][13] addr=14 SEQ=0x7c SIMD=0xc2
-# [CMP][14] addr=15 SEQ=0x26 SIMD=0xd5
-# [CMP][15] addr=16 SEQ=0x2c SIMD=0xad
-# [CMP][16] addr=17 SEQ=0x3d SIMD=0x95
-# [CMP][17] addr=18 SEQ=0x49 SIMD=0x37
-# [CMP][18] addr=19 SEQ=0x50 SIMD=0x2a
-# [CMP][19] addr=20 SEQ=0x57 SIMD=0x35
-# [CMP][20] addr=21 SEQ=0x68 SIMD=0x3f
-# [CMP][21] addr=22 SEQ=0x74 SIMD=0x4a
-# [CMP][22] addr=23 SEQ=0xa6 SIMD=0x54
-# [CMP][23] addr=24 SEQ=0x51 SIMD=0x59
-# [CMP][24] addr=25 SEQ=0x66 SIMD=0x6c
-# [CMP][25] addr=26 SEQ=0x56 SIMD=0x8d
-# [CMP][26] addr=27 SEQ=0x83 SIMD=0xb0
-# [CMP][27] addr=28 SEQ=0x37 SIMD=0x20
-# [CMP][28] addr=29 SEQ=0x48 SIMD=0x35
-# [CMP][29] addr=30 SEQ=0x53 SIMD=0x83
-# [CMP][30] addr=31 SEQ=0x5a SIMD=0x4c
-# [CMP][31] addr=32 SEQ=0x62 SIMD=0x3f
-# [CMP][32] addr=33 SEQ=0x72 SIMD=0x4a
-# [CMP][33] addr=34 SEQ=0xc4 SIMD=0x54
-# [CMP][34] addr=35 SEQ=0xa6 SIMD=0x5f
-# [CMP][35] addr=36 SEQ=0x3f SIMD=0x64
-# [CMP][36] addr=37 SEQ=0x29 SIMD=0x88
-# [CMP][37] addr=38 SEQ=0x71 SIMD=0xb0
-# [CMP][38] addr=39 SEQ=0x5a SIMD=0x92
-# [CMP][39] addr=40 SEQ=0xb1 SIMD=0x2b
-# [CMP][40] addr=41 SEQ=0x53 SIMD=0x2a
-# [CMP][41] addr=42 SEQ=0x5c SIMD=0x4a
-# [CMP][42] addr=43 SEQ=0x64 SIMD=0x9d
-# [CMP][43] addr=44 SEQ=0x6c SIMD=0x4d
-# [CMP][44] addr=45 SEQ=0xc2 SIMD=0x54
-# [CMP][45] addr=46 SEQ=0x92 SIMD=0x5f
-# [CMP][46] addr=47 SEQ=0x8f SIMD=0x69
-# [CMP][47] addr=48 SEQ=0x2c SIMD=0x6e
-# [CMP][48] addr=49 SEQ=0x33 SIMD=0xc6
-# [CMP][49] addr=50 SEQ=0x3b SIMD=0x8d
-# [CMP][50] addr=51 SEQ=0x6b SIMD=0x97
-# [CMP] Alcanzado límite de mismatches a mostrar (50).
-# [CMP] Total mismatches=50 (de 144 píxeles revisados).
+# [CMP] Total mismatches=0 (de 144 píxeles).
+# [CMP] ¡Perfecto! SEQ y SIMD4 coinciden.
 # [TB] Simulación terminada correctamente.
-# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(388)
-#    Time: 192130 ns  Iteration: 2  Instance: /tb_bilinear_seq
+# ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(382)
+#    Time: 106690 ns  Iteration: 2  Instance: /tb_bilinear_seq
 # 1
-# Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 388
-# End time: 01:36:07 on Nov 26,2025, Elapsed time: 0:16:50
+# Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 382
+# End time: 21:16:01 on Nov 26,2025, Elapsed time: 0:02:03
 # Errors: 0, Warnings: 0
