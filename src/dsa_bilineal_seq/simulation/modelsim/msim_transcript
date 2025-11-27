@@ -12,79 +12,79 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/wide_onchip_mem.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:55 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/wide_onchip_mem.sv 
 # -- Compiling module wide_onchip_mem
 # 
 # Top level modules:
 # 	wide_onchip_mem
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:55 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4_wide.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:55 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_simd4_wide.sv 
 # -- Compiling module bilinear_simd4_wide
 # 
 # Top level modules:
 # 	bilinear_simd4_wide
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:55 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq_wide.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:55 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_seq_wide.sv 
 # -- Compiling module bilinear_seq_wide
 # 
 # Top level modules:
 # 	bilinear_seq_wide
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:55 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/mem_read_controller.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:56 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/mem_read_controller.sv 
 # -- Compiling module mem_read_controller
 # 
 # Top level modules:
 # 	mem_read_controller
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:56 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_arith.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:56 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/bilinear_arith.sv 
 # -- Compiling module bilinear_arith
 # 
 # Top level modules:
 # 	bilinear_arith
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:56 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:56 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/top_dsa_seq.sv 
 # -- Compiling module top_dsa_seq
 # 
 # Top level modules:
 # 	top_dsa_seq
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:56 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq {C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:56 on Nov 26,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq" C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv 
 # -- Compiling module tb_bilinear_seq
 # 
 # Top level modules:
 # 	tb_bilinear_seq
-# End time: 21:26:34 on Nov 26,2025, Elapsed time: 0:00:00
+# End time: 22:14:56 on Nov 26,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_bilinear_seq
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_bilinear_seq 
-# Start time: 21:26:34 on Nov 26,2025
+# Start time: 22:14:56 on Nov 26,2025
 # Loading sv_std.std
 # Loading work.tb_bilinear_seq
 # Loading work.top_dsa_seq
@@ -1504,7 +1504,5 @@
 # [TB] Simulación terminada correctamente.
 # ** Note: $finish    : C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv(382)
 #    Time: 106690 ns  Iteration: 2  Instance: /tb_bilinear_seq
-# 1
-# Break in Module tb_bilinear_seq at C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/tb_bilinear_seq.sv line 382
-# End time: 21:43:29 on Nov 26,2025, Elapsed time: 0:16:55
+# End time: 22:15:02 on Nov 26,2025, Elapsed time: 0:00:06
 # Errors: 0, Warnings: 0

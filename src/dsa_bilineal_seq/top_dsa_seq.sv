@@ -8,6 +8,11 @@
 `define MEM_INIT_FILE "C:/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex"
 
 module top_dsa_seq #(
+
+  // Tamaño de imagen parametrizable
+  parameter int IMG_W = 16,
+  parameter int IMG_H = 16,
+
   parameter int AW = 10,  // Reduced by 2 bits for wide memory
   parameter bit SIMULATION = 0,
   parameter int DEB_W = 20,
@@ -40,8 +45,8 @@ module top_dsa_seq #(
   // =========================================================================
   // Configuration (hardcoded for simulation)
   // =========================================================================
-  assign in_w_cfg = 16'd16;
-  assign in_h_cfg = 16'd16;
+  assign in_w_cfg = IMG_W[15:0];
+  assign in_h_cfg = IMG_W[15:0];
   assign scale_q88_cfg = 16'd205;  // ~0.80 in Q8.8
   assign mode_simd_cfg = 1'b0;
 
@@ -199,7 +204,12 @@ module top_dsa_seq #(
   assign start_simd = start_any & mode_simd_eff;
 
   // Sequential core
-  bilinear_seq_wide #(.AW(AW)) u_core_seq (
+  bilinear_seq_wide #(
+  .AW(AW),
+  .IMG_W (IMG_W),
+  .IMG_H (IMG_H)
+
+  ) u_core_seq (
     .clk(clk_50),
     .rst_n(rst_n),
     .start(start_seq),
@@ -225,7 +235,11 @@ module top_dsa_seq #(
   );
 
   // SIMD4 core
-  bilinear_simd4_wide #(.AW(AW)) u_core_simd4 (
+  bilinear_simd4_wide #(
+  .AW(AW),
+  .IMG_W (IMG_W),
+  .IMG_H (IMG_H)
+  ) u_core_simd4 (
     .clk(clk_50),
     .rst_n(rst_n),
     .start(start_simd),

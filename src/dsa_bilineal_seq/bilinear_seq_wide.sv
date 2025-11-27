@@ -5,7 +5,9 @@
 //   - Compatible with 32-bit wide memory (2 read ports)
 // ============================================================================
 module bilinear_seq_wide #(
-  parameter int AW = 10  // Reduced by 2 bits for wide memory
+  parameter int AW = 10,  // Reduced by 2 bits for wide memory
+  parameter int IMG_W  = 16,
+  parameter int IMG_H  = 16
 )(
   input  logic        clk,
   input  logic        rst_n,
@@ -121,8 +123,8 @@ module bilinear_seq_wide #(
   // Instantiate memory read controller
   mem_read_controller #(
     .ADDR_W(AW),
-    .IMG_WIDTH(16),  // Match your image size
-    .IMG_HEIGHT(16)
+    .IMG_WIDTH (IMG_W),   // antes 16
+    .IMG_HEIGHT(IMG_H)    // antes 16
   ) u_mem_ctrl (
     .clk(clk),
     .rst_n(rst_n),
