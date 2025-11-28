@@ -81,32 +81,6 @@ module jtag_connect #(
   localparam logic [15:0] DEFAULT_SCALE_Q88  = 16'd205;   // ≈0.80 Q8.8
   localparam logic [3:0]  START_PULSE_CYCLES = 4'd8;
 
-  // ========= Cuantización de factor de escala Q8.8 =========
-  function automatic logic [15:0] quantize_scale_q88(input logic [15:0] raw);
-    localparam logic [15:0] SCALE_MIN_Q88  = 16'd128; // 0.50 * 256
-    localparam logic [15:0] SCALE_MAX_Q88  = 16'd256; // 1.00 * 256
-    localparam logic [15:0] SCALE_STEP_Q88 = 16'd13;  // ≈ 0.05 * 256 ≈ 12.8
-
-    logic [15:0] val;
-    logic [15:0] delta;
-    logic [15:0] k;
-  begin
-    // Clamping al rango [0.5, 1.0]
-    if (raw < SCALE_MIN_Q88)      val = SCALE_MIN_Q88;
-    else if (raw > SCALE_MAX_Q88) val = SCALE_MAX_Q88;
-    else                          val = raw;
-
-    // Distancia desde 0.5
-    delta = val - SCALE_MIN_Q88;
-
-    // k = round( delta / STEP )  → 0..10
-    k = (delta + (SCALE_STEP_Q88 >> 1)) / SCALE_STEP_Q88;
-    if (k > 16'd10) k = 16'd10;
-
-    quantize_scale_q88 = SCALE_MIN_Q88 + k * SCALE_STEP_Q88;
-  end
-  endfunction
-
   // ========= Dominio JTAG (tck) =========
   logic [DRW-1:0] dr_shift;
   logic [7:0]     latched_addr;
@@ -252,7 +226,7 @@ module jtag_connect #(
         unique case (wr_addr_sync2[7:0])
           ADDR_IN_W:        reg_in_w      <= wr_data_sync2;
           ADDR_IN_H:        reg_in_h      <= wr_data_sync2;
-          ADDR_SCALE_Q88:   reg_scale     <= {16'd0, quantize_scale_q88(wr_data_sync2[15:0])};
+          ADDR_SCALE_Q88:   reg_scale     <= wr_data_sync2;
 
           // CONTROL: bit0 = start (solo genera pulso), bit1 = modo SIMD
           ADDR_CONTROL: begin

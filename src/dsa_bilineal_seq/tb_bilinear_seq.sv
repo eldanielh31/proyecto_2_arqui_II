@@ -23,7 +23,7 @@ module tb_bilinear_seq;
   // Configuración de imagen / escala
   localparam int    IN_W_CFG       = 16;          // ancho de la imagen de entrada
   localparam int    IN_H_CFG       = 16;          // alto de la imagen de entrada
-  localparam int    SCALE_Q88_CFG  = 16'd205;     // factor Q8.8 (~0.8)
+  localparam int    SCALE_Q88_CFG  = 16'd206;     // factor Q8.8 (~0.8)
 
   localparam string IN_HEX_FILE    = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex";
 

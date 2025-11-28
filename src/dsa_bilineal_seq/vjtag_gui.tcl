@@ -4,9 +4,8 @@
 #   - Connect / Close
 #   - Set Params (IN_W, IN_H, SCALE_Q88)
 #   - Start (bit0 CONTROL) + modo SIMD x4 (bit1 CONTROL)
-#   - Read Status / Read IN_W
 #   - Dump mem_in / Dump mem_out
-#   - Upload Input HEX…  (sube archivo .hex a BRAM de entrada)
+#   - Upload Input HEX…  (sube archivo .hex a BRAM de entrada y ajusta W/H/dumps)
 #   - Read Perf (FLOPs / mem_rd / mem_wr)
 # =============================================================================
 
@@ -254,6 +253,11 @@ proc dump_mem_out {start count filepath} {
 }
 
 # Subir un .hex a BRAM de entrada (una línea = 2 dígitos hex por byte)
+# Ahora:
+#   - cuenta n bytes
+#   - asume imagen cuadrada N x N con N = sqrt(n)
+#   - escribe IN_W/IN_H/SCALE en FPGA
+#   - ajusta campos de GUI (in_w, in_h, dumps input/output)
 proc upload_hex_to_input {{base_addr 0}} {
   require_inst
   set path [tk_getOpenFile -title "Seleccione archivo .hex" \
@@ -277,9 +281,51 @@ proc upload_hex_to_input {{base_addr 0}} {
     incr n
   }
   close $fd
-  tk_messageBox -message "Upload OK: $n bytes escritos a mem_in desde addr $base_addr"
-}
 
+  if {$n <= 0} {
+    tk_messageBox -icon error -message "Archivo vacío o sin bytes válidos."
+    return
+  }
+
+  # Calcular dimensión cuadrada N x N a partir de n bytes
+  set N [expr {int(sqrt($n))}]
+  if {$N * $N != $n} {
+    tk_messageBox -icon warning -message "Advertencia: $n bytes no forman un cuadrado perfecto (N^2). N detectado = $N. Revise la imagen."
+  }
+
+  # Actualizar entries de in_w / in_h en GUI
+  .f.ew delete 0 end
+  .f.ew insert 0 $N
+  .f.eh delete 0 end
+  .f.eh insert 0 $N
+
+  # Escribir IN_W / IN_H / SCALE_Q88 en la FPGA
+  set w $N
+  set h $N
+  set s [parse_uint [.f.es get]]
+  write_reg $::ADDR_IN_W      $w
+  write_reg $::ADDR_IN_H      $h
+  write_reg $::ADDR_SCALE_Q88 $s
+
+  # Ajustar dumps:
+  #   - Input: start = base_addr, count = n
+  #   - Output: usar compute_out_dims() con W/H/SCALE actual
+  .f.i_estart delete 0 end
+  .f.i_estart insert 0 $base_addr
+  .f.i_ecount delete 0 end
+  .f.i_ecount insert 0 $n
+
+  catch {
+    lassign [compute_out_dims] Wp Hp
+    set out_count [expr {$Wp * $Hp}]
+    .f.o_estart delete 0 end
+    .f.o_estart insert 0 0
+    .f.o_ecount delete 0 end
+    .f.o_ecount insert 0 $out_count
+  }
+
+  tk_messageBox -message "Upload OK: $n bytes escritos a mem_in desde addr $base_addr\nImagen detectada: ${N}x${N}"
+}
 
 # =============================================================================
 # Construcción GUI
@@ -331,7 +377,10 @@ checkbutton .f.cbSimd -text "SIMD x4 mode" -variable simd_mode
 grid .f.cbSimd -row 8 -column 0 -columnspan 2 -sticky w
 
 button .f.btnSet   -text "Set Params" -command {
-  if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
+  if {$::INST < 0} {
+    tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."
+    return
+  }
   set w [parse_uint [.f.ew get]]
   set h [parse_uint [.f.eh get]]
   set s [parse_uint [.f.es get]]
@@ -354,25 +403,6 @@ button .f.btnStart -text "Start" -command {
 }
 grid .f.btnSet   -row 9 -column 0 -pady 6 -sticky w
 grid .f.btnStart -row 9 -column 1 -pady 6 -sticky e
-
-label .f.lst -text "status"
-entry .f.est -width 16
-button .f.btnRd -text "Read Status" -command {
-  if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
-  set d [read_reg $::ADDR_STATUS]
-  .f.est delete 0 end
-  .f.est insert 0 $d
-}
-grid .f.lst  -row 10 -column 0 -sticky e
-grid .f.est  -row 10 -column 1 -sticky w
-grid .f.btnRd -row 11 -column 0 -pady 6 -sticky w
-
-button .f.btnRdW -text "Read IN_W" -command {
-  if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
-  set w [read_reg $::ADDR_IN_W]
-  tk_messageBox -message "IN_W = $w"
-}
-grid .f.btnRdW -row 11 -column 1 -pady 6 -sticky e
 
 # ---- Dump Input BRAM ----
 label .f.i_hdr -text "Dump Input BRAM (mem_in)"
