@@ -61,7 +61,7 @@ def reconstruct_hex_to_image(hex_file_path, output_image_path):
 # --- EJECUCIÓN ---
 if __name__ == "__main__":
     # Cambia 'imagen_input.hex' por el nombre de tu archivo real
-    input_file = "img_out_tb.hex"
+    input_file = "mem_out.hex"
     output_file = "imagen_reconstruida.png"
     
     reconstruct_hex_to_image(input_file, output_file)

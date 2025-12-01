@@ -1,16 +1,19 @@
 `timescale 1ps/1ps
 
 // ============================================================================
-// tb_bilinear_seq — Testbench para top_dsa_wide (versión sin JTAG / sin mem_out)
+// tb_bilinear_seq — Testbench para top_dsa_seq (versión sin JTAG / sin mem_out)
 //   - Ejecuta primero el núcleo SECUENCIAL (mode_simd_sw = 0).
 //   - Luego hace reset y ejecuta el núcleo SIMD4 (mode_simd_sw = 1).
 //   - Genera clock, reset y pulso de start.
 //   - Carga la imagen de entrada desde archivo HEX en formato wide (32-bit).
 //   - Captura las escrituras de salida directamente de los cores:
-//       * u_core_seq: out_waddr_seq / out_wdata_seq / out_we_seq
-//       * u_core_simd4: out_waddr_simd[0..3] / out_wdata_simd[0..3] / out_we_simd[0..3]
-//   - Vuelca la salida SEQ y SIMD a archivos HEX.
-//   - Compara SEQ (golden) vs SIMD4.
+//
+//       * u_core_seq:  out_mem_addr_seq / out_mem_wdata_seq / out_mem_we_seq
+//       * u_core_simd4: out_mem_addr_simd / out_mem_wdata_simd / out_mem_we_simd
+//
+//   - En el TB se reconstruyen los píxeles (4 bytes por word) y:
+//       * Se vuelca la salida SEQ y SIMD a archivos HEX (1 byte por línea).
+//       * Se compara SEQ (golden) vs SIMD4 píxel a píxel.
 // ============================================================================
 
 module tb_bilinear_seq;
@@ -18,28 +21,21 @@ module tb_bilinear_seq;
   // --------------------------------------------------------------------------
   // Parámetros
   // --------------------------------------------------------------------------
-  localparam int    AW             = 18;          // ancho de dirección para entrada
-  localparam int    MEM_DEPTH      = (1 << AW);   // profundidad en palabras (32 bits)
+  localparam int    AW             = 18;          // ancho de dirección para entrada/salida (en words)
+  localparam int    MEM_DEPTH      = (1 << AW);   // profundidad en words (32 bits)
   localparam time   T_CLK_PS       = 20_000;      // 20 ns -> 50 MHz
 
   // Configuración de imagen / escala
-  // localparam int    IN_W_CFG       = 16;          // ancho de la imagen de entrada
-  // localparam int    IN_H_CFG       = 16;          // alto de la imagen de entrada
-  // localparam int    CFG_SCALE_Q88  = 16'd205;     // (no se usa directamente en el TB nuevo)
-
-  // localparam string IN_HEX_FILE    = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex";
-
-  localparam int    IN_W_CFG       = 512;          // ancho de la imagen de entrada
-  localparam int    IN_H_CFG       = 512;          // alto de la imagen de entrada
-  localparam int    CFG_SCALE_Q88  = 16'd205;     // (no se usa directamente en el TB nuevo)
+  localparam int    IN_W_CFG       = 512;         // ancho de la imagen de entrada
+  localparam int    IN_H_CFG       = 512;         // alto de la imagen de entrada
+  localparam int    CFG_SCALE_Q88  = 16'd205;     // escala Q8.8 (se pasa al top vía parámetro)
 
   localparam string IN_HEX_FILE    = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_in_512x512.hex";
 
   // Flags de debug
-  localparam bit DBG_SEQ_MONITOR      = 1'b1;
-  localparam bit DBG_SIMD_SUMMARY     = 1'b1;
-  localparam bit DBG_SIMD_DETAILED    = 1'b0;   // en esta versión se deja en 0
-  localparam int DBG_SIMD_MAX_MISM    = 50;
+  localparam bit DBG_SEQ_MONITOR   = 1'b1;
+  localparam bit DBG_SIMD_SUMMARY  = 1'b1;
+  localparam int DBG_SIMD_MAX_MISM = 50;
 
   // --------------------------------------------------------------------------
   // Señales hacia el DUT
@@ -71,9 +67,14 @@ module tb_bilinear_seq;
   // --------------------------------------------------------------------------
   localparam int OUT_PIX_MAX = MEM_DEPTH * 4;
 
+  // Memorias de words de salida (tal como las genera el DUT)
+  logic [31:0] out_seq_words  [0:MEM_DEPTH-1];
+  logic [31:0] out_simd_words [0:MEM_DEPTH-1];
+
+  // Vistas por píxel (1 byte por elemento)
   logic [7:0] golden_seq      [0:OUT_PIX_MAX-1];  // golden de SEQ
-  logic [7:0] out_seq_pixels  [0:OUT_PIX_MAX-1];  // capturado de core secuencial
-  logic [7:0] out_simd_pixels [0:OUT_PIX_MAX-1];  // capturado de core SIMD
+  logic [7:0] out_seq_pixels  [0:OUT_PIX_MAX-1];  // reconstruido de core secuencial
+  logic [7:0] out_simd_pixels [0:OUT_PIX_MAX-1];  // reconstruido de core SIMD
 
   // Helper array para cargar imagen de entrada (formato byte)
   logic [7:0] byte_image_in [0:(IN_W_CFG*IN_H_CFG)-1];
@@ -87,7 +88,8 @@ module tb_bilinear_seq;
     .AW            (AW),
     .SIMULATION    (1),
     .DEB_W         (20),
-    .RST_STRETCH_W (22)
+    .RST_STRETCH_W (22),
+    .SCALE_Q88     (CFG_SCALE_Q88)
   ) dut (
     .clk_50        (clk_50),
     .rst_n         (rst_n),
@@ -255,13 +257,89 @@ module tb_bilinear_seq;
   endtask
 
   // --------------------------------------------------------------------------
-  // Captura de escrituras de salida desde los cores
-  //   - Se almacenan en out_seq_pixels y out_simd_pixels
+  // Reconstrucción de píxeles desde words (mapeo lineal: lin = word*4 + lane)
   // --------------------------------------------------------------------------
-  integer idx_addr;
+  task automatic unpack_seq_words_to_pixels(
+    input int ow_local,
+    input int oh_local
+  );
+    int total_pixels;
+    int max_idx;
+    int word_idx;
+    int base_idx;
+    logic [31:0] W;
+  begin
+    total_pixels = ow_local * oh_local;
+    max_idx      = (total_pixels < OUT_PIX_MAX) ? total_pixels : OUT_PIX_MAX;
 
+    // Limpiar buffer
+    for (int i = 0; i < max_idx; i++) begin
+      out_seq_pixels[i] = 8'h00;
+    end
+
+    $display("[TB][SEQ] Unpacking words->pixels, ow=%0d oh=%0d total_pix=%0d", 
+             ow_local, oh_local, total_pixels);
+
+    // Asumir: pixel_lin = word_addr*4 + lane
+    for (word_idx = 0; word_idx < MEM_DEPTH; word_idx++) begin
+      base_idx = word_idx * 4;
+      if (base_idx >= max_idx) break;
+
+      W = out_seq_words[word_idx];
+
+      if (base_idx     < max_idx) out_seq_pixels[base_idx    ] = W[7:0];
+      if (base_idx + 1 < max_idx) out_seq_pixels[base_idx + 1] = W[15:8];
+      if (base_idx + 2 < max_idx) out_seq_pixels[base_idx + 2] = W[23:16];
+      if (base_idx + 3 < max_idx) out_seq_pixels[base_idx + 3] = W[31:24];
+    end
+  end
+  endtask
+
+  task automatic unpack_simd_words_to_pixels(
+    input int ow_local,
+    input int oh_local
+  );
+    int total_pixels;
+    int max_idx;
+    int word_idx;
+    int base_idx;
+    logic [31:0] W;
+  begin
+    total_pixels = ow_local * oh_local;
+    max_idx      = (total_pixels < OUT_PIX_MAX) ? total_pixels : OUT_PIX_MAX;
+
+    // Limpiar buffer
+    for (int i = 0; i < max_idx; i++) begin
+      out_simd_pixels[i] = 8'h00;
+    end
+
+    $display("[TB][SIMD] Unpacking words->pixels, ow=%0d oh=%0d total_pix=%0d", 
+             ow_local, oh_local, total_pixels);
+
+    // Asumir: pixel_lin = word_addr*4 + lane
+    for (word_idx = 0; word_idx < MEM_DEPTH; word_idx++) begin
+      base_idx = word_idx * 4;
+      if (base_idx >= max_idx) break;
+
+      W = out_simd_words[word_idx];
+
+      if (base_idx     < max_idx) out_simd_pixels[base_idx    ] = W[7:0];
+      if (base_idx + 1 < max_idx) out_simd_pixels[base_idx + 1] = W[15:8];
+      if (base_idx + 2 < max_idx) out_simd_pixels[base_idx + 2] = W[23:16];
+      if (base_idx + 3 < max_idx) out_simd_pixels[base_idx + 3] = W[31:24];
+    end
+  end
+  endtask
+
+  // --------------------------------------------------------------------------
+  // Inicialización de buffers
+  // --------------------------------------------------------------------------
   initial begin
     int i;
+    for (i = 0; i < MEM_DEPTH; i = i + 1) begin
+      out_seq_words[i]  = 32'h0000_0000;
+      out_simd_words[i] = 32'h0000_0000;
+    end
     for (i = 0; i < OUT_PIX_MAX; i = i + 1) begin
       out_seq_pixels[i]  = 8'h00;
       out_simd_pixels[i] = 8'h00;
@@ -269,34 +347,28 @@ module tb_bilinear_seq;
     end
   end
 
+  // --------------------------------------------------------------------------
+  // Captura de escrituras de salida desde los cores (words 32b)
+  // --------------------------------------------------------------------------
   always @(posedge clk_50) begin
     // Secuencial
-    if (dut.out_we_seq) begin
-      idx_addr = dut.out_waddr_seq;
-      if (idx_addr >= 0 && idx_addr < OUT_PIX_MAX)
-        out_seq_pixels[idx_addr] <= dut.out_wdata_seq;
+    if (dut.out_mem_we_seq) begin
+      if (dut.out_mem_addr_seq < MEM_DEPTH) begin
+        out_seq_words[dut.out_mem_addr_seq] <= dut.out_mem_wdata_seq;
+      end else begin
+        $display("[TB][WARN] out_mem_addr_seq=%0d fuera de rango MEM_DEPTH=%0d",
+                 dut.out_mem_addr_seq, MEM_DEPTH);
+      end
     end
 
-    // SIMD4: cuatro lanes
-    if (dut.out_we_simd0) begin
-      idx_addr = dut.out_waddr_simd0;
-      if (idx_addr >= 0 && idx_addr < OUT_PIX_MAX)
-        out_simd_pixels[idx_addr] <= dut.out_wdata_simd0;
-    end
-    if (dut.out_we_simd1) begin
-      idx_addr = dut.out_waddr_simd1;
-      if (idx_addr >= 0 && idx_addr < OUT_PIX_MAX)
-        out_simd_pixels[idx_addr] <= dut.out_wdata_simd1;
-    end
-    if (dut.out_we_simd2) begin
-      idx_addr = dut.out_waddr_simd2;
-      if (idx_addr >= 0 && idx_addr < OUT_PIX_MAX)
-        out_simd_pixels[idx_addr] <= dut.out_wdata_simd2;
-    end
-    if (dut.out_we_simd3) begin
-      idx_addr = dut.out_waddr_simd3;
-      if (idx_addr >= 0 && idx_addr < OUT_PIX_MAX)
-        out_simd_pixels[idx_addr] <= dut.out_wdata_simd3;
+    // SIMD4
+    if (dut.out_mem_we_simd) begin
+      if (dut.out_mem_addr_simd < MEM_DEPTH) begin
+        out_simd_words[dut.out_mem_addr_simd] <= dut.out_mem_wdata_simd;
+      end else begin
+        $display("[TB][WARN] out_mem_addr_simd=%0d fuera de rango MEM_DEPTH=%0d",
+                 dut.out_mem_addr_simd, MEM_DEPTH);
+      end
     end
   end
 
@@ -337,6 +409,7 @@ module tb_bilinear_seq;
     @(posedge clk_50);
     start_sw = 1'b0;
 
+    // Esperar done del DUT (señal interna)
     @(posedge dut.done);
 
     $display("[TB][SEQ] DONE detectado en t=%0t", $time);
@@ -348,6 +421,9 @@ module tb_bilinear_seq;
              dut.u_core_seq.o_flop_count,
              dut.u_core_seq.o_mem_rd_count,
              dut.u_core_seq.o_mem_wr_count);
+
+    // Reconstruir píxeles SEQ desde words
+    unpack_seq_words_to_pixels(ow, oh);
 
     dump_pixels_seq(
       "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_seq_wide.hex",
@@ -379,6 +455,14 @@ module tb_bilinear_seq;
     load_image_to_wide_mem(IN_HEX_FILE);
     dump_input_mem("ANTES_SIMD", 4);
 
+    // Limpiar buffers de salida SIMD por claridad (opcional)
+    for (i = 0; i < MEM_DEPTH; i = i + 1) begin
+      out_simd_words[i] = 32'h0000_0000;
+    end
+    for (i = 0; i < OUT_PIX_MAX; i = i + 1) begin
+      out_simd_pixels[i] = 8'h00;
+    end
+
     // ======================================================
     // CORRIDA 2: Núcleo SIMD4
     // ======================================================
@@ -403,6 +487,9 @@ module tb_bilinear_seq;
              dut.u_core_simd4.o_flop_count,
              dut.u_core_simd4.o_mem_rd_count,
              dut.u_core_simd4.o_mem_wr_count);
+
+    // Reconstruir píxeles SIMD desde words
+    unpack_simd_words_to_pixels(ow, oh);
 
     dump_pixels_simd(
       "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_simd_wide.hex",
@@ -462,65 +549,46 @@ module tb_bilinear_seq;
   end
 
   // --------------------------------------------------------------------------
-  // Monitor SECUENCIAL (simplificado)
+  // Monitor SECUENCIAL (word-level)
   // --------------------------------------------------------------------------
   always @(posedge clk_50) begin
     if (DBG_SEQ_MONITOR &&
         !dut.mode_simd_eff &&
-        dut.out_we_seq) begin
+        dut.out_mem_we_seq) begin
 
-      $display("[SEQ][RUN=%0d][t=%0t] WRITE addr=%0d pix=0x%02h | ox=%0d oy=%0d",
+      logic [31:0] W;
+      W = dut.out_mem_wdata_seq;
+
+      $display("[SEQ][RUN=%0d][t=%0t] WRITE word=%0d data=0x%08h | px0=%02h px1=%02h px2=%02h px3=%02h | oy=%0d",
         run_id,
         $time,
-        dut.out_waddr_seq,
-        dut.out_wdata_seq,
-        dut.u_core_seq.ox_cur,
+        dut.out_mem_addr_seq,
+        W,
+        W[7:0], W[15:8], W[23:16], W[31:24],
         dut.u_core_seq.oy_cur
       );
     end
   end
 
   // --------------------------------------------------------------------------
-  // Monitor SIMD4 (simplificado)
+  // Monitor SIMD4 (word-level)
   // --------------------------------------------------------------------------
   always @(posedge clk_50) begin
-    if (dut.mode_simd_eff && DBG_SIMD_SUMMARY) begin
-      
-      if (dut.out_we_simd0)
-        $display("[SIMD][RUN=%0d][t=%0t] L0 WRITE addr=%0d pix=0x%02h ox=%0d oy=%0d",
-          run_id, $time, 
-          dut.out_waddr_simd0, 
-          dut.out_wdata_simd0,
-          dut.u_core_simd4.ox_lane[0],
-          dut.u_core_simd4.oy_cur
-        );
+    if (dut.mode_simd_eff && DBG_SIMD_SUMMARY && dut.out_mem_we_simd) begin
+      logic [31:0] W;
+      W = dut.out_mem_wdata_simd;
 
-      if (dut.out_we_simd1)
-        $display("[SIMD][RUN=%0d][t=%0t] L1 WRITE addr=%0d pix=0x%02h ox=%0d oy=%0d",
-          run_id, $time,
-          dut.out_waddr_simd1,
-          dut.out_wdata_simd1,
-          dut.u_core_simd4.ox_lane[1],
-          dut.u_core_simd4.oy_cur
-        );
-
-      if (dut.out_we_simd2)
-        $display("[SIMD][RUN=%0d][t=%0t] L2 WRITE addr=%0d pix=0x%02h ox=%0d oy=%0d",
-          run_id, $time,
-          dut.out_waddr_simd2,
-          dut.out_wdata_simd2,
-          dut.u_core_simd4.ox_lane[2],
-          dut.u_core_simd4.oy_cur
-        );
-
-      if (dut.out_we_simd3)
-        $display("[SIMD][RUN=%0d][t=%0t] L3 WRITE addr=%0d pix=0x%02h ox=%0d oy=%0d",
-          run_id, $time,
-          dut.out_waddr_simd3,
-          dut.out_wdata_simd3,
-          dut.u_core_simd4.ox_lane[3],
-          dut.u_core_simd4.oy_cur
-        );
+      $display("[SIMD][RUN=%0d][t=%0t] WRITE word=%0d data=0x%08h | L0=%02h L1=%02h L2=%02h L3=%02h | oy=%0d ox_lanes=%0d,%0d,%0d,%0d",
+        run_id, $time,
+        dut.out_mem_addr_simd,
+        W,
+        W[7:0], W[15:8], W[23:16], W[31:24],
+        dut.u_core_simd4.oy_cur,
+        dut.u_core_simd4.ox_lane[0],
+        dut.u_core_simd4.ox_lane[1],
+        dut.u_core_simd4.ox_lane[2],
+        dut.u_core_simd4.ox_lane[3]
+      );
     end
   end
 
