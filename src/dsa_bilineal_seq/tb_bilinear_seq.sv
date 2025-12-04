@@ -27,13 +27,13 @@ module tb_bilinear_seq;
   // localparam int    IN_H_CFG       = 16;          // alto de la imagen de entrada
   // localparam int    CFG_SCALE_Q88  = 16'd205;     // (no se usa directamente en el TB nuevo)
 
-  // localparam string IN_HEX_FILE    = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_16x16.hex";
+  // localparam string IN_HEX_FILE    = "C:/Users/edgar/OneDrive/Documents/Gaby/dsa_bilineal_seq/img_16x16.hex";
 
   localparam int    IN_W_CFG       = 512;          // ancho de la imagen de entrada
   localparam int    IN_H_CFG       = 512;          // alto de la imagen de entrada
   localparam int    CFG_SCALE_Q88  = 16'd205;     // (no se usa directamente en el TB nuevo)
 
-  localparam string IN_HEX_FILE    = "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_in_512x512.hex";
+  localparam string IN_HEX_FILE    = "C:/Users/edgar/OneDrive/Documents/Gaby/dsa_bilineal_seq/img_in_512x512.hex";
 
   // Flags de debug
   localparam bit DBG_SEQ_MONITOR      = 1'b1;
@@ -439,7 +439,7 @@ print_pmu(
 
 
     dump_pixels_seq(
-      "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_seq_wide.hex",
+      "C:/Users/edgar/OneDrive/Documents/Gaby/dsa_bilineal_seq/img_out_seq_wide.hex",
       ow, oh
     );
 
@@ -512,7 +512,7 @@ print_pmu(
 );
 
     dump_pixels_simd(
-      "C:/Users/danbg/src/proyecto_2_arqui_II/src/dsa_bilineal_seq/img_out_simd_wide.hex",
+      "C:/Users/edgar/OneDrive/Documents/Gaby/dsa_bilineal_seq/img_out_simd_wide.hex",
       ow, oh
     );
 
