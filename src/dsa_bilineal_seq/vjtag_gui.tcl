@@ -7,7 +7,6 @@
 #   - Dump mem_in / Dump mem_out
 #   - Upload Input HEX…  (sube archivo .hex a BRAM de entrada y ajusta W/H/dumps)
 #   - Read Perf (FLOPs / mem_rd / mem_wr)
-#   - Check Config (lee IN_W/IN_H/SCALE_Q88/OUT_W/OUT_H + expected y STATUS)
 # =============================================================================
 
 if {[catch {package require Tk} err]} {
@@ -37,11 +36,7 @@ set ADDR_CONTROL     0x00 ;# bit0: start, bit1: SIMD
 set ADDR_IN_W        0x01
 set ADDR_IN_H        0x02
 set ADDR_SCALE_Q88   0x03
-# NUEVO: dimensiones de salida latcheadas por el core (jtag_connect)
-set ADDR_OUT_W       0x04
-set ADDR_OUT_H       0x05
-
-set ADDR_STATUS      0x10 ;# bit0: done, bit1: busy
+set ADDR_STATUS      0x10 ;# bit0: done, bit1: busy, bit2: error
 
 # Performance counters / progreso
 set ADDR_PERF_FLOPS  0x11
@@ -124,10 +119,8 @@ proc write_reg {addr data} {
 }
 proc read_reg {addr} {
   vjtag_ir $::IR_READ
-  # Fase 1: enviar addr
   set dr1 [pack_dr $addr 0]
   vjtag_dr $dr1
-  # Fase 2: capturar datos
   set rsp [vjtag_dr 0]
   set v   [dr_parse_hex $rsp]
   return [expr {($v >> 8) & 0xFFFFFFFF}]
@@ -223,87 +216,13 @@ proc jtag_close {} {
 # =============================================================================
 # Utilidades GUI
 # =============================================================================
-# IMPORTANTE:
-#   - Primero intenta leer OUT_W / OUT_H (latcheados por el core vía jtag_connect).
-#   - Si son > 0, se usan como W' y H'.
-#   - Si están en 0, se cae al cálculo aproximado W*S/256 a partir de IN_W/IN_H/SCALE_Q88.
 proc compute_out_dims {} {
-  # Intentar dimensiones de salida reales del core
-  set Wp [read_reg $::ADDR_OUT_W]
-  set Hp [read_reg $::ADDR_OUT_H]
-
-  if {$Wp > 0 && $Hp > 0} {
-    return [list $Wp $Hp]
-  }
-
-  # Fallback: cálculo con IN_W/IN_H/scale (como en la versión funcional anterior)
   set W [read_reg $::ADDR_IN_W]
   set H [read_reg $::ADDR_IN_H]
   set S [read_reg $::ADDR_SCALE_Q88]
   set Wp [expr {int( ($W * $S) / 256 )}]
   set Hp [expr {int( ($H * $S) / 256 )}]
   return [list $Wp $Hp]
-}
-
-# === NUEVO: lectura detallada de configuración efectiva del core ===
-proc show_core_config {} {
-  if {$::INST < 0} {
-    tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."
-    return
-  }
-
-  # Leer registros crudos (32 bits)
-  set reg_in_w   [read_reg $::ADDR_IN_W]
-  set reg_in_h   [read_reg $::ADDR_IN_H]
-  set reg_scale  [read_reg $::ADDR_SCALE_Q88]
-  set reg_out_w  [read_reg $::ADDR_OUT_W]
-  set reg_out_h  [read_reg $::ADDR_OUT_H]
-  set reg_status [read_reg $::ADDR_STATUS]
-
-  # Extraer campos de 16 bits (LSB)
-  set in_w      [expr {$reg_in_w  & 0xFFFF}]
-  set in_h      [expr {$reg_in_h  & 0xFFFF}]
-  set scale_q88 [expr {$reg_scale & 0xFFFF}]
-  set out_w     [expr {$reg_out_w & 0xFFFF}]
-  set out_h     [expr {$reg_out_h & 0xFFFF}]
-
-  # STATUS: {29'd0, 1'b0, busy, done}
-  set status_done [expr {$reg_status & 0x1}]
-  set status_busy [expr {($reg_status >> 1) & 0x1}]
-
-  # Escala real Q8.8
-  if {$scale_q88 != 0} {
-    set scale_real [format "%.4f" [expr {double($scale_q88) / 256.0}]]
-  } else {
-    set scale_real "0.0000"
-  }
-
-  # Dimensiones esperadas
-  set out_w_exp [expr {($in_w * $scale_q88) >> 8}]
-  set out_h_exp [expr {($in_h * $scale_q88) >> 8}]
-
-  # Construir mensaje
-  set msg ""
-  append msg "===== CONFIGURACION CORE =====\n"
-  append msg [format " IN_W        : %4d (0x%04X)\n" $in_w $in_w]
-  append msg [format " IN_H        : %4d (0x%04X)\n" $in_h $in_h]
-  append msg [format " SCALE_Q8.8  : %4d (0x%04X)  ~ %s\n" $scale_q88 $scale_q88 $scale_real]
-  append msg [format " OUT_W(core) : %4d (0x%04X)\n" $out_w $out_w]
-  append msg [format " OUT_H(core) : %4d (0x%04X)\n" $out_h $out_h]
-  append msg [format " OUT_W(exp)  : %4d (IN_W * SCALE >> 8)\n" $out_w_exp]
-  append msg [format " OUT_H(exp)  : %4d (IN_H * SCALE >> 8)\n" $out_h_exp]
-  append msg [format " STATUS      : done=%d, busy=%d\n" $status_done $status_busy]
-
-  if {$out_w != 0 && $out_w != $out_w_exp} {
-    append msg "  ** WARNING: OUT_W(core) != OUT_W(expected)\n"
-  }
-  if {$out_h != 0 && $out_h != $out_h_exp} {
-    append msg "  ** WARNING: OUT_H(core) != OUT_H(expected)\n"
-  }
-
-  # Mostrar en consola y popup
-  puts $msg
-  tk_messageBox -message $msg
 }
 
 proc dump_mem_in {start count filepath} {
@@ -321,53 +240,17 @@ proc dump_mem_in {start count filepath} {
 }
 proc dump_mem_out {start count filepath} {
   require_inst
-
-  # Obtener dimensiones efectivas de salida (si el core no las latcheó todavía,
-  # se usa el cálculo IN_W * SCALE >> 8)
-  lassign [compute_out_dims] Wp Hp
-
-  if {$Wp <= 0 || $Hp <= 0} {
-    tk_messageBox -icon error -message "OUT_W/OUT_H inválidos (Wp=$Wp, Hp=$Hp). Ejecute el core primero o revise parámetros."
-    return
-  }
-
-  # Palabras de 32 bits por fila de salida (mismo cálculo que el core)
-  set groups_per_row [expr {($Wp + 3) / 4}]
-
-  set total_pix [expr {$Wp * $Hp}]
   set fd [open $filepath "w"]
   fconfigure $fd -translation lf
-
-  set i 0
-  while {$i < $count && ($start + $i) < $total_pix} {
-    set pix [expr {$start + $i}]
-
-    # Coordenadas 2D de ese píxel
-    set y [expr {$pix / $Wp}]
-    set x [expr {$pix % $Wp}]
-
-    # Mapeo a la misma organización que usan los cores:
-    #  - groups_per_row palabras por fila
-    #  - cada palabra = 4 píxeles (lanes 0..3)
-    set group_x   [expr {$x / 4}]
-    set lane      [expr {$x % 4}]
-    set word_addr [expr {$y * $groups_per_row + $group_x}]
-
-    # Dirección codificada para HW: [word_addr]<<2 | lane
-    set enc_addr  [expr {($word_addr << 2) | $lane}]
-
-    # Escribir esa dirección en el registro OUT_ADDR y leer el byte
-    write_out_addr $enc_addr
+  for {set i 0} {$i < $count} {incr i} {
+    set addr [expr {$start + $i}]
+    write_out_addr $addr
     set b [read_out_data]
     puts $fd [format "%02x" $b]
-
-    incr i
   }
-
   close $fd
-  tk_messageBox -message "Dump OUT OK: $i bytes desde pixel $start a '$filepath'\nOUT_W'=$Wp, OUT_H'=$Hp, words/row=$groups_per_row"
+  tk_messageBox -message "Dump OUT OK: $count bytes desde $start a '$filepath'"
 }
-
 
 # Subir un .hex a BRAM de entrada (una línea = 2 dígitos hex por byte)
 # Ahora:
@@ -426,7 +309,7 @@ proc upload_hex_to_input {{base_addr 0}} {
 
   # Ajustar dumps:
   #   - Input: start = base_addr, count = n
-  #   - Output: usar compute_out_dims() (OUT_W/H si están disponibles, si no W*S/256)
+  #   - Output: usar compute_out_dims() con W/H/SCALE actual
   .f.i_estart delete 0 end
   .f.i_estart insert 0 $base_addr
   .f.i_ecount delete 0 end
@@ -518,12 +401,8 @@ button .f.btnStart -text "Start" -command {
     vjtag_dr 0
   }
 }
-# NUEVO: botón para leer configuración efectiva del core
-button .f.btnCfg -text "Check Config" -command { show_core_config }
-
-grid .f.btnSet   -row 9  -column 0 -pady 6 -sticky w
-grid .f.btnStart -row 9  -column 1 -pady 6 -sticky e
-grid .f.btnCfg   -row 10 -column 0 -pady 4 -sticky w
+grid .f.btnSet   -row 9 -column 0 -pady 6 -sticky w
+grid .f.btnStart -row 9 -column 1 -pady 6 -sticky e
 
 # ---- Dump Input BRAM ----
 label .f.i_hdr -text "Dump Input BRAM (mem_in)"
@@ -553,7 +432,7 @@ button .f.i_dump -text "Dump Input" -command {
 }
 grid .f.i_dump -row 16 -column 1 -pady 6 -sticky e
 
-# ---- Upload Input HEX ----
+# ---- Upload Input HEX (nuevo) ----
 button .f.i_upload -text "Upload Input HEX…" -command {
   if {$::INST < 0} { tk_messageBox -icon error -message "No Virtual JTAG instance. Presione Connect primero."; return }
   set base [parse_uint [.f.i_estart get]]
